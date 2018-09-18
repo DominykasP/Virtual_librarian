@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E99B3268-E580-47FA-898C-F56B9D99AC72}</ProjectGuid>
+    <ProjectGuid>{764B63CF-34F9-4F2B-8004-DAE723C8137D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Virtual_librarian</RootNamespace>
     <AssemblyName>Virtual_librarian</AssemblyName>
@@ -46,16 +46,76 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="addBook.Designer.cs">
+      <DependentUpon>addBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="allBooks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="allBooks.Designer.cs">
+      <DependentUpon>allBooks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChooseLoginScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChooseLoginScreen.Designer.cs">
+      <DependentUpon>ChooseLoginScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="loginFace.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="loginFace.Designer.cs">
+      <DependentUpon>loginFace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="loginFaceUnsuccessful.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="loginFaceUnsuccessful.Designer.cs">
+      <DependentUpon>loginFaceUnsuccessful.cs</DependentUpon>
+    </Compile>
+    <Compile Include="mainUserScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="mainUserScreen.Designer.cs">
+      <DependentUpon>mainUserScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="registerScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="registerScreen.Designer.cs">
+      <DependentUpon>registerScreen.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="addBook.resx">
+      <DependentUpon>addBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="allBooks.resx">
+      <DependentUpon>allBooks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChooseLoginScreen.resx">
+      <DependentUpon>ChooseLoginScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginFace.resx">
+      <DependentUpon>loginFace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="loginFaceUnsuccessful.resx">
+      <DependentUpon>loginFaceUnsuccessful.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="mainUserScreen.resx">
+      <DependentUpon>mainUserScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -65,7 +125,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="registerScreen.resx">
+      <DependentUpon>registerScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -78,6 +142,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\faceImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ebook-cover-template-27.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blurb-examples.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
