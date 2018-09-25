@@ -44,7 +44,7 @@
             // 
             // btnBarcode
             // 
-            this.btnBarcode.Location = new System.Drawing.Point(689, 710);
+            this.btnBarcode.Location = new System.Drawing.Point(675, 710);
             this.btnBarcode.Name = "btnBarcode";
             this.btnBarcode.Size = new System.Drawing.Size(365, 77);
             this.btnBarcode.TabIndex = 2;
