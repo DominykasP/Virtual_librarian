@@ -42,10 +42,17 @@ namespace Virtual_librarian
                 pictureBox1.Image = File;
                 BarcodeLocation = open.FileName;
                 String[] Barcode = BarcodeScanner.Scan(BarcodeLocation);
-               
-                textBox1.AppendText(Barcode[0]);
+                if (Barcode.Length != 0)
+                    textBox1.AppendText(Barcode[0]);
+                else
+                    MessageBox.Show("Nepavyko aptikti barkodo");
                 
             }
+        }
+
+        private void UCBarcodeScan_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

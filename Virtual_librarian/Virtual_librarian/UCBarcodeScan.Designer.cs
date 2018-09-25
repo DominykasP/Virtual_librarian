@@ -40,7 +40,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
-            this.label1.Location = new System.Drawing.Point(116, 20);
+            this.label1.Location = new System.Drawing.Point(132, 16);
             this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(183, 24);
@@ -96,6 +96,7 @@
             this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "UCBarcodeScan";
             this.Size = new System.Drawing.Size(438, 290);
+            this.Load += new System.EventHandler(this.UCBarcodeScan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
