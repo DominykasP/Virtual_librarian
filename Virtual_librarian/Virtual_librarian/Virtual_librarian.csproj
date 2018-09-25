@@ -41,8 +41,11 @@
     <Reference Include="Emgu.CV.World, Version=3.4.1.2976, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\EMGU.CV.3.4.1.2976\lib\net35\Emgu.CV.World.dll</HintPath>
     </Reference>
-    <Reference Include="Spire.Barcode">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\e-iceblue\Spire.BarCode-Fe\Bin\NET4.0\Spire.Barcode.dll</HintPath>
+    <Reference Include="Spire.Barcode, Version=2.8.1.11040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Barcode.2.8.1\lib\net40\Spire.Barcode.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.6.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.Barcode.2.8.1\lib\net40\Spire.License.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
