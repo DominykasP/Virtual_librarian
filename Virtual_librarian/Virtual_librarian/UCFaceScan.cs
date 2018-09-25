@@ -105,5 +105,10 @@ namespace Virtual_librarian
 
             return image;
         }
+
+        private void UCFaceScan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

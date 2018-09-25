@@ -14,6 +14,7 @@ namespace Virtual_librarian
     {
         private UCFaceScan faceScanControl;
         private UCBarcodeScan barcodeScanControl;
+        private UCBarcodeGenerate barcodeGenerateControl;
 
         public Form1()
         {
@@ -27,11 +28,16 @@ namespace Virtual_librarian
                 this.Controls.Remove(barcodeScanControl);
             }
 
+                if (this.Controls.Contains(barcodeGenerateControl))
+                {
+                    this.Controls.Remove(barcodeScanControl);
+                }
+
             faceScanControl = new UCFaceScan();
             this.Controls.Add(faceScanControl);
         }
 
-        private void btnBarcode_Click(object sender, EventArgs e)
+        private void btnBarcodeScan_Click(object sender, EventArgs e)
         {
             if (this.Controls.Contains(faceScanControl))
             {
@@ -43,8 +49,36 @@ namespace Virtual_librarian
                 this.Controls.Remove(faceScanControl);
             }
 
+                if (this.Controls.Contains(barcodeGenerateControl))
+                {
+                    this.Controls.Remove(barcodeScanControl);
+                }
+
             barcodeScanControl = new UCBarcodeScan();
             this.Controls.Add(barcodeScanControl);
+        }
+
+        private void btnBarcodeGen_Click(object sender, EventArgs e)
+        {
+            if (this.Controls.Contains(faceScanControl))
+            {
+                faceScanControl.tmrForVideo.Stop();
+                faceScanControl.tmrForCapure.Stop();
+                faceScanControl.capture.Stop();
+                faceScanControl.capture.Dispose();
+                faceScanControl.images.Clear();
+                this.Controls.Remove(faceScanControl);
+            }
+
+                if (this.Controls.Contains(barcodeScanControl))
+                {
+                    this.Controls.Remove(barcodeScanControl);
+                }
+           
+            barcodeGenerateControl = new UCBarcodeGenerate();
+            
+            this.Controls.Add(barcodeGenerateControl);
+            
         }
     }
 }
