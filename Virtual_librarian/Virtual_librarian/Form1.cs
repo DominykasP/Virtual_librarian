@@ -51,7 +51,7 @@ namespace Virtual_librarian
 
                 if (this.Controls.Contains(barcodeGenerateControl))
                 {
-                    this.Controls.Remove(barcodeScanControl);
+                    this.Controls.Remove(barcodeGenerateControl);
                 }
 
             barcodeScanControl = new UCBarcodeScan();
