@@ -122,6 +122,9 @@
             // 
             this.grdAllBooks.AllowUserToDeleteRows = false;
             this.grdAllBooks.AllowUserToResizeRows = false;
+            this.grdAllBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdAllBooks.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grdAllBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdAllBooks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;

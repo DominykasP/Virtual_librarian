@@ -23,11 +23,18 @@ namespace Virtual_librarian
 
         private void btnPrisijungti_Click(object sender, EventArgs e)
         {
-            //MetroMessageBox.Show(this, "Čia bus prisijungimo langas", "Pranešimas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             UCLogin ucLogin = new UCLogin(mainForm);
             ucLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Remove(this);
             mainForm.Controls.Add(ucLogin);
+        }
+
+        private void btnRegistruotis_Click(object sender, EventArgs e)
+        {
+            UCRegister ucRegister = new UCRegister(mainForm);
+            ucRegister.Dock = DockStyle.Bottom;
+            mainForm.Controls.Remove(this);
+            mainForm.Controls.Add(ucRegister);
         }
     }
 }

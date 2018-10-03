@@ -55,6 +55,31 @@ namespace Virtual_librarian.DB_helpers
             return knygos;
         }
 
+        public List<Knyga> gautiZmogausKnygas(Zmogus zmogus)
+        {
+            List<Knyga> knygos = new List<Knyga>();
+            knygos.Add(new Knyga(
+                    "Liūdna pasaka",
+                    "Jonas Biliūnas",
+                    "Alma Littera",
+                    new DateTime(1980, 5, 25),
+                    5,
+                    "12345678",
+                    "21343244"
+                ));
+            knygos.Add(new Knyga(
+                    "Karlsonas",
+                    "Astrida Lindgren",
+                    "Alma Littera",
+                    new DateTime(1996, 4, 15),
+                    500,
+                    "13644563",
+                    "24954972"
+                ));
+
+            return knygos;
+        }
+
         public bool grazintiKnyga(Knyga knyga)
         {
             return true;
