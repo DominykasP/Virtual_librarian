@@ -123,6 +123,12 @@
     <Compile Include="UCMainUserMeniu.Designer.cs">
       <DependentUpon>UCMainUserMeniu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCRegister.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCRegister.Designer.cs">
+      <DependentUpon>UCRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCScanBook.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCMainUserMeniu.resx">
       <DependentUpon>UCMainUserMeniu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCRegister.resx">
+      <DependentUpon>UCRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCScanBook.resx">
       <DependentUpon>UCScanBook.cs</DependentUpon>

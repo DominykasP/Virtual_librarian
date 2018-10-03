@@ -62,8 +62,13 @@ namespace Virtual_librarian
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+
+        private void btnCancel_Click(object sender, EventArgs e)
         {
+            UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
+            ucChooseLogin.Dock = DockStyle.Bottom;
+            mainForm.Controls.Remove(this);
+            mainForm.Controls.Add(ucChooseLogin);
 
         }
     }

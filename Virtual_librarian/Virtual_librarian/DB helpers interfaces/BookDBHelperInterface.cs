@@ -12,6 +12,7 @@ namespace Virtual_librarian.DB_helpers
         List<Knyga> ieskoti(string search);
 
         Knyga gautiKnygaPagalKodus(string isbn, string kodas);
+        List<Knyga> gautiZmogausKnygas(Zmogus zmogus);
 
         bool pridetiNaujaKnyga(Knyga knyga);
         bool istrintiKnyga(Knyga knyga);

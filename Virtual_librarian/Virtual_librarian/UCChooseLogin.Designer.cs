@@ -43,6 +43,7 @@
             this.btnRegistruotis.TabIndex = 1;
             this.btnRegistruotis.Text = "Registruotis";
             this.btnRegistruotis.UseSelectable = true;
+            this.btnRegistruotis.Click += new System.EventHandler(this.btnRegistruotis_Click);
             // 
             // btnPrisijungti
             // 
