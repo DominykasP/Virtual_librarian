@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.btnCancel = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.txtSlaptazodis = new MetroFramework.Controls.MetroTextBox();
@@ -51,15 +50,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(24, 22);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(75, 19);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "Registracija";
-            // 
             // btnCancel
             // 
             this.btnCancel.ActiveControl = null;
@@ -74,12 +64,12 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(195, 22);
+            this.metroLabel2.Location = new System.Drawing.Point(38, 3);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(289, 19);
             this.metroLabel2.TabIndex = 5;
             this.metroLabel2.Text = "Įveskite savo duomenis ir pasidarykite nuotrauką";
-            this.metroLabel2.Click += new System.EventHandler(this.metroLabel2_Click);
+            //this.metroLabel2.Click += new System.EventHandler(this.metroLabel2_Click);
             // 
             // txtSlaptazodis
             // 
@@ -99,7 +89,7 @@
             this.txtSlaptazodis.Location = new System.Drawing.Point(462, 142);
             this.txtSlaptazodis.MaxLength = 32767;
             this.txtSlaptazodis.Name = "txtSlaptazodis";
-            this.txtSlaptazodis.PasswordChar = '\0';
+            this.txtSlaptazodis.PasswordChar = '*';
             this.txtSlaptazodis.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSlaptazodis.SelectedText = "";
             this.txtSlaptazodis.SelectionLength = 0;
@@ -170,7 +160,7 @@
             this.txtVardas.UseSelectable = true;
             this.txtVardas.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtVardas.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.txtVardas.Click += new System.EventHandler(this.txtVardas_Click);
+            //this.txtVardas.Click += new System.EventHandler(this.txtVardas_Click);
             // 
             // txtTelefonoNr
             // 
@@ -240,7 +230,7 @@
             this.metroLabel4.Size = new System.Drawing.Size(78, 19);
             this.metroLabel4.TabIndex = 13;
             this.metroLabel4.Text = "Slaptažodis:";
-            this.metroLabel4.Click += new System.EventHandler(this.metroLabel4_Click);
+            //this.metroLabel4.Click += new System.EventHandler(this.metroLabel4_Click);
             // 
             // metroLabel5
             // 
@@ -250,7 +240,7 @@
             this.metroLabel5.Size = new System.Drawing.Size(59, 19);
             this.metroLabel5.TabIndex = 14;
             this.metroLabel5.Text = "Pavardė:";
-            this.metroLabel5.Click += new System.EventHandler(this.metroLabel5_Click);
+            //this.metroLabel5.Click += new System.EventHandler(this.metroLabel5_Click);
             // 
             // metroLabel6
             // 
@@ -260,7 +250,7 @@
             this.metroLabel6.Size = new System.Drawing.Size(50, 19);
             this.metroLabel6.TabIndex = 15;
             this.metroLabel6.Text = "Vardas:";
-            this.metroLabel6.Click += new System.EventHandler(this.metroLabel6_Click);
+            //this.metroLabel6.Click += new System.EventHandler(this.metroLabel6_Click);
             // 
             // metroLabel3
             // 
@@ -270,7 +260,7 @@
             this.metroLabel3.Size = new System.Drawing.Size(89, 19);
             this.metroLabel3.TabIndex = 16;
             this.metroLabel3.Text = "Gimimo data:";
-            this.metroLabel3.Click += new System.EventHandler(this.metroLabel3_Click);
+            //this.metroLabel3.Click += new System.EventHandler(this.metroLabel3_Click);
             // 
             // metroLabel7
             // 
@@ -280,7 +270,7 @@
             this.metroLabel7.Size = new System.Drawing.Size(78, 19);
             this.metroLabel7.TabIndex = 17;
             this.metroLabel7.Text = "Telefono nr.:";
-            this.metroLabel7.Click += new System.EventHandler(this.metroLabel7_Click);
+            //this.metroLabel7.Click += new System.EventHandler(this.metroLabel7_Click);
             // 
             // metroLabel8
             // 
@@ -297,7 +287,7 @@
             this.dtpGimimoData.Name = "dtpGimimoData";
             this.dtpGimimoData.Size = new System.Drawing.Size(200, 20);
             this.dtpGimimoData.TabIndex = 19;
-            this.dtpGimimoData.ValueChanged += new System.EventHandler(this.dtpGimimoData_ValueChanged);
+            //this.dtpGimimoData.ValueChanged += new System.EventHandler(this.dtpGimimoData_ValueChanged);
             // 
             // pictureBox1
             // 
@@ -322,9 +312,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Virtual_librarian.Properties.Resources.avatar;
-            this.pictureBox2.Location = new System.Drawing.Point(24, 84);
+            this.pictureBox2.Location = new System.Drawing.Point(24, 74);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(234, 165);
+            this.pictureBox2.Size = new System.Drawing.Size(234, 175);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 21;
             this.pictureBox2.TabStop = false;
@@ -332,9 +322,9 @@
             // btnRegistruoti
             // 
             this.btnRegistruoti.ActiveControl = null;
-            this.btnRegistruoti.Location = new System.Drawing.Point(428, 255);
+            this.btnRegistruoti.Location = new System.Drawing.Point(370, 255);
             this.btnRegistruoti.Name = "btnRegistruoti";
-            this.btnRegistruoti.Size = new System.Drawing.Size(234, 56);
+            this.btnRegistruoti.Size = new System.Drawing.Size(292, 56);
             this.btnRegistruoti.TabIndex = 23;
             this.btnRegistruoti.Text = "Registruotis";
             this.btnRegistruoti.UseSelectable = true;
@@ -347,7 +337,6 @@
             this.Controls.Add(this.btnRegistruoti);
             this.Controls.Add(this.btnTakePicture);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dtpGimimoData);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel7);
@@ -362,7 +351,7 @@
             this.Controls.Add(this.txtVardas);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.pictureBox1);
             this.Name = "UCRegister";
             this.Size = new System.Drawing.Size(683, 342);
             this.Load += new System.EventHandler(this.UCRegister_Load);
@@ -374,8 +363,6 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile btnCancel;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTextBox txtSlaptazodis;

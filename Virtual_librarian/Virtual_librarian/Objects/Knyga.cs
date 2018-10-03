@@ -19,9 +19,10 @@ namespace Virtual_librarian
         private String kodas;
 
         private bool arPaimta;
-        private int skaitytojoID;
+        private Zmogus skaitytojas;
         private DateTime paimta;
         private DateTime grazinti;
+        private int likoLaiko;
 
         public Knyga(string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas)
         {
@@ -34,9 +35,25 @@ namespace Virtual_librarian
             this.kodas = kodas;
 
             this.arPaimta = false;
-            this.skaitytojoID = 0;
+            this.skaitytojas = null;
             this.paimta = default(DateTime);
             this.grazinti = default(DateTime);
+        }
+
+        public Knyga(string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas, DateTime paimta, DateTime grazinti)
+        {
+            this.pavadinimas = pavadinimas;
+            this.autorius = autorius;
+            this.leidykla = leidykla;
+            this.metai = metai;
+            this.puslapiai = puslapiai;
+            this.isbn = isbn;
+            this.kodas = kodas;
+
+            this.arPaimta = false;
+            this.skaitytojas = null;
+            this.paimta = paimta;
+            this.grazinti = grazinti;
         }
 
         public int Id { get => id; }
@@ -47,11 +64,14 @@ namespace Virtual_librarian
         public int Puslapiai { get => puslapiai; set => puslapiai = value; }
         public string Isbn { get => isbn; set => isbn = value; }
         public string Kodas { get => kodas; set => kodas = value; }
+        public DateTime Paimta { get => paimta; set => paimta = value; }
+        public DateTime Grazinti { get => grazinti; set => grazinti = value; }
+        public int LikoLaiko { get => likoLaiko; }
 
-        public void paimtiKnyga(int skaitytojoID, DateTime paimta, DateTime grazinti)
+        public void paimtiKnyga(Zmogus skaitytojas, DateTime paimta, DateTime grazinti)
         {
             this.arPaimta = true;
-            this.skaitytojoID = skaitytojoID;
+            this.skaitytojas = skaitytojas;
             this.paimta = paimta;
             this.grazinti = grazinti;
         }
@@ -59,7 +79,7 @@ namespace Virtual_librarian
         public void grazintiKnyga()
         {
             this.arPaimta = false;
-            this.skaitytojoID = 0;
+            this.skaitytojas = null;
             this.paimta = default(DateTime);
             this.grazinti = default(DateTime);
         }
@@ -67,6 +87,14 @@ namespace Virtual_librarian
         public void pratestiKnyga(DateTime naujaGrazinti)
         {
             this.grazinti = naujaGrazinti;
+        }
+
+        public void gautiLikoLaiko()
+        {
+            DateTime dabar = DateTime.Now;
+            TimeSpan skirtumas = this.grazinti - dabar;
+            int dienos = skirtumas.Days;
+            this.likoLaiko = dienos;
         }
     }
 }
