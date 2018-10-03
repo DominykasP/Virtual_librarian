@@ -42,19 +42,19 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(103, 43);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(77, 35);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(117, 20);
+            this.metroLabel1.Size = new System.Drawing.Size(109, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Skanuokite knygą";
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(46, 225);
+            this.metroTile1.Location = new System.Drawing.Point(34, 183);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(166, 62);
+            this.metroTile1.Size = new System.Drawing.Size(124, 50);
             this.metroTile1.TabIndex = 1;
             this.metroTile1.Text = "Skenuoti Barkodą";
             this.metroTile1.UseSelectable = true;
@@ -65,9 +65,10 @@
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackgroundImage = global::Virtual_librarian.Properties.Resources.icons8_barcode_64;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(46, 43);
+            this.pictureBox2.Location = new System.Drawing.Point(34, 35);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(50, 35);
+            this.pictureBox2.Size = new System.Drawing.Size(38, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
@@ -76,9 +77,11 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.DodgerBlue;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(354, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(266, 23);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(472, 276);
+            this.pictureBox1.Size = new System.Drawing.Size(354, 224);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
@@ -92,9 +95,10 @@
             // 
             // 
             this.BarcodeBox1.CustomButton.Image = null;
-            this.BarcodeBox1.CustomButton.Location = new System.Drawing.Point(243, 1);
+            this.BarcodeBox1.CustomButton.Location = new System.Drawing.Point(135, 2);
+            this.BarcodeBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BarcodeBox1.CustomButton.Name = "";
-            this.BarcodeBox1.CustomButton.Size = new System.Drawing.Size(47, 47);
+            this.BarcodeBox1.CustomButton.Size = new System.Drawing.Size(26, 28);
             this.BarcodeBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.BarcodeBox1.CustomButton.TabIndex = 1;
             this.BarcodeBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -102,7 +106,8 @@
             this.BarcodeBox1.CustomButton.Visible = false;
             this.BarcodeBox1.Enabled = false;
             this.BarcodeBox1.Lines = new string[0];
-            this.BarcodeBox1.Location = new System.Drawing.Point(46, 170);
+            this.BarcodeBox1.Location = new System.Drawing.Point(34, 138);
+            this.BarcodeBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.BarcodeBox1.MaxLength = 32767;
             this.BarcodeBox1.Name = "BarcodeBox1";
             this.BarcodeBox1.PasswordChar = '\0';
@@ -111,7 +116,7 @@
             this.BarcodeBox1.SelectionLength = 0;
             this.BarcodeBox1.SelectionStart = 0;
             this.BarcodeBox1.ShortcutsEnabled = true;
-            this.BarcodeBox1.Size = new System.Drawing.Size(291, 49);
+            this.BarcodeBox1.Size = new System.Drawing.Size(218, 40);
             this.BarcodeBox1.TabIndex = 4;
             this.BarcodeBox1.UseSelectable = true;
             this.BarcodeBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -119,16 +124,15 @@
             // 
             // UCScanBook
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.BarcodeBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UCScanBook";
-            this.Size = new System.Drawing.Size(867, 308);
+            this.Size = new System.Drawing.Size(650, 250);
             this.Load += new System.EventHandler(this.UCScanBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

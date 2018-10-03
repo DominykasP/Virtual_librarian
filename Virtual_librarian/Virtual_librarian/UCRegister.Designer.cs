@@ -69,7 +69,6 @@
             this.metroLabel2.Size = new System.Drawing.Size(289, 19);
             this.metroLabel2.TabIndex = 5;
             this.metroLabel2.Text = "Įveskite savo duomenis ir pasidarykite nuotrauką";
-            //this.metroLabel2.Click += new System.EventHandler(this.metroLabel2_Click);
             // 
             // txtSlaptazodis
             // 
@@ -160,7 +159,6 @@
             this.txtVardas.UseSelectable = true;
             this.txtVardas.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtVardas.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            //this.txtVardas.Click += new System.EventHandler(this.txtVardas_Click);
             // 
             // txtTelefonoNr
             // 
@@ -230,7 +228,6 @@
             this.metroLabel4.Size = new System.Drawing.Size(78, 19);
             this.metroLabel4.TabIndex = 13;
             this.metroLabel4.Text = "Slaptažodis:";
-            //this.metroLabel4.Click += new System.EventHandler(this.metroLabel4_Click);
             // 
             // metroLabel5
             // 
@@ -240,7 +237,6 @@
             this.metroLabel5.Size = new System.Drawing.Size(59, 19);
             this.metroLabel5.TabIndex = 14;
             this.metroLabel5.Text = "Pavardė:";
-            //this.metroLabel5.Click += new System.EventHandler(this.metroLabel5_Click);
             // 
             // metroLabel6
             // 
@@ -250,7 +246,6 @@
             this.metroLabel6.Size = new System.Drawing.Size(50, 19);
             this.metroLabel6.TabIndex = 15;
             this.metroLabel6.Text = "Vardas:";
-            //this.metroLabel6.Click += new System.EventHandler(this.metroLabel6_Click);
             // 
             // metroLabel3
             // 
@@ -260,7 +255,6 @@
             this.metroLabel3.Size = new System.Drawing.Size(89, 19);
             this.metroLabel3.TabIndex = 16;
             this.metroLabel3.Text = "Gimimo data:";
-            //this.metroLabel3.Click += new System.EventHandler(this.metroLabel3_Click);
             // 
             // metroLabel7
             // 
@@ -270,7 +264,6 @@
             this.metroLabel7.Size = new System.Drawing.Size(78, 19);
             this.metroLabel7.TabIndex = 17;
             this.metroLabel7.Text = "Telefono nr.:";
-            //this.metroLabel7.Click += new System.EventHandler(this.metroLabel7_Click);
             // 
             // metroLabel8
             // 
@@ -287,7 +280,6 @@
             this.dtpGimimoData.Name = "dtpGimimoData";
             this.dtpGimimoData.Size = new System.Drawing.Size(200, 20);
             this.dtpGimimoData.TabIndex = 19;
-            //this.dtpGimimoData.ValueChanged += new System.EventHandler(this.dtpGimimoData_ValueChanged);
             // 
             // pictureBox1
             // 
@@ -308,6 +300,7 @@
             this.btnTakePicture.TabIndex = 22;
             this.btnTakePicture.Text = "Daryti nuotrauką";
             this.btnTakePicture.UseSelectable = true;
+            this.btnTakePicture.Click += new System.EventHandler(this.btnTakePicture_Click);
             // 
             // pictureBox2
             // 

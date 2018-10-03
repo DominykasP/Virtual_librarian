@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace Virtual_librarian
 {
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
+        private VideoCapture capture;
+        Mat m;
 
         public UCRegister(MainForm mainForma)
         {
@@ -47,6 +51,32 @@ namespace Virtual_librarian
                 mainForm.Controls.Add(ucMainUserMeniu);
             
             // }
+        }
+
+        private void btnTakePicture_Click(object sender, EventArgs e)
+        {
+            if (capture == null)
+            {
+                capture = new VideoCapture(0);
+
+            }
+            capture.ImageGrabbed += Capture_ImageGrabbed;
+            capture.Start();
+        }
+
+        private void Capture_ImageGrabbed(object sender, EventArgs e)
+        {
+            try
+            {
+
+                m = new Mat();
+                capture.Retrieve(m);
+                pictureBox2.Image = m.ToImage<Bgr, byte>().ToBitmap();
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
