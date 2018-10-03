@@ -28,36 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.mtbPasiimti = new MetroFramework.Controls.MetroTabPage();
+            this.ucScanBook1 = new Virtual_librarian.UCScanBook();
+            this.mtbTerminai = new MetroFramework.Controls.MetroTabPage();
+            this.grdTerminai = new MetroFramework.Controls.MetroGrid();
             this.mtbKnyguKatalogas = new MetroFramework.Controls.MetroTabPage();
             this.grdAllBooks = new MetroFramework.Controls.MetroGrid();
             this.mtbManoUžklausos = new MetroFramework.Controls.MetroTabPage();
+            this.btnSiustiManoUzklausas = new MetroFramework.Controls.MetroTile();
             this.grdManoUzklausos = new MetroFramework.Controls.MetroGrid();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblNaudotojoVardas = new MetroFramework.Controls.MetroLabel();
             this.btnAtsijungti = new MetroFramework.Controls.MetroTile();
-            this.btnSiustiManoUzklausas = new MetroFramework.Controls.MetroTile();
-            this.ucScanBook1 = new Virtual_librarian.UCScanBook();
-            this.mtbTerminai = new MetroFramework.Controls.MetroTabPage();
-            this.grdTerminai = new MetroFramework.Controls.MetroGrid();
             this.metroTabControl1.SuspendLayout();
             this.mtbPasiimti.SuspendLayout();
+            this.mtbTerminai.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTerminai)).BeginInit();
             this.mtbKnyguKatalogas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAllBooks)).BeginInit();
             this.mtbManoUžklausos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdManoUzklausos)).BeginInit();
-            this.mtbTerminai.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdTerminai)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -71,7 +71,7 @@
             this.metroTabControl1.Controls.Add(this.mtbManoUžklausos);
             this.metroTabControl1.Location = new System.Drawing.Point(3, 36);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(677, 306);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -90,6 +90,76 @@
             this.mtbPasiimti.VerticalScrollbarBarColor = true;
             this.mtbPasiimti.VerticalScrollbarHighlightOnWheel = false;
             this.mtbPasiimti.VerticalScrollbarSize = 10;
+            // 
+            // ucScanBook1
+            // 
+            this.ucScanBook1.Location = new System.Drawing.Point(3, 11);
+            this.ucScanBook1.Name = "ucScanBook1";
+            this.ucScanBook1.Size = new System.Drawing.Size(650, 250);
+            this.ucScanBook1.TabIndex = 2;
+            this.ucScanBook1.UseSelectable = true;
+            this.ucScanBook1.Load += new System.EventHandler(this.ucScanBook1_Load_1);
+            // 
+            // mtbTerminai
+            // 
+            this.mtbTerminai.Controls.Add(this.grdTerminai);
+            this.mtbTerminai.HorizontalScrollbarBarColor = true;
+            this.mtbTerminai.HorizontalScrollbarHighlightOnWheel = false;
+            this.mtbTerminai.HorizontalScrollbarSize = 10;
+            this.mtbTerminai.Location = new System.Drawing.Point(4, 38);
+            this.mtbTerminai.Name = "mtbTerminai";
+            this.mtbTerminai.Size = new System.Drawing.Size(669, 264);
+            this.mtbTerminai.TabIndex = 3;
+            this.mtbTerminai.Text = "Patikrinti terminus";
+            this.mtbTerminai.VerticalScrollbarBarColor = true;
+            this.mtbTerminai.VerticalScrollbarHighlightOnWheel = false;
+            this.mtbTerminai.VerticalScrollbarSize = 10;
+            // 
+            // grdTerminai
+            // 
+            this.grdTerminai.AllowUserToDeleteRows = false;
+            this.grdTerminai.AllowUserToResizeRows = false;
+            this.grdTerminai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdTerminai.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdTerminai.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grdTerminai.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdTerminai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdTerminai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdTerminai.DefaultCellStyle = dataGridViewCellStyle2;
+            this.grdTerminai.EnableHeadersVisualStyles = false;
+            this.grdTerminai.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.grdTerminai.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdTerminai.Location = new System.Drawing.Point(3, 3);
+            this.grdTerminai.Name = "grdTerminai";
+            this.grdTerminai.ReadOnly = true;
+            this.grdTerminai.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdTerminai.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.grdTerminai.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grdTerminai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdTerminai.Size = new System.Drawing.Size(663, 258);
+            this.grdTerminai.TabIndex = 2;
+            this.grdTerminai.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTerminai_CellDoubleClick);
             // 
             // mtbKnyguKatalogas
             // 
@@ -171,6 +241,17 @@
             this.mtbManoUžklausos.VerticalScrollbarHighlightOnWheel = false;
             this.mtbManoUžklausos.VerticalScrollbarSize = 10;
             // 
+            // btnSiustiManoUzklausas
+            // 
+            this.btnSiustiManoUzklausas.ActiveControl = null;
+            this.btnSiustiManoUzklausas.Location = new System.Drawing.Point(3, 230);
+            this.btnSiustiManoUzklausas.Name = "btnSiustiManoUzklausas";
+            this.btnSiustiManoUzklausas.Size = new System.Drawing.Size(240, 38);
+            this.btnSiustiManoUzklausas.TabIndex = 4;
+            this.btnSiustiManoUzklausas.Text = "Siųsti mano užklausas bibliotekininkei";
+            this.btnSiustiManoUzklausas.UseSelectable = true;
+            this.btnSiustiManoUzklausas.Click += new System.EventHandler(this.btnSiustiManoUzklausas_Click);
+            // 
             // grdManoUzklausos
             // 
             this.grdManoUzklausos.AllowUserToDeleteRows = false;
@@ -249,86 +330,6 @@
             this.btnAtsijungti.UseSelectable = true;
             this.btnAtsijungti.Click += new System.EventHandler(this.btnAtsijungti_Click);
             // 
-            // btnSiustiManoUzklausas
-            // 
-            this.btnSiustiManoUzklausas.ActiveControl = null;
-            this.btnSiustiManoUzklausas.Location = new System.Drawing.Point(3, 230);
-            this.btnSiustiManoUzklausas.Name = "btnSiustiManoUzklausas";
-            this.btnSiustiManoUzklausas.Size = new System.Drawing.Size(240, 38);
-            this.btnSiustiManoUzklausas.TabIndex = 4;
-            this.btnSiustiManoUzklausas.Text = "Siųsti mano užklausas bibliotekininkei";
-            this.btnSiustiManoUzklausas.UseSelectable = true;
-            this.btnSiustiManoUzklausas.Click += new System.EventHandler(this.btnSiustiManoUzklausas_Click);
-            // 
-            // ucScanBook1
-            // 
-            this.ucScanBook1.Location = new System.Drawing.Point(3, 11);
-            this.ucScanBook1.Name = "ucScanBook1";
-            this.ucScanBook1.Size = new System.Drawing.Size(650, 250);
-            this.ucScanBook1.TabIndex = 2;
-            this.ucScanBook1.UseSelectable = true;
-            // 
-            // mtbTerminai
-            // 
-            this.mtbTerminai.Controls.Add(this.grdTerminai);
-            this.mtbTerminai.HorizontalScrollbarBarColor = true;
-            this.mtbTerminai.HorizontalScrollbarHighlightOnWheel = false;
-            this.mtbTerminai.HorizontalScrollbarSize = 10;
-            this.mtbTerminai.Location = new System.Drawing.Point(4, 38);
-            this.mtbTerminai.Name = "mtbTerminai";
-            this.mtbTerminai.Size = new System.Drawing.Size(669, 264);
-            this.mtbTerminai.TabIndex = 3;
-            this.mtbTerminai.Text = "Patikrinti terminus";
-            this.mtbTerminai.VerticalScrollbarBarColor = true;
-            this.mtbTerminai.VerticalScrollbarHighlightOnWheel = false;
-            this.mtbTerminai.VerticalScrollbarSize = 10;
-            // 
-            // grdTerminai
-            // 
-            this.grdTerminai.AllowUserToDeleteRows = false;
-            this.grdTerminai.AllowUserToResizeRows = false;
-            this.grdTerminai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdTerminai.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grdTerminai.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grdTerminai.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdTerminai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdTerminai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdTerminai.DefaultCellStyle = dataGridViewCellStyle2;
-            this.grdTerminai.EnableHeadersVisualStyles = false;
-            this.grdTerminai.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.grdTerminai.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdTerminai.Location = new System.Drawing.Point(3, 3);
-            this.grdTerminai.Name = "grdTerminai";
-            this.grdTerminai.ReadOnly = true;
-            this.grdTerminai.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdTerminai.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.grdTerminai.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.grdTerminai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdTerminai.Size = new System.Drawing.Size(663, 258);
-            this.grdTerminai.TabIndex = 2;
-            this.grdTerminai.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTerminai_CellDoubleClick);
-            // 
             // UCMainUserMeniu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -342,12 +343,12 @@
             this.Load += new System.EventHandler(this.UCMainUserMeniu_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.mtbPasiimti.ResumeLayout(false);
+            this.mtbTerminai.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdTerminai)).EndInit();
             this.mtbKnyguKatalogas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdAllBooks)).EndInit();
             this.mtbManoUžklausos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdManoUzklausos)).EndInit();
-            this.mtbTerminai.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdTerminai)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
