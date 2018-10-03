@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian
 {
-    class Knyga
+    public class Knyga
     {
         private int id;
         private String pavadinimas;

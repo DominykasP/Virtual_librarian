@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian
 {
-    class Zmogus
+    public class Zmogus
     {
         private int id;
         private string name;
@@ -17,6 +17,16 @@ namespace Virtual_librarian
         private string phoneNumber;
         private string email;
         private Bitmap image;
+
+        public Zmogus(string name, string surname, string password, DateTime birthdate, string phoneNumber, string email)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.password = password;
+            this.birthdate = birthdate;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
 
         public Zmogus(string name, string surname, string password, DateTime birthdate, string phoneNumber, string email, Bitmap image)
         {

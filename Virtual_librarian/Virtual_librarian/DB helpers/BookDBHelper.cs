@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian.DB_helpers
 {
-    class BookDBHelper : BookDBHelperInterface
+    public class BookDBHelper : BookDBHelperInterface
     {
         public List<Knyga> gautiVisasKnygas()
         {

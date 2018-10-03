@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Virtual_librarian.DB_helpers
 {
-    class HumanDBHelper : HumanDBHelperInterface
+    public class HumanDBHelper : HumanDBHelperInterface
     {
         public bool addNewZmogus(Zmogus zmogus)
         {
@@ -30,7 +31,14 @@ namespace Virtual_librarian.DB_helpers
 
         public Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password)
         {
-            throw new NotImplementedException();
+            return new Zmogus(
+                    "Vardenis",
+                    "Pavardenis",
+                    "Slaptazodis",
+                    new DateTime(1998, 01, 01),
+                    "+37012345678",
+                    "vardenis.pavardenis@gmail.com"
+                   );
         }
     }
 }

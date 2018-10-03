@@ -110,6 +110,18 @@
     <Compile Include="UCFaceScan.Designer.cs">
       <DependentUpon>UCFaceScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCLogin.Designer.cs">
+      <DependentUpon>UCLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCMainUserMeniu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCMainUserMeniu.Designer.cs">
+      <DependentUpon>UCMainUserMeniu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +147,12 @@
     <EmbeddedResource Include="UCFaceScan.resx">
       <DependentUpon>UCFaceScan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCLogin.resx">
+      <DependentUpon>UCLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCMainUserMeniu.resx">
+      <DependentUpon>UCMainUserMeniu.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -151,6 +169,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\avatar.jpg" />
+    <None Include="Resources\gray-line-png1.png" />
+    <None Include="Resources\gray-line-png.png" />
+    <None Include="Resources\vu_logo1.png" />
     <None Include="Resources\vu_logo.png" />
     <None Include="Resources\logo.jpg" />
   </ItemGroup>

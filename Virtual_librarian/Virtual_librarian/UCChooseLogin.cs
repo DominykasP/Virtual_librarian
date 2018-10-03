@@ -13,7 +13,7 @@ namespace Virtual_librarian
 {
     public partial class UCChooseLogin : MetroFramework.Controls.MetroUserControl
     {
-        private MainForm mainForm;
+        private static MainForm mainForm;
 
         public UCChooseLogin(MainForm mainForma)
         {
@@ -23,7 +23,11 @@ namespace Virtual_librarian
 
         private void btnPrisijungti_Click(object sender, EventArgs e)
         {
-            MetroMessageBox.Show(this, "Čia bus prisijungimo langas", "Pranešimas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //MetroMessageBox.Show(this, "Čia bus prisijungimo langas", "Pranešimas", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            UCLogin ucLogin = new UCLogin(mainForm);
+            ucLogin.Dock = DockStyle.Bottom;
+            mainForm.Controls.Remove(this);
+            mainForm.Controls.Add(ucLogin);
         }
     }
 }
