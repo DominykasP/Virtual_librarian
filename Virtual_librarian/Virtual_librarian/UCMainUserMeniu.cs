@@ -21,6 +21,8 @@ namespace Virtual_librarian
             prisijungesZmogus = prisijunges;
 
             InitializeComponent();
+
+            pakrautiKnyguKataloga();
         }
 
         private void UCMainUserMeniu_Load(object sender, EventArgs e)
@@ -35,6 +37,16 @@ namespace Virtual_librarian
             UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
             ucChooseLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Add(ucChooseLogin);
+        }
+
+        private void pakrautiKnyguKataloga()
+        {
+            BindingList<Knyga> visosKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiVisasKnygas());
+            BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
+            grdAllBooks.DataSource = visuKnyguSource;
+            grdAllBooks.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+
+
         }
     }
 }
