@@ -8,6 +8,19 @@ namespace Virtual_librarian.DB_helpers
 {
     public class BookDBHelper : BookDBHelperInterface
     {
+        public Knyga gautiKnygaPagalKodus(string isbn, string kodas)
+        {
+            return new Knyga(
+                    "Liūdna pasaka",
+                    "Jonas Biliūnas",
+                    "Alma Littera",
+                    new DateTime(1980, 5, 25),
+                    5,
+                    "12345678",
+                    "21343244"
+                );
+        }
+
         public List<Knyga> gautiVisasKnygas()
         {
             List<Knyga> knygos = new List<Knyga>();
@@ -25,7 +38,7 @@ namespace Virtual_librarian.DB_helpers
                     "Astrida Lindgren",
                     "Alma Littera",
                     new DateTime(1996, 4, 15),
-                    5,
+                    500,
                     "13644563",
                     "24954972"
                 ));
@@ -34,7 +47,7 @@ namespace Virtual_librarian.DB_helpers
                     "Dimitrij Gluchovski",
                     "Zaltvykste",
                     new DateTime(2014, 6, 12),
-                    5,
+                    700,
                     "35435534",
                     "97234594"
                 ));
@@ -42,17 +55,9 @@ namespace Virtual_librarian.DB_helpers
             return knygos;
         }
 
-        public Knyga grazintiKnyga(int knygosID)
+        public bool grazintiKnyga(Knyga knyga)
         {
-            return new Knyga(
-                    "Liūdna pasaka",
-                    "Jonas Biliūnas",
-                    "Alma Littera",
-                    new DateTime(1980, 5, 25),
-                    5,
-                    "12345678",
-                    "21343244"
-                );
+            return true;
         }
 
         public List<Knyga> ieskoti(string search)
@@ -72,7 +77,7 @@ namespace Virtual_librarian.DB_helpers
                     "Astrida Lindgren",
                     "Alma Littera",
                     new DateTime(1996, 4, 15),
-                    5,
+                    500,
                     "13644563",
                     "24954972"
                 ));
@@ -80,12 +85,12 @@ namespace Virtual_librarian.DB_helpers
             return knygos;
         }
 
-        public bool istrintiKnyga(int knygosID)
+        public bool istrintiKnyga(Knyga knyga)
         {
             return true;
         }
 
-        public bool paimtiKnyga(int knygosID, int skaitytojoID)
+        public bool paimtiKnyga(Knyga knyga, Zmogus skaitytojas)
         {
             return true;
         }

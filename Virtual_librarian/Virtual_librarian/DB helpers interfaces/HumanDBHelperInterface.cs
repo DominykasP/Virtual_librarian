@@ -10,9 +10,9 @@ namespace Virtual_librarian
     {
         Zmogus getZmogusByID(int ID);
         Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password);
-        bool addNewZmogus(Zmogus zmogus);
-        bool deleteZmogusByID(int ID);
 
-        bool editZmogus(int oldID, Zmogus newZmogus);
+        bool addNewZmogus(Zmogus zmogus);
+        bool deleteZmogus(Zmogus zmogus);
+        bool editZmogus(Zmogus oldZmogus, Zmogus newZmogus);
     }
 }

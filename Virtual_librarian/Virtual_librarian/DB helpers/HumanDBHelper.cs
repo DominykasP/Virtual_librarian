@@ -14,14 +14,14 @@ namespace Virtual_librarian.DB_helpers
             return true;
         }
 
-        public bool deleteZmogusByID(int ID)
+        public bool deleteZmogus(Zmogus zmogus)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
-        public bool editZmogus(int oldID, Zmogus newZmogus)
+        public bool editZmogus(Zmogus oldZmogus, Zmogus newZmogus)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public Zmogus getZmogusByID(int ID)
