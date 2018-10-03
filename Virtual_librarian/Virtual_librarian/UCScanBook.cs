@@ -18,7 +18,7 @@ namespace Virtual_librarian
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
         private static int nEventsFired = 0;
-        private VideoCapture capture;
+        public VideoCapture capture;
         private object lockobject = new object();
         public List<Bitmap> images;
 
