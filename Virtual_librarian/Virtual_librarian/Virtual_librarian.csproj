@@ -58,6 +58,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -187,6 +188,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <Content Include="Resources\barcode-scanner.png" />
+    <Content Include="Resources\icons8-barcode-64.png" />
+    <None Include="Resources\icons8-barcode-641.png" />
+    <None Include="Resources\icons8-barcode-scanner-64.png" />
     <None Include="Resources\avatar.jpg" />
     <None Include="Resources\gray-line-png1.png" />
     <None Include="Resources\gray-line-png.png" />
