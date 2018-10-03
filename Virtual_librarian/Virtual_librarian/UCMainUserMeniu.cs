@@ -118,5 +118,10 @@ namespace Virtual_librarian
             }
             */
         }
+
+        private void ucScanBook1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
