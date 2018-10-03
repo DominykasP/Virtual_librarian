@@ -98,6 +98,12 @@
     <Compile Include="UCBarcodeScan.Designer.cs">
       <DependentUpon>UCBarcodeScan.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCChooseLogin.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCChooseLogin.Designer.cs">
+      <DependentUpon>UCChooseLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCFaceScan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </Compile>
     <EmbeddedResource Include="UCBarcodeScan.resx">
       <DependentUpon>UCBarcodeScan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCChooseLogin.resx">
+      <DependentUpon>UCChooseLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCFaceScan.resx">
       <DependentUpon>UCFaceScan.cs</DependentUpon>
