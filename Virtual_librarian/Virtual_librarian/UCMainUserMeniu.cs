@@ -30,9 +30,13 @@ namespace Virtual_librarian
         private void btnAtsijungti_Click(object sender, EventArgs e)
         {
             //Sustabdyti knygu skenavima
-            ucScanBook1.timer1.Stop();
-            ucScanBook1.capture.Dispose();
-            ucScanBook1.Dispose();
+            if(ucScanBook1.capture != null)
+            {
+                ucScanBook1.timer1.Stop();
+                ucScanBook1.capture.Dispose();
+                ucScanBook1.Dispose();
+            }
+            
 
             mainForm.Controls.Remove(this);
 
