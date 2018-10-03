@@ -122,7 +122,7 @@
             this.txtSlaptazodis.Location = new System.Drawing.Point(477, 185);
             this.txtSlaptazodis.MaxLength = 32767;
             this.txtSlaptazodis.Name = "txtSlaptazodis";
-            this.txtSlaptazodis.PasswordChar = '\0';
+            this.txtSlaptazodis.PasswordChar = '*';
             this.txtSlaptazodis.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSlaptazodis.SelectedText = "";
             this.txtSlaptazodis.SelectionLength = 0;
@@ -203,7 +203,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -218,10 +217,10 @@
             // btnCancel
             // 
             this.btnCancel.ActiveControl = null;
-            this.btnCancel.Location = new System.Drawing.Point(400, 2);
+            this.btnCancel.Location = new System.Drawing.Point(535, 2);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(110, 31);
+            this.btnCancel.Size = new System.Drawing.Size(146, 38);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Atšaukti";
             this.btnCancel.UseSelectable = true;
@@ -245,7 +244,6 @@
             this.Controls.Add(this.pictureBox1);
             this.Name = "UCLogin";
             this.Size = new System.Drawing.Size(683, 345);
-            this.Load += new System.EventHandler(this.UCLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

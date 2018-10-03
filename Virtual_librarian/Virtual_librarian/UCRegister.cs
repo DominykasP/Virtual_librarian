@@ -33,46 +33,6 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void metroLabel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroLabel5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroLabel4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroLabel7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroLabel6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtpGimimoData_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtVardas_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRegistruoti_Click(object sender, EventArgs e)
         {
             DateTime gimimoData = dtpGimimoData.Value;
