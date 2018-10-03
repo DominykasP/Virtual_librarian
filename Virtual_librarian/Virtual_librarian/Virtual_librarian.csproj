@@ -122,6 +122,12 @@
     <Compile Include="UCMainUserMeniu.Designer.cs">
       <DependentUpon>UCMainUserMeniu.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCScanBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCScanBook.Designer.cs">
+      <DependentUpon>UCScanBook.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCMainUserMeniu.resx">
       <DependentUpon>UCMainUserMeniu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCScanBook.resx">
+      <DependentUpon>UCScanBook.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

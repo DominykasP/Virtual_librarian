@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.mtbPasiimti = new MetroFramework.Controls.MetroTabPage();
             this.mtbKnyguKatalogas = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblNaudotojoVardas = new MetroFramework.Controls.MetroLabel();
             this.btnAtsijungti = new MetroFramework.Controls.MetroTile();
+            this.grdAllBooks = new MetroFramework.Controls.MetroGrid();
+            this.ucScanBook1 = new Virtual_librarian.UCScanBook();
             this.metroTabControl1.SuspendLayout();
+            this.mtbPasiimti.SuspendLayout();
+            this.mtbKnyguKatalogas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAllBooks)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
@@ -53,6 +61,7 @@
             // 
             // mtbPasiimti
             // 
+            this.mtbPasiimti.Controls.Add(this.ucScanBook1);
             this.mtbPasiimti.HorizontalScrollbarBarColor = true;
             this.mtbPasiimti.HorizontalScrollbarHighlightOnWheel = false;
             this.mtbPasiimti.HorizontalScrollbarSize = 10;
@@ -67,6 +76,7 @@
             // 
             // mtbKnyguKatalogas
             // 
+            this.mtbKnyguKatalogas.Controls.Add(this.grdAllBooks);
             this.mtbKnyguKatalogas.HorizontalScrollbarBarColor = true;
             this.mtbKnyguKatalogas.HorizontalScrollbarHighlightOnWheel = false;
             this.mtbKnyguKatalogas.HorizontalScrollbarSize = 10;
@@ -108,6 +118,59 @@
             this.btnAtsijungti.UseSelectable = true;
             this.btnAtsijungti.Click += new System.EventHandler(this.btnAtsijungti_Click);
             // 
+            // grdAllBooks
+            // 
+            this.grdAllBooks.AllowUserToDeleteRows = false;
+            this.grdAllBooks.AllowUserToResizeRows = false;
+            this.grdAllBooks.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdAllBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdAllBooks.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grdAllBooks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdAllBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdAllBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdAllBooks.DefaultCellStyle = dataGridViewCellStyle2;
+            this.grdAllBooks.EnableHeadersVisualStyles = false;
+            this.grdAllBooks.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.grdAllBooks.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdAllBooks.Location = new System.Drawing.Point(3, 3);
+            this.grdAllBooks.Name = "grdAllBooks";
+            this.grdAllBooks.ReadOnly = true;
+            this.grdAllBooks.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdAllBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.grdAllBooks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grdAllBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdAllBooks.Size = new System.Drawing.Size(663, 258);
+            this.grdAllBooks.TabIndex = 2;
+            // 
+            // ucScanBook1
+            // 
+            this.ucScanBook1.Location = new System.Drawing.Point(3, 11);
+            this.ucScanBook1.Name = "ucScanBook1";
+            this.ucScanBook1.Size = new System.Drawing.Size(650, 250);
+            this.ucScanBook1.TabIndex = 2;
+            this.ucScanBook1.UseSelectable = true;
+            // 
             // UCMainUserMeniu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +183,9 @@
             this.Size = new System.Drawing.Size(683, 345);
             this.Load += new System.EventHandler(this.UCMainUserMeniu_Load);
             this.metroTabControl1.ResumeLayout(false);
+            this.mtbPasiimti.ResumeLayout(false);
+            this.mtbKnyguKatalogas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdAllBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -133,5 +199,7 @@
         private MetroFramework.Controls.MetroLabel lblNaudotojoVardas;
         private MetroFramework.Controls.MetroTile btnAtsijungti;
         private MetroFramework.Controls.MetroTabPage mtbKnyguKatalogas;
+        private MetroFramework.Controls.MetroGrid grdAllBooks;
+        private UCScanBook ucScanBook1;
     }
 }
