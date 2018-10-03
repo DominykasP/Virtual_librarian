@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{764B63CF-34F9-4F2B-8004-DAE723C8137D}</ProjectGuid>
+    <ProjectGuid>{E99B3268-E580-47FA-898C-F56B9D99AC72}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Virtual_librarian</RootNamespace>
     <AssemblyName>Virtual_librarian</AssemblyName>
@@ -58,6 +58,9 @@
     <Compile Include="allBooks.Designer.cs">
       <DependentUpon>allBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="DB helpers interfaces\BookDBHelperInterface.cs" />
+    <Compile Include="DB helpers\BookDBHelper.cs" />
+    <Compile Include="DB helpers\HumanDBHelper.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +73,8 @@
     <Compile Include="ChooseLoginScreen.Designer.cs">
       <DependentUpon>ChooseLoginScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="DB helpers interfaces\HumanDBHelperInterface.cs" />
+    <Compile Include="Objects\Knyga.cs" />
     <Compile Include="loginFace.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +101,7 @@
     <Compile Include="registerScreen.Designer.cs">
       <DependentUpon>registerScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objects\Zmogus.cs" />
     <EmbeddedResource Include="addBook.resx">
       <DependentUpon>addBook.cs</DependentUpon>
     </EmbeddedResource>
