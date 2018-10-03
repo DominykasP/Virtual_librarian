@@ -53,6 +53,10 @@ namespace Virtual_librarian
         private void btnLogInWIthName_Click(object sender, EventArgs e)
         {
             Zmogus prisijungesZmogus = mainForm.humanDBHelper.getZmogusByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
+            if (capture != null)
+            {
+                capture.Dispose();
+            }
             if (prisijungesZmogus != null)
             {
                 UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, prisijungesZmogus);
@@ -65,10 +69,24 @@ namespace Virtual_librarian
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if (capture != null)
+            {
+                capture.Dispose();
+            }
             UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
             ucChooseLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Remove(this);
             mainForm.Controls.Add(ucChooseLogin);
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UCLogin_Load(object sender, EventArgs e)
+        {
 
         }
     }
