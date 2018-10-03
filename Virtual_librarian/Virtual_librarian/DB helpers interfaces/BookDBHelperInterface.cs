@@ -14,6 +14,6 @@ namespace Virtual_librarian.DB_helpers
         bool pridetiNaujaKnyga(Knyga knyga);
         bool istrintiKnyga(int knygosID);
         bool paimtiKnyga(int knygosID, int skaitytojoID);
-        bool grazintiKnyga(int knygosID);
+        Knyga grazintiKnyga(int knygosID);
     }
 }

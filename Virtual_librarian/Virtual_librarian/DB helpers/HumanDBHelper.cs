@@ -11,7 +11,7 @@ namespace Virtual_librarian.DB_helpers
     {
         public bool addNewZmogus(Zmogus zmogus)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public bool deleteZmogusByID(int ID)
@@ -26,7 +26,14 @@ namespace Virtual_librarian.DB_helpers
 
         public Zmogus getZmogusByID(int ID)
         {
-            throw new NotImplementedException();
+            return new Zmogus(
+                    "Vardenis",
+                    "Pavardenis",
+                    "Slaptazodis",
+                    new DateTime(1998, 01, 01),
+                    "+37012345678",
+                    "vardenis.pavardenis@gmail.com"
+                   );
         }
 
         public Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password)

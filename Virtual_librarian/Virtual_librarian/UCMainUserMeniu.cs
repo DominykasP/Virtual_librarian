@@ -27,5 +27,14 @@ namespace Virtual_librarian
         {
             lblNaudotojoVardas.Text = prisijungesZmogus.Name;
         }
+
+        private void btnAtsijungti_Click(object sender, EventArgs e)
+        {
+            mainForm.Controls.Remove(this);
+
+            UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
+            ucChooseLogin.Dock = DockStyle.Bottom;
+            mainForm.Controls.Add(ucChooseLogin);
+        }
     }
 }

@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
-            this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
+            this.mtbPasiimti = new MetroFramework.Controls.MetroTabPage();
+            this.mtbKnyguKatalogas = new MetroFramework.Controls.MetroTabPage();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.lblNaudotojoVardas = new MetroFramework.Controls.MetroLabel();
+            this.btnAtsijungti = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -40,27 +42,42 @@
             this.metroTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroTabControl1.Controls.Add(this.metroTabPage1);
+            this.metroTabControl1.Controls.Add(this.mtbPasiimti);
+            this.metroTabControl1.Controls.Add(this.mtbKnyguKatalogas);
             this.metroTabControl1.Location = new System.Drawing.Point(3, 36);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(677, 306);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
-            // metroTabPage1
+            // mtbPasiimti
             // 
-            this.metroTabPage1.HorizontalScrollbarBarColor = true;
-            this.metroTabPage1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.HorizontalScrollbarSize = 10;
-            this.metroTabPage1.Location = new System.Drawing.Point(4, 38);
-            this.metroTabPage1.Name = "metroTabPage1";
-            this.metroTabPage1.Size = new System.Drawing.Size(669, 264);
-            this.metroTabPage1.TabIndex = 0;
-            this.metroTabPage1.Text = "metroTabPage1";
-            this.metroTabPage1.VerticalScrollbarBarColor = true;
-            this.metroTabPage1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroTabPage1.VerticalScrollbarSize = 10;
+            this.mtbPasiimti.HorizontalScrollbarBarColor = true;
+            this.mtbPasiimti.HorizontalScrollbarHighlightOnWheel = false;
+            this.mtbPasiimti.HorizontalScrollbarSize = 10;
+            this.mtbPasiimti.Location = new System.Drawing.Point(4, 38);
+            this.mtbPasiimti.Name = "mtbPasiimti";
+            this.mtbPasiimti.Size = new System.Drawing.Size(669, 264);
+            this.mtbPasiimti.TabIndex = 0;
+            this.mtbPasiimti.Text = "Pasiimti/Grąžinti knygą";
+            this.mtbPasiimti.VerticalScrollbarBarColor = true;
+            this.mtbPasiimti.VerticalScrollbarHighlightOnWheel = false;
+            this.mtbPasiimti.VerticalScrollbarSize = 10;
+            // 
+            // mtbKnyguKatalogas
+            // 
+            this.mtbKnyguKatalogas.HorizontalScrollbarBarColor = true;
+            this.mtbKnyguKatalogas.HorizontalScrollbarHighlightOnWheel = false;
+            this.mtbKnyguKatalogas.HorizontalScrollbarSize = 10;
+            this.mtbKnyguKatalogas.Location = new System.Drawing.Point(4, 38);
+            this.mtbKnyguKatalogas.Name = "mtbKnyguKatalogas";
+            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 264);
+            this.mtbKnyguKatalogas.TabIndex = 1;
+            this.mtbKnyguKatalogas.Text = "Knygų katalogas";
+            this.mtbKnyguKatalogas.VerticalScrollbarBarColor = true;
+            this.mtbKnyguKatalogas.VerticalScrollbarHighlightOnWheel = false;
+            this.mtbKnyguKatalogas.VerticalScrollbarSize = 10;
             // 
             // metroLabel1
             // 
@@ -80,10 +97,22 @@
             this.lblNaudotojoVardas.TabIndex = 2;
             this.lblNaudotojoVardas.Text = "[vardas]";
             // 
+            // btnAtsijungti
+            // 
+            this.btnAtsijungti.ActiveControl = null;
+            this.btnAtsijungti.Location = new System.Drawing.Point(537, 3);
+            this.btnAtsijungti.Name = "btnAtsijungti";
+            this.btnAtsijungti.Size = new System.Drawing.Size(146, 38);
+            this.btnAtsijungti.TabIndex = 3;
+            this.btnAtsijungti.Text = "Atsijungti";
+            this.btnAtsijungti.UseSelectable = true;
+            this.btnAtsijungti.Click += new System.EventHandler(this.btnAtsijungti_Click);
+            // 
             // UCMainUserMeniu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnAtsijungti);
             this.Controls.Add(this.lblNaudotojoVardas);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroTabControl1);
@@ -99,8 +128,10 @@
         #endregion
 
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
-        private MetroFramework.Controls.MetroTabPage metroTabPage1;
+        private MetroFramework.Controls.MetroTabPage mtbPasiimti;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel lblNaudotojoVardas;
+        private MetroFramework.Controls.MetroTile btnAtsijungti;
+        private MetroFramework.Controls.MetroTabPage mtbKnyguKatalogas;
     }
 }
