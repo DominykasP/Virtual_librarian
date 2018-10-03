@@ -42,7 +42,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(713, 418);
-            this.Margin = new System.Windows.Forms.Padding(1);
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "MainForm";
             this.Padding = new System.Windows.Forms.Padding(8, 60, 8, 8);
             this.Text = "Vilniaus Universiteto biblioteka";

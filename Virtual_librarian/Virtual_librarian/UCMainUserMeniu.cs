@@ -65,10 +65,16 @@ namespace Virtual_librarian
             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
             grdAllBooks.DataSource = visuKnyguSource;
             grdAllBooks.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdAllBooks.Columns["Paimta"].Visible = false;
+            grdAllBooks.Columns["Grazinti"].Visible = false;
+            grdAllBooks.Columns["LikoLaiko"].Visible = false;
 
             BindingSource manoUzklausuSource = new BindingSource(manoUzklausos, null);
             grdManoUzklausos.DataSource = manoUzklausuSource;
             grdManoUzklausos.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdManoUzklausos.Columns["Paimta"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdManoUzklausos.Columns["Grazinti"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdManoUzklausos.Columns["LikoLaiko"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
         }
 
         private void grdAllBooks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
