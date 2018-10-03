@@ -39,6 +39,7 @@
             this.btnTakePicture = new MetroFramework.Controls.MetroTile();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnCancel = new MetroFramework.Controls.MetroTile();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -211,10 +212,22 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.ActiveControl = null;
+            this.btnCancel.Location = new System.Drawing.Point(534, 3);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(146, 38);
+            this.btnCancel.TabIndex = 6;
+            this.btnCancel.Text = "Atšaukti";
+            this.btnCancel.UseSelectable = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // UCLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnTakePicture);
             this.Controls.Add(this.btnLogInWIthName);
             this.Controls.Add(this.pictureBox2);
@@ -248,5 +261,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private MetroFramework.Controls.MetroTile btnLogInWIthName;
         private MetroFramework.Controls.MetroTile btnTakePicture;
+        private MetroFramework.Controls.MetroTile btnCancel;
     }
 }

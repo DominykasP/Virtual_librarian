@@ -36,5 +36,13 @@ namespace Virtual_librarian
                 mainForm.Controls.Add(ucMainUserMeniu);
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
+            ucChooseLogin.Dock = DockStyle.Bottom;
+            mainForm.Controls.Remove(this);
+            mainForm.Controls.Add(ucChooseLogin);
+        }
     }
 }
