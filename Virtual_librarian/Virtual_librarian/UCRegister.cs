@@ -50,10 +50,11 @@ namespace Virtual_librarian
             }
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
-            Zmogus naujasZmogus = new Zmogus(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
+            Zmogus naujasZmogus = new Zmogus( txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text,email: txtEmail.Text);
                     mainForm.humanDBHelper.addNewZmogus(naujasZmogus);
-            
-                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
+
+
+            UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);
