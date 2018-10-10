@@ -29,7 +29,7 @@ namespace Virtual_librarian.DB_helpers
         public List<Knyga> gautiZmogausKnygas(Zmogus zmogus)
         {
             List<Knyga> zmogausKnygos = new List<Knyga>(
-                    knygos.FindAll(knyga => knyga.Skaitytojas == zmogus)
+                    knygos.FindAll(knyga => knyga.ArPaimta == true && knyga.Skaitytojas.Equals(zmogus))
                 );
 
             return zmogausKnygos;
@@ -37,7 +37,7 @@ namespace Virtual_librarian.DB_helpers
 
         public bool grazintiKnyga(Knyga grazinamaKnyga)
         {
-            Knyga grazinama = knygos.Find(knyga => knyga == grazinamaKnyga);
+            Knyga grazinama = knygos.Find(knyga => knyga.Equals(grazinamaKnyga));
             if (grazinama != null)
             {
                 grazinama.grazintiKnyga();
@@ -74,7 +74,7 @@ namespace Virtual_librarian.DB_helpers
 
         public bool paimtiKnyga(Knyga paimamaKnyga, Zmogus skaitytojas)
         {
-            Knyga paimta = knygos.Find(knyga => knyga == paimamaKnyga);
+            Knyga paimta = knygos.Find(knyga => knyga.Equals(paimamaKnyga));
             paimta.paimtiKnyga(skaitytojas, DateTime.Now, DateTime.Now.AddMonths(1));
 
             return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);

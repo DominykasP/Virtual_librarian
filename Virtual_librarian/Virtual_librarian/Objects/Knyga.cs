@@ -86,6 +86,7 @@ namespace Virtual_librarian
         public int Puslapiai { get => puslapiai; set => puslapiai = value; }
         public string Isbn { get => isbn; set => isbn = value; }
         public string Kodas { get => kodas; set => kodas = value; }
+        public bool ArPaimta { get => arPaimta; set => arPaimta = value; }
         public Zmogus Skaitytojas { get => skaitytojas; set => skaitytojas = value; }
         public DateTime Paimta { get => paimta; set => paimta = value; }
         public DateTime Grazinti { get => grazinti; set => grazinti = value; }

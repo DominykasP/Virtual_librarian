@@ -19,7 +19,9 @@ namespace Virtual_librarian
 
             InitializeComponent();
 
-            pakrautiTerminusKnyguKatalogaManoUzklausas();
+            pakrautiTerminus();
+            pakrautiKnyguKataloga();
+            pakrautiManoUzklausas();
         }
 
         private void UCMainUserMeniu_Load(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void pakrautiTerminusKnyguKatalogaManoUzklausas()
+        private void pakrautiTerminus()
         {
             BindingList<Knyga> manoKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiZmogausKnygas(prisijungesZmogus));
             BindingSource manoKnyguSource = new BindingSource(manoKnygos, null);
@@ -59,8 +61,10 @@ namespace Virtual_librarian
             grdTerminai.Columns["Leidykla"].Visible = false;
             grdTerminai.Columns["Metai"].Visible = false;
             grdTerminai.Columns["Puslapiai"].Visible = false;
+        }
 
-
+        private void pakrautiKnyguKataloga()
+        {
             BindingList<Knyga> visosKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiVisasKnygas());
             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
             grdAllBooks.DataSource = visuKnyguSource;
@@ -68,7 +72,10 @@ namespace Virtual_librarian
             grdAllBooks.Columns["Paimta"].Visible = false;
             grdAllBooks.Columns["Grazinti"].Visible = false;
             grdAllBooks.Columns["LikoLaiko"].Visible = false;
+        }
 
+        private void pakrautiManoUzklausas()
+        {
             BindingSource manoUzklausuSource = new BindingSource(manoUzklausos, null);
             grdManoUzklausos.DataSource = manoUzklausuSource;
             grdManoUzklausos.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
@@ -140,6 +147,16 @@ namespace Virtual_librarian
         }
 
         private void ucScanBook1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grdAllBooks_KeyPress(object sender, KeyPressEventArgs e) //Šito vėliau nereikės - Paspaudus tarpą "Pasiims knygą"
+        {
+
+        }
+
+        private void grdTerminai_KeyPress(object sender, KeyPressEventArgs e) //Šito vėliau nereikės - Paspaudus tarpą "Grąžins knygą"
         {
 
         }

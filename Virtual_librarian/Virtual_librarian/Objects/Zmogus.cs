@@ -68,5 +68,10 @@ namespace Virtual_librarian
         {
             return (this.id == other.id);
         }
+
+        override public String ToString()
+        {
+            return name;
+        }
     }
 }
