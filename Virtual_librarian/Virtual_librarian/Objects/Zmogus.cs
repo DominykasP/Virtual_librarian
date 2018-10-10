@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian
 {
-    public class Zmogus
+    public class Zmogus : IEquatable<Zmogus>
     {
         private int id;
         private string name;
@@ -63,5 +63,10 @@ namespace Virtual_librarian
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Email { get => email; set => email = value; }
         public Bitmap Image { get => image; set => image = value; }
+
+        public bool Equals(Zmogus other)
+        {
+            return (this.id == other.id);
+        }
     }
 }

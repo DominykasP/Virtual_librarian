@@ -36,4 +36,13 @@
     <PhoneNumber>+37061111111</PhoneNumber>
     <Email>dominykp@gmail.com</Email>
   </Zmogus>
+  <Zmogus>
+    <Id>4</Id>
+    <Name></Name>
+    <Surname></Surname>
+    <Password></Password>
+    <Birthdate>1998-02-25T21:12:29</Birthdate>
+    <PhoneNumber>+37061111111</PhoneNumber>
+    <Email>dominykp@gmail.com</Email>
+  </Zmogus>
 </ArrayOfZmogus>

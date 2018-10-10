@@ -16,7 +16,7 @@ namespace Virtual_librarian.DB_helpers
 
         bool pridetiNaujaKnyga(Knyga knyga);
         bool istrintiKnyga(Knyga knyga);
-        bool paimtiKnyga(Knyga knyga, Zmogus skaitytojas);
-        bool grazintiKnyga(Knyga knyga);
+        bool paimtiKnyga(Knyga paimamaKnyga, Zmogus skaitytojas);
+        bool grazintiKnyga(Knyga grazinamaKnyga);
     }
 }

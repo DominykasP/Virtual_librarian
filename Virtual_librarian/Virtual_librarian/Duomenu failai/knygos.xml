@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfKnyga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Knyga>
+	<Id>0</Id>
+    <Pavadinimas>Liūdna pasaka</Pavadinimas>
+    <Autorius>Jonas Biliūnas</Autorius>
+    <Leidykla>Alma Littera</Leidykla>
+    <Metai>1980-05-25T00:00:00</Metai>
+    <Puslapiai>5</Puslapiai>
+    <Isbn>12345678</Isbn>
+    <Kodas>21343244</Kodas>
+    <Paimta>0001-01-01T00:00:00</Paimta>
+    <Grazinti>0001-01-01T00:00:00</Grazinti>
+  </Knyga>
+  <Knyga>
+	<Id>1</Id>
+    <Pavadinimas>Karlsonas</Pavadinimas>
+    <Autorius>Astrida Lindgren</Autorius>
+    <Leidykla>Alma Littera</Leidykla>
+    <Metai>1996-04-15T00:00:00</Metai>
+    <Puslapiai>500</Puslapiai>
+    <Isbn>13644563</Isbn>
+    <Kodas>24954972</Kodas>
+    <Paimta>0001-01-01T00:00:00</Paimta>
+    <Grazinti>0001-01-01T00:00:00</Grazinti>
+  </Knyga>
+  <Knyga>
+	<Id>2</Id>
+    <Pavadinimas>Metro</Pavadinimas>
+    <Autorius>Dimitrij Gluchovski</Autorius>
+    <Leidykla>Zaltvykste</Leidykla>
+    <Metai>2014-06-12T00:00:00</Metai>
+    <Puslapiai>700</Puslapiai>
+    <Isbn>35435534</Isbn>
+    <Kodas>97234594</Kodas>
+    <Paimta>0001-01-01T00:00:00</Paimta>
+    <Grazinti>0001-01-01T00:00:00</Grazinti>
+  </Knyga>
+</ArrayOfKnyga>

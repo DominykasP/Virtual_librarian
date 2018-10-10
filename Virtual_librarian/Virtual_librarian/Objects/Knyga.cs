@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian
 {
-    public class Knyga
+    public class Knyga : IEquatable<Knyga>
     {
         private int id;
         private String pavadinimas;
@@ -62,7 +62,7 @@ namespace Virtual_librarian
             this.grazinti = default(DateTime);
         }
 
-        public Knyga(string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas, DateTime paimta, DateTime grazinti)
+        public Knyga(string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas, Zmogus skaitytojas, DateTime paimta, DateTime grazinti)
         {
             this.pavadinimas = pavadinimas;
             this.autorius = autorius;
@@ -72,13 +72,13 @@ namespace Virtual_librarian
             this.isbn = isbn;
             this.kodas = kodas;
 
-            this.arPaimta = false;
-            this.skaitytojas = null;
+            this.arPaimta = true;
+            this.skaitytojas = skaitytojas;
             this.paimta = paimta;
             this.grazinti = grazinti;
         }
 
-        public int Id { get => id; }
+        public int Id { get => id; set => id = value; }
         public string Pavadinimas { get => pavadinimas; set => pavadinimas = value; }
         public string Autorius { get => autorius; set => autorius = value; }
         public string Leidykla { get => leidykla; set => leidykla = value; }
@@ -86,6 +86,7 @@ namespace Virtual_librarian
         public int Puslapiai { get => puslapiai; set => puslapiai = value; }
         public string Isbn { get => isbn; set => isbn = value; }
         public string Kodas { get => kodas; set => kodas = value; }
+        public Zmogus Skaitytojas { get => skaitytojas; set => skaitytojas = value; }
         public DateTime Paimta { get => paimta; set => paimta = value; }
         public DateTime Grazinti { get => grazinti; set => grazinti = value; }
         public int LikoLaiko { get => likoLaiko; }
@@ -117,6 +118,11 @@ namespace Virtual_librarian
             TimeSpan skirtumas = this.grazinti - dabar;
             int dienos = skirtumas.Days;
             this.likoLaiko = dienos;
+        }
+
+        public bool Equals(Knyga other)
+        {
+            return (this.isbn == other.isbn) && (this.kodas == other.kodas);
         }
     }
 }

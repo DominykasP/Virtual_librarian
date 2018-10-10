@@ -49,28 +49,16 @@ namespace Virtual_librarian.DB_helpers
 
         public Zmogus getZmogusByID(int ID)
         {
-            foreach (Zmogus zmogus in naudotojai)
-            {
-                if (zmogus.Id == ID)
-                {
-                    return zmogus;
-                }
-            }
+            Zmogus rastasZmogus = naudotojai.Find(zmogus => zmogus.Id == ID);
 
-            return null;
+            return rastasZmogus;
         }
 
         public Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password)
         {
-            foreach (Zmogus zmogus in naudotojai)
-            {
-                if (zmogus.Name.Equals(name) && zmogus.Surname.Equals(surname) && zmogus.Password.Equals(password))
-                {
-                    return zmogus;
-                }
-            }
-
-            return null;
+            Zmogus rastasZmogus = naudotojai.Find(zmogus => zmogus.Name.Equals(name) && zmogus.Surname.Equals(surname) && zmogus.Password.Equals(password));
+            
+            return rastasZmogus;
         }
 
         public int getNextId()

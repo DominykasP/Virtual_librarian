@@ -8,129 +8,96 @@ namespace Virtual_librarian.DB_helpers
 {
     public class BookDBHelper : BookDBHelperInterface
     {
+        private List<Knyga> knygos;
+
+        public BookDBHelper()
+        {
+            knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml");
+        }
+
         public Knyga gautiKnygaPagalKodus(string isbn, string kodas)
         {
-            /*return new Knyga(
-                    "Liūdna pasaka",
-                    "Jonas Biliūnas",
-                    "Alma Littera",
-                    new DateTime(1980, 5, 25),
-                    5,
-                    "12345678",
-                    "21343244"
-                );*/
-
-            List<Knyga> visosKnygos = new List<Knyga>(this.gautiVisasKnygas());
-            Knyga rastaKnyga = visosKnygos.Find(knyga => knyga.Isbn == isbn && knyga.Kodas == kodas);
+            Knyga rastaKnyga = knygos.Find(knyga => knyga.Isbn == isbn && knyga.Kodas == kodas);
             return rastaKnyga;
         }
 
         public List<Knyga> gautiVisasKnygas()
         {
-            List<Knyga> knygos = new List<Knyga>();
-            knygos.Add(new Knyga(
-                    "Liūdna pasaka",
-                    "Jonas Biliūnas",
-                    "Alma Littera",
-                    new DateTime(1980, 5, 25),
-                    5,
-                    "12345678",
-                    "21343244"
-                ));
-            knygos.Add(new Knyga(
-                    "Karlsonas",
-                    "Astrida Lindgren",
-                    "Alma Littera",
-                    new DateTime(1996, 4, 15),
-                    500,
-                    "13644563",
-                    "24954972"
-                ));
-            knygos.Add(new Knyga(
-                    "Metro",
-                    "Dimitrij Gluchovski",
-                    "Zaltvykste",
-                    new DateTime(2014, 6, 12),
-                    700,
-                    "35435534",
-                    "97234594"
-                ));
-
             return knygos;
         }
 
         public List<Knyga> gautiZmogausKnygas(Zmogus zmogus)
         {
-            List<Knyga> knygos = new List<Knyga>();
-            knygos.Add(new Knyga(
-                    "Liūdna pasaka",
-                    "Jonas Biliūnas",
-                    "Alma Littera",
-                    new DateTime(1980, 5, 25),
-                    5,
-                    "12345678",
-                    "21343244",
-                    new DateTime(2018,10,01),
-                    new DateTime(2018,11,01)
-                ));
-            knygos.Add(new Knyga(
-                    "Karlsonas",
-                    "Astrida Lindgren",
-                    "Alma Littera",
-                    new DateTime(1996, 4, 15),
-                    500,
-                    "13644563",
-                    "24954972",
-                    new DateTime(2018, 09, 14),
-                    new DateTime(2018, 12, 23)
-                ));
+            List<Knyga> zmogausKnygos = new List<Knyga>(
+                    knygos.FindAll(knyga => knyga.Skaitytojas == zmogus)
+                );
 
-            return knygos;
+            return zmogausKnygos;
         }
 
-        public bool grazintiKnyga(Knyga knyga)
+        public bool grazintiKnyga(Knyga grazinamaKnyga)
         {
-            return true;
+            Knyga grazinama = knygos.Find(knyga => knyga == grazinamaKnyga);
+            if (grazinama != null)
+            {
+                grazinama.grazintiKnyga();
+
+                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public List<Knyga> ieskoti(string search)
         {
-            List<Knyga> knygos = new List<Knyga>();
-            knygos.Add(new Knyga(
-                    "Liūdna pasaka",
-                    "Jonas Biliūnas",
-                    "Alma Littera",
-                    new DateTime(1980, 5, 25),
-                    5,
-                    "12345678",
-                    "21343244"
-                ));
-            knygos.Add(new Knyga(
-                    "Karlsonas",
-                    "Astrida Lindgren",
-                    "Alma Littera",
-                    new DateTime(1996, 4, 15),
-                    500,
-                    "13644563",
-                    "24954972"
-                ));
+            List<Knyga> atitinkanciosKnygos = new List<Knyga>(
+                        knygos.FindAll(knyga => knyga.Pavadinimas.Contains(search) || knyga.Autorius.Contains(search))
+                    );
 
-            return knygos;
+            return atitinkanciosKnygos;
         }
 
         public bool istrintiKnyga(Knyga knyga)
         {
-            return true;
+            bool arSekmingai = knygos.Remove(knyga);
+            if (arSekmingai == true)
+            {
+                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        public bool paimtiKnyga(Knyga knyga, Zmogus skaitytojas)
+        public bool paimtiKnyga(Knyga paimamaKnyga, Zmogus skaitytojas)
         {
-            return true;
+            Knyga paimta = knygos.Find(knyga => knyga == paimamaKnyga);
+            paimta.paimtiKnyga(skaitytojas, DateTime.Now, DateTime.Now.AddMonths(1));
+
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
         }
 
         public bool pridetiNaujaKnyga(Knyga knyga)
         {
-            return true;
+            knygos.Add(knyga);
+
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+        }
+
+        public int getNextId()
+        {
+            int maks = 0;
+            foreach (Knyga knyga in knygos)
+            {
+                if (knyga.Id > maks)
+                {
+                    maks = knyga.Id;
+                }
+            }
+            return maks + 1;
         }
     }
 }
