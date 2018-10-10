@@ -18,6 +18,11 @@ namespace Virtual_librarian
         private string email;
         private Bitmap image;
 
+        public Zmogus() //Reikia darbui su failais
+        {
+
+        }
+
         public Zmogus(string name, string surname, string password, DateTime birthdate, string phoneNumber, string email)
         {
             this.name = name;

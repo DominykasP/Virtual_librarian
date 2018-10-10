@@ -24,6 +24,11 @@ namespace Virtual_librarian
         private DateTime grazinti;
         private int likoLaiko;
 
+        public Knyga() //Reikia darbui su failais
+        {
+
+        }
+
         public Knyga(string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas)
         {
             this.pavadinimas = pavadinimas;
