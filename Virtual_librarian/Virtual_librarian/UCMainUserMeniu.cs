@@ -127,18 +127,18 @@ namespace Virtual_librarian
             string pasirinktosKnygosKodas = grdTerminai.Rows[e.RowIndex].Cells[7].Value.ToString(); //7 - mūsų kodas
             Knyga pasirinktaKnyga = mainForm.bookDBHelper.gautiKnygaPagalKodus(pasirinktosKnygosISBN, pasirinktosKnygosKodas);
 
-            //NEVEIKIA
-            /*
             DialogResult dr = MetroMessageBox.Show(this, "Ar norite pratęsti šios knygos terminą vienam mėnesiui?", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.Yes)
             {
-                MessageBox.Show("Buvo: " + pasirinktaKnyga.Grazinti.ToShortDateString());
-                pasirinktaKnyga.Grazinti.AddMonths(1);
-                pasirinktaKnyga.gautiLikoLaiko();
-                MessageBox.Show(pasirinktaKnyga.Grazinti.ToShortDateString());
-                MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if (mainForm.bookDBHelper.pratestiKnyga(pasirinktaKnyga) == true)
+                {
+                    MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Klaida patęsiant knygą", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            */
         }
 
         private void ucScanBook1_Load(object sender, EventArgs e)

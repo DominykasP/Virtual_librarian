@@ -87,6 +87,14 @@ namespace Virtual_librarian.DB_helpers
             return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
         }
 
+        public bool pratestiKnyga(Knyga pratesiamaKnyga)
+        {
+            Knyga pratesti = knygos.Find(knyga => knyga.Equals(pratesiamaKnyga));
+            pratesti.pratestiKnyga(DateTime.Now.AddMonths(1));
+
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+        }
+
         public int getNextId()
         {
             int maks = 0;
