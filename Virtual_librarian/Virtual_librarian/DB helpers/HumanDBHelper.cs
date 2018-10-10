@@ -9,43 +9,81 @@ namespace Virtual_librarian.DB_helpers
 {
     public class HumanDBHelper : HumanDBHelperInterface
     {
+        private List<Zmogus> naudotojai;
+
+        public HumanDBHelper()
+        {
+            naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");
+        }
+
         public bool addNewZmogus(Zmogus zmogus)
         {
-            return true;
+            naudotojai.Add(zmogus);
+
+            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
         }
 
         public bool deleteZmogus(Zmogus zmogus)
         {
-            return true;
+            bool arSekmingai = naudotojai.Remove(zmogus);
+            if (arSekmingai == true)
+            {
+                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public bool editZmogus(Zmogus oldZmogus, Zmogus newZmogus)
         {
-            return true;
+            bool arSekmingai = naudotojai.Remove(oldZmogus);
+            if (arSekmingai == true)
+            {
+                naudotojai.Add(newZmogus);
+            }
+
+            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
         }
 
         public Zmogus getZmogusByID(int ID)
         {
-            return new Zmogus(
-                    "Vardenis",
-                    "Pavardenis",
-                    "Slaptazodis",
-                    new DateTime(1998, 01, 01),
-                    "+37012345678",
-                    "vardenis.pavardenis@gmail.com"
-                   );
+            foreach (Zmogus zmogus in naudotojai)
+            {
+                if (zmogus.Id == ID)
+                {
+                    return zmogus;
+                }
+            }
+
+            return null;
         }
 
         public Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password)
         {
-            return new Zmogus(
-                    "Vardenis",
-                    "Pavardenis",
-                    "Slaptazodis",
-                    new DateTime(1998, 01, 01),
-                    "+37012345678",
-                    "vardenis.pavardenis@gmail.com"
-                   );
+            foreach (Zmogus zmogus in naudotojai)
+            {
+                if (zmogus.Name.Equals(name) && zmogus.Surname.Equals(surname) && zmogus.Password.Equals(password))
+                {
+                    return zmogus;
+                }
+            }
+
+            return null;
+        }
+
+        public int getNextId()
+        {
+            int maks = 0;
+            foreach (Zmogus zmogus in naudotojai)
+            {
+                if (zmogus.Id > maks)
+                {
+                    maks = zmogus.Id;
+                }
+            }
+            return maks+1;
         }
     }
 }

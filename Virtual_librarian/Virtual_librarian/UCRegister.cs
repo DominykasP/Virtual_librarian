@@ -61,13 +61,18 @@ namespace Virtual_librarian
             }
             else
             {
-                Zmogus naujasZmogus = new Zmogus(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
-                mainForm.humanDBHelper.addNewZmogus(naujasZmogus);
-
-                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
-                ucMainUserMeniu.Dock = DockStyle.Bottom;
-                mainForm.Controls.Remove(this);
-                mainForm.Controls.Add(ucMainUserMeniu);
+                Zmogus naujasZmogus = new Zmogus(mainForm.humanDBHelper.getNextId(), txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
+                if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
+                {
+                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
+                    ucMainUserMeniu.Dock = DockStyle.Bottom;
+                    mainForm.Controls.Remove(this);
+                    mainForm.Controls.Add(ucMainUserMeniu);
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             // }
         }

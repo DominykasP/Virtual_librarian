@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfZmogus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Zmogus>
+    <Id>0</Id>
+    <Name>Vardenis</Name>
+    <Surname>Pavardenis</Surname>
+    <Password>Slaptazodis</Password>
+    <Birthdate>1998-01-01T00:00:00</Birthdate>
+    <PhoneNumber>+37012345678</PhoneNumber>
+    <Email>vardenis.pavardenis@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>1</Id>
+    <Name>Jonas</Name>
+    <Surname>Joanitis</Surname>
+    <Password>JonaicioSlaptazodis</Password>
+    <Birthdate>1997-03-08T00:00:00</Birthdate>
+    <PhoneNumber>+342563634534</PhoneNumber>
+    <Email>Jonas.Jonaitis@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>2</Id>
+    <Name>Petras</Name>
+    <Surname>Petraitis</Surname>
+    <Password>bestSlaptazodis</Password>
+    <Birthdate>1974-08-23T00:00:00</Birthdate>
+    <PhoneNumber>+37012345678</PhoneNumber>
+    <Email>petux@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>3</Id>
+    <Name>Dominykas</Name>
+    <Surname>Pakalnis</Surname>
+    <Password>slaptazodis</Password>
+    <Birthdate>1998-02-25T21:12:29</Birthdate>
+    <PhoneNumber>+37061111111</PhoneNumber>
+    <Email>dominykp@gmail.com</Email>
+  </Zmogus>
+</ArrayOfZmogus>

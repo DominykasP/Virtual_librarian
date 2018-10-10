@@ -55,7 +55,7 @@ namespace Virtual_librarian
             this.image = image;
         }
 
-        public int Id { get => id; }
+        public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Surname { get => surname; set => surname = value; }
         public string Password { get => password; set => password = value; }
