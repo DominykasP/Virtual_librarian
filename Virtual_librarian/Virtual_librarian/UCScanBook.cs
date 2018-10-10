@@ -18,11 +18,12 @@ namespace Virtual_librarian
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
         private static int nEventsFired = 0;
-        public VideoCapture capture;
+        public Capture camera;
         private object lockobject = new object();
         public List<Bitmap> images;
+        Image<Bgr, byte> Frame;
 
-        Mat m;
+
         public UCScanBook()
         {
             InitializeComponent();
@@ -35,26 +36,25 @@ namespace Virtual_librarian
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (capture == null)
+            if (camera == null)
             {
-                capture = new VideoCapture(0);
+                camera = new Capture(0);
 
             }
             images = new List<Bitmap>();
             nEventsFired = 0;
             timer1.Interval = 2000;
             timer1.Start();
-            capture.ImageGrabbed += Capture_ImageGrabbed1;
-            capture.Start();
+            camera.Start();
+            Application.Idle += new EventHandler(FrameProcedure);
         }
-        private void Capture_ImageGrabbed1(object sender, EventArgs e)
+        private void FrameProcedure(object sender, EventArgs e)
         {
             try
             {
 
-                m = new Mat();
-                capture.Retrieve(m);
-                pictureBox1.Image = m.ToImage<Bgr, byte>().Bitmap;
+                Frame = camera.QueryFrame();
+                cameraBox.Image = Frame.ToBitmap();
             }
             catch (Exception)
             {
@@ -65,9 +65,8 @@ namespace Virtual_librarian
         private void timer1_Tick(object sender, EventArgs e)
         {
             BarcodeBox1.Clear();
-            //textBox1.Clear();
-            capture.Retrieve(m);
-            Image<Bgr, Byte> ColordImage = m.ToImage<Bgr, byte>();
+            
+            Image<Bgr, Byte> ColordImage = Frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
             
 
@@ -76,7 +75,7 @@ namespace Virtual_librarian
             if (Barcode.Length != 0 && Barcode[0].Length > 10)
             {
                 timer1.Stop();
-                capture.Pause();
+                camera.Pause();
                 BarcodeBox1.AppendText(Barcode[0]);
 
             }
@@ -87,11 +86,11 @@ namespace Virtual_librarian
             if (nEventsFired == 20)
             {
                 timer1.Stop();
-                if (capture != null)
+                if (camera != null)
                 {
-                    capture.Dispose();
-                    capture = null;
-                    m = null;
+                    camera.Dispose();
+                    camera = null;
+                    
                 }
             }
         }

@@ -13,7 +13,7 @@ namespace Virtual_librarian
 {
     public partial class UCFaceScan : UserControl
     {
-        public VideoCapture capture;
+        public Capture capture;
 
         private int numberOfSeconds = 3; //Per kiek sekundziu padarysim visas nuotraukas
         private static int numberOfImages = 5; //Kiek is viso reikes padaryti nuotrauku
@@ -27,7 +27,7 @@ namespace Virtual_librarian
         {
             InitializeComponent();
 
-            capture = new VideoCapture();
+            capture = new Capture();
 
             images = new List<Bitmap>();
             tmrForVideo = new Timer();

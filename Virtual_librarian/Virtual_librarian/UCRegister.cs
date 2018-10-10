@@ -15,8 +15,8 @@ namespace Virtual_librarian
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
-        private VideoCapture capture;
-        Mat m;
+        private Capture capture;
+        
 
         public UCRegister(MainForm mainForma)
         {
@@ -65,7 +65,7 @@ namespace Virtual_librarian
         {
             if (capture == null)
             {
-                capture = new VideoCapture(0);
+                capture = new Capture(0);
 
             }
             capture.ImageGrabbed += Capture_ImageGrabbed;
@@ -77,9 +77,8 @@ namespace Virtual_librarian
             try
             {
 
-                m = new Mat();
-                capture.Retrieve(m);
-                pictureBox2.Image = m.ToImage<Bgr, byte>().ToBitmap();
+                
+                //pictureBox2.Image = m.ToImage<Bgr, byte>().ToBitmap();
             }
             catch (Exception)
             {
