@@ -75,7 +75,8 @@ namespace Virtual_librarian
         }
         private void FrameProcedure(object sender, EventArgs e)
         {
-            if (camera != null)
+            //if (camera != null)
+            try
             {
                 Users.Add("");
                 Frame = camera.QueryFrame().Resize(320, 240, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
@@ -99,6 +100,10 @@ namespace Virtual_librarian
                 cameraBox.Image = Frame.ToBitmap();
                 names = "";
                 Users.Clear();
+            }
+            catch (NullReferenceException ex)
+            {
+                Application.Idle -= FrameProcedure;
             }
 
 
