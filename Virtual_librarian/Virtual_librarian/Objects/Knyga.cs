@@ -29,6 +29,23 @@ namespace Virtual_librarian
 
         }
 
+        public Knyga(int id, string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas)
+        {
+            this.id = id;
+            this.pavadinimas = pavadinimas;
+            this.autorius = autorius;
+            this.leidykla = leidykla;
+            this.metai = metai;
+            this.puslapiai = puslapiai;
+            this.isbn = isbn;
+            this.kodas = kodas;
+
+            this.arPaimta = false;
+            this.skaitytojas = null;
+            this.paimta = default(DateTime);
+            this.grazinti = default(DateTime);
+        }
+
         public Knyga(string pavadinimas, string autorius, string leidykla, DateTime metai, int puslapiai, string isbn, string kodas)
         {
             this.pavadinimas = pavadinimas;

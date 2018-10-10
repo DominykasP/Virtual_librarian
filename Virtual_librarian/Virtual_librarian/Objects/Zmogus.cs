@@ -23,6 +23,17 @@ namespace Virtual_librarian
 
         }
 
+        public Zmogus(int id, string name, string surname, string password, DateTime birthdate, string phoneNumber, string email)
+        {
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.password = password;
+            this.birthdate = birthdate;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
+
         public Zmogus(string name, string surname, string password, DateTime birthdate, string phoneNumber, string email)
         {
             this.name = name;
