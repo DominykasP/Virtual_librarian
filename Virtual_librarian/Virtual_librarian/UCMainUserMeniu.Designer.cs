@@ -71,8 +71,8 @@
             this.metroTabControl1.Controls.Add(this.mtbManoUžklausos);
             this.metroTabControl1.Location = new System.Drawing.Point(3, 36);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
-            this.metroTabControl1.Size = new System.Drawing.Size(677, 306);
+            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.Size = new System.Drawing.Size(677, 309);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -84,7 +84,7 @@
             this.mtbPasiimti.HorizontalScrollbarSize = 10;
             this.mtbPasiimti.Location = new System.Drawing.Point(4, 38);
             this.mtbPasiimti.Name = "mtbPasiimti";
-            this.mtbPasiimti.Size = new System.Drawing.Size(669, 264);
+            this.mtbPasiimti.Size = new System.Drawing.Size(669, 267);
             this.mtbPasiimti.TabIndex = 0;
             this.mtbPasiimti.Text = "Pasiimti/Grąžinti knygą";
             this.mtbPasiimti.VerticalScrollbarBarColor = true;
@@ -94,6 +94,7 @@
             // ucScanBook1
             // 
             this.ucScanBook1.Location = new System.Drawing.Point(3, 11);
+            this.ucScanBook1.Margin = new System.Windows.Forms.Padding(7);
             this.ucScanBook1.Name = "ucScanBook1";
             this.ucScanBook1.Size = new System.Drawing.Size(650, 250);
             this.ucScanBook1.TabIndex = 2;
@@ -108,7 +109,7 @@
             this.mtbTerminai.HorizontalScrollbarSize = 10;
             this.mtbTerminai.Location = new System.Drawing.Point(4, 38);
             this.mtbTerminai.Name = "mtbTerminai";
-            this.mtbTerminai.Size = new System.Drawing.Size(669, 264);
+            this.mtbTerminai.Size = new System.Drawing.Size(669, 267);
             this.mtbTerminai.TabIndex = 3;
             this.mtbTerminai.Text = "Patikrinti terminus";
             this.mtbTerminai.VerticalScrollbarBarColor = true;
@@ -117,8 +118,12 @@
             // 
             // grdTerminai
             // 
+            this.grdTerminai.AllowUserToAddRows = false;
             this.grdTerminai.AllowUserToDeleteRows = false;
             this.grdTerminai.AllowUserToResizeRows = false;
+            this.grdTerminai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdTerminai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grdTerminai.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.grdTerminai.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -160,6 +165,7 @@
             this.grdTerminai.Size = new System.Drawing.Size(663, 258);
             this.grdTerminai.TabIndex = 2;
             this.grdTerminai.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTerminai_CellDoubleClick);
+            this.grdTerminai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdTerminai_KeyPress);
             // 
             // mtbKnyguKatalogas
             // 
@@ -169,7 +175,7 @@
             this.mtbKnyguKatalogas.HorizontalScrollbarSize = 10;
             this.mtbKnyguKatalogas.Location = new System.Drawing.Point(4, 38);
             this.mtbKnyguKatalogas.Name = "mtbKnyguKatalogas";
-            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 264);
+            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 267);
             this.mtbKnyguKatalogas.TabIndex = 1;
             this.mtbKnyguKatalogas.Text = "Knygų katalogas";
             this.mtbKnyguKatalogas.VerticalScrollbarBarColor = true;
@@ -178,6 +184,7 @@
             // 
             // grdAllBooks
             // 
+            this.grdAllBooks.AllowUserToAddRows = false;
             this.grdAllBooks.AllowUserToDeleteRows = false;
             this.grdAllBooks.AllowUserToResizeRows = false;
             this.grdAllBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -224,6 +231,7 @@
             this.grdAllBooks.Size = new System.Drawing.Size(663, 258);
             this.grdAllBooks.TabIndex = 2;
             this.grdAllBooks.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdAllBooks_CellDoubleClick);
+            this.grdAllBooks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdAllBooks_KeyPress);
             // 
             // mtbManoUžklausos
             // 
@@ -234,7 +242,7 @@
             this.mtbManoUžklausos.HorizontalScrollbarSize = 10;
             this.mtbManoUžklausos.Location = new System.Drawing.Point(4, 38);
             this.mtbManoUžklausos.Name = "mtbManoUžklausos";
-            this.mtbManoUžklausos.Size = new System.Drawing.Size(669, 264);
+            this.mtbManoUžklausos.Size = new System.Drawing.Size(669, 267);
             this.mtbManoUžklausos.TabIndex = 2;
             this.mtbManoUžklausos.Text = "Mano užklausos";
             this.mtbManoUžklausos.VerticalScrollbarBarColor = true;
@@ -254,6 +262,7 @@
             // 
             // grdManoUzklausos
             // 
+            this.grdManoUzklausos.AllowUserToAddRows = false;
             this.grdManoUzklausos.AllowUserToDeleteRows = false;
             this.grdManoUzklausos.AllowUserToResizeRows = false;
             this.grdManoUzklausos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 

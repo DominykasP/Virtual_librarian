@@ -11,6 +11,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Reflection;
 using System.IO;
+using MetroFramework;
 
 namespace Virtual_librarian
 {
@@ -48,6 +49,10 @@ namespace Virtual_librarian
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);
+            }
+            else
+            {
+                MetroMessageBox.Show(this,"Neteisingai įvesti prisijungimo duomenys","Prisijungimo klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

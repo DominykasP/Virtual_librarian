@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
+using MetroFramework;
 
 namespace Virtual_librarian
 {
@@ -50,14 +51,29 @@ namespace Virtual_librarian
             }
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
-            Zmogus naujasZmogus = new Zmogus(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
-                    mainForm.humanDBHelper.addNewZmogus(naujasZmogus);
-            
-                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
-                ucMainUserMeniu.Dock = DockStyle.Bottom;
-                mainForm.Controls.Remove(this);
-                mainForm.Controls.Add(ucMainUserMeniu);
-            
+            System.Text.RegularExpressions.Regex sablonas = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
+
+            if (!sablonas.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
+            {
+                MetroMessageBox.Show(this,"Neteisingai įvestas elektroninis paštas","Klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                txtEmail.Clear();
+                txtEmail.Focus();
+            }
+            else
+            {
+                Zmogus naujasZmogus = new Zmogus(mainForm.humanDBHelper.getNextId(), txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
+                if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
+                {
+                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
+                    ucMainUserMeniu.Dock = DockStyle.Bottom;
+                    mainForm.Controls.Remove(this);
+                    mainForm.Controls.Add(ucMainUserMeniu);
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             // }
         }
 

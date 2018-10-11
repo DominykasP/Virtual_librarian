@@ -19,7 +19,9 @@ namespace Virtual_librarian
 
             InitializeComponent();
 
-            pakrautiTerminusKnyguKatalogaManoUzklausas();
+            pakrautiTerminus();
+            pakrautiKnyguKataloga();
+            pakrautiManoUzklausas();
         }
 
         private void UCMainUserMeniu_Load(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void pakrautiTerminusKnyguKatalogaManoUzklausas()
+        private void pakrautiTerminus()
         {
             BindingList<Knyga> manoKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiZmogausKnygas(prisijungesZmogus));
             BindingSource manoKnyguSource = new BindingSource(manoKnygos, null);
@@ -59,8 +61,10 @@ namespace Virtual_librarian
             grdTerminai.Columns["Leidykla"].Visible = false;
             grdTerminai.Columns["Metai"].Visible = false;
             grdTerminai.Columns["Puslapiai"].Visible = false;
+        }
 
-
+        private void pakrautiKnyguKataloga()
+        {
             BindingList<Knyga> visosKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiVisasKnygas());
             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
             grdAllBooks.DataSource = visuKnyguSource;
@@ -68,7 +72,10 @@ namespace Virtual_librarian
             grdAllBooks.Columns["Paimta"].Visible = false;
             grdAllBooks.Columns["Grazinti"].Visible = false;
             grdAllBooks.Columns["LikoLaiko"].Visible = false;
+        }
 
+        private void pakrautiManoUzklausas()
+        {
             BindingSource manoUzklausuSource = new BindingSource(manoUzklausos, null);
             grdManoUzklausos.DataSource = manoUzklausuSource;
             grdManoUzklausos.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
@@ -120,18 +127,18 @@ namespace Virtual_librarian
             string pasirinktosKnygosKodas = grdTerminai.Rows[e.RowIndex].Cells[7].Value.ToString(); //7 - mūsų kodas
             Knyga pasirinktaKnyga = mainForm.bookDBHelper.gautiKnygaPagalKodus(pasirinktosKnygosISBN, pasirinktosKnygosKodas);
 
-            //NEVEIKIA
-            /*
             DialogResult dr = MetroMessageBox.Show(this, "Ar norite pratęsti šios knygos terminą vienam mėnesiui?", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.Yes)
             {
-                MessageBox.Show("Buvo: " + pasirinktaKnyga.Grazinti.ToShortDateString());
-                pasirinktaKnyga.Grazinti.AddMonths(1);
-                pasirinktaKnyga.gautiLikoLaiko();
-                MessageBox.Show(pasirinktaKnyga.Grazinti.ToShortDateString());
-                MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if (mainForm.bookDBHelper.pratestiKnyga(pasirinktaKnyga) == true)
+                {
+                    MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Klaida patęsiant knygą", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            */
         }
 
         private void ucScanBook1_Load(object sender, EventArgs e)
@@ -142,6 +149,60 @@ namespace Virtual_librarian
         private void ucScanBook1_Load_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void grdAllBooks_KeyPress(object sender, KeyPressEventArgs e) //Šito vėliau nereikės - Paspaudus tarpą "Pasiims knygą"
+        {
+            if (e.KeyChar == (Char)Keys.Space)
+            {
+                int pasirinktaEile = grdAllBooks.CurrentRow.Index;
+                string pasirinktosKnygosISBN = grdAllBooks.Rows[pasirinktaEile].Cells[6].Value.ToString(); //6 - isbn
+                string pasirinktosKnygosKodas = grdAllBooks.Rows[pasirinktaEile].Cells[7].Value.ToString(); //7 - mūsų kodas
+                Knyga pasirinktaKnyga = mainForm.bookDBHelper.gautiKnygaPagalKodus(pasirinktosKnygosISBN, pasirinktosKnygosKodas);
+
+                DialogResult dr = MetroMessageBox.Show(this, "Ar norite pasiimti šią knygą", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                if (dr == DialogResult.Yes)
+                {
+                    bool arSekmingai = mainForm.bookDBHelper.paimtiKnyga(pasirinktaKnyga, prisijungesZmogus);
+                    if (arSekmingai == true)
+                    {
+                        pakrautiTerminus();
+                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(this, "Klaida paimant knygą", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
+                }
+            }
+        }
+
+        private void grdTerminai_KeyPress(object sender, KeyPressEventArgs e) //Šito vėliau nereikės - Paspaudus tarpą "Grąžins knygą"
+        {
+            if (e.KeyChar == (Char)Keys.Space)
+            {
+                int pasirinktaEile = grdTerminai.CurrentRow.Index;
+                string pasirinktosKnygosISBN = grdTerminai.Rows[pasirinktaEile].Cells[6].Value.ToString(); //6 - isbn
+                string pasirinktosKnygosKodas = grdTerminai.Rows[pasirinktaEile].Cells[7].Value.ToString(); //7 - mūsų kodas
+                Knyga pasirinktaKnyga = mainForm.bookDBHelper.gautiKnygaPagalKodus(pasirinktosKnygosISBN, pasirinktosKnygosKodas);
+
+                DialogResult dr = MetroMessageBox.Show(this, "Ar norite grąžinti šią knygą", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                if (dr == DialogResult.Yes)
+                {
+                    bool arSekmingai = mainForm.bookDBHelper.grazintiKnyga(pasirinktaKnyga);
+                    if (arSekmingai == true)
+                    {
+                        pakrautiTerminus();
+                        MetroMessageBox.Show(this, "Knyga sėkmingai grąžinta", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(this, "Klaida grąžinant knygą", pasirinktaKnyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+            }
         }
     }
 }
