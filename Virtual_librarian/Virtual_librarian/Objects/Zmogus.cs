@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian
 {
-    public class Zmogus
+    public class Zmogus : IEquatable<Zmogus>
     {
         private int id;
         private string name;
@@ -17,6 +17,22 @@ namespace Virtual_librarian
         private string phoneNumber;
         private string email;
         private Bitmap image;
+
+        public Zmogus() //Reikia darbui su failais
+        {
+
+        }
+
+        public Zmogus(int id, string name, string surname, string password, DateTime birthdate, string phoneNumber, string email)
+        {
+            this.id = id;
+            this.name = name;
+            this.surname = surname;
+            this.password = password;
+            this.birthdate = birthdate;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+        }
 
         public Zmogus(string name, string surname, string password, DateTime birthdate, string phoneNumber, string email)
         {
@@ -39,7 +55,7 @@ namespace Virtual_librarian
             this.image = image;
         }
 
-        public int Id { get => id; }
+        public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Surname { get => surname; set => surname = value; }
         public string Password { get => password; set => password = value; }
@@ -47,5 +63,15 @@ namespace Virtual_librarian
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Email { get => email; set => email = value; }
         public Bitmap Image { get => image; set => image = value; }
+
+        public bool Equals(Zmogus other)
+        {
+            return (this.id == other.id);
+        }
+
+        override public String ToString()
+        {
+            return name;
+        }
     }
 }
