@@ -31,16 +31,16 @@ namespace Virtual_librarian.Input_Output
             FileInfo[] files = dir1.GetFiles();
             foreach (FileInfo file in files)
             {
-                bool exists = false;
+                bool exists = true;
                 string temppath = Path.Combine(toDirectory, file.Name);
                 foreach (var v in queryList1Only)
                 {
                     if(temppath == v.FullName)
                     {
-                        exists = true;
+                        exists = false;
                     }
                 }
-                if (exists == true)
+                if (exists == false)
                 {
                     file.CopyTo(temppath);
                 }

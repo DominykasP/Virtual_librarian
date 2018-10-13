@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,7 +24,7 @@ namespace Virtual_librarian
         public MainForm()
         {
             InitializeComponent();
-            //copyFiles.CopyFilesFromToDirectory("\\..\\..\\Virtual_librarian\\packages\\VDK.EmguCV.x86.2.4.10\\content\\x86", "\\..\\..\\Virtual_librarian\\bin\\Debug\\x86");
+            copyFiles.CopyFilesFromToDirectory("..\\..\\..\\..\\..\\Virtual_librarian\\Virtual_librarian\\packages\\VDK.EmguCV.x86.2.4.10\\content\\x86", @"x86");
         }
 
         
