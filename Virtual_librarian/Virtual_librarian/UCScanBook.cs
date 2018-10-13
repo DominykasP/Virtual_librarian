@@ -34,8 +34,12 @@ namespace Virtual_librarian
 
         }
 
-        private void metroTile1_Click(object sender, EventArgs e)
+        public void metroTile1_Click(object sender, EventArgs e)
         {
+            if(camera != null)
+            {
+                Application.Idle -= new EventHandler(FrameProcedure);
+            }
             if (camera == null)
             {
                 camera = new Capture(0);
@@ -46,6 +50,7 @@ namespace Virtual_librarian
             timer1.Interval = 2000;
             timer1.Start();
             camera.Start();
+            
             Application.Idle += new EventHandler(FrameProcedure);
         }
         private void FrameProcedure(object sender, EventArgs e)
@@ -62,7 +67,7 @@ namespace Virtual_librarian
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        public void timer1_Tick(object sender, EventArgs e)
         {
             BarcodeBox1.Clear();
             
@@ -74,12 +79,13 @@ namespace Virtual_librarian
 
             if (Barcode.Length != 0 && Barcode[0].Length > 10)
             {
+                Application.Idle -= new EventHandler(FrameProcedure);
                 timer1.Stop();
                 camera.Pause();
                 BarcodeBox1.AppendText(Barcode[0]);
 
             }
-
+        
 
 
             nEventsFired++;
@@ -93,6 +99,10 @@ namespace Virtual_librarian
                     
                 }
             }
+        }
+        public void FaceRecognition_EventHandler_remove()
+        {
+            Application.Idle -= new EventHandler(FrameProcedure);
         }
     }
 }

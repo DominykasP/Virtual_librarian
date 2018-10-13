@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Virtual_librarian.DB_helpers;
+using Virtual_librarian.Input_Output;
 
 namespace Virtual_librarian
 {
@@ -15,13 +16,17 @@ namespace Virtual_librarian
     {
         public BookDBHelper bookDBHelper = new BookDBHelper();
         public HumanDBHelper humanDBHelper = new HumanDBHelper();
+        private CopyFiles copyFiles = new CopyFiles();
 
         private UCChooseLogin ucChooseLogin;
 
         public MainForm()
         {
             InitializeComponent();
+            copyFiles.CopyFilesFromToDirectory();
         }
+
+        
 
         private void MainForm_Load(object sender, EventArgs e)
         {

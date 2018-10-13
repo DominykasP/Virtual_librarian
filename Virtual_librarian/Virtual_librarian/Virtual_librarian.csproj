@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\BarcodeRecognition.cs" />
     <Compile Include="Camera\UseCamera.cs" />
     <Compile Include="Camera\FaceRecognition.cs" />
     <Compile Include="DB helpers interfaces\BookDBHelperInterface.cs" />
@@ -106,6 +107,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Input_Output\FileCompare.cs" />
+    <Compile Include="Input_Output\CopyFiles.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

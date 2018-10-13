@@ -6,11 +6,12 @@ using System.Windows.Forms;
 
 namespace Virtual_librarian
 {
-    public partial class UCMainUserMeniu : MetroFramework.Controls.MetroUserControl
+    public partial class UCMainUserMeniu : MetroFramework.Controls.MetroUserControl 
     {
         private MainForm mainForm;
         private Zmogus prisijungesZmogus;
         private BindingList<Knyga> manoUzklausos = new BindingList<Knyga>();
+
 
         public UCMainUserMeniu(MainForm mainForma, Zmogus prisijunges)
         {
@@ -29,9 +30,11 @@ namespace Virtual_librarian
 
         private void btnAtsijungti_Click(object sender, EventArgs e)
         {
+            
             //Sustabdyti knygu skenavima
-            if(ucScanBook1.camera != null)
+            if (ucScanBook1.camera != null)
             {
+                ucScanBook1.FaceRecognition_EventHandler_remove();
                 ucScanBook1.timer1.Stop();
                 ucScanBook1.camera.Dispose();
                 ucScanBook1.Dispose();
