@@ -23,7 +23,7 @@ namespace Virtual_librarian
         public MainForm()
         {
             InitializeComponent();
-            copyFiles.CopyFilesFromToDirectory();
+            //copyFiles.CopyFilesFromToDirectory("\\..\\..\\Virtual_librarian\\packages\\VDK.EmguCV.x86.2.4.10\\content\\x86", "\\..\\..\\Virtual_librarian\\bin\\Debug\\x86");
         }
 
         
