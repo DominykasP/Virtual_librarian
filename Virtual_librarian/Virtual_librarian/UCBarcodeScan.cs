@@ -14,7 +14,7 @@ namespace Virtual_librarian
     public partial class UCBarcodeScan : UserControl
     {
         String BarcodeLocation; // String nurodantis failo vietą
-        Image File;             // Kintamasis kuris saugo paveikslėlį   :    vėliau nebereikės kai bus pritaikytas skenavimas kamera
+        Image File;        // Kintamasis kuris saugo paveikslėlį   :    vėliau nebereikės kai bus pritaikytas skenavimas kamera
         public UCBarcodeScan()
         {
             InitializeComponent();
