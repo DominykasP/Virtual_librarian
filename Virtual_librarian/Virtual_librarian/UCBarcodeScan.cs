@@ -15,7 +15,6 @@ namespace Virtual_librarian
     {
         String BarcodeLocation; // String nurodantis failo vietą
         Image File;        // Kintamasis kuris saugo paveikslėlį   :    vėliau nebereikės kai bus pritaikytas skenavimas kamera
-        string gabalis = null;
         public UCBarcodeScan()
         {
             InitializeComponent();
