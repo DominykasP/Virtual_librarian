@@ -11,118 +11,123 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Reflection;
 using System.IO;
+using Virtual_librarian.Camera;
 
 namespace Virtual_librarian
 {
     class FaceRecognition
     {
-        MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 0.6d, 0.6d);
-        HaarCascade faceDetected;
-        Image<Bgr, byte> Frame;
+        //Webcam'o kintamieji
         Capture camera;
-       
-
-        Image<Gray, byte> result;
-        Image<Gray, byte> trainedFace = null;
-        Image<Gray, byte> grayFace = null;
-        List<Image<Gray, byte>> trainingImages = new List<Image<Gray, byte>>();
-        List<String> labels = new List<String>();
-        List<String> Users = new List<String>();
-        int Count, NumLables, t;
-        String name, names = null;
         PictureBox cameraBox;
+        Image<Bgr, byte> currentFrame;
+
+        //Visų naudotojų info
+        int numberOfElements;
+        List<Image<Gray, byte>> usersImages;
+        List<String> usersIds;
+
+        //Face recognition'o kintamieji
+        MCvFont font;
+        HaarCascade faceHaarCascase;
+        string pathToHaarCascade = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"x86\haarcascade_frontalface_default.xml");
+        Image<Gray, byte> faceImage;
+        Image<Gray, byte> grayFrame;
+
+        //Event'o kintamieji
+        public delegate void FoundHandler(object sender, RecognisedPersonEventArgs e);
+        public event FoundHandler OnFoundRegisteredFace;
 
         public FaceRecognition()
         {
-           
+            usersImages = new List<Image<Gray, byte>>();
+            usersIds = new List<String>();
+
+            font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 0.6d, 0.6d);
+            faceHaarCascase = new HaarCascade(pathToHaarCascade);
+
+            GetAllRegisteredUsersInfo();
         }
 
-        private void displayToPictureBox(PictureBox pictureBox,Capture capture)
-        {
-            cameraBox = pictureBox;
-            camera = capture;
-        }
-
-        private string UsePreciseRecognition()
-        {
-            //HarrCascade is for face detection
-            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"x86\haarcascade_frontalface_default.xml");
-            return path;
-        }
-
-        private void getRecognitionData()
+        private void GetAllRegisteredUsersInfo()
         {
             try
             {
-                string LabelsInf = File.ReadAllText(Application.StartupPath + "Faces/Faces.txt");
-                string[] Labels = LabelsInf.Split(',');
-                //The first label before , will be the number of faces saved
-                NumLables = Convert.ToInt16(Labels[0]);
-                Count = NumLables;
-                string FaceLoad;
-                for (int i = 1; i < NumLables + 1; i++)
+                string userIdsFromFileOneLine = File.ReadAllText("..\\..\\Faces\\faces.txt");
+                string[] userIdsFromFile = userIdsFromFileOneLine.Split('%');
+                //The first element will be the number of faces saved
+                numberOfElements = Convert.ToInt16(userIdsFromFile[0]);
+                string oneFace;
+                for (int i = 1; i < numberOfElements + 1; i++)
                 {
-                    FaceLoad = "face" + i + ".bmp";
-                    trainingImages.Add(new Image<Gray, byte>(Application.StartupPath + "/Faces/Faces.txt"));
-                    labels.Add(Labels[i]);
+                    oneFace = "face" + i + ".bmp";
+                    usersImages.Add(new Image<Gray, byte>("..\\..\\Faces\\" + oneFace));
+                    usersIds.Add(userIdsFromFile[i]);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nothing in the database");
+                MessageBox.Show("Klaida pasiekiant veidų failus","Klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-        }
-
-        public void UseFaceRecognition()
-        {
-            faceDetected = new HaarCascade(UsePreciseRecognition());
-            getRecognitionData();           
         }
 
         public void Display(PictureBox pictureBox, Capture capture)
         {
-            displayToPictureBox(pictureBox, capture);
+            cameraBox = pictureBox;
+            camera = capture;
+
             if (camera != null)
             {
                 Application.Idle += new EventHandler(FrameProcedure);
             }
         }
 
-        public Bitmap sendRecognitionPictures()
-        {
-            return Frame.ToBitmap();
-        }
-
         private void FrameProcedure(object sender, EventArgs e)
         {
             if (camera != null)
             {
-                Users.Add("");
-                Frame = camera.QueryFrame().Resize(320, 240, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-                grayFace = Frame.Convert<Gray, Byte>();
-                MCvAvgComp[][] facesDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
-                foreach (MCvAvgComp f in facesDetectedNow[0])
+                //Paima iš kameros frame ir padaro jį juodai baltą
+                currentFrame = camera.QueryFrame().Resize(320, 240, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                grayFrame = currentFrame.Convert<Gray, Byte>();
+
+                //Detektina veidus frame
+                MCvAvgComp[][] facesDetectedNow = grayFrame.DetectHaarCascade(faceHaarCascase, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
+                foreach (MCvAvgComp faceData in facesDetectedNow[0])
                 {
-                    result = Frame.Copy(f.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-                    Frame.Draw(f.rect, new Bgr(Color.Green), 3);
-                    if (trainingImages.ToArray().Length != 0)
+                    faceImage = currentFrame.Copy(faceData.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                    currentFrame.Draw(faceData.rect, new Bgr(Color.Green), 3);
+
+                    //Bando detektintus veidus atpažinti
+                    if (usersImages.ToArray().Length != 0)
                     {
-                        MCvTermCriteria termCriterias = new MCvTermCriteria(Count, 0.001);
-                        EigenObjectRecognizer recognizer = new EigenObjectRecognizer(trainingImages.ToArray(), labels.ToArray(), 1500, ref termCriterias);
-                        //name = recognizer.Recognize(result);
-                        //Frame.Draw(name, ref font, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.Red));
+                        MCvTermCriteria termCriterias = new MCvTermCriteria(numberOfElements, 0.001);
+                        EigenObjectRecognizer recognizer = new EigenObjectRecognizer(usersImages.ToArray(), usersIds.ToArray(), 1500, ref termCriterias);
+                        EigenObjectRecognizer.RecognitionResult recognizedId = recognizer.Recognize(faceImage);
+
+                        //Jei atpažino
+                        if (recognizedId != null)
+                        {
+                            //currentFrame.Draw(recognizedId.Label, ref font, new Point(faceData.rect.X - 2, faceData.rect.Y - 2), new Bgr(Color.Red)); //Nereikia piesti prie zmogaus jo id, tą padarys messageboxas
+
+                            //Šaukia event'ą FoundRegisteredFace, su kuriuo vėliau dirbs UCLogin
+                            OnFoundRegisteredFace(this, new RecognisedPersonEventArgs(recognizedId.Label));
+                        }
 
                     }
-                    //Users[t - 1] = name;
-                    
-                    Users.Add("");
                 }
-                cameraBox.Image = Frame.ToBitmap();
-                names = "";
-                Users.Clear();
+                cameraBox.Image = currentFrame.ToBitmap();
             }
+        }
 
+        public void StopRecognition()
+        {
+            Application.Idle -= FrameProcedure;
+        }
 
+        public void ContinueRecognition(PictureBox pictureBox, Capture capture)
+        {
+            GetAllRegisteredUsersInfo();
+            Display(pictureBox, capture);
         }
 
     }
