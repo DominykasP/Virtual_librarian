@@ -211,7 +211,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="cvextern.dll" />
     <Content Include="License-LGPL.txt" />
+    <Content Include="opencv_core2410.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="opencv_imgproc2410.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\barcode-scanner.png" />
     <Content Include="Resources\icons8-barcode-64.png" />
     <EmbeddedResource Include="x86\cudart32_65.dll">
