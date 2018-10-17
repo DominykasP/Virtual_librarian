@@ -45,4 +45,22 @@
     <PhoneNumber>+37012121212</PhoneNumber>
     <Email>eimantas@gmail.com</Email>
   </Zmogus>
+  <Zmogus>
+    <Id>5</Id>
+    <Name>Martynas</Name>
+    <Surname>Baškys</Surname>
+    <Password>1234</Password>
+    <Birthdate>2018-10-17T19:31:23.5298131+03:00</Birthdate>
+    <PhoneNumber />
+    <Email>g@g.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>6</Id>
+    <Name />
+    <Surname />
+    <Password />
+    <Birthdate>2018-10-17T19:41:25.1112673+03:00</Birthdate>
+    <PhoneNumber />
+    <Email>fsdf@fds.com</Email>
+  </Zmogus>
 </ArrayOfZmogus>
