@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,19 +9,21 @@ using Emgu.CV.Structure;
 using System.Reflection;
 using System.IO;
 using Virtual_librarian.Camera;
+using System.Drawing;
 
-namespace Virtual_librarian
+namespace Virtual_librarian.Camera
 {
-    class FaceRecognition
+    class FaceRegistration
     {
         //Webcam'o kintamieji
         Capture camera;
-        PictureBox cameraBox;
+        PictureBox picCamera;
+        PictureBox picFace;
         Image<Bgr, byte> currentFrame;
 
         //Visų naudotojų info
         int numberOfElements;
-        List<Image<Gray, byte>> usersImages;
+        List<Image> usersImages;
         List<String> usersIds;
 
         //Face recognition'o kintamieji
@@ -33,23 +32,30 @@ namespace Virtual_librarian
         string pathToHaarCascade = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"x86\haarcascade_frontalface_default.xml");
         Image<Gray, byte> faceImage;
         Image<Gray, byte> grayFrame;
+        public int howManyImagesOfOnePerson;
+        Timer timer;
 
         //Event'o kintamieji
         public delegate void FoundHandler(object sender, RecognisedPersonEventArgs e);
         public event FoundHandler OnFoundRegisteredFace;
 
-        public FaceRecognition()
+        public FaceRegistration(int howManyImagesOfOnePerson)
         {
-            usersImages = new List<Image<Gray, byte>>();
+            picFace = new PictureBox();
+
+            usersImages = new List<Image>();
             usersIds = new List<String>();
 
             font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 0.6d, 0.6d);
             faceHaarCascase = new HaarCascade(pathToHaarCascade);
+            timer = new Timer();
 
-            GetAllRegisteredUsersInfo();
+            this.howManyImagesOfOnePerson = howManyImagesOfOnePerson;
+
+            GetRegisteredUsersCount();
         }
 
-        private void GetAllRegisteredUsersInfo()
+        private void GetRegisteredUsersCount()
         {
             try
             {
@@ -57,23 +63,16 @@ namespace Virtual_librarian
                 string[] userIdsFromFile = userIdsFromFileOneLine.Split('%');
                 //Pirmas skaicius - kiek is viso yra foto
                 numberOfElements = Convert.ToInt16(userIdsFromFile[0]);
-                string oneFace;
-                for (int i = 1; i < numberOfElements + 1; i++)
-                {
-                    oneFace = "face" + i + ".bmp";
-                    usersImages.Add(new Image<Gray, byte>("..\\..\\Faces\\" + oneFace));
-                    usersIds.Add(userIdsFromFile[i]);
-                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Klaida pasiekiant veidų failus","Klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Klaida pasiekiant veidų failus", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         public void Display(PictureBox pictureBox, Capture capture)
         {
-            cameraBox = pictureBox;
+            picCamera = pictureBox;
             camera = capture;
 
             if (camera != null)
@@ -96,26 +95,51 @@ namespace Virtual_librarian
                 {
                     faceImage = currentFrame.Copy(faceData.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                     currentFrame.Draw(faceData.rect, new Bgr(Color.Green), 3);
-
-                    //Bando detektintus veidus atpažinti
-                    if (usersImages.ToArray().Length != 0)
-                    {
-                        MCvTermCriteria termCriterias = new MCvTermCriteria(numberOfElements, 0.001);
-                        EigenObjectRecognizer recognizer = new EigenObjectRecognizer(usersImages.ToArray(), usersIds.ToArray(), 1500, ref termCriterias);
-                        EigenObjectRecognizer.RecognitionResult recognizedId = recognizer.Recognize(faceImage);
-
-                        //Jei atpažino
-                        if (recognizedId != null)
-                        {
-                            //currentFrame.Draw(recognizedId.Label, ref font, new Point(faceData.rect.X - 2, faceData.rect.Y - 2), new Bgr(Color.Red)); //Nereikia piesti prie zmogaus jo id, tą padarys messageboxas
-
-                            //Šaukia event'ą FoundRegisteredFace, su kuriuo vėliau dirbs UCLogin
-                            OnFoundRegisteredFace(this, new RecognisedPersonEventArgs(recognizedId.Label));
-                        }
-
-                    }
+                    picFace.Image = faceImage.ToBitmap();
                 }
-                cameraBox.Image = currentFrame.ToBitmap();
+                picCamera.Image = currentFrame.ToBitmap();
+            }
+        }
+
+        public void saveFaceImages()
+        {
+            timer.Interval = 500;
+            timer.Enabled = true;
+
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            usersImages.Add(picFace.Image);
+
+            if (usersImages.Count == howManyImagesOfOnePerson)
+            {
+                timer.Enabled = false;
+
+                int kuriRodo = 0;
+
+                Form formaParodymui = new Form();
+                PictureBox nuotrauka = new PictureBox();
+                nuotrauka.Height = formaParodymui.Height;
+                nuotrauka.Width = formaParodymui.Width;
+                nuotrauka.SizeMode = PictureBoxSizeMode.StretchImage;
+                nuotrauka.Image = usersImages[kuriRodo];
+                Button toliau = new Button();
+                toliau.Text = "Kita foto";
+                toliau.Click += delegate
+                {
+                    kuriRodo++;
+                    if (kuriRodo == 10)
+                    {
+                        kuriRodo = 0;
+                    }
+                    nuotrauka.Image = usersImages[kuriRodo];
+                };
+                formaParodymui.Controls.Add(nuotrauka);
+                formaParodymui.Controls.Add(toliau);
+                nuotrauka.SendToBack();
+                formaParodymui.ShowDialog();
             }
         }
 
@@ -126,7 +150,7 @@ namespace Virtual_librarian
 
         public void ContinueRecognition(PictureBox pictureBox, Capture capture)
         {
-            //GetAllRegisteredUsersInfo();
+            //GetRegisteredUsersCount();
             Display(pictureBox, capture);
         }
 

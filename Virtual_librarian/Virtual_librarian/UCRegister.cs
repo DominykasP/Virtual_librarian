@@ -10,32 +10,48 @@ using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using MetroFramework;
+using Virtual_librarian.Camera;
 
 namespace Virtual_librarian
 {
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
-        private Capture capture;
-        
+        UseCamera camera;
+        FaceRegistration faceRegistration;
+
 
         public UCRegister(MainForm mainForma)
         {
             InitializeComponent();
             mainForm = mainForma;
+
+            camera = new UseCamera();
+            faceRegistration = new FaceRegistration(10);
+
+            if (camera.Camera == null)
+            {
+                camera.TurnOn();
+
+                faceRegistration.Display(picCamera, camera.Camera);
+            }
         }
 
         private void UCRegister_Load(object sender, EventArgs e)
         {
-            
+            btnTakePicture.Visible = true;
+            lblTakingPictures.Visible = false;
+            prbTakingPictures.Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (capture != null)
+            if (camera.Camera != null)
             {
-                capture.Dispose();
+                camera.TurnOff();
             }
+            faceRegistration.StopRecognition();
+
             UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
             ucChooseLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Remove(this);
@@ -44,10 +60,16 @@ namespace Virtual_librarian
 
         private void btnRegistruoti_Click(object sender, EventArgs e)
         {
-            DateTime gimimoData = dtpGimimoData.Value;
-            if (capture != null)
+            if (camera.Camera != null)
             {
-                capture.Dispose();
+                camera.TurnOff();
+            }
+            faceRegistration.StopRecognition();
+
+            DateTime gimimoData = dtpGimimoData.Value;
+            if (camera.Camera != null)
+            {
+                camera.TurnOff();
             }
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
@@ -79,27 +101,11 @@ namespace Virtual_librarian
 
         private void btnTakePicture_Click(object sender, EventArgs e)
         {
-            if (capture == null)
-            {
-                capture = new Capture(0);
+            btnTakePicture.Visible = false;
+            prbTakingPictures.Visible = true;
+            lblTakingPictures.Visible = true;
 
-            }
-            capture.ImageGrabbed += Capture_ImageGrabbed;
-            capture.Start();
-        }
-
-        private void Capture_ImageGrabbed(object sender, EventArgs e)
-        {
-            try
-            {
-
-                
-                //pictureBox2.Image = m.ToImage<Bgr, byte>().ToBitmap();
-            }
-            catch (Exception)
-            {
-
-            }
+            faceRegistration.saveFaceImages();
         }
     }
 }
