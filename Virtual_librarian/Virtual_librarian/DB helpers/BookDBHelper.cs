@@ -35,7 +35,6 @@ namespace Virtual_librarian.DB_helpers
             var knyguSarasas = knygos.OfType<Knyga>();
             var rastosKnygos = from knyga in knyguSarasas
                                where (knyga.Isbn == isbn) && (knyga.Kodas == kodas)
-                               orderby knyga
                                select knyga;
             foreach(var knyga in rastosKnygos)
             {
@@ -76,7 +75,6 @@ namespace Virtual_librarian.DB_helpers
             var knyguSarasas = knygos.OfType<Knyga>();
             var rastosKnygos = from knyga in knyguSarasas
                                where knyga.Equals(grazinamaKnyga)
-                               orderby knyga
                                select knyga;
             foreach (var knyga in rastosKnygos)
             {
@@ -133,7 +131,6 @@ namespace Virtual_librarian.DB_helpers
             var knyguSarasas = knygos.OfType<Knyga>();
             var rastosKnygos = from knyga in knyguSarasas
                                where knyga.Equals(paimamaKnyga)
-                               orderby knyga
                                select knyga;
             foreach (var knyga in rastosKnygos)
             {
@@ -158,7 +155,6 @@ namespace Virtual_librarian.DB_helpers
             var knyguSarasas = knygos.OfType<Knyga>();
             var rastosKnygos = from knyga in knyguSarasas
                                where knyga.Equals(pratesiamaKnyga)
-                               orderby knyga
                                select knyga;
             foreach (var knyga in rastosKnygos)
             {
