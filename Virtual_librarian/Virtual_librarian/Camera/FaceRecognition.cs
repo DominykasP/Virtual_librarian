@@ -12,6 +12,7 @@ using Emgu.CV.Structure;
 using System.Reflection;
 using System.IO;
 using Virtual_librarian.Camera;
+using Virtual_librarian.DB_helpers;
 
 namespace Virtual_librarian
 {
@@ -53,17 +54,8 @@ namespace Virtual_librarian
         {
             try
             {
-                string userIdsFromFileOneLine = File.ReadAllText("..\\..\\Faces\\faces.txt");
-                string[] userIdsFromFile = userIdsFromFileOneLine.Split('%');
-                //Pirmas skaicius - kiek is viso yra foto
-                numberOfElements = Convert.ToInt16(userIdsFromFile[0]);
-                string oneFace;
-                for (int i = 1; i < numberOfElements + 1; i++)
-                {
-                    oneFace = "face" + i + ".bmp";
-                    usersImages.Add(new Image<Gray, byte>("..\\..\\Faces\\" + oneFace));
-                    usersIds.Add(userIdsFromFile[i]);
-                }
+                usersIds = DarbasSuFailais.NuskaitytiIrasytusID("..\\..\\Faces\\faces.txt");
+                usersImages = DarbasSuFailais.NuskaitytiIrasytasNuotraukas("..\\..\\Faces\\");
             }
             catch (Exception ex)
             {
@@ -100,7 +92,7 @@ namespace Virtual_librarian
                     //Bando detektintus veidus atpažinti
                     if (usersImages.ToArray().Length != 0)
                     {
-                        MCvTermCriteria termCriterias = new MCvTermCriteria(numberOfElements, 0.001);
+                        MCvTermCriteria termCriterias = new MCvTermCriteria(usersImages.Count, 0.001);
                         EigenObjectRecognizer recognizer = new EigenObjectRecognizer(usersImages.ToArray(), usersIds.ToArray(), 1500, ref termCriterias);
                         EigenObjectRecognizer.RecognitionResult recognizedId = recognizer.Recognize(faceImage);
 

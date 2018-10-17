@@ -10,6 +10,7 @@ using System.Reflection;
 using System.IO;
 using Virtual_librarian.Camera;
 using System.Drawing;
+using Virtual_librarian.DB_helpers;
 
 namespace Virtual_librarian.Camera
 {
@@ -25,7 +26,6 @@ namespace Virtual_librarian.Camera
         int numberOfElements;
         List<Image> usersImages;
         List<String> usersIds;
-        int personID;
 
         //Face recognition'o kintamieji
         MCvFont font;
@@ -40,7 +40,7 @@ namespace Virtual_librarian.Camera
         //Event'o kintamieji
         public event EventHandler OnPictureTaken;
 
-        public FaceRegistration(int howManyImagesOfOnePerson, int personID)
+        public FaceRegistration(int howManyImagesOfOnePerson)
         {
             picFace = new PictureBox();
 
@@ -52,7 +52,6 @@ namespace Virtual_librarian.Camera
             timer = new Timer();
 
             this.howManyImagesOfOnePerson = howManyImagesOfOnePerson;
-            this.personID = personID;
 
             GetRegisteredUsersCount();
         }
@@ -61,13 +60,7 @@ namespace Virtual_librarian.Camera
         {
             try
             {
-                string userIdsFromFileOneLine = File.ReadAllText("..\\..\\Faces\\faces.txt");
-                string[] userIdsFromFile = userIdsFromFileOneLine.Split('%');
-                usersIds.AddRange(userIdsFromFile);
-                usersIds.RemoveAt(0); //Pašalinam veidų kiekį
-
-                //Pirmas skaicius - kiek is viso yra foto
-                numberOfElements = Convert.ToInt16(userIdsFromFile[0]);
+                usersIds = DarbasSuFailais.NuskaitytiIrasytusID("..\\..\\Faces\\faces.txt");
             }
             catch (Exception ex)
             {

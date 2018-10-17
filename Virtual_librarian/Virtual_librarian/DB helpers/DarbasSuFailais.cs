@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Emgu.CV;
+using Emgu.CV.Structure;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -36,5 +39,70 @@ namespace Virtual_librarian.DB_helpers
                 return default(T);
             }
         }
+
+        //----------------------------------//
+        private static List<String> naudotojuID;
+        
+        private static void NustatytiNaudotojuID(string keliasIFaila)
+        {
+            string visuNaudotojuIDEilute = File.ReadAllText(keliasIFaila);
+            naudotojuID = visuNaudotojuIDEilute.Split('%').ToList();
+            naudotojuID.RemoveAt(naudotojuID.Count - 1);
+
+            /*
+            naudotojuID = NuskaitytiIsFailo<List<String>>(keliasIFaila);
+            */
+        }
+
+        public static List<String> NuskaitytiIrasytusID(string keliasIFaila) //"..\\..\\Faces\\faces.txt"
+        {
+            NustatytiNaudotojuID(keliasIFaila);
+            return naudotojuID;
+        }
+
+        public static List<Image<Gray, byte>> NuskaitytiIrasytasNuotraukas(string keliasIFolderi) //"..\\..\\Faces\\"
+        {
+            if (naudotojuID == null)
+            {
+                return null;
+            }
+            List<Image<Gray, byte>> nuotraukos = new List<Image<Gray, byte>>();
+
+            for (int i = 1; i <= naudotojuID.Count; i++)
+            {
+                nuotraukos.Add(new Image<Gray, byte>(keliasIFolderi + "face" + i + ".bmp"));
+            }
+
+            return nuotraukos;
+
+        }
+
+        public static void IrasytiID(string keliasIFaila, int naudotojoID, int kiekKartu) //"..\\..\\Faces\\Faces.txt"
+        {
+            for (int i = 0; i < kiekKartu; i++)
+            {
+                naudotojuID.Add(naudotojoID.ToString());
+                File.AppendAllText(keliasIFaila, naudotojoID.ToString() + "%");
+            }
+
+            /*
+            for (int i = 0; i < kiekKartu; i++)
+            {
+                naudotojuID.Add(naudotojoID.ToString());
+            }
+            IrasytiIFaila<List<String>>(keliasIFaila, naudotojuID);
+            */
+        }
+
+        public static void IrasytiNuotraukas(string keliasIFolderi, List<Image> nuotraukuSarasas, int naudotojoID) //"..\\..\\Faces\\face"
+        {
+            int nuotraukosNumeris = naudotojuID.Count;
+
+            foreach (Image nuotrauka in nuotraukuSarasas)
+            {
+                nuotrauka.Save(keliasIFolderi + "face" + nuotraukosNumeris-- + ".bmp");
+            }
+        }
+
     }
 }

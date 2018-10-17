@@ -11,6 +11,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using MetroFramework;
 using Virtual_librarian.Camera;
+using Virtual_librarian.DB_helpers;
 
 namespace Virtual_librarian
 {
@@ -28,7 +29,7 @@ namespace Virtual_librarian
             mainForm = mainForma;
 
             camera = new UseCamera();
-            faceRegistration = new FaceRegistration(howManyImagesOfOnePerson, mainForm.humanDBHelper.getNextId());
+            faceRegistration = new FaceRegistration(howManyImagesOfOnePerson);
 
             if (camera.Camera == null)
             {
@@ -69,11 +70,11 @@ namespace Virtual_librarian
 
             if (!sablonas.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
             {
-                MetroMessageBox.Show(this,"Neteisingai įvestas elektroninis paštas","Klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "Neteisingai įvestas elektroninis paštas", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Clear();
                 txtEmail.Focus();
             }
-            else if(prbTakingPictures.Value != howManyImagesOfOnePerson)
+            else if (prbTakingPictures.Value != howManyImagesOfOnePerson)
             {
                 MetroMessageBox.Show(this, "Norint užsiregistruoti dar reikia nusifotografuoti", "Registracija", MessageBoxButtons.OK);
             }
@@ -85,17 +86,13 @@ namespace Virtual_librarian
                     camera.TurnOff();
                 }
 
-                List<Image> userImages = faceRegistration.getFaceImages();
-                int numberOfElements = 1;
-                foreach (Image image in userImages)
-                {
-                    numberOfElements++;
-                    image.Save("..\\..\\Faces\\face" + numberOfElements + ".bmp");
-                    System.IO.File.AppendAllText("..\\..\\Faces\\Faces.txt", mainForm.humanDBHelper.getNextId().ToString() + "%");
-                }
+                int naujasID = mainForm.humanDBHelper.getNextId();
 
-                /*
-                Zmogus naujasZmogus = new Zmogus(mainForm.humanDBHelper.getNextId(), txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
+                List<Image> userImages = faceRegistration.getFaceImages();
+                DarbasSuFailais.IrasytiID("..\\..\\Faces\\Faces.txt", naujasID, howManyImagesOfOnePerson);
+                DarbasSuFailais.IrasytiNuotraukas("..\\..\\Faces\\", userImages, naujasID);
+
+                Zmogus naujasZmogus = new Zmogus(naujasID, txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
                 if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
                 {
                     UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
@@ -107,10 +104,9 @@ namespace Virtual_librarian
                 {
                     MetroMessageBox.Show(this, "Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                */
             }
-                // }
-            }
+            // }
+        }
 
         private void btnTakePicture_Click(object sender, EventArgs e)
         {
