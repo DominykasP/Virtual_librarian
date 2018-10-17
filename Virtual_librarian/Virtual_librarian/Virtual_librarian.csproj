@@ -94,6 +94,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\BarcodeRecognition.cs" />
+    <Compile Include="Camera\RecognisedBookEventArgs.cs" />
     <Compile Include="Camera\UseCamera.cs" />
     <Compile Include="Camera\FaceRecognition.cs" />
     <Compile Include="DB helpers interfaces\BookDBHelperInterface.cs" />

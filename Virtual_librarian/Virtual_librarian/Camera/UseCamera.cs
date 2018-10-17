@@ -7,7 +7,7 @@ using Emgu.CV;
 
 namespace Virtual_librarian
 {
-    class UseCamera
+    public class UseCamera
     {
         public Capture Camera { get; set; }
         public UseCamera()

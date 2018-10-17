@@ -12,23 +12,39 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
 using Spire.Barcode;
+using Virtual_librarian.DB_helpers;
+using MetroFramework;
+using Virtual_librarian.Camera;
 
 namespace Virtual_librarian
 {
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
+        BarcodeRecognition recognition;
         private static int nEventsFired = 0;
-        public Capture camera;
+        public UseCamera camera;
         private object lockobject = new object();
         public List<Bitmap> images;
-        Image<Bgr, byte> Frame;
+        Image<Bgr, byte> frame;
+        BookDBHelper bookDBHelper = new BookDBHelper();
+        private BindingList<Knyga> manoUzklausos = new BindingList<Knyga>();
+        BindingList<Knyga> visosKnygos;
+        String[] barcode;
+        Zmogus logedInUser;
+
 
 
         public UCScanBook()
         {
+            camera = new UseCamera();
+            
             InitializeComponent();
         }
-
+        public bool setUser(Zmogus user)
+        {
+            logedInUser = user;
+            return true;
+        }
         private void UCScanBook_Load(object sender, EventArgs e)
         {
 
@@ -36,47 +52,132 @@ namespace Virtual_librarian
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (camera == null)
-            {
-                camera = new Capture(0);
+            
+            camera.turnOn();
+            recognition = new BarcodeRecognition(cameraBox, camera);
+            recognition.startRecognising();
 
-            }
-            images = new List<Bitmap>();
-            nEventsFired = 0;
-            timer1.Interval = 2000;
-            timer1.Start();
-            camera.Start();
-            Application.Idle += new EventHandler(FrameProcedure);
+            recognition.OnBookRecognised += Recognition_OnBookRecognised;
+
+            //timer1.Interval = 2000;
+            //timer1.Start();
+            /* visosKnygos = new BindingList<Knyga>(bookDBHelper.gautiVisasKnygas());
+             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
+             images = new List<Bitmap>();
+             nEventsFired = 0;
+
+
+             Application.Idle += new EventHandler(FrameProcedure);*/
         }
-        private void FrameProcedure(object sender, EventArgs e)
+
+        private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
         {
-            try
+            Knyga knyga = e.book;
+
+            BarcodeBox1.Clear();
+
+            barcode = recognition.barcode;
+
+
+            if (barcode.Length != 0 && barcode[0].Length > 10)
             {
 
-                Frame = camera.QueryFrame();
-                cameraBox.Image = Frame.ToBitmap();
-            }
-            catch (Exception)
-            {
+                BarcodeBox1.AppendText(barcode[0]);
+                DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + knyga.Autorius + "\n" +
+                                "Book Name: " + knyga.Pavadinimas + " \n" +
+                                "Book ISBN: " + knyga.Isbn + "\n" +
+                                "Do you want to take this book? ", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                if (dr == DialogResult.Yes)
+                {
+                    bool arSekmingai = bookDBHelper.paimtiKnyga(knyga, logedInUser);
+                    if (arSekmingai == true)
+                    {
 
+                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(this, "Klaida paimant knygą", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
 
+
+
+
+        /* public Knyga ContainsBook()
+         {
+             bool contains = false;
+             Knyga knyga = null;
+             try
+             {
+                 knyga = visosKnygos.SingleOrDefault(k => k.Isbn == barcode[0]);
+             }
+             catch (Exception ex)
+             {
+
+             }
+             if (knyga != null)
+             {
+                 contains = true;
+             }
+             return knyga;
+         }*/
+        /* private void FrameProcedure(object sender, EventArgs e)
+         {
+             try
+             {
+
+                 frame = camera.Camera.QueryFrame();
+                 cameraBox.Image = frame.ToBitmap();
+             }
+             catch (Exception)
+             {
+
+             }
+         }*/
+
+            /*
         private void timer1_Tick(object sender, EventArgs e)
         {
             BarcodeBox1.Clear();
-            
-            Image<Bgr, Byte> ColordImage = Frame;
+
+            Image<Bgr, Byte> ColordImage = frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
-            
 
-            String[] Barcode = BarcodeScanner.Scan(grayImage.ToBitmap());
 
-            if (Barcode.Length != 0 && Barcode[0].Length > 10)
+            barcode = recognition.getBarcodesString();
+
+
+            if (barcode.Length != 0 && barcode[0].Length > 10)
             {
-                timer1.Stop();
-                camera.Pause();
-                BarcodeBox1.AppendText(Barcode[0]);
+
+                BarcodeBox1.AppendText(barcode[0]);
+
+                if (knyga != null)
+                {
+                    MetroMessageBox.Show(this, "Book exists");
+                    DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + knyga.Autorius + "\n" +
+                                    "Book Name: " + knyga.Pavadinimas + " \n" +
+                                    "Book ISBN: " + knyga.Isbn + "\n" +
+                                    "Do you want to take this book? ", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Not Exist");
+                }
+                bool arSekmingai = bookDBHelper.paimtiKnyga(knyga, logedInUser);
+                if (arSekmingai == true)
+                {
+
+                    MetroMessageBox.Show(this, "Knyga sėkmingai paimta", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    MetroMessageBox.Show(this, "Klaida paimant knygą", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
 
             }
 
@@ -90,9 +191,11 @@ namespace Virtual_librarian
                 {
                     camera.Dispose();
                     camera = null;
-                    
+
                 }
             }
         }
+        */
+
     }
 }
