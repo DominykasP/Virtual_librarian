@@ -19,6 +19,7 @@ namespace Virtual_librarian
         private MainForm mainForm;
         UseCamera camera;
         FaceRegistration faceRegistration;
+        int howManyImagesOfOnePerson = 5;
 
 
         public UCRegister(MainForm mainForma)
@@ -27,7 +28,7 @@ namespace Virtual_librarian
             mainForm = mainForma;
 
             camera = new UseCamera();
-            faceRegistration = new FaceRegistration(10);
+            faceRegistration = new FaceRegistration(howManyImagesOfOnePerson, mainForm.humanDBHelper.getNextId());
 
             if (camera.Camera == null)
             {
@@ -46,11 +47,11 @@ namespace Virtual_librarian
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            faceRegistration.StopRecognition();
             if (camera.Camera != null)
             {
                 camera.TurnOff();
             }
-            faceRegistration.StopRecognition();
 
             UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
             ucChooseLogin.Dock = DockStyle.Bottom;
@@ -60,17 +61,8 @@ namespace Virtual_librarian
 
         private void btnRegistruoti_Click(object sender, EventArgs e)
         {
-            if (camera.Camera != null)
-            {
-                camera.TurnOff();
-            }
-            faceRegistration.StopRecognition();
-
             DateTime gimimoData = dtpGimimoData.Value;
-            if (camera.Camera != null)
-            {
-                camera.TurnOff();
-            }
+
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
             System.Text.RegularExpressions.Regex sablonas = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
@@ -81,8 +73,28 @@ namespace Virtual_librarian
                 txtEmail.Clear();
                 txtEmail.Focus();
             }
+            else if(prbTakingPictures.Value != howManyImagesOfOnePerson)
+            {
+                MetroMessageBox.Show(this, "Norint užsiregistruoti dar reikia nusifotografuoti", "Registracija", MessageBoxButtons.OK);
+            }
             else
             {
+                faceRegistration.StopRecognition();
+                if (camera.Camera != null)
+                {
+                    camera.TurnOff();
+                }
+
+                List<Image> userImages = faceRegistration.getFaceImages();
+                int numberOfElements = 1;
+                foreach (Image image in userImages)
+                {
+                    numberOfElements++;
+                    image.Save("..\\..\\Faces\\face" + numberOfElements + ".bmp");
+                    System.IO.File.AppendAllText("..\\..\\Faces\\Faces.txt", mainForm.humanDBHelper.getNextId().ToString() + "%");
+                }
+
+                /*
                 Zmogus naujasZmogus = new Zmogus(mainForm.humanDBHelper.getNextId(), txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
                 if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
                 {
@@ -95,9 +107,10 @@ namespace Virtual_librarian
                 {
                     MetroMessageBox.Show(this, "Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                */
             }
-            // }
-        }
+                // }
+            }
 
         private void btnTakePicture_Click(object sender, EventArgs e)
         {
@@ -105,7 +118,23 @@ namespace Virtual_librarian
             prbTakingPictures.Visible = true;
             lblTakingPictures.Visible = true;
 
+            prbTakingPictures.Maximum = howManyImagesOfOnePerson;
+            prbTakingPictures.Step = 1;
+
             faceRegistration.saveFaceImages();
+            faceRegistration.OnPictureTaken += FaceRegistration_OnPictureTaken;
+        }
+
+        private void FaceRegistration_OnPictureTaken(object sender, EventArgs e)
+        {
+            prbTakingPictures.Value += prbTakingPictures.Step; //Padidinam vienu progress bar'ą
+            if (prbTakingPictures.Value == howManyImagesOfOnePerson) //Jei padarė reikiamą kiekį nuotraukų
+            {
+                faceRegistration.StopRecognition();
+                camera.TurnOff();
+                picCamera.Image = Properties.Resources.avatar;
+                lblTakingPictures.Text = "Nuotraukos sėkmingai išsaugotos";
+            }
         }
     }
 }

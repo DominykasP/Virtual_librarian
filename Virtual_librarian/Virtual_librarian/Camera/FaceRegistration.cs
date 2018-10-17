@@ -25,6 +25,7 @@ namespace Virtual_librarian.Camera
         int numberOfElements;
         List<Image> usersImages;
         List<String> usersIds;
+        int personID;
 
         //Face recognition'o kintamieji
         MCvFont font;
@@ -32,14 +33,14 @@ namespace Virtual_librarian.Camera
         string pathToHaarCascade = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"x86\haarcascade_frontalface_default.xml");
         Image<Gray, byte> faceImage;
         Image<Gray, byte> grayFrame;
+        MCvAvgComp[][] facesDetectedNow;
         public int howManyImagesOfOnePerson;
         Timer timer;
 
         //Event'o kintamieji
-        public delegate void FoundHandler(object sender, RecognisedPersonEventArgs e);
-        public event FoundHandler OnFoundRegisteredFace;
+        public event EventHandler OnPictureTaken;
 
-        public FaceRegistration(int howManyImagesOfOnePerson)
+        public FaceRegistration(int howManyImagesOfOnePerson, int personID)
         {
             picFace = new PictureBox();
 
@@ -51,6 +52,7 @@ namespace Virtual_librarian.Camera
             timer = new Timer();
 
             this.howManyImagesOfOnePerson = howManyImagesOfOnePerson;
+            this.personID = personID;
 
             GetRegisteredUsersCount();
         }
@@ -61,6 +63,9 @@ namespace Virtual_librarian.Camera
             {
                 string userIdsFromFileOneLine = File.ReadAllText("..\\..\\Faces\\faces.txt");
                 string[] userIdsFromFile = userIdsFromFileOneLine.Split('%');
+                usersIds.AddRange(userIdsFromFile);
+                usersIds.RemoveAt(0); //Pašalinam veidų kiekį
+
                 //Pirmas skaicius - kiek is viso yra foto
                 numberOfElements = Convert.ToInt16(userIdsFromFile[0]);
             }
@@ -90,7 +95,7 @@ namespace Virtual_librarian.Camera
                 grayFrame = currentFrame.Convert<Gray, Byte>();
 
                 //Detektina veidus frame
-                MCvAvgComp[][] facesDetectedNow = grayFrame.DetectHaarCascade(faceHaarCascase, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
+                facesDetectedNow = grayFrame.DetectHaarCascade(faceHaarCascase, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(20, 20));
                 foreach (MCvAvgComp faceData in facesDetectedNow[0])
                 {
                     faceImage = currentFrame.Copy(faceData.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
@@ -109,14 +114,33 @@ namespace Virtual_librarian.Camera
             timer.Tick += Timer_Tick;
         }
 
+        public List<Image> getFaceImages()
+        {
+            return usersImages;
+        }
+
         private void Timer_Tick(object sender, EventArgs e)
         {
-            usersImages.Add(picFace.Image);
+            if (facesDetectedNow[0].Count() >= 1) //Jei aptiktas bent vienas veidas
+            {
+                usersImages.Add(picFace.Image);
+                OnPictureTaken(this, EventArgs.Empty);
+            }
 
             if (usersImages.Count == howManyImagesOfOnePerson)
             {
                 timer.Enabled = false;
 
+                //Išsaugom padarytas nuotraukas
+                /*
+                foreach (Image image in usersImages)
+                {
+                    numberOfElements++;
+                    image.Save("..\\..\\Faces\\face" + numberOfElements + ".bmp");
+                    File.AppendAllText("..\\..\\Faces\\Faces.txt", personID.ToString() + "% ");
+                }
+                */
+                /*
                 int kuriRodo = 0;
 
                 Form formaParodymui = new Form();
@@ -130,7 +154,7 @@ namespace Virtual_librarian.Camera
                 toliau.Click += delegate
                 {
                     kuriRodo++;
-                    if (kuriRodo == 10)
+                    if (kuriRodo == howManyImagesOfOnePerson)
                     {
                         kuriRodo = 0;
                     }
@@ -140,12 +164,14 @@ namespace Virtual_librarian.Camera
                 formaParodymui.Controls.Add(toliau);
                 nuotrauka.SendToBack();
                 formaParodymui.ShowDialog();
+                */
             }
         }
 
         public void StopRecognition()
         {
             Application.Idle -= FrameProcedure;
+            timer.Enabled = false;
         }
 
         public void ContinueRecognition(PictureBox pictureBox, Capture capture)
