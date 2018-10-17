@@ -21,14 +21,11 @@ namespace Virtual_librarian
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
         BarcodeRecognition recognition;
-        private static int nEventsFired = 0;
+        
         public UseCamera camera;
         private object lockobject = new object();
         public List<Bitmap> images;
-        Image<Bgr, byte> frame;
         BookDBHelper bookDBHelper = new BookDBHelper();
-        private BindingList<Knyga> manoUzklausos = new BindingList<Knyga>();
-        BindingList<Knyga> visosKnygos;
         String[] barcode;
         Zmogus logedInUser;
 
@@ -59,15 +56,7 @@ namespace Virtual_librarian
 
             recognition.OnBookRecognised += Recognition_OnBookRecognised;
 
-            //timer1.Interval = 2000;
-            //timer1.Start();
-            /* visosKnygos = new BindingList<Knyga>(bookDBHelper.gautiVisasKnygas());
-             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
-             images = new List<Bitmap>();
-             nEventsFired = 0;
-
-
-             Application.Idle += new EventHandler(FrameProcedure);*/
+           
         }
 
         private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
@@ -102,100 +91,6 @@ namespace Virtual_librarian
                 }
             }
         }
-
-
-
-
-        /* public Knyga ContainsBook()
-         {
-             bool contains = false;
-             Knyga knyga = null;
-             try
-             {
-                 knyga = visosKnygos.SingleOrDefault(k => k.Isbn == barcode[0]);
-             }
-             catch (Exception ex)
-             {
-
-             }
-             if (knyga != null)
-             {
-                 contains = true;
-             }
-             return knyga;
-         }*/
-        /* private void FrameProcedure(object sender, EventArgs e)
-         {
-             try
-             {
-
-                 frame = camera.Camera.QueryFrame();
-                 cameraBox.Image = frame.ToBitmap();
-             }
-             catch (Exception)
-             {
-
-             }
-         }*/
-
-            /*
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            BarcodeBox1.Clear();
-
-            Image<Bgr, Byte> ColordImage = frame;
-            Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
-
-
-            barcode = recognition.getBarcodesString();
-
-
-            if (barcode.Length != 0 && barcode[0].Length > 10)
-            {
-
-                BarcodeBox1.AppendText(barcode[0]);
-
-                if (knyga != null)
-                {
-                    MetroMessageBox.Show(this, "Book exists");
-                    DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + knyga.Autorius + "\n" +
-                                    "Book Name: " + knyga.Pavadinimas + " \n" +
-                                    "Book ISBN: " + knyga.Isbn + "\n" +
-                                    "Do you want to take this book? ", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-                }
-                else
-                {
-                    MetroMessageBox.Show(this, "Not Exist");
-                }
-                bool arSekmingai = bookDBHelper.paimtiKnyga(knyga, logedInUser);
-                if (arSekmingai == true)
-                {
-
-                    MetroMessageBox.Show(this, "Knyga sėkmingai paimta", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-                else
-                {
-                    MetroMessageBox.Show(this, "Klaida paimant knygą", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-
-
-            }
-
-
-
-            nEventsFired++;
-            if (nEventsFired == 20)
-            {
-                timer1.Stop();
-                if (camera != null)
-                {
-                    camera.Dispose();
-                    camera = null;
-
-                }
-            }
-        }
-        */
 
     }
 }

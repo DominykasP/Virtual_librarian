@@ -197,9 +197,8 @@ namespace Virtual_librarian.Camera
             bool contains = false;
             Knyga knyga = null;
             try
-            {
-                
-                knyga = visosKnygos.SingleOrDefault(k => k.Isbn == barcode[0]);
+            {               
+                knyga = visosKnygos.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
             }
             catch (Exception ex)
             {
