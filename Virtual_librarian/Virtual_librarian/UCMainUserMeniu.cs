@@ -58,9 +58,9 @@ namespace Virtual_librarian
 
             grdTerminai.DataSource = manoKnyguSource;
             grdTerminai.Columns["id"].Visible = false;
-            grdTerminai.Columns["Leidykla"].Visible = false;
-            grdTerminai.Columns["Metai"].Visible = false;
-            grdTerminai.Columns["Puslapiai"].Visible = false;
+            grdTerminai.Columns["Publisher"].Visible = false;
+            grdTerminai.Columns["Year"].Visible = false;
+            grdTerminai.Columns["Pages"].Visible = false;
         }
 
         private void pakrautiKnyguKataloga()
@@ -69,9 +69,9 @@ namespace Virtual_librarian
             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
             grdAllBooks.DataSource = visuKnyguSource;
             grdAllBooks.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
-            grdAllBooks.Columns["Paimta"].Visible = false;
-            grdAllBooks.Columns["Grazinti"].Visible = false;
-            grdAllBooks.Columns["LikoLaiko"].Visible = false;
+            grdAllBooks.Columns["TakenAt"].Visible = false;
+            grdAllBooks.Columns["ReturnAt"].Visible = false;
+            grdAllBooks.Columns["TimeRemaining"].Visible = false;
         }
 
         private void pakrautiManoUzklausas()
@@ -79,9 +79,9 @@ namespace Virtual_librarian
             BindingSource manoUzklausuSource = new BindingSource(manoUzklausos, null);
             grdManoUzklausos.DataSource = manoUzklausuSource;
             grdManoUzklausos.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
-            grdManoUzklausos.Columns["Paimta"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
-            grdManoUzklausos.Columns["Grazinti"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
-            grdManoUzklausos.Columns["LikoLaiko"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdManoUzklausos.Columns["TakenAt"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdManoUzklausos.Columns["ReturnAt"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdManoUzklausos.Columns["TimeRemaining"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
         }
 
         private void grdAllBooks_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -95,7 +95,7 @@ namespace Virtual_librarian
             if (dr == DialogResult.Yes)
             {
                 manoUzklausos.Add(pasirinktaKnyga);
-                MetroMessageBox.Show(this, "Book sėkmingai pridėta prie mano užklausų", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "Knyga sėkmingai pridėta prie mano užklausų", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -110,7 +110,7 @@ namespace Virtual_librarian
             if (dr == DialogResult.Yes)
             {
                 manoUzklausos.RemoveAt(pasirinktasIndex);
-                MetroMessageBox.Show(this, "Book sėkmingai pašalinta iš mano užklausų", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MetroMessageBox.Show(this, "Knyga sėkmingai pašalinta iš mano užklausų", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -132,7 +132,7 @@ namespace Virtual_librarian
             {
                 if (mainForm.bookDBHelper.RenewBook(pasirinktaKnyga) == true)
                 {
-                    MetroMessageBox.Show(this, "Book sėkmingai pratęsta", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
                 {
@@ -167,7 +167,7 @@ namespace Virtual_librarian
                     if (arSekmingai == true)
                     {
                         pakrautiTerminus();
-                        MetroMessageBox.Show(this, "Book sėkmingai paimta", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else
                     {
@@ -194,7 +194,7 @@ namespace Virtual_librarian
                     if (arSekmingai == true)
                     {
                         pakrautiTerminus();
-                        MetroMessageBox.Show(this, "Book sėkmingai grąžinta", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MetroMessageBox.Show(this, "Knyga sėkmingai grąžinta", pasirinktaKnyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else
                     {

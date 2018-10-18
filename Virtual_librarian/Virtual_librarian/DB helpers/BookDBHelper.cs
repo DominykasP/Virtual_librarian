@@ -12,7 +12,7 @@ namespace Virtual_librarian.DB_helpers
 
         public BookDBHelper()
         {
-            books = FileIO.ReadFromFile<List<Book>>("..\\..\\Duomenu failai\\knygos.xml");
+            books = FileIO.ReadFile<List<Book>>("..\\..\\Duomenu failai\\knygos.xml");
         }
 
         public Book GetBookByCodes(string isbn, string code)

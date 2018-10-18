@@ -13,7 +13,7 @@ namespace Virtual_librarian.DB_helpers
 
         public HumanDBHelper()
         {
-            users = FileIO.ReadFromFile<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml");
+            users = FileIO.ReadFile<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml");
         }
 
         public bool AddNewPerson(Person person)

@@ -19,7 +19,7 @@ namespace Virtual_librarian.DB_helpers
             return File.Exists(pathToFile);
         }
 
-        public static T ReadFromFile<T>(string pathToFile)
+        public static T ReadFile<T>(string pathToFile)
         {
             Object result;
 
