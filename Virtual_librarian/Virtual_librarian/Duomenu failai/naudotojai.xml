@@ -29,8 +29,8 @@
   </Zmogus>
   <Zmogus>
     <Id>3</Id>
-    <Name>Dominykas</Name>
-    <Surname>Pakalnis</Surname>
+    <Name>Do</Name>
+    <Surname>Pa</Surname>
     <Password>slaptazodis</Password>
     <Birthdate>1998-02-25T21:12:29</Birthdate>
     <PhoneNumber>+37061111111</PhoneNumber>
@@ -44,5 +44,41 @@
     <Birthdate>1998-02-25T00:15:17</Birthdate>
     <PhoneNumber>+37012121212</PhoneNumber>
     <Email>eimantas@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>5</Id>
+    <Name>Eligijus</Name>
+    <Surname>Puplinskas1</Surname>
+    <Password>slap</Password>
+    <Birthdate>1998-10-16T08:37:42</Birthdate>
+    <PhoneNumber>860233890</PhoneNumber>
+    <Email>eligijus.puplinskas@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>6</Id>
+    <Name>Dominykas</Name>
+    <Surname>Pakalnis</Surname>
+    <Password>slaptazodis</Password>
+    <Birthdate>2018-10-18T08:41:13.9974931+03:00</Birthdate>
+    <PhoneNumber>12345698</PhoneNumber>
+    <Email>dom@ps.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>7</Id>
+    <Name>Domantas</Name>
+    <Surname>Gabalis</Surname>
+    <Password>ą</Password>
+    <Birthdate>1998-03-22T08:43:09</Birthdate>
+    <PhoneNumber>111111</PhoneNumber>
+    <Email>domas@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>8</Id>
+    <Name>Martynas</Name>
+    <Surname>Baškys</Surname>
+    <Password>1234</Password>
+    <Birthdate>2018-10-18T08:45:09.6185829+03:00</Birthdate>
+    <PhoneNumber>112</PhoneNumber>
+    <Email>b@gmail.com</Email>
   </Zmogus>
 </ArrayOfZmogus>
