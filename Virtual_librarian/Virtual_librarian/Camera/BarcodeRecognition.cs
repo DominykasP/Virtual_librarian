@@ -163,6 +163,18 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------------------
         private Knyga recogniseBookBarcode()
         {
+            /*if (barcode.Length != 0)                                  //12 to 13 barcode numbers
+            {
+                
+                char[] BarcodeNumbersChar = barcode[0].ToCharArray();
+                int[] BNr = Array.ConvertAll(BarcodeNumbersChar, c => (int)Char.GetNumericValue(c));
+                int LastNumber = 10 - (BNr[0] + BNr[1] * 3 + BNr[2] + BNr[3] * 3 + BNr[4] + BNr[5] * 3 + BNr[6] + BNr[7] * 3 + BNr[8] + BNr[9] * 3 + BNr[10] + BNr[11] * 3 ) % 10;
+                Array.Resize(ref BNr, 13);
+                BNr[12] = LastNumber;
+                string result = string.Join("", BNr);
+                MessageBox.Show(result);
+
+            }*/
             if (barcode.Length != 0 && barcodesRecognisedCorect(10,16,barcode[0]))
             {
                 
