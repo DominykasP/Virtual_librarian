@@ -40,12 +40,12 @@ namespace Virtual_librarian
         
         private void btnLogInWIthName_Click(object sender, EventArgs e)
         {
-            Zmogus prisijungesZmogus = mainForm.humanDBHelper.getZmogusByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
+            Person LoggedInPerson = mainForm.humanDBHelper.getPersonByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
             camera.TurnOff();
             faceRecognition.Display(cameraBox, camera.Camera);
-            if (prisijungesZmogus != null)
+            if (LoggedInPerson != null)
             {
-                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, prisijungesZmogus);
+                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, LoggedInPerson);
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);

@@ -7,28 +7,28 @@ using System.Drawing;
 
 namespace Virtual_librarian.DB_helpers
 {
-    public class HumanDBHelper : HumanDBHelperInterface
+    public class HumanDBHelper : IPersonDBHelper
     {
-        private List<Zmogus> naudotojai;
+        private List<Person> users;
 
         public HumanDBHelper()
         {
-            naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");
+            users = FileIO.ReadFromFile<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml");
         }
 
-        public bool addNewZmogus(Zmogus zmogus)
+        public bool AddNewPerson(Person person)
         {
-            naudotojai.Add(zmogus);
+            users.Add(person);
 
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            return FileIO.FileWrite<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml", users);
         }
 
-        public bool deleteZmogus(Zmogus zmogus)
+        public bool DeletePerson(Person person)
         {
-            bool arSekmingai = naudotojai.Remove(zmogus);
+            bool arSekmingai = users.Remove(person);
             if (arSekmingai == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+                return FileIO.FileWrite<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml", users);
             }
             else
             {
@@ -36,42 +36,42 @@ namespace Virtual_librarian.DB_helpers
             }
         }
 
-        public bool editZmogus(Zmogus oldZmogus, Zmogus newZmogus)
+        public bool EditPerson(Person oldPerson, Person newPerson)
         {
-            bool arSekmingai = naudotojai.Remove(oldZmogus);
-            if (arSekmingai == true)
+            bool isSuccessful = users.Remove(oldPerson);
+            if (isSuccessful == true)
             {
-                naudotojai.Add(newZmogus);
+                users.Add(newPerson);
             }
 
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            return FileIO.FileWrite<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml", users);
         }
 
-        public Zmogus getZmogusByID(int ID)
+        public Person GetPersonByID(int id)
         {
-            Zmogus rastasZmogus = naudotojai.Find(zmogus => zmogus.Id == ID);
+            Person foundPerson = users.Find(person => person.Id == id);
 
-            return rastasZmogus;
+            return foundPerson;
         }
 
-        public Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password)
+        public Person getPersonByNameSurnamePassword(string name, string surname, string password)
         {
-            Zmogus rastasZmogus = naudotojai.Find(zmogus => zmogus.Name.Equals(name) && zmogus.Surname.Equals(surname) && zmogus.Password.Equals(password));
+            Person foundPerson = users.Find(person => person.Name.Equals(name) && person.Surname.Equals(surname) && person.Password.Equals(password));
             
-            return rastasZmogus;
+            return foundPerson;
         }
 
         public int getNextId()
         {
-            int maks = 0;
-            foreach (Zmogus zmogus in naudotojai)
+            int max = 0;
+            foreach (Person person in users)
             {
-                if (zmogus.Id > maks)
+                if (person.Id > max)
                 {
-                    maks = zmogus.Id;
+                    max = person.Id;
                 }
             }
-            return maks+1;
+            return max+1;
         }
     }
 }
