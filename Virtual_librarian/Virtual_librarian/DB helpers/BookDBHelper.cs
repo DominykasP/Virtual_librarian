@@ -23,7 +23,9 @@ namespace Virtual_librarian.DB_helpers
 
         public List<Knyga> gautiVisasKnygas()
         {
+            
             return knygos;
+
         }
 
         public List<Knyga> gautiZmogausKnygas(Zmogus zmogus)

@@ -12,23 +12,36 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
 using Spire.Barcode;
+using Virtual_librarian.DB_helpers;
+using MetroFramework;
+using Virtual_librarian.Camera;
 
 namespace Virtual_librarian
 {
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
-        private static int nEventsFired = 0;
-        public Capture camera;
+        BarcodeRecognition recognition;
+        
+        public UseCamera camera;
         private object lockobject = new object();
         public List<Bitmap> images;
-        Image<Bgr, byte> Frame;
+        BookDBHelper bookDBHelper = new BookDBHelper();
+        String[] barcode;
+        Zmogus logedInUser;
+
 
 
         public UCScanBook()
         {
+            camera = new UseCamera();
+            
             InitializeComponent();
         }
-
+        public bool setUser(Zmogus user)
+        {
+            logedInUser = user;
+            return true;
+        }
         private void UCScanBook_Load(object sender, EventArgs e)
         {
 
@@ -36,63 +49,48 @@ namespace Virtual_librarian
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (camera == null)
-            {
-                camera = new Capture(0);
+            
+            camera.turnOn();
+            recognition = new BarcodeRecognition(cameraBox, camera);
+            recognition.startRecognising();
 
-            }
-            images = new List<Bitmap>();
-            nEventsFired = 0;
-            timer1.Interval = 2000;
-            timer1.Start();
-            camera.Start();
-            Application.Idle += new EventHandler(FrameProcedure);
-        }
-        private void FrameProcedure(object sender, EventArgs e)
-        {
-            try
-            {
+            recognition.OnBookRecognised += Recognition_OnBookRecognised;
 
-                Frame = camera.QueryFrame();
-                cameraBox.Image = Frame.ToBitmap();
-            }
-            catch (Exception)
-            {
-
-            }
+           
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
         {
+            Knyga knyga = e.book;
+
             BarcodeBox1.Clear();
-            
-            Image<Bgr, Byte> ColordImage = Frame;
-            Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
-            
 
-            String[] Barcode = BarcodeScanner.Scan(grayImage.ToBitmap());
+            barcode = recognition.barcode;
 
-            if (Barcode.Length != 0 && Barcode[0].Length > 10)
+
+            if (barcode.Length != 0 && barcode[0].Length > 10)
             {
-                timer1.Stop();
-                camera.Pause();
-                BarcodeBox1.AppendText(Barcode[0]);
 
-            }
-
-
-
-            nEventsFired++;
-            if (nEventsFired == 20)
-            {
-                timer1.Stop();
-                if (camera != null)
+                BarcodeBox1.AppendText(barcode[0]);
+                DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + knyga.Autorius + "\n" +
+                                "Book Name: " + knyga.Pavadinimas + " \n" +
+                                "Book ISBN: " + knyga.Isbn + "\n" +
+                                "Do you want to take this book? ", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                if (dr == DialogResult.Yes)
                 {
-                    camera.Dispose();
-                    camera = null;
-                    
+                    bool arSekmingai = bookDBHelper.paimtiKnyga(knyga, logedInUser);
+                    if (arSekmingai == true)
+                    {
+
+                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(this, "Klaida paimant knygą", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
+
     }
 }

@@ -49,6 +49,7 @@ namespace Virtual_librarian
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);
+                
             }
             else
             {

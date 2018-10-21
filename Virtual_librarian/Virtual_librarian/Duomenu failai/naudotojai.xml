@@ -45,4 +45,22 @@
     <PhoneNumber>+37012121212</PhoneNumber>
     <Email>eimantas@gmail.com</Email>
   </Zmogus>
+  <Zmogus>
+    <Id>5</Id>
+    <Name>Eligijus</Name>
+    <Surname>Puplinskas</Surname>
+    <Password>slap</Password>
+    <Birthdate>1998-10-16T13:16:15</Birthdate>
+    <PhoneNumber>860233890</PhoneNumber>
+    <Email>eligijus.puplinskas@gmail.com</Email>
+  </Zmogus>
+  <Zmogus>
+    <Id>6</Id>
+    <Name />
+    <Surname />
+    <Password />
+    <Birthdate>2018-10-17T12:46:39.7211424+03:00</Birthdate>
+    <PhoneNumber />
+    <Email>dcscdc@gmail.com</Email>
+  </Zmogus>
 </ArrayOfZmogus>

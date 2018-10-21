@@ -109,4 +109,26 @@
     <Paimta>2018-10-11T00:16:38.2603687+03:00</Paimta>
     <Grazinti>2018-11-11T00:16:38.2603687+02:00</Grazinti>
   </Knyga>
+  <Knyga>
+    <Id>3</Id>
+    <Pavadinimas>Duomenų bazių valdymo sistemos</Pavadinimas>
+    <Autorius>Romas Baronas</Autorius>
+    <Leidykla>TEV</Leidykla>
+    <Metai>2005-10-03T00:00:00</Metai>
+    <Puslapiai>150</Puslapiai>
+    <Isbn>003078220554</Isbn>
+    <Kodas>2134532</Kodas>
+    <ArPaimta>true</ArPaimta>
+    <Skaitytojas>
+      <Id>6</Id>
+      <Name />
+      <Surname />
+      <Password />
+      <Birthdate>2018-10-17T12:46:39.7211424+03:00</Birthdate>
+      <PhoneNumber />
+      <Email>dcscdc@gmail.com</Email>
+    </Skaitytojas>
+    <Paimta>2018-10-17T18:04:26.5893201+03:00</Paimta>
+    <Grazinti>2018-11-17T18:04:26.5893201+02:00</Grazinti>
+  </Knyga>
 </ArrayOfKnyga>
