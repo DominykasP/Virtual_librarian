@@ -15,7 +15,8 @@ namespace Virtual_librarian.DB_helpers
 
         public BookDBHelper()
         {
-            knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml");
+            //knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml");
+            knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>(PathsToFiles.pathToBooksFile);
             while (i < knygos.Count)//pridedam knygas i indeksuota klase
             {
                 knyguKolekcija.prideti(knygos[i++]);               
@@ -145,7 +146,8 @@ namespace Virtual_librarian.DB_helpers
         {
             knygos.Add(knyga);
             knyguKolekcija.prideti(knyga);//pridedam knygas i indeksuota klase
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            //return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
         public bool pratestiKnyga(Knyga pratesiamaKnyga)

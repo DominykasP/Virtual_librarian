@@ -15,7 +15,8 @@ namespace Virtual_librarian.DB_helpers
 
         public HumanDBHelper()
         {
-            naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");
+            //naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");
+            naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>(PathsToFiles.pathToUsersFile);
             /*while (i < naudotojai.Count)//pridedam knygas i indeksuota klase
             {
                 naudotojuKl.prideti(naudotojai[i++]);
@@ -27,7 +28,8 @@ namespace Virtual_librarian.DB_helpers
         {
             naudotojai.Add(zmogus);
            // naudotojuKl.prideti(zmogus);
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+           // return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
         }
 
 
