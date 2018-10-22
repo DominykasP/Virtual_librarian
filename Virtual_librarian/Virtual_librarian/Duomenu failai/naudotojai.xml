@@ -45,4 +45,13 @@
     <PhoneNumber>+37012121212</PhoneNumber>
     <Email>eimantas@gmail.com</Email>
   </Person>
+  <Person>
+    <Id>5</Id>
+    <Name>Irena</Name>
+    <Surname>Cer</Surname>
+    <Password>pass</Password>
+    <BirthDate>1996-04-19T17:06:47</BirthDate>
+    <PhoneNumber>112</PhoneNumber>
+    <Email>test@test.com</Email>
+  </Person>
 </ArrayOfPerson>

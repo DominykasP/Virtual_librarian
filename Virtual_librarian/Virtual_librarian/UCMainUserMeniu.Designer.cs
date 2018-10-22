@@ -41,19 +41,19 @@
             this.mtbPasiimti = new MetroFramework.Controls.MetroTabPage();
             this.ucScanBook1 = new Virtual_librarian.UCScanBook();
             this.mtbTerminai = new MetroFramework.Controls.MetroTabPage();
-            this.grdTerminai = new MetroFramework.Controls.MetroGrid();
+            this.grdLoanPeriods = new MetroFramework.Controls.MetroGrid();
             this.mtbKnyguKatalogas = new MetroFramework.Controls.MetroTabPage();
             this.grdAllBooks = new MetroFramework.Controls.MetroGrid();
             this.mtbManoUžklausos = new MetroFramework.Controls.MetroTabPage();
             this.btnSiustiManoUzklausas = new MetroFramework.Controls.MetroTile();
             this.grdManoUzklausos = new MetroFramework.Controls.MetroGrid();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.lblNaudotojoVardas = new MetroFramework.Controls.MetroLabel();
+            this.lblUsername = new MetroFramework.Controls.MetroLabel();
             this.btnAtsijungti = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
             this.mtbPasiimti.SuspendLayout();
             this.mtbTerminai.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdTerminai)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdLoanPeriods)).BeginInit();
             this.mtbKnyguKatalogas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAllBooks)).BeginInit();
             this.mtbManoUžklausos.SuspendLayout();
@@ -103,7 +103,7 @@
             // 
             // mtbTerminai
             // 
-            this.mtbTerminai.Controls.Add(this.grdTerminai);
+            this.mtbTerminai.Controls.Add(this.grdLoanPeriods);
             this.mtbTerminai.HorizontalScrollbarBarColor = true;
             this.mtbTerminai.HorizontalScrollbarHighlightOnWheel = false;
             this.mtbTerminai.HorizontalScrollbarSize = 10;
@@ -118,16 +118,16 @@
             // 
             // grdTerminai
             // 
-            this.grdTerminai.AllowUserToAddRows = false;
-            this.grdTerminai.AllowUserToDeleteRows = false;
-            this.grdTerminai.AllowUserToResizeRows = false;
-            this.grdTerminai.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grdLoanPeriods.AllowUserToAddRows = false;
+            this.grdLoanPeriods.AllowUserToDeleteRows = false;
+            this.grdLoanPeriods.AllowUserToResizeRows = false;
+            this.grdLoanPeriods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdTerminai.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdTerminai.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.grdTerminai.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.grdTerminai.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.grdLoanPeriods.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdLoanPeriods.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.grdLoanPeriods.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.grdLoanPeriods.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -135,8 +135,8 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdTerminai.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.grdTerminai.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdLoanPeriods.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.grdLoanPeriods.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -144,14 +144,14 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdTerminai.DefaultCellStyle = dataGridViewCellStyle2;
-            this.grdTerminai.EnableHeadersVisualStyles = false;
-            this.grdTerminai.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.grdTerminai.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdTerminai.Location = new System.Drawing.Point(3, 3);
-            this.grdTerminai.Name = "grdTerminai";
-            this.grdTerminai.ReadOnly = true;
-            this.grdTerminai.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.grdLoanPeriods.DefaultCellStyle = dataGridViewCellStyle2;
+            this.grdLoanPeriods.EnableHeadersVisualStyles = false;
+            this.grdLoanPeriods.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.grdLoanPeriods.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdLoanPeriods.Location = new System.Drawing.Point(3, 3);
+            this.grdLoanPeriods.Name = "grdTerminai";
+            this.grdLoanPeriods.ReadOnly = true;
+            this.grdLoanPeriods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -159,13 +159,13 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdTerminai.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.grdTerminai.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.grdTerminai.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdTerminai.Size = new System.Drawing.Size(663, 258);
-            this.grdTerminai.TabIndex = 2;
-            this.grdTerminai.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTerminai_CellDoubleClick);
-            this.grdTerminai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdTerminai_KeyPress);
+            this.grdLoanPeriods.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.grdLoanPeriods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.grdLoanPeriods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdLoanPeriods.Size = new System.Drawing.Size(663, 258);
+            this.grdLoanPeriods.TabIndex = 2;
+            this.grdLoanPeriods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTerminai_CellDoubleClick);
+            this.grdLoanPeriods.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdLoanPeriods_KeyPress);
             // 
             // mtbKnyguKatalogas
             // 
@@ -258,7 +258,7 @@
             this.btnSiustiManoUzklausas.TabIndex = 4;
             this.btnSiustiManoUzklausas.Text = "Siųsti mano užklausas bibliotekininkei";
             this.btnSiustiManoUzklausas.UseSelectable = true;
-            this.btnSiustiManoUzklausas.Click += new System.EventHandler(this.btnSiustiManoUzklausas_Click);
+            this.btnSiustiManoUzklausas.Click += new System.EventHandler(this.btnSendMyRequests_Click);
             // 
             // grdManoUzklausos
             // 
@@ -308,7 +308,7 @@
             this.grdManoUzklausos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdManoUzklausos.Size = new System.Drawing.Size(663, 220);
             this.grdManoUzklausos.TabIndex = 2;
-            this.grdManoUzklausos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdManoUzklausos_CellDoubleClick);
+            this.grdManoUzklausos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdMyRequests_CellDoubleClick);
             // 
             // metroLabel1
             // 
@@ -321,12 +321,12 @@
             // 
             // lblNaudotojoVardas
             // 
-            this.lblNaudotojoVardas.AutoSize = true;
-            this.lblNaudotojoVardas.Location = new System.Drawing.Point(155, 3);
-            this.lblNaudotojoVardas.Name = "lblNaudotojoVardas";
-            this.lblNaudotojoVardas.Size = new System.Drawing.Size(55, 19);
-            this.lblNaudotojoVardas.TabIndex = 2;
-            this.lblNaudotojoVardas.Text = "[vardas]";
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Location = new System.Drawing.Point(155, 3);
+            this.lblUsername.Name = "lblNaudotojoVardas";
+            this.lblUsername.Size = new System.Drawing.Size(55, 19);
+            this.lblUsername.TabIndex = 2;
+            this.lblUsername.Text = "[vardas]";
             // 
             // btnAtsijungti
             // 
@@ -337,14 +337,14 @@
             this.btnAtsijungti.TabIndex = 3;
             this.btnAtsijungti.Text = "Atsijungti";
             this.btnAtsijungti.UseSelectable = true;
-            this.btnAtsijungti.Click += new System.EventHandler(this.btnAtsijungti_Click);
+            this.btnAtsijungti.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // UCMainUserMeniu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnAtsijungti);
-            this.Controls.Add(this.lblNaudotojoVardas);
+            this.Controls.Add(this.lblUsername);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UCMainUserMeniu";
@@ -353,7 +353,7 @@
             this.metroTabControl1.ResumeLayout(false);
             this.mtbPasiimti.ResumeLayout(false);
             this.mtbTerminai.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdTerminai)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdLoanPeriods)).EndInit();
             this.mtbKnyguKatalogas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdAllBooks)).EndInit();
             this.mtbManoUžklausos.ResumeLayout(false);
@@ -368,7 +368,7 @@
         private MetroFramework.Controls.MetroTabControl metroTabControl1;
         private MetroFramework.Controls.MetroTabPage mtbPasiimti;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel lblNaudotojoVardas;
+        private MetroFramework.Controls.MetroLabel lblUsername;
         private MetroFramework.Controls.MetroTile btnAtsijungti;
         private MetroFramework.Controls.MetroTabPage mtbKnyguKatalogas;
         private MetroFramework.Controls.MetroGrid grdAllBooks;
@@ -377,6 +377,6 @@
         private MetroFramework.Controls.MetroGrid grdManoUzklausos;
         private MetroFramework.Controls.MetroTile btnSiustiManoUzklausas;
         private MetroFramework.Controls.MetroTabPage mtbTerminai;
-        private MetroFramework.Controls.MetroGrid grdTerminai;
+        private MetroFramework.Controls.MetroGrid grdLoanPeriods;
     }
 }

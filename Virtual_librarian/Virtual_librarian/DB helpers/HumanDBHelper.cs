@@ -13,7 +13,7 @@ namespace Virtual_librarian.DB_helpers
 
         public HumanDBHelper()
         {
-            users = FileIO.ReadFile<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml");
+            users = FileIO.FileRead<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml");
         }
 
         public bool AddNewPerson(Person person)
@@ -25,8 +25,8 @@ namespace Virtual_librarian.DB_helpers
 
         public bool DeletePerson(Person person)
         {
-            bool arSekmingai = users.Remove(person);
-            if (arSekmingai == true)
+            bool isSuccessful = users.Remove(person);
+            if (isSuccessful == true)
             {
                 return FileIO.FileWrite<List<Person>>("..\\..\\Duomenu failai\\naudotojai.xml", users);
             }

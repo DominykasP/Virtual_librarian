@@ -37,7 +37,7 @@ namespace Virtual_librarian
            
         }
 
-        private void displayToPictureBox(PictureBox pictureBox,Capture capture)
+        private void DisplayToPictureBox(PictureBox pictureBox,Capture capture)
         {
             cameraBox = pictureBox;
             camera = capture;
@@ -50,7 +50,7 @@ namespace Virtual_librarian
             return path;
         }
 
-        private void getRecognitionData()
+        private void GetRecognitionData()
         {
             try
             {
@@ -76,19 +76,19 @@ namespace Virtual_librarian
         public void UseFaceRecognition()
         {
             faceDetected = new HaarCascade(UsePreciseRecognition());
-            getRecognitionData();           
+            GetRecognitionData();           
         }
 
         public void Display(PictureBox pictureBox, Capture capture)
         {
-            displayToPictureBox(pictureBox, capture);
+            DisplayToPictureBox(pictureBox, capture);
             if (camera != null)
             {
                 Application.Idle += new EventHandler(FrameProcedure);
             }
         }
 
-        public Bitmap sendRecognitionPictures()
+        public Bitmap SendRecognitionPictures()
         {
             return Frame.ToBitmap();
         }

@@ -14,7 +14,7 @@ namespace Virtual_librarian
         {
 
         } 
-        public void turnOn()
+        public void TurnOn()
         {
             Camera = null;
             if (Camera == null)

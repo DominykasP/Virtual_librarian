@@ -32,7 +32,7 @@ namespace Virtual_librarian
         {
             if (camera.Camera == null)
             {              
-                camera.turnOn();
+                camera.TurnOn();
              
                 faceRecognition.Display(cameraBox, camera.Camera);              
             }           

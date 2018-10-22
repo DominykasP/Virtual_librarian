@@ -113,7 +113,7 @@ namespace Virtual_librarian
             this.returnAt = newReturnTime;
         }
 
-        public void getRemainingTime()
+        public void GetRemainingTime()
         {
             DateTime now = DateTime.Now;
             TimeSpan difference = this.returnAt - now;

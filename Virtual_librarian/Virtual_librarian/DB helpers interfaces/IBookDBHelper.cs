@@ -11,7 +11,7 @@ namespace Virtual_librarian.DB_helpers
         List<Book> GetAllBooks();
         List<Book> Find(string search);
 
-        Book GetBookByCodes(string isbn, string code);
+        Book GetBookByCode(string isbn, string code);
         List<Book> GetReadersBooks(Person reader);
 
         bool AddNewBook(Book book);
