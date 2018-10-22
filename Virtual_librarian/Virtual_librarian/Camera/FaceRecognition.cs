@@ -104,7 +104,6 @@ namespace Virtual_librarian
                             //Šaukia event'ą FoundRegisteredFace, su kuriuo vėliau dirbs UCLogin
                             OnFoundRegisteredFace(this, new RecognisedPersonEventArgs(recognizedId.Label));
                         }
-
                     }
                 }
                 cameraBox.Image = currentFrame.ToBitmap();
