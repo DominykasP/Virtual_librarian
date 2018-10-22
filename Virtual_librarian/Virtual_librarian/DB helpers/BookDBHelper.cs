@@ -12,7 +12,7 @@ namespace Virtual_librarian.DB_helpers
 
         public BookDBHelper()
         {
-            knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml");
+            knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>(PathsToFiles.pathToBooksFile);
         }
 
         public Knyga gautiKnygaPagalKodus(string isbn, string kodas)
@@ -44,7 +44,7 @@ namespace Virtual_librarian.DB_helpers
             {
                 grazinama.grazintiKnyga();
 
-                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
             }
             else
             {
@@ -66,7 +66,7 @@ namespace Virtual_librarian.DB_helpers
             bool arSekmingai = knygos.Remove(knyga);
             if (arSekmingai == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
             }
             else
             {
@@ -79,14 +79,14 @@ namespace Virtual_librarian.DB_helpers
             Knyga paimta = knygos.Find(knyga => knyga.Equals(paimamaKnyga));
             paimta.paimtiKnyga(skaitytojas, DateTime.Now, DateTime.Now.AddMonths(1));
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
         public bool pridetiNaujaKnyga(Knyga knyga)
         {
             knygos.Add(knyga);
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
         public bool pratestiKnyga(Knyga pratesiamaKnyga)
@@ -94,7 +94,7 @@ namespace Virtual_librarian.DB_helpers
             Knyga pratesti = knygos.Find(knyga => knyga.Equals(pratesiamaKnyga));
             pratesti.pratestiKnyga(DateTime.Now.AddMonths(1));
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
         public int getNextId()

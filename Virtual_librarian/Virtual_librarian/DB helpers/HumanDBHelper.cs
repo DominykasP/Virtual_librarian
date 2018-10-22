@@ -13,14 +13,14 @@ namespace Virtual_librarian.DB_helpers
 
         public HumanDBHelper()
         {
-            naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");
+            naudotojai = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>(PathsToFiles.pathToUsersFile);
         }
 
         public bool addNewZmogus(Zmogus zmogus)
         {
             naudotojai.Add(zmogus);
 
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
         }
 
         public bool deleteZmogus(Zmogus zmogus)
@@ -28,7 +28,7 @@ namespace Virtual_librarian.DB_helpers
             bool arSekmingai = naudotojai.Remove(zmogus);
             if (arSekmingai == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
             }
             else
             {
@@ -44,7 +44,7 @@ namespace Virtual_librarian.DB_helpers
                 naudotojai.Add(newZmogus);
             }
 
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
         }
 
         public Zmogus getZmogusByID(int ID)

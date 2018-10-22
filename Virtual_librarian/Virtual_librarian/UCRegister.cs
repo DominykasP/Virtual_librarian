@@ -89,8 +89,8 @@ namespace Virtual_librarian
                 int naujasID = mainForm.humanDBHelper.getNextId();
 
                 List<Image> userImages = faceRegistration.getFaceImages();
-                DarbasSuFailais.IrasytiID("..\\..\\Faces\\Faces.xml", naujasID, howManyImagesOfOnePerson);
-                DarbasSuFailais.IrasytiNuotraukas("..\\..\\Faces\\", userImages, naujasID);
+                DarbasSuFailais.IrasytiID(PathsToFiles.pathToFacesFile, naujasID, howManyImagesOfOnePerson);
+                DarbasSuFailais.IrasytiNuotraukas(PathsToFiles.pathToFacesFolder, userImages, naujasID);
 
                 Zmogus naujasZmogus = new Zmogus(naujasID, txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, txtEmail.Text);
                 if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
