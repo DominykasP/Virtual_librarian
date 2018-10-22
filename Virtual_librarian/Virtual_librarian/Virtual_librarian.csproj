@@ -105,6 +105,7 @@
     <Compile Include="DB helpers\BookDBHelper.cs" />
     <Compile Include="DB helpers\DarbasSuFailais.cs" />
     <Compile Include="DB helpers\HumanDBHelper.cs" />
+    <Compile Include="DB helpers\PathsToFiles.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -60,7 +60,7 @@ namespace Virtual_librarian.Camera
         {
             try
             {
-                usersIds = DarbasSuFailais.NuskaitytiIrasytusID("..\\..\\Faces\\Faces.xml");
+                usersIds = DarbasSuFailais.NuskaitytiIrasytusID(PathsToFiles.pathToFacesFile);
             }
             catch (Exception ex)
             {

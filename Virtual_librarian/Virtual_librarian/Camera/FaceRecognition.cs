@@ -54,8 +54,8 @@ namespace Virtual_librarian
         {
             try
             {
-                usersIds = DarbasSuFailais.NuskaitytiIrasytusID("..\\..\\Faces\\Faces.xml");
-                usersImages = DarbasSuFailais.NuskaitytiIrasytasNuotraukas("..\\..\\Faces\\");
+                usersIds = DarbasSuFailais.NuskaitytiIrasytusID(PathsToFiles.pathToFacesFile);
+                usersImages = DarbasSuFailais.NuskaitytiIrasytasNuotraukas(PathsToFiles.pathToFacesFolder);
             }
             catch (Exception ex)
             {
