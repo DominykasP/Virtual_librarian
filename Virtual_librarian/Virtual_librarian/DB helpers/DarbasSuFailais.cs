@@ -45,13 +45,7 @@ namespace Virtual_librarian.DB_helpers
         
         private static void NustatytiNaudotojuID(string keliasIFaila)
         {
-            string visuNaudotojuIDEilute = File.ReadAllText(keliasIFaila);
-            naudotojuID = visuNaudotojuIDEilute.Split('%').ToList();
-            naudotojuID.RemoveAt(naudotojuID.Count - 1);
-
-            /*
             naudotojuID = NuskaitytiIsFailo<List<String>>(keliasIFaila);
-            */
         }
 
         public static List<String> NuskaitytiIrasytusID(string keliasIFaila) //"..\\..\\Faces\\faces.txt"
@@ -82,16 +76,8 @@ namespace Virtual_librarian.DB_helpers
             for (int i = 0; i < kiekKartu; i++)
             {
                 naudotojuID.Add(naudotojoID.ToString());
-                File.AppendAllText(keliasIFaila, naudotojoID.ToString() + "%");
-            }
-
-            /*
-            for (int i = 0; i < kiekKartu; i++)
-            {
-                naudotojuID.Add(naudotojoID.ToString());
             }
             IrasytiIFaila<List<String>>(keliasIFaila, naudotojuID);
-            */
         }
 
         public static void IrasytiNuotraukas(string keliasIFolderi, List<Image> nuotraukuSarasas, int naudotojoID) //"..\\..\\Faces\\face"

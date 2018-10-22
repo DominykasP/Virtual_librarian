@@ -60,7 +60,7 @@ namespace Virtual_librarian.Camera
         {
             try
             {
-                usersIds = DarbasSuFailais.NuskaitytiIrasytusID("..\\..\\Faces\\faces.txt");
+                usersIds = DarbasSuFailais.NuskaitytiIrasytusID("..\\..\\Faces\\Faces.xml");
             }
             catch (Exception ex)
             {
@@ -123,41 +123,6 @@ namespace Virtual_librarian.Camera
             if (usersImages.Count == howManyImagesOfOnePerson)
             {
                 timer.Enabled = false;
-
-                //Išsaugom padarytas nuotraukas
-                /*
-                foreach (Image image in usersImages)
-                {
-                    numberOfElements++;
-                    image.Save("..\\..\\Faces\\face" + numberOfElements + ".bmp");
-                    File.AppendAllText("..\\..\\Faces\\Faces.txt", personID.ToString() + "% ");
-                }
-                */
-                /*
-                int kuriRodo = 0;
-
-                Form formaParodymui = new Form();
-                PictureBox nuotrauka = new PictureBox();
-                nuotrauka.Height = formaParodymui.Height;
-                nuotrauka.Width = formaParodymui.Width;
-                nuotrauka.SizeMode = PictureBoxSizeMode.StretchImage;
-                nuotrauka.Image = usersImages[kuriRodo];
-                Button toliau = new Button();
-                toliau.Text = "Kita foto";
-                toliau.Click += delegate
-                {
-                    kuriRodo++;
-                    if (kuriRodo == howManyImagesOfOnePerson)
-                    {
-                        kuriRodo = 0;
-                    }
-                    nuotrauka.Image = usersImages[kuriRodo];
-                };
-                formaParodymui.Controls.Add(nuotrauka);
-                formaParodymui.Controls.Add(toliau);
-                nuotrauka.SendToBack();
-                formaParodymui.ShowDialog();
-                */
             }
         }
 
