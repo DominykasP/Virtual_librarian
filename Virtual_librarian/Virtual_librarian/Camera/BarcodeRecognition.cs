@@ -65,7 +65,7 @@ namespace Virtual_librarian.Camera
             images = new List<Bitmap>();
             nEventsFired = 0;
             useTimer();
-            camera.turnOn();
+            camera.TurnOn();
             Application.Idle += new EventHandler(FrameProcedure);
             aTimer.Tick += ATimer_Tick;
             

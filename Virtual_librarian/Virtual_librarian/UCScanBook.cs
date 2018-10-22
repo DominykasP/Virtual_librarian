@@ -50,7 +50,7 @@ namespace Virtual_librarian
         private void metroTile1_Click(object sender, EventArgs e)
         {
             
-            camera.turnOn();
+            camera.TurnOn();
             recognition = new BarcodeRecognition(cameraBox, camera);
             recognition.startRecognising();
 
