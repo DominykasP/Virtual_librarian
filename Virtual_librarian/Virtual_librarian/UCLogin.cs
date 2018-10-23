@@ -49,7 +49,7 @@ namespace Virtual_librarian
 
             int recognisedID;
             Int32.TryParse(e.recognisedID, out recognisedID);
-            Zmogus prisijungesZmogus = mainForm.humanDBHelper.getZmogusByID(recognisedID);
+            Person prisijungesZmogus = mainForm.humanDBHelper.GetPersonByID(recognisedID);
 
             if (prisijungesZmogus != null)
             {
@@ -71,13 +71,13 @@ namespace Virtual_librarian
 
         private void btnLogInWIthName_Click(object sender, EventArgs e)
         {
-            Zmogus prisijungesZmogus = mainForm.humanDBHelper.getZmogusByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
+            Person loggedInPerson = mainForm.humanDBHelper.getPersonByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
             camera.TurnOff();
             faceRecognition.StopRecognition();
 
-            if (prisijungesZmogus != null)
+            if (loggedInPerson != null)
             {
-                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, prisijungesZmogus);
+                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, loggedInPerson);
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);

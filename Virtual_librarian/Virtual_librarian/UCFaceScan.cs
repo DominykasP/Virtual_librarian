@@ -64,33 +64,33 @@ namespace Virtual_librarian
 
         private void showImages() //Parodo padarytas nuotraukas - sito veliau nebereikes - testavimo tikslais
         {
-            int kuriRodo = 0;
+            int shownPhoto = 0;
 
-            Form formaParodymui = new Form();
+            Form formForShowing = new Form();
 
-            PictureBox nuotrauka = new PictureBox();
-            nuotrauka.Height = formaParodymui.Height;
-            nuotrauka.Width = formaParodymui.Width;
-            nuotrauka.SizeMode = PictureBoxSizeMode.StretchImage;
-            nuotrauka.Image = images[kuriRodo];
+            PictureBox photo = new PictureBox();
+            photo.Height = formForShowing.Height;
+            photo.Width = formForShowing.Width;
+            photo.SizeMode = PictureBoxSizeMode.StretchImage;
+            photo.Image = images[shownPhoto];
 
-            Button toliau = new Button();
-            toliau.Text = "Kita foto";
-            toliau.Click += delegate
+            Button next = new Button();
+            next.Text = "Kita foto";
+            next.Click += delegate
             {
-                kuriRodo++;
-                if (kuriRodo == 5)
+                shownPhoto++;
+                if (shownPhoto == 5)
                 {
-                    kuriRodo = 0;
+                    shownPhoto = 0;
                 }
-                nuotrauka.Image = images[kuriRodo];
+                photo.Image = images[shownPhoto];
             };
 
-            formaParodymui.Controls.Add(nuotrauka);
-            formaParodymui.Controls.Add(toliau);
-            nuotrauka.SendToBack();
+            formForShowing.Controls.Add(photo);
+            formForShowing.Controls.Add(next);
+            photo.SendToBack();
 
-            formaParodymui.ShowDialog();
+            formForShowing.ShowDialog();
         }
 
         private void TmrForVideo_Tick(object sender, EventArgs e)

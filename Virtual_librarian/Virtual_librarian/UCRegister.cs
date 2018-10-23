@@ -92,9 +92,9 @@ namespace Virtual_librarian
                 DarbasSuFailais.IrasytiID(PathsToFiles.pathToFacesFile, naujasID, howManyImagesOfOnePerson);
                 DarbasSuFailais.IrasytiNuotraukas(PathsToFiles.pathToFacesFolder, userImages, naujasID);
 
-                Zmogus naujasZmogus = new Zmogus(naujasID, txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text,email: txtEmail.Text);
-                
-                if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
+                Person naujasZmogus = new Person(naujasID, txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, email: txtEmail.Text);
+
+                if (mainForm.humanDBHelper.AddNewPerson(naujasZmogus) == true)
                 {
                     UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
                     ucMainUserMeniu.Dock = DockStyle.Bottom;

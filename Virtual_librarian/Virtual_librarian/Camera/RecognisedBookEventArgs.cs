@@ -8,9 +8,9 @@ namespace Virtual_librarian.Camera
 {
     class RecognisedBookEventArgs : EventArgs
     {
-        public Knyga book { get; private set; }
+        public Book book { get; private set; }
 
-        public RecognisedBookEventArgs(Knyga book)
+        public RecognisedBookEventArgs(Book book)
         {
             this.book = book;
         }

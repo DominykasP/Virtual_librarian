@@ -21,18 +21,18 @@ namespace Virtual_librarian.Camera
 {
     class BarcodeRecognition
     {
-        Zmogus logedInUser;
+        Person logedInUser;
         private object lockobject = new object();
         public List<Bitmap> images;
         Image<Bgr, byte> frame;
         BookDBHelper bookDBHelper = new BookDBHelper();
-        private BindingList<Knyga> manoUzklausos = new BindingList<Knyga>();
-        BindingList<Knyga> visosKnygos;
+        private BindingList<Book> manoUzklausos = new BindingList<Book>();
+        BindingList<Book> visosKnygos;
         public String[] barcode;
         private static int nEventsFired = 0;
         UseCamera camera;
         PictureBox cameraBox;
-        Knyga knyga;
+        Book knyga;
         //Image<Gray, Byte> grayImage;
 
         private System.Windows.Forms.Timer aTimer;
@@ -50,7 +50,7 @@ namespace Virtual_librarian.Camera
             aTimer = new System.Windows.Forms.Timer();
         }
 
-        public bool setUser(Zmogus user)
+        public bool setUser(Person user)
         {
             logedInUser = user;
             return true;
@@ -60,7 +60,7 @@ namespace Virtual_librarian.Camera
         //------------------------------------------------
         public void startRecognising()
         {
-            visosKnygos = new BindingList<Knyga>(bookDBHelper.gautiVisasKnygas());
+            visosKnygos = new BindingList<Book>(bookDBHelper.GetAllBooks());
             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
             images = new List<Bitmap>();
             nEventsFired = 0;
@@ -161,7 +161,7 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------------------
         //-----------------Get knyga if barcode recognised--------------------------
         //--------------------------------------------------------------------------
-        private Knyga recogniseBookBarcode()
+        private Book recogniseBookBarcode()
         {
             /*if (barcode.Length != 0)                                  //12 to 13 barcode numbers
             {
@@ -180,7 +180,7 @@ namespace Virtual_librarian.Camera
                 
                 aTimer.Stop();
                 camera.Camera.Pause();               
-                Knyga knyga = ContainsBook();
+                Book knyga = ContainsBook();
                 
                 return knyga;              
             }
@@ -204,10 +204,10 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------
         //-------------Check if xml file conatains book-----------------
         //--------------------------------------------------------------
-        private Knyga ContainsBook()
+        private Book ContainsBook()
         {
             bool contains = false;
-            Knyga knyga = null;
+            Book knyga = null;
             try
             {               
                 knyga = visosKnygos.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
