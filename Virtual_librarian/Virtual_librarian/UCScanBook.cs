@@ -81,7 +81,8 @@ namespace Virtual_librarian
 
                 if (isBookTaken) //Jei paimta, norim grąžinti
                 {
-                    DialogResult dr = MetroMessageBox.Show(this, "Pavadinimas: " + knyga.Pavadinimas + " \n" +
+                    DialogResult dr = MetroMessageBox.Show(this,
+                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
                                 "Autorius: " + knyga.Autorius + "\n" +
                                 "ISBN numeris: " + knyga.Isbn,
                                 "Ar norite grąžinti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
@@ -91,17 +92,22 @@ namespace Virtual_librarian
                         if (arSekmingai == true)
                         {
 
-                            MetroMessageBox.Show(this, "Knyga sėkmingai grąžinta", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            MetroMessageBox.Show(this,
+                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
+                                "Autorius: " + knyga.Autorius + "\n" +
+                                "ISBN numeris: " + knyga.Isbn,
+                                "Knyga sėkmingai grąžinta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else
                         {
-                            MetroMessageBox.Show(this, "Klaida grąžinant knygą", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MetroMessageBox.Show(this, knyga.Pavadinimas, "Klaida grąžinant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 else //Jei nepaimta, norim pasiimti
                 {
-                    DialogResult dr = MetroMessageBox.Show(this, "Pavadinimas: " + knyga.Pavadinimas + " \n" +
+                    DialogResult dr = MetroMessageBox.Show(this,
+                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
                                 "Autorius: " + knyga.Autorius + "\n" +
                                 "ISBN numeris: " + knyga.Isbn,
                                 "Ar norite pasiimti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
@@ -111,11 +117,19 @@ namespace Virtual_librarian
                         if (arSekmingai == true)
                         {
 
-                            MetroMessageBox.Show(this, "Knyga sėkmingai paimta", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            MetroMessageBox.Show(this,
+                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
+                                "Autorius: " + knyga.Autorius + "\n" +
+                                "ISBN numeris: " + knyga.Isbn, 
+                                "Knyga sėkmingai paimta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else
                         {
-                            MetroMessageBox.Show(this, "Klaida paimant knygą", knyga.Pavadinimas, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MetroMessageBox.Show(this,
+                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
+                                "Autorius: " + knyga.Autorius + "\n" +
+                                "ISBN numeris: " + knyga.Isbn, 
+                                "Klaida paimant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
