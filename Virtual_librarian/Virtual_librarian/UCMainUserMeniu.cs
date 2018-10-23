@@ -23,6 +23,7 @@ namespace Virtual_librarian
             pakrautiTerminus();
             pakrautiKnyguKataloga();
             pakrautiManoUzklausas();
+            //MessageBox.Show(mainForm.bookDBHelper.gautiKnygaPagalIndeksa(3).Autorius);//Indeksuotos klases testavimas
         }
 
         private void UCMainUserMeniu_Load(object sender, EventArgs e)

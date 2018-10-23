@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
+
 namespace Virtual_librarian
 {
     public class Knyga : IEquatable<Knyga>
@@ -125,5 +127,20 @@ namespace Virtual_librarian
         {
             return (this.isbn == other.isbn) && (this.kodas == other.kodas);
         }
+    }
+}
+class KnyguKolekcija<Knyga>
+{
+    private Knyga[] arr = new Knyga[100];
+    int nextIndex = 0;
+
+    // Apibreziamas indeksavima, kad butu galima kreiptis su [] kabutemis
+    public Knyga this[int i] => arr[i];
+
+    public void prideti(Knyga value)
+    {
+        if (nextIndex >= arr.Length)
+            throw new IndexOutOfRangeException($"Knygų kolekcija turi tik {arr.Length} elementų.");
+        arr[nextIndex++] = value;
     }
 }
