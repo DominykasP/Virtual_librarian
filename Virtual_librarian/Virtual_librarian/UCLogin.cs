@@ -49,7 +49,7 @@ namespace Virtual_librarian
 
             int recognisedID;
             Int32.TryParse(e.recognisedID, out recognisedID);
-            Zmogus prisijungesZmogus = mainForm.humanDBHelper.getZmogusByID(recognisedID);
+            Person prisijungesZmogus = mainForm.humanDBHelper.GetPersonByID(recognisedID);
 
             if (prisijungesZmogus != null)
             {
@@ -77,7 +77,7 @@ namespace Virtual_librarian
 
             if (loggedInPerson != null)
             {
-                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, LoggedInPerson);
+                UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, loggedInPerson);
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);

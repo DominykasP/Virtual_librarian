@@ -127,3 +127,19 @@ namespace Virtual_librarian
         }
     }
 }
+
+class BookCollection<Book>
+{
+    private Book[] arr = new Book[100];
+    int nextIndex = 0;
+
+    // Apibreziamas indeksavima, kad butu galima kreiptis su [] kabutemis
+    public Book this[int i] => arr[i];
+
+    public void add(Book value)
+    {
+        if (nextIndex >= arr.Length)
+            throw new IndexOutOfRangeException($"Knygų kolekcija turi tik {arr.Length} elementų.");
+        arr[nextIndex++] = value;
+    }
+}

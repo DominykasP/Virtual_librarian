@@ -13,13 +13,13 @@ namespace Virtual_librarian.DB_helpers
 
         public HumanDBHelper()
         {
-            users = DarbasSuFailais.NuskaitytiIsFailo<List<Zmogus>>(PathsToFiles.pathToUsersFile);
+            users = DarbasSuFailais.NuskaitytiIsFailo<List<Person>>(PathsToFiles.pathToUsersFile);
         }
 
         public bool AddNewPerson(Person person)
         {
             users.Add(person);
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
+            return DarbasSuFailais.IrasytiIFaila<List<Person>>(PathsToFiles.pathToUsersFile, users);
         }
 
 
@@ -28,7 +28,7 @@ namespace Virtual_librarian.DB_helpers
             bool isSuccessful = users.Remove(person);
             if (isSuccessful == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
+                return DarbasSuFailais.IrasytiIFaila<List<Person>>(PathsToFiles.pathToUsersFile, users);
             }
             else
             {
@@ -44,15 +44,15 @@ namespace Virtual_librarian.DB_helpers
                 users.Add(newPerson);
             }
 
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
+            return DarbasSuFailais.IrasytiIFaila<List<Person>>(PathsToFiles.pathToUsersFile, users);
         }
 
         public Person GetPersonByID(int id)
         {
             Person foundPerson = new Person();
-            var naudotojuSarasas = naudotojai.OfType<Person>();
+            var naudotojuSarasas = users.OfType<Person>();
             var rastiNaudotojai = from naudotojas in naudotojuSarasas
-                                  where (naudotojas.Id == ID)
+                                  where (naudotojas.Id == id)
                                   select naudotojas;
             foreach (var naudotojas in rastiNaudotojai)
             {
@@ -66,7 +66,7 @@ namespace Virtual_librarian.DB_helpers
         public Person getPersonByNameSurnamePassword(string name, string surname, string password)
         {
             Person rastasNaudotojas = new Person();
-            var naudotojuSarasas = naudotojai.OfType<Person>();
+            var naudotojuSarasas = users.OfType<Person>();
             var rastiNaudotojai = from naudotojas in naudotojuSarasas
                                   where naudotojas.Name.Equals(name) && naudotojas.Surname.Equals(surname) && naudotojas.Password.Equals(password)
                                   select naudotojas;

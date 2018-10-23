@@ -103,6 +103,7 @@
     <Compile Include="DB helpers interfaces\IBookDBHelper.cs" />
     <Compile Include="DB helpers interfaces\IPersonDBHelper.cs" />
     <Compile Include="DB helpers\BookDBHelper.cs" />
+    <Compile Include="DB helpers\DarbasSuFailais.cs" />
     <Compile Include="DB helpers\FileIO.cs" />
     <Compile Include="DB helpers\HumanDBHelper.cs" />
     <Compile Include="DB helpers\PathsToFiles.cs" />
