@@ -38,7 +38,7 @@ namespace Virtual_librarian.DB_helpers
             bool arSekmingai = naudotojai.Remove(zmogus);
             if (arSekmingai == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+                return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
             }
             else
             {
@@ -54,7 +54,7 @@ namespace Virtual_librarian.DB_helpers
                 naudotojai.Add(newZmogus);
             }
 
-            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml", naudotojai);
+            return DarbasSuFailais.IrasytiIFaila<List<Zmogus>>(PathsToFiles.pathToUsersFile, naudotojai);
         }
 
         public Zmogus getZmogusByID(int ID)

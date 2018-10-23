@@ -46,7 +46,9 @@ namespace Virtual_librarian.DB_helpers
 
         public List<Knyga> gautiVisasKnygas()
         {
+            
             return knygos;
+
         }
 
         public List<Knyga> gautiZmogausKnygas(Zmogus zmogus)
@@ -85,7 +87,7 @@ namespace Virtual_librarian.DB_helpers
             {
                 grazinama.grazintiKnyga();
 
-                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
             }
             else
             {
@@ -117,7 +119,7 @@ namespace Virtual_librarian.DB_helpers
             bool arSekmingai = knygos.Remove(knyga);
             if (arSekmingai == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
             }
             else
             {
@@ -139,7 +141,7 @@ namespace Virtual_librarian.DB_helpers
             }
             paimta.paimtiKnyga(skaitytojas, DateTime.Now, DateTime.Now.AddMonths(1));
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
         public bool pridetiNaujaKnyga(Knyga knyga)
@@ -147,6 +149,7 @@ namespace Virtual_librarian.DB_helpers
             knygos.Add(knyga);
             knyguKolekcija.prideti(knyga);//pridedam knygas i indeksuota klase
             //return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+
             return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
@@ -164,7 +167,7 @@ namespace Virtual_librarian.DB_helpers
             }
             pratesti.pratestiKnyga(DateTime.Now.AddMonths(1));
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
+            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
         public int getNextId()

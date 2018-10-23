@@ -87,10 +87,8 @@
             this.cameraBox.TabIndex = 2;
             this.cameraBox.TabStop = false;
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
+            
+           
             // BarcodeBox1
             // 
             // 
