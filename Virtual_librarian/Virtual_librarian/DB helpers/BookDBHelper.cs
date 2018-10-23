@@ -177,6 +177,21 @@ namespace Virtual_librarian.DB_helpers
             return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
         }
 
+        public bool isBookAlreadyTaken(Knyga bookToCheck)
+        {
+            Knyga currentBook = new Knyga();
+            var bookList = knygos.OfType<Knyga>();
+            var booksFound = from book in bookList
+                               where book.Equals(bookToCheck)
+                               select book;
+            foreach (var book in booksFound)
+            {
+                currentBook = book;
+            }
+
+            return currentBook.ArPaimta;
+        }
+
         public int getNextId()
         {
             int maks = 0;

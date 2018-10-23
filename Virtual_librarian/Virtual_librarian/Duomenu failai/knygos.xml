@@ -61,16 +61,7 @@
     <Puslapiai>200</Puslapiai>
     <Isbn>3464653434343</Isbn>
     <Kodas>243534</Kodas>
-    <ArPaimta>true</ArPaimta>
-    <Skaitytojas>
-      <Id>3</Id>
-      <Name>Dominykas</Name>
-      <Surname>Pakalnis</Surname>
-      <Password>slaptazodis</Password>
-      <Birthdate>1998-02-25T21:12:29</Birthdate>
-      <PhoneNumber>+37061111111</PhoneNumber>
-      <Email>dominykp@gmail.com</Email>
-    </Skaitytojas>
+    <ArPaimta>false</ArPaimta>
     <Paimta>2018-10-11T00:13:04.8562788+03:00</Paimta>
     <Grazinti>2018-11-11T00:13:04.8562788+02:00</Grazinti>
   </Knyga>
@@ -96,16 +87,7 @@
     <Puslapiai>200</Puslapiai>
     <Isbn>34457665667536</Isbn>
     <Kodas>2345544454223</Kodas>
-    <ArPaimta>true</ArPaimta>
-    <Skaitytojas>
-      <Id>4</Id>
-      <Name>Eimantas</Name>
-      <Surname>Pakalnis</Surname>
-      <Password>eimantas</Password>
-      <Birthdate>1998-02-25T00:15:17</Birthdate>
-      <PhoneNumber>+37012121212</PhoneNumber>
-      <Email>eimantas@gmail.com</Email>
-    </Skaitytojas>
+    <ArPaimta>false</ArPaimta>
     <Paimta>2018-10-11T00:16:38.2603687+03:00</Paimta>
     <Grazinti>2018-11-11T00:16:38.2603687+02:00</Grazinti>
   </Knyga>
@@ -118,21 +100,12 @@
     <Puslapiai>150</Puslapiai>
     <Isbn>003078220554</Isbn>
     <Kodas>2134532</Kodas>
-    <ArPaimta>true</ArPaimta>
-    <Skaitytojas>
-      <Id>6</Id>
-      <Name />
-      <Surname />
-      <Password />
-      <Birthdate>2018-10-17T12:46:39.7211424+03:00</Birthdate>
-      <PhoneNumber />
-      <Email>dcscdc@gmail.com</Email>
-    </Skaitytojas>
+    <ArPaimta>false</ArPaimta>
     <Paimta>2018-10-17T18:04:26.5893201+03:00</Paimta>
     <Grazinti>2018-11-17T18:04:26.5893201+02:00</Grazinti>
   </Knyga>
-    <Knyga>
-    <Id>7</Id>
+  <Knyga>
+    <Id>8</Id>
     <Pavadinimas>Sasiuvinys</Pavadinimas>
     <Autorius>Martynas</Autorius>
     <Leidykla>Alma Literra</Leidykla>
@@ -140,6 +113,19 @@
     <Puslapiai>150</Puslapiai>
     <Isbn>460300808471</Isbn>
     <Kodas>2134532</Kodas>
+    <ArPaimta>false</ArPaimta>
+    <Paimta>0001-01-01T00:00:00</Paimta>
+    <Grazinti>0001-01-01T00:00:00</Grazinti>
+  </Knyga>
+  <Knyga>
+    <Id>9</Id>
+    <Pavadinimas>Logika ir dirbtinis intelektas</Pavadinimas>
+    <Autorius>Stanislovas Norgėla</Autorius>
+    <Leidykla>TEV</Leidykla>
+    <Metai>2007-03-24T00:00:00</Metai>
+    <Puslapiai>255</Puslapiai>
+    <Isbn>003075812561</Isbn>
+    <Kodas>2134122</Kodas>
     <ArPaimta>false</ArPaimta>
     <Paimta>0001-01-01T00:00:00</Paimta>
     <Grazinti>0001-01-01T00:00:00</Grazinti>
