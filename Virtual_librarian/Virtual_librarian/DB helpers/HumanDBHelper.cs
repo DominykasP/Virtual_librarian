@@ -11,7 +11,7 @@ namespace Virtual_librarian.DB_helpers
     {
         private List<Zmogus> naudotojai;
        // ZmoniuKolekcija<Zmogus> naudotojuKl = new ZmoniuKolekcija<Zmogus>();
-        private int i = 0;
+        //private int i = 0;
 
         public HumanDBHelper()
         {
@@ -21,7 +21,14 @@ namespace Virtual_librarian.DB_helpers
             {
                 naudotojuKl.prideti(naudotojai[i++]);
             }
-            //naudotojaiKL = DarbasSuFailais.NuskaitytiIsFailo<ZmoniuKolekcija<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");*/
+            */
+            /*
+            foreach(Zmogus naudotojas in naudotojai)
+            {
+                naudotojuKl.prideti(naudotojas);
+            }
+            */
+            //naudotojaiKL = DarbasSuFailais.NuskaitytiIsFailo<ZmoniuKolekcija<Zmogus>>("..\\..\\Duomenu failai\\naudotojai.xml");
         }
 
         public bool addNewZmogus(Zmogus zmogus)
