@@ -10,32 +10,50 @@ using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using MetroFramework;
+using Virtual_librarian.Camera;
+using Virtual_librarian.DB_helpers;
 
 namespace Virtual_librarian
 {
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
-        private Capture capture;
-        
+        UseCamera camera;
+        FaceRegistration faceRegistration;
+        int howManyImagesOfOnePerson = 5;
+
 
         public UCRegister(MainForm mainForma)
         {
             InitializeComponent();
             mainForm = mainForma;
+
+            camera = new UseCamera();
+            faceRegistration = new FaceRegistration(howManyImagesOfOnePerson);
+
+            if (camera.Camera == null)
+            {
+                camera.TurnOn();
+
+                faceRegistration.Display(picCamera, camera.Camera);
+            }
         }
 
         private void UCRegister_Load(object sender, EventArgs e)
         {
-            
+            btnTakePicture.Visible = true;
+            lblTakingPictures.Visible = false;
+            prbTakingPictures.Visible = false;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            if (capture != null)
+            faceRegistration.StopRecognition();
+            if (camera.Camera != null)
             {
-                capture.Dispose();
+                camera.TurnOff();
             }
+
             UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
             ucChooseLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Remove(this);
@@ -45,23 +63,36 @@ namespace Virtual_librarian
         private void btnRegister_Click(object sender, EventArgs e)
         {
             DateTime birthDate = dtpGimimoData.Value;
-            if (capture != null)
-            {
-                capture.Dispose();
-            }
+
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
             System.Text.RegularExpressions.Regex pattern = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
 
             if (!pattern.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
             {
-                MetroMessageBox.Show(this,"Neteisingai įvestas elektroninis paštas","Klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "Neteisingai įvestas elektroninis paštas", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Clear();
                 txtEmail.Focus();
             }
+            else if (prbTakingPictures.Value != howManyImagesOfOnePerson)
+            {
+                MetroMessageBox.Show(this, "Norint užsiregistruoti dar reikia nusifotografuoti", "Registracija", MessageBoxButtons.OK);
+            }
             else
             {
-                Person newPerson = new Person(mainForm.humanDBHelper.getNextId(), txtName.Text, txtSurname.Text, txtPassword.Text, birthDate, txtPhoneNumber.Text, txtEmail.Text);
+                faceRegistration.StopRecognition();
+                if (camera.Camera != null)
+                {
+                    camera.TurnOff();
+                }
+
+                int naujasID = mainForm.humanDBHelper.getNextId();
+
+                List<Image> userImages = faceRegistration.getFaceImages();
+                DarbasSuFailais.IrasytiID(PathsToFiles.pathToFacesFile, naujasID, howManyImagesOfOnePerson);
+                DarbasSuFailais.IrasytiNuotraukas(PathsToFiles.pathToFacesFolder, userImages, naujasID);
+
+                Person newPerson = new Person(naujasID, txtName.Text, txtSurname.Text, txtPassword.Text, birthDate, txtPhoneNumber.Text, txtEmail.Text);
                 if (mainForm.humanDBHelper.AddNewPerson(newPerson) == true)
                 {
                     UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, newPerson);
@@ -79,26 +110,26 @@ namespace Virtual_librarian
 
         private void btnTakePicture_Click(object sender, EventArgs e)
         {
-            if (capture == null)
-            {
-                capture = new Capture(0);
+            btnTakePicture.Visible = false;
+            prbTakingPictures.Visible = true;
+            lblTakingPictures.Visible = true;
 
-            }
-            capture.ImageGrabbed += Capture_ImageGrabbed;
-            capture.Start();
+            prbTakingPictures.Maximum = howManyImagesOfOnePerson;
+            prbTakingPictures.Step = 1;
+
+            faceRegistration.saveFaceImages();
+            faceRegistration.OnPictureTaken += FaceRegistration_OnPictureTaken;
         }
 
-        private void Capture_ImageGrabbed(object sender, EventArgs e)
+        private void FaceRegistration_OnPictureTaken(object sender, EventArgs e)
         {
-            try
+            prbTakingPictures.Value += prbTakingPictures.Step; //Padidinam vienu progress bar'ą
+            if (prbTakingPictures.Value == howManyImagesOfOnePerson) //Jei padarė reikiamą kiekį nuotraukų
             {
-
-                
-                //pictureBox2.Image = m.ToImage<Bgr, byte>().ToBitmap();
-            }
-            catch (Exception)
-            {
-
+                faceRegistration.StopRecognition();
+                camera.TurnOff();
+                picCamera.Image = Properties.Resources.avatar;
+                lblTakingPictures.Text = "Nuotraukos sėkmingai išsaugotos";
             }
         }
     }

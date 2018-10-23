@@ -1,57 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Person>
-    <Id>0</Id>
-    <Name>Vardenis</Name>
-    <Surname>Pavardenis</Surname>
-    <Password>Slaptazodis</Password>
-    <BirthDate>1998-01-01T00:00:00</BirthDate>
-    <PhoneNumber>+37012345678</PhoneNumber>
-    <Email>vardenis.pavardenis@gmail.com</Email>
-  </Person>
-  <Person>
     <Id>1</Id>
-    <Name>Jonas</Name>
-    <Surname>Joanitis</Surname>
-    <Password>JonaicioSlaptazodis</Password>
-    <BirthDate>1997-03-08T00:00:00</BirthDate>
-    <PhoneNumber>+342563634534</PhoneNumber>
-    <Email>Jonas.Jonaitis@gmail.com</Email>
-  </Person>
-  <Person>
-    <Id>2</Id>
-    <Name>Petras</Name>
-    <Surname>Petraitis</Surname>
-    <Password>bestSlaptazodis</Password>
-    <BirthDate>1974-08-23T00:00:00</BirthDate>
-    <PhoneNumber>+37012345678</PhoneNumber>
-    <Email>petux@gmail.com</Email>
-  </Person>
-  <Person>
-    <Id>3</Id>
     <Name>Dominykas</Name>
     <Surname>Pakalnis</Surname>
     <Password>slaptazodis</Password>
-    <BirthDate>1998-02-25T21:12:29</BirthDate>
-    <PhoneNumber>+37061111111</PhoneNumber>
-    <Email>dominykp@gmail.com</Email>
-  </Person>
-  <Person>
-    <Id>4</Id>
-    <Name>Eimantas</Name>
-    <Surname>Pakalnis</Surname>
-    <Password>eimantas</Password>
-    <BirthDate>1998-02-25T00:15:17</BirthDate>
-    <PhoneNumber>+37012121212</PhoneNumber>
-    <Email>eimantas@gmail.com</Email>
+    <BirthDate>2018-10-22T12:11:17.7806087+03:00</BirthDate>
+    <PhoneNumber>SFD,DSFDSBKJ</PhoneNumber>
+    <Email>domin@djbskjds.com</Email>
   </Person>
   <Person>
     <Id>5</Id>
-    <Name>Irena</Name>
-    <Surname>Cer</Surname>
-    <Password>pass</Password>
-    <BirthDate>1996-04-19T17:06:47</BirthDate>
-    <PhoneNumber>112</PhoneNumber>
-    <Email>test@test.com</Email>
+    <Name>Martynas</Name>
+    <Surname>Baškys</Surname>
+    <Password>1234</Password>
+    <BirthDate>2018-10-17T19:31:23.5298131+03:00</BirthDate>
+    <PhoneNumber />
+    <Email>g@g.com</Email>
+  </Person>
+  <Person>
+    <Id>6</Id>
+    <Name />
+    <Surname />
+    <Password />
+    <BirthDate>2018-10-17T19:41:25.1112673+03:00</BirthDate>
+    <PhoneNumber />
+    <Email>fsdf@fds.com</Email>
   </Person>
 </ArrayOfPerson>

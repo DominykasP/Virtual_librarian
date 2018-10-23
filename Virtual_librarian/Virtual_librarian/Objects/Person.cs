@@ -75,3 +75,18 @@ namespace Virtual_librarian
         }
     }
 }
+class ZmoniuKolekcija<Zmogus>
+{
+    private Zmogus[] arr = new Zmogus[100];
+    int nextIndex = 0;
+
+    // Apibreziamas indeksavima, kad butu galima kreiptis su [] kabutemis
+    public Zmogus this[int i] => arr[i];
+
+    public void prideti(Zmogus value)
+    {
+        if (nextIndex >= arr.Length)
+            throw new IndexOutOfRangeException($"Žmonių kolekcija turi tik {arr.Length} elementų.");
+        arr[nextIndex++] = value;
+    }
+}

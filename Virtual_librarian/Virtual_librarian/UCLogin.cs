@@ -18,32 +18,64 @@ namespace Virtual_librarian
     public partial class UCLogin : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
-        FaceRecognition faceRecognition = new FaceRecognition();
-        UseCamera camera = new UseCamera();
+        FaceRecognition faceRecognition;
+        UseCamera camera;
 
         public UCLogin(MainForm mainForma)
         {
             InitializeComponent();
             mainForm = mainForma;
-            faceRecognition.UseFaceRecognition();
+
+            faceRecognition = new FaceRecognition();
+            camera = new UseCamera();
         }
 
         private void btnTakePicture_Click(object sender, EventArgs e)
         {
             if (camera.Camera == null)
-            {              
+            {
                 camera.TurnOn();
-             
-                faceRecognition.Display(cameraBox, camera.Camera);              
-            }           
+
+                faceRecognition.Display(cameraBox, camera.Camera);
+
+                faceRecognition.OnFoundRegisteredFace += FaceRecognition_OnFoundRegisteredFace;
+            }
         }
-        
+
+        private void FaceRecognition_OnFoundRegisteredFace(object sender, Camera.RecognisedPersonEventArgs e) //Suveikia, kai atpažįsta žmogų iš foto
+        {
+            faceRecognition.StopRecognition();
+            camera.TurnOff();
+
+            int recognisedID;
+            Int32.TryParse(e.recognisedID, out recognisedID);
+            Zmogus prisijungesZmogus = mainForm.humanDBHelper.getZmogusByID(recognisedID);
+
+            if (prisijungesZmogus != null)
+            {
+                DialogResult dr = MetroMessageBox.Show(this, "Sėkmingai atpažintas naudotojas " + prisijungesZmogus.Name + " " + prisijungesZmogus.Surname + "\nAr tai jūs?", "Prisijungimas", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, prisijungesZmogus);
+                    ucMainUserMeniu.Dock = DockStyle.Bottom;
+                    mainForm.Controls.Remove(this);
+                    mainForm.Controls.Add(ucMainUserMeniu);
+                }
+                else
+                {
+                    camera.TurnOn();
+                    faceRecognition.ContinueRecognition(cameraBox, camera.Camera);
+                }
+            }
+        }
+
         private void btnLogInWIthName_Click(object sender, EventArgs e)
         {
-            Person LoggedInPerson = mainForm.humanDBHelper.getPersonByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
+            Person loggedInPerson = mainForm.humanDBHelper.getPersonByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
             camera.TurnOff();
-            faceRecognition.Display(cameraBox, camera.Camera);
-            if (LoggedInPerson != null)
+            faceRecognition.StopRecognition();
+
+            if (loggedInPerson != null)
             {
                 UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, LoggedInPerson);
                 ucMainUserMeniu.Dock = DockStyle.Bottom;
@@ -52,7 +84,7 @@ namespace Virtual_librarian
             }
             else
             {
-                MetroMessageBox.Show(this,"Neteisingai įvesti prisijungimo duomenys","Prisijungimo klaida",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, "Neteisingai įvesti prisijungimo duomenys", "Prisijungimo klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -60,7 +92,8 @@ namespace Virtual_librarian
         private void btnCancel_Click(object sender, EventArgs e)
         {
             camera.TurnOff();
-            faceRecognition.Display(cameraBox, camera.Camera);
+            faceRecognition.StopRecognition();
+
             UCChooseLogin ucChooseLogin = new UCChooseLogin(mainForm);
             ucChooseLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Remove(this);

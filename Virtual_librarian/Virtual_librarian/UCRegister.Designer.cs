@@ -44,19 +44,20 @@
             this.dtpGimimoData = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnTakePicture = new MetroFramework.Controls.MetroTile();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picCamera = new System.Windows.Forms.PictureBox();
             this.btnRegistruoti = new MetroFramework.Controls.MetroTile();
+            this.prbTakingPictures = new MetroFramework.Controls.MetroProgressBar();
+            this.lblTakingPictures = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCamera)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
             // 
             this.btnCancel.ActiveControl = null;
-            this.btnCancel.Location = new System.Drawing.Point(1246, 7);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.btnCancel.Location = new System.Drawing.Point(534, 3);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(341, 85);
+            this.btnCancel.Size = new System.Drawing.Size(146, 38);
             this.btnCancel.TabIndex = 4;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Atšaukti";
@@ -66,8 +67,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(89, 7);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(38, 3);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(289, 19);
             this.metroLabel2.TabIndex = 5;
@@ -80,7 +80,6 @@
             // 
             this.txtPassword.CustomButton.Image = null;
             this.txtPassword.CustomButton.Location = new System.Drawing.Point(973, 2);
-            this.txtPassword.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtPassword.CustomButton.Name = "";
             this.txtPassword.CustomButton.Size = new System.Drawing.Size(114, 109);
             this.txtPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -90,7 +89,6 @@
             this.txtPassword.CustomButton.Visible = false;
             this.txtPassword.Lines = new string[0];
             this.txtPassword.Location = new System.Drawing.Point(1078, 317);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtPassword.MaxLength = 32767;
             this.txtPassword.Name = "txtSlaptazodis";
             this.txtPassword.PasswordChar = '*';
@@ -112,7 +110,6 @@
             // 
             this.txtSurname.CustomButton.Image = null;
             this.txtSurname.CustomButton.Location = new System.Drawing.Point(973, 2);
-            this.txtSurname.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtSurname.CustomButton.Name = "";
             this.txtSurname.CustomButton.Size = new System.Drawing.Size(114, 109);
             this.txtSurname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -122,7 +119,6 @@
             this.txtSurname.CustomButton.Visible = false;
             this.txtSurname.Lines = new string[0];
             this.txtSurname.Location = new System.Drawing.Point(1078, 252);
-            this.txtSurname.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtSurname.MaxLength = 32767;
             this.txtSurname.Name = "txtPavarde";
             this.txtSurname.PasswordChar = '\0';
@@ -144,7 +140,6 @@
             // 
             this.txtName.CustomButton.Image = null;
             this.txtName.CustomButton.Location = new System.Drawing.Point(973, 2);
-            this.txtName.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtName.CustomButton.Name = "";
             this.txtName.CustomButton.Size = new System.Drawing.Size(114, 109);
             this.txtName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -154,7 +149,6 @@
             this.txtName.CustomButton.Visible = false;
             this.txtName.Lines = new string[0];
             this.txtName.Location = new System.Drawing.Point(1078, 187);
-            this.txtName.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtName.MaxLength = 32767;
             this.txtName.Name = "txtVardas";
             this.txtName.PasswordChar = '\0';
@@ -176,7 +170,6 @@
             // 
             this.txtPhoneNumber.CustomButton.Image = null;
             this.txtPhoneNumber.CustomButton.Location = new System.Drawing.Point(973, 2);
-            this.txtPhoneNumber.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtPhoneNumber.CustomButton.Name = "";
             this.txtPhoneNumber.CustomButton.Size = new System.Drawing.Size(114, 109);
             this.txtPhoneNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -186,7 +179,6 @@
             this.txtPhoneNumber.CustomButton.Visible = false;
             this.txtPhoneNumber.Lines = new string[0];
             this.txtPhoneNumber.Location = new System.Drawing.Point(1078, 439);
-            this.txtPhoneNumber.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.txtPhoneNumber.MaxLength = 32767;
             this.txtPhoneNumber.Name = "txtTelefonoNr";
             this.txtPhoneNumber.PasswordChar = '\0';
@@ -207,18 +199,16 @@
             // 
             // 
             this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(973, 2);
-            this.txtEmail.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(76, 0);
             this.txtEmail.CustomButton.Name = "";
-            this.txtEmail.CustomButton.Size = new System.Drawing.Size(114, 109);
+            this.txtEmail.CustomButton.Size = new System.Drawing.Size(9, 9);
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEmail.CustomButton.TabIndex = 1;
             this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtEmail.CustomButton.UseSelectable = true;
             this.txtEmail.CustomButton.Visible = false;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(1078, 504);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtEmail.Location = new System.Drawing.Point(462, 226);
             this.txtEmail.MaxLength = 32767;
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.PasswordChar = '\0';
@@ -227,7 +217,7 @@
             this.txtEmail.SelectionLength = 0;
             this.txtEmail.SelectionStart = 0;
             this.txtEmail.ShortcutsEnabled = true;
-            this.txtEmail.Size = new System.Drawing.Size(467, 51);
+            this.txtEmail.Size = new System.Drawing.Size(200, 23);
             this.txtEmail.TabIndex = 5;
             this.txtEmail.UseSelectable = true;
             this.txtEmail.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -236,8 +226,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(863, 317);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel4.Location = new System.Drawing.Point(370, 142);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(78, 19);
             this.metroLabel4.TabIndex = 13;
@@ -246,8 +235,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(863, 252);
-            this.metroLabel5.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel5.Location = new System.Drawing.Point(370, 113);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(59, 19);
             this.metroLabel5.TabIndex = 14;
@@ -256,8 +244,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(863, 187);
-            this.metroLabel6.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel6.Location = new System.Drawing.Point(370, 84);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(50, 19);
             this.metroLabel6.TabIndex = 15;
@@ -266,8 +253,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(863, 381);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(370, 171);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(89, 19);
             this.metroLabel3.TabIndex = 16;
@@ -276,8 +262,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(863, 439);
-            this.metroLabel7.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel7.Location = new System.Drawing.Point(370, 197);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(78, 19);
             this.metroLabel7.TabIndex = 17;
@@ -286,8 +271,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(863, 504);
-            this.metroLabel8.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel8.Location = new System.Drawing.Point(370, 226);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(65, 19);
             this.metroLabel8.TabIndex = 18;
@@ -295,19 +279,17 @@
             // 
             // dtpGimimoData
             // 
-            this.dtpGimimoData.Location = new System.Drawing.Point(1078, 381);
-            this.dtpGimimoData.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.dtpGimimoData.Location = new System.Drawing.Point(462, 171);
             this.dtpGimimoData.Name = "dtpGimimoData";
-            this.dtpGimimoData.Size = new System.Drawing.Size(461, 35);
+            this.dtpGimimoData.Size = new System.Drawing.Size(200, 20);
             this.dtpGimimoData.TabIndex = 3;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Virtual_librarian.Properties.Resources.gray_line_png1;
-            this.pictureBox1.Location = new System.Drawing.Point(670, 120);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(287, 54);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 573);
+            this.pictureBox1.Size = new System.Drawing.Size(88, 257);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
@@ -315,46 +297,63 @@
             // btnTakePicture
             // 
             this.btnTakePicture.ActiveControl = null;
-            this.btnTakePicture.Location = new System.Drawing.Point(56, 569);
-            this.btnTakePicture.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.btnTakePicture.Location = new System.Drawing.Point(24, 265);
             this.btnTakePicture.Name = "btnTakePicture";
-            this.btnTakePicture.Size = new System.Drawing.Size(546, 125);
+            this.btnTakePicture.Size = new System.Drawing.Size(234, 56);
             this.btnTakePicture.TabIndex = 22;
             this.btnTakePicture.TabStop = false;
             this.btnTakePicture.Text = "Daryti nuotrauką";
             this.btnTakePicture.UseSelectable = true;
             this.btnTakePicture.Click += new System.EventHandler(this.btnTakePicture_Click);
             // 
-            // pictureBox2
+            // picCamera
             // 
-            this.pictureBox2.Image = global::Virtual_librarian.Properties.Resources.avatar;
-            this.pictureBox2.Location = new System.Drawing.Point(56, 165);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(546, 390);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 21;
-            this.pictureBox2.TabStop = false;
+            this.picCamera.Image = global::Virtual_librarian.Properties.Resources.avatar;
+            this.picCamera.Location = new System.Drawing.Point(24, 74);
+            this.picCamera.Name = "picCamera";
+            this.picCamera.Size = new System.Drawing.Size(234, 175);
+            this.picCamera.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picCamera.TabIndex = 21;
+            this.picCamera.TabStop = false;
             // 
             // btnRegistruoti
             // 
             this.btnRegistruoti.ActiveControl = null;
-            this.btnRegistruoti.Location = new System.Drawing.Point(863, 569);
-            this.btnRegistruoti.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.btnRegistruoti.Location = new System.Drawing.Point(370, 255);
             this.btnRegistruoti.Name = "btnRegistruoti";
-            this.btnRegistruoti.Size = new System.Drawing.Size(681, 125);
+            this.btnRegistruoti.Size = new System.Drawing.Size(292, 56);
             this.btnRegistruoti.TabIndex = 6;
             this.btnRegistruoti.Text = "Registruotis";
             this.btnRegistruoti.UseSelectable = true;
             this.btnRegistruoti.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // prbTakingPictures
+            //
+            this.prbTakingPictures.Location = new System.Drawing.Point(24, 265);
+            this.prbTakingPictures.Name = "prbTakingPictures";
+            this.prbTakingPictures.Size = new System.Drawing.Size(234, 23);
+            this.prbTakingPictures.TabIndex = 23;
+            this.prbTakingPictures.Visible = false;
+            //
+            // lblTakingPictures
+            //
+            this.lblTakingPictures.AutoSize = true;
+            this.lblTakingPictures.BackColor = System.Drawing.Color.Transparent;
+            this.lblTakingPictures.Font = new System.Drawing.Font("Segoe UI Light", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(186)));
+            this.lblTakingPictures.Location = new System.Drawing.Point(29, 294);
+            this.lblTakingPictures.Name = "lblTakingPictures";
+            this.lblTakingPictures.Size = new System.Drawing.Size(219, 17);
+            this.lblTakingPictures.TabIndex = 24;
+            this.lblTakingPictures.Text = "Prašome palaukti, daromos nuotraukos";
+            this.lblTakingPictures.Visible = false;
+            //
             // UCRegister
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnRegistruoti);
             this.Controls.Add(this.btnTakePicture);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnRegistruoti);
+            this.Controls.Add(this.picCamera);
             this.Controls.Add(this.dtpGimimoData);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel7);
@@ -370,12 +369,13 @@
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.Controls.Add(this.lblTakingPictures);
+            this.Controls.Add(this.prbTakingPictures);
             this.Name = "UCRegister";
-            this.Size = new System.Drawing.Size(1594, 763);
+            this.Size = new System.Drawing.Size(683, 342);
             this.Load += new System.EventHandler(this.UCRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCamera)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,7 +398,9 @@
         private System.Windows.Forms.DateTimePicker dtpGimimoData;
         private System.Windows.Forms.PictureBox pictureBox1;
         private MetroFramework.Controls.MetroTile btnTakePicture;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picCamera;
         private MetroFramework.Controls.MetroTile btnRegistruoti;
+        private MetroFramework.Controls.MetroProgressBar prbTakingPictures;
+        private System.Windows.Forms.Label lblTakingPictures;
     }
 }

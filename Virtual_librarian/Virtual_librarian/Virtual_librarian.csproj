@@ -94,6 +94,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Camera\BarcodeRecognition.cs" />
+    <Compile Include="Camera\FaceRegistration.cs" />
+    <Compile Include="Camera\RecognisedBookEventArgs.cs" />
+    <Compile Include="Camera\RecognisedPersonEventArgs.cs" />
     <Compile Include="Camera\UseCamera.cs" />
     <Compile Include="Camera\FaceRecognition.cs" />
     <Compile Include="DB helpers interfaces\IBookDBHelper.cs" />
@@ -101,12 +105,15 @@
     <Compile Include="DB helpers\BookDBHelper.cs" />
     <Compile Include="DB helpers\FileIO.cs" />
     <Compile Include="DB helpers\HumanDBHelper.cs" />
+    <Compile Include="DB helpers\PathsToFiles.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Input_Output\CopyFiles.cs" />
+    <Compile Include="Input_Output\FileCompare.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,79 +222,7 @@
     <Content Include="License-LGPL.txt" />
     <Content Include="Resources\barcode-scanner.png" />
     <Content Include="Resources\icons8-barcode-64.png" />
-    <EmbeddedResource Include="x86\cudart32_65.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\cufft32_65.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\cvextern.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <EmbeddedResource Include="x86\haarcascade_frontalface_default.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\nppc32_65.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\nppi32_65.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\npps32_65.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\OpenCL.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_calib3d2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_contrib2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_core2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_features2d2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_flann2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_gpu2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_highgui2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_imgproc2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_legacy2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_ml2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_nonfree2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_objdetect2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_photo2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_stitching2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_superres2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_video2410.dll">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-    <EmbeddedResource Include="x86\opencv_videostab2410.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <None Include="Resources\icons8-barcode-641.png" />

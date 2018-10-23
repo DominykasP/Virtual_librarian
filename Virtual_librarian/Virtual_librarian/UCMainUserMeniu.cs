@@ -19,6 +19,7 @@ namespace Virtual_librarian
 
             InitializeComponent();
 
+            ucScanBook1.setUser(loggedIn);
             LoadLoanPeriods();
             LoadBookCatalog();
             LoadMyRequests();
@@ -32,10 +33,10 @@ namespace Virtual_librarian
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             //Sustabdyti knygu skenavima
-            if(ucScanBook1.camera != null)
+            if(ucScanBook1.camera.Camera != null)
             {
                 ucScanBook1.timer1.Stop();
-                ucScanBook1.camera.Dispose();
+                ucScanBook1.camera.Camera.Dispose();
                 ucScanBook1.Dispose();
             }
             
@@ -203,6 +204,11 @@ namespace Virtual_librarian
 
                 }
             }
+        }
+
+        private void grdTerminai_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

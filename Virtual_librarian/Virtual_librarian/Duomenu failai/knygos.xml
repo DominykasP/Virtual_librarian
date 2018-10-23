@@ -109,4 +109,39 @@
     <TakenAt>2018-10-11T00:16:38.2603687+03:00</TakenAt>
     <ReturnAt>2018-11-11T00:16:38.2603687+02:00</ReturnAt>
   </Book>
+  <Book>
+    <Id>7</Id>
+    <Name>Duomenų bazių valdymo sistemos</Name>
+    <Author>Romas Baronas</Author>
+    <Publisher>TEV</Publisher>
+    <Year>2005-10-03T00:00:00</Year>
+    <Pages>150</Pages>
+    <Isbn>003078220554</Isbn>
+    <Code>2134532</Code>
+    <IsTaken>true</IsTaken>
+    <Reader>
+      <Id>6</Id>
+      <Name />
+      <Surname />
+      <Password />
+      <Birthdate>2018-10-17T12:46:39.7211424+03:00</Birthdate>
+      <PhoneNumber />
+      <Email>dcscdc@gmail.com</Email>
+    </Reader>
+    <TakenAt>2018-10-17T18:04:26.5893201+03:00</TakenAt>
+    <ReturnAt>2018-11-17T18:04:26.5893201+02:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>7</Id>
+    <Name>Sasiuvinys</Name>
+    <Author>Martynas</Author>
+    <Publisher>Alma Literra</Publisher>
+    <Year>1975-03-24T00:00:00</Year>
+    <Pages>150</Pages>
+    <Isbn>460300808471</Isbn>
+    <Code>2134532</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
 </ArrayOfBook>
