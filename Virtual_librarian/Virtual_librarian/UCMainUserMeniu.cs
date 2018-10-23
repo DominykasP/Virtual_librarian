@@ -9,6 +9,7 @@ namespace Virtual_librarian
     public partial class UCMainUserMeniu : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
+        private UCScanBook ucScanBook;
         private Zmogus prisijungesZmogus;
         private BindingList<Knyga> manoUzklausos = new BindingList<Knyga>();
 
@@ -19,7 +20,12 @@ namespace Virtual_librarian
 
             InitializeComponent();
 
-            ucScanBook1.setUser(prisijunges);
+            //Sukurti UCScanBook Pasiimt/Grąžinti knygą tab'e
+            ucScanBook = new UCScanBook(mainForm, this);
+            ucScanBook.Dock = DockStyle.Top;
+            mtbPasiimti.Controls.Add(ucScanBook);
+
+            ucScanBook.setUser(prisijunges);
             pakrautiTerminus();
             pakrautiKnyguKataloga();
             pakrautiManoUzklausas();
@@ -34,11 +40,11 @@ namespace Virtual_librarian
         private void btnAtsijungti_Click(object sender, EventArgs e)
         {
             //Sustabdyti knygu skenavima
-            if(ucScanBook1.camera.Camera != null)
+            if(ucScanBook.camera.Camera != null)
             {
-                ucScanBook1.timer1.Stop();
-                ucScanBook1.camera.Camera.Dispose();
-                ucScanBook1.Dispose();
+                ucScanBook.timer1.Stop();
+                ucScanBook.camera.Camera.Dispose();
+                ucScanBook.Dispose();
             }
             
 

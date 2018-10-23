@@ -20,6 +20,9 @@ namespace Virtual_librarian
 {
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
+        private MainForm mainForm;
+        private UCMainUserMeniu ucMainUserMeniu;
+
         BarcodeRecognition recognition;
         
         public UseCamera camera;
@@ -31,11 +34,13 @@ namespace Virtual_librarian
 
 
 
-        public UCScanBook()
+        public UCScanBook(MainForm mainForm, UCMainUserMeniu ucMainUserMeniu)
         {
             camera = new UseCamera();
             
             InitializeComponent();
+            this.mainForm = mainForm;
+            this.ucMainUserMeniu = ucMainUserMeniu;
         }
         public bool setUser(Zmogus user)
         {
@@ -117,7 +122,6 @@ namespace Virtual_librarian
                 }
 
                 //Čia dar reikia atnaujinti pasiimtų knygų sąrašą
-
                 
             }
         }
