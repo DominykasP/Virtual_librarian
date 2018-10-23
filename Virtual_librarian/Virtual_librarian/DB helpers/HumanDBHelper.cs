@@ -67,7 +67,7 @@ namespace Virtual_librarian.DB_helpers
         public Zmogus getZmogusByID(int ID)
         {
             //Zmogus rastasZmogus = naudotojai.Find(zmogus => zmogus.Id == ID);
-            Zmogus rastasNaudotojas = new Zmogus();
+            Zmogus rastasNaudotojas = null;
             var naudotojuSarasas = naudotojai.OfType<Zmogus>();
             var rastiNaudotojai = from naudotojas in naudotojuSarasas
                                   where (naudotojas.Id == ID)
@@ -84,7 +84,7 @@ namespace Virtual_librarian.DB_helpers
         public Zmogus getZmogusByNameSurnamePassword(string name, string surname, string password)
         {
             //Zmogus rastasZmogus = naudotojai.Find(zmogus => zmogus.Name.Equals(name) && zmogus.Surname.Equals(surname) && zmogus.Password.Equals(password));
-            Zmogus rastasNaudotojas = new Zmogus();
+            Zmogus rastasNaudotojas = null;
             var naudotojuSarasas = naudotojai.OfType<Zmogus>();
             var rastiNaudotojai = from naudotojas in naudotojuSarasas
                                   where naudotojas.Name.Equals(name) && naudotojas.Surname.Equals(surname) && naudotojas.Password.Equals(password)

@@ -101,8 +101,8 @@
     <Isbn>003078220554</Isbn>
     <Kodas>2134532</Kodas>
     <ArPaimta>false</ArPaimta>
-    <Paimta>2018-10-17T18:04:26.5893201+03:00</Paimta>
-    <Grazinti>2018-11-17T18:04:26.5893201+02:00</Grazinti>
+    <Paimta>0001-01-01T00:00:00</Paimta>
+    <Grazinti>0001-01-01T00:00:00</Grazinti>
   </Knyga>
   <Knyga>
     <Id>8</Id>
