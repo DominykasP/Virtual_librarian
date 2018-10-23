@@ -9,7 +9,7 @@ namespace Virtual_librarian.DB_helpers
     public class BookDBHelper : BookDBHelperInterface
     {
         private List<Knyga> knygos;
-        private int i = 0;
+        //private int i = 0;
         //private KnyguKolekcija<Knyga> knygos;
         KnyguKolekcija<Knyga> knyguKolekcija = new KnyguKolekcija<Knyga>();
 
@@ -17,10 +17,17 @@ namespace Virtual_librarian.DB_helpers
         {
             //knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml");
             knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>(PathsToFiles.pathToBooksFile);
+            /*
             while (i < knygos.Count)//pridedam knygas i indeksuota klase
             {
                 knyguKolekcija.prideti(knygos[i++]);               
             }
+            */
+            foreach(Knyga knyga in knygos)
+            {
+                knyguKolekcija.prideti(knyga);
+            }
+            
         }
 
         public Knyga gautiKnygaPagalIndeksa(int id)
