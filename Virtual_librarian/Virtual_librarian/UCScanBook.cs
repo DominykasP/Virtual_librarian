@@ -28,7 +28,6 @@ namespace Virtual_librarian
         public UseCamera camera;
         private object lockobject = new object();
         public List<Bitmap> images;
-        BookDBHelper bookDBHelper = new BookDBHelper();
         String[] barcode;
         Zmogus logedInUser;
 
@@ -78,7 +77,7 @@ namespace Virtual_librarian
 
                 BarcodeBox1.AppendText(barcode[0]);
 
-                bool isBookTaken = bookDBHelper.isBookAlreadyTaken(knyga);
+                bool isBookTaken = mainForm.bookDBHelper.isBookAlreadyTaken(knyga);
 
                 if (isBookTaken) //Jei paimta, norim grąžinti
                 {
@@ -88,7 +87,7 @@ namespace Virtual_librarian
                                 "Ar norite grąžinti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                     if (dr == DialogResult.Yes)
                     {
-                        bool arSekmingai = bookDBHelper.grazintiKnyga(knyga);
+                        bool arSekmingai = mainForm.bookDBHelper.grazintiKnyga(knyga);
                         if (arSekmingai == true)
                         {
 
@@ -108,7 +107,7 @@ namespace Virtual_librarian
                                 "Ar norite pasiimti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                     if (dr == DialogResult.Yes)
                     {
-                        bool arSekmingai = bookDBHelper.paimtiKnyga(knyga, logedInUser);
+                        bool arSekmingai = mainForm.bookDBHelper.paimtiKnyga(knyga, logedInUser);
                         if (arSekmingai == true)
                         {
 
@@ -121,8 +120,9 @@ namespace Virtual_librarian
                     }
                 }
 
-                //Čia dar reikia atnaujinti pasiimtų knygų sąrašą
-                
+                //Atnaujinam visų ir pasiimtų knygų sąrašus
+                ucMainUserMeniu.pakrautiTerminus();
+                ucMainUserMeniu.pakrautiKnyguKataloga();
             }
         }
 

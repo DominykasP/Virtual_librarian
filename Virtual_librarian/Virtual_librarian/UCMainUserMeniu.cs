@@ -55,7 +55,7 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void pakrautiTerminus()
+        public void pakrautiTerminus()
         {
             BindingList<Knyga> manoKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiZmogausKnygas(prisijungesZmogus));
             BindingSource manoKnyguSource = new BindingSource(manoKnygos, null);
@@ -71,7 +71,7 @@ namespace Virtual_librarian
             grdTerminai.Columns["Puslapiai"].Visible = false;
         }
 
-        private void pakrautiKnyguKataloga()
+        public void pakrautiKnyguKataloga()
         {
             BindingList<Knyga> visosKnygos = new BindingList<Knyga>(mainForm.bookDBHelper.gautiVisasKnygas());
             BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
