@@ -60,15 +60,15 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
+        private void btnRegistruoti_Click(object sender, EventArgs e)
         {
-            DateTime birthDate = dtpGimimoData.Value;
+            DateTime gimimoData = dtpGimimoData.Value;
 
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
-            System.Text.RegularExpressions.Regex pattern = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
+            System.Text.RegularExpressions.Regex sablonas = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
 
-            if (!pattern.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
+            if (!sablonas.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
             {
                 MetroMessageBox.Show(this, "Neteisingai įvestas elektroninis paštas", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Clear();
@@ -92,10 +92,11 @@ namespace Virtual_librarian
                 DarbasSuFailais.IrasytiID(PathsToFiles.pathToFacesFile, naujasID, howManyImagesOfOnePerson);
                 DarbasSuFailais.IrasytiNuotraukas(PathsToFiles.pathToFacesFolder, userImages, naujasID);
 
-                Person newPerson = new Person(naujasID, txtName.Text, txtSurname.Text, txtPassword.Text, birthDate, txtPhoneNumber.Text, txtEmail.Text);
-                if (mainForm.humanDBHelper.AddNewPerson(newPerson) == true)
+                Person naujasZmogus = new Person(naujasID, txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text, email: txtEmail.Text);
+
+                if (mainForm.humanDBHelper.AddNewPerson(naujasZmogus) == true)
                 {
-                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, newPerson);
+                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
                     ucMainUserMeniu.Dock = DockStyle.Bottom;
                     mainForm.Controls.Remove(this);
                     mainForm.Controls.Add(ucMainUserMeniu);
