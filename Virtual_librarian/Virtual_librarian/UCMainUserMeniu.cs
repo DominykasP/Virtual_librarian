@@ -143,16 +143,6 @@ namespace Virtual_librarian
             }
         }
 
-        private void ucScanBook1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucScanBook1_Load_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void grdAllBooks_KeyPress(object sender, KeyPressEventArgs e) //Šito vėliau nereikės - Paspaudus tarpą "Pasiims knygą"
         {
             if (e.KeyChar == (Char)Keys.Space)

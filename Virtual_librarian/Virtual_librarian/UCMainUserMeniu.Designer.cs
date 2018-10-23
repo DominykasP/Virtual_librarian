@@ -39,7 +39,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.mtbPasiimti = new MetroFramework.Controls.MetroTabPage();
-            this.ucScanBook1 = new Virtual_librarian.UCScanBook();
             this.mtbTerminai = new MetroFramework.Controls.MetroTabPage();
             this.grdTerminai = new MetroFramework.Controls.MetroGrid();
             this.mtbKnyguKatalogas = new MetroFramework.Controls.MetroTabPage();
@@ -78,7 +77,6 @@
             // 
             // mtbPasiimti
             // 
-            this.mtbPasiimti.Controls.Add(this.ucScanBook1);
             this.mtbPasiimti.HorizontalScrollbarBarColor = true;
             this.mtbPasiimti.HorizontalScrollbarHighlightOnWheel = false;
             this.mtbPasiimti.HorizontalScrollbarSize = 10;
@@ -90,16 +88,6 @@
             this.mtbPasiimti.VerticalScrollbarBarColor = true;
             this.mtbPasiimti.VerticalScrollbarHighlightOnWheel = false;
             this.mtbPasiimti.VerticalScrollbarSize = 10;
-            // 
-            // ucScanBook1
-            // 
-            this.ucScanBook1.Location = new System.Drawing.Point(3, 11);
-            this.ucScanBook1.Margin = new System.Windows.Forms.Padding(7);
-            this.ucScanBook1.Name = "ucScanBook1";
-            this.ucScanBook1.Size = new System.Drawing.Size(650, 250);
-            this.ucScanBook1.TabIndex = 2;
-            this.ucScanBook1.UseSelectable = true;
-            this.ucScanBook1.Load += new System.EventHandler(this.ucScanBook1_Load_1);
             // 
             // mtbTerminai
             // 
@@ -372,7 +360,6 @@
         private MetroFramework.Controls.MetroTile btnAtsijungti;
         private MetroFramework.Controls.MetroTabPage mtbKnyguKatalogas;
         private MetroFramework.Controls.MetroGrid grdAllBooks;
-        private UCScanBook ucScanBook1;
         private MetroFramework.Controls.MetroTabPage mtbManoUžklausos;
         private MetroFramework.Controls.MetroGrid grdManoUzklausos;
         private MetroFramework.Controls.MetroTile btnSiustiManoUzklausas;
