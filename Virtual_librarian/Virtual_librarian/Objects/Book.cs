@@ -125,6 +125,8 @@ namespace Virtual_librarian
         {
             return (this.isbn == other.isbn) && (this.code == other.code);
         }
+
+        
     }
 }
 
