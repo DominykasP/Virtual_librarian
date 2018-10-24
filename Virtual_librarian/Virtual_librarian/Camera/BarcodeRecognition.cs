@@ -61,8 +61,6 @@ namespace Virtual_librarian.Camera
         //------------------------------------------------
         public void StartRecognising()
         {
-            allBooks = new BindingList<Book>(bookDBHelper.GetAllBooks());
-            BindingSource allBookSource = new BindingSource(allBooks, null);
             images = new List<Bitmap>();
             aTimer.Interval = 2000;
             aTimer.Start();
@@ -75,11 +73,9 @@ namespace Virtual_librarian.Camera
         public void StopRecognising()
         {
             aTimer.Stop();
-            if (camera.Camera != null)
-            {
-                camera.TurnOff();
-            }
+            camera.TurnOff();
             Application.Idle -= FrameProcedure;
+            book = null;
         }
         //------------------------------------------------------------
         //-------Convert Barcodes from image to string----------------
@@ -132,7 +128,7 @@ namespace Virtual_librarian.Camera
             }
             catch (Exception)
             {
-                MessageBox.Show("Test");
+                
             }
         }
         //------------------------------------------

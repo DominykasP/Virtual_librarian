@@ -40,7 +40,7 @@ namespace Virtual_librarian
             this.mainForm = mainForm;
             this.ucMainUserMeniu = ucMainUserMeniu;
 
-            recognition = new BarcodeRecognition(cameraBox, camera);
+            recognition = new BarcodeRecognition(cameraBox, camera, mainForm.bookDBHelper);
             recognition.OnBookRecognised += Recognition_OnBookRecognised;
         }
         public bool setUser(Person user)
@@ -55,11 +55,8 @@ namespace Virtual_librarian
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            if (camera.Camera == null) //Jei kamera išjungta
-            {
-                camera.TurnOn();
-                recognition.StartRecognising();
-            }
+            recognition.StopRecognising();
+            recognition.StartRecognising();
         }
 
         private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)

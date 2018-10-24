@@ -153,7 +153,7 @@
     <Isbn>9789955680093</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
-    <TakenAt>2018-10-17T18:04:26.5893201+03:00</TakenAt>
-    <ReturnAt>2018-11-17T18:04:26.5893201+02:00</ReturnAt>
+    <TakenAt>2018-10-24T13:45:22.9902632+03:00</TakenAt>
+    <ReturnAt>2018-11-24T13:45:22.9902632+02:00</ReturnAt>
   </Book>
 </ArrayOfBook>
