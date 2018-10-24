@@ -9,6 +9,7 @@ namespace Virtual_librarian
     public partial class UCMainUserMeniu : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
+        private UCScanBook ucScanBook;
         private Person loggedInPerson;
         private BindingList<Book> myRequests = new BindingList<Book>();
 
@@ -19,7 +20,11 @@ namespace Virtual_librarian
 
             InitializeComponent();
 
-            ucScanBook1.setUser(loggedIn);
+            ucScanBook = new UCScanBook(mainForm, this);
+            ucScanBook.Dock = DockStyle.Top;
+            mtbPasiimti.Controls.Add(ucScanBook);
+
+            ucScanBook.setUser(loggedIn);
             LoadLoanPeriods();
             LoadBookCatalog();
             LoadMyRequests();
@@ -33,11 +38,11 @@ namespace Virtual_librarian
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             //Sustabdyti knygu skenavima
-            if(ucScanBook1.camera.Camera != null)
+            if(ucScanBook.camera.Camera != null)
             {
-                ucScanBook1.timer1.Stop();
-                ucScanBook1.camera.Camera.Dispose();
-                ucScanBook1.Dispose();
+                ucScanBook.timer1.Stop();
+                ucScanBook.camera.Camera.Dispose();
+                ucScanBook.Dispose();
             }
             
 
@@ -48,7 +53,7 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void LoadLoanPeriods()
+        public void LoadLoanPeriods()
         {
             BindingList<Book> myBooks = new BindingList<Book>(mainForm.bookDBHelper.GetReadersBooks(loggedInPerson));
             BindingSource myBookSource = new BindingSource(myBooks, null);
@@ -64,7 +69,7 @@ namespace Virtual_librarian
             grdLoanPeriods.Columns["Pages"].Visible = false;
         }
 
-        private void LoadBookCatalog()
+        public void LoadBookCatalog()
         {
             BindingList<Book> allBooks = new BindingList<Book>(mainForm.bookDBHelper.GetAllBooks());
             BindingSource allBookSource = new BindingSource(allBooks, null);
@@ -140,16 +145,6 @@ namespace Virtual_librarian
                     MetroMessageBox.Show(this, "Klaida patęsiant knygą", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void ucScanBook1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ucScanBook1_Load_1(object sender, EventArgs e)
-        {
-
         }
 
         private void grdAllBooks_KeyPress(object sender, KeyPressEventArgs e) //Šito vėliau nereikės - Paspaudus tarpą "Pasiims knygą"

@@ -61,16 +61,7 @@
     <Pages>200</Pages>
     <Isbn>3464653434343</Isbn>
     <Code>243534</Code>
-    <IsTaken>true</IsTaken>
-    <Reader>
-      <Id>3</Id>
-      <Name>Dominykas</Name>
-      <Surname>Pakalnis</Surname>
-      <Password>slaptazodis</Password>
-      <BirthDate>1998-02-25T21:12:29</BirthDate>
-      <PhoneNumber>+37061111111</PhoneNumber>
-      <Email>dominykp@gmail.com</Email>
-    </Reader>
+    <IsTaken>false</IsTaken>
     <TakenAt>2018-10-11T00:13:04.8562788+03:00</TakenAt>
     <ReturnAt>2018-11-11T00:13:04.8562788+02:00</ReturnAt>
   </Book>
@@ -96,16 +87,7 @@
     <Pages>200</Pages>
     <Isbn>34457665667536</Isbn>
     <Code>2345544454223</Code>
-    <IsTaken>true</IsTaken>
-    <Reader>
-      <Id>4</Id>
-      <Name>Eimantas</Name>
-      <Surname>Pakalnis</Surname>
-      <Password>eimantas</Password>
-      <BirthDate>1998-02-25T00:15:17</BirthDate>
-      <PhoneNumber>+37012121212</PhoneNumber>
-      <Email>eimantas@gmail.com</Email>
-    </Reader>
+    <IsTaken>false</IsTaken>
     <TakenAt>2018-10-11T00:16:38.2603687+03:00</TakenAt>
     <ReturnAt>2018-11-11T00:16:38.2603687+02:00</ReturnAt>
   </Book>
@@ -118,21 +100,12 @@
     <Pages>150</Pages>
     <Isbn>003078220554</Isbn>
     <Code>2134532</Code>
-    <IsTaken>true</IsTaken>
-    <Reader>
-      <Id>6</Id>
-      <Name />
-      <Surname />
-      <Password />
-      <BirthDate>0001-01-01T00:00:00</BirthDate>
-      <PhoneNumber />
-      <Email>dcscdc@gmail.com</Email>
-    </Reader>
+    <IsTaken>false</IsTaken>
     <TakenAt>2018-10-17T18:04:26.5893201+03:00</TakenAt>
     <ReturnAt>2018-11-17T18:04:26.5893201+02:00</ReturnAt>
   </Book>
   <Book>
-    <Id>7</Id>
+    <Id>8</Id>
     <Name>Sasiuvinys</Name>
     <Author>Martynas</Author>
     <Publisher>Alma Literra</Publisher>
@@ -145,7 +118,20 @@
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
   <Book>
-    <Id>8</Id>
+    <Id>9</Id>
+    <Name>Logika ir dirbtinis intelektas</Name>
+    <Author>Stanislovas Norgėla</Author>
+    <Publisher>Alma Literra</Publisher>
+    <Year>1975-03-24T00:00:00</Year>
+    <Pages>150</Pages>
+    <Isbn>003075812561</Isbn>
+    <Code>2134532</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>10</Id>
     <Name>Didysis Getsbis</Name>
     <Author>F.Scott Fitzgerald</Author>
     <Publisher>Obuolys</Publisher>

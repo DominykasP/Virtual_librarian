@@ -159,10 +159,10 @@ namespace Virtual_librarian.DB_helpers
             return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
         }
 
-        public bool isBookAlreadyTaken(Knyga bookToCheck)
+        public bool isBookAlreadyTaken(Book bookToCheck)
         {
-            Knyga currentBook = new Knyga();
-            var bookList = knygos.OfType<Knyga>();
+            Book currentBook = new Book();
+            var bookList = books.OfType<Book>();
             var booksFound = from book in bookList
                                where book.Equals(bookToCheck)
                                select book;
@@ -171,7 +171,7 @@ namespace Virtual_librarian.DB_helpers
                 currentBook = book;
             }
 
-            return currentBook.ArPaimta;
+            return currentBook.IsTaken;
         }
 
         public int getNextId()
