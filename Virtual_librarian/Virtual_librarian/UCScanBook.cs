@@ -28,7 +28,6 @@ namespace Virtual_librarian
         public UseCamera camera;
         private object lockobject = new object();
         public List<Bitmap> images;
-        BookDBHelper bookDBHelper = new BookDBHelper();
         String[] barcode;
         Person logedInUser;
 
@@ -56,7 +55,7 @@ namespace Virtual_librarian
         {
             
             camera.TurnOn();
-            recognition = new BarcodeRecognition(cameraBox, camera);
+            recognition = new BarcodeRecognition(cameraBox, camera, mainForm.bookDBHelper);
             recognition.StartRecognising();
 
             recognition.OnBookRecognised += Recognition_OnBookRecognised;

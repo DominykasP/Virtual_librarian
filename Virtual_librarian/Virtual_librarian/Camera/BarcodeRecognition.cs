@@ -25,7 +25,7 @@ namespace Virtual_librarian.Camera
         private object lockObject = new object();
         public List<Bitmap> images;
         Image<Bgr, byte> frame;
-        BookDBHelper bookDBHelper = new BookDBHelper();
+        BookDBHelper bookDBHelper;
         private BindingList<Book> myRequests = new BindingList<Book>();
         BindingList<Book> allBooks;
         public String[] barcode;
@@ -43,11 +43,12 @@ namespace Virtual_librarian.Camera
         //-----------------------------------------------
         //--------------Public Methods-------------------
         //-----------------------------------------------
-        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera)
+        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera, BookDBHelper bookDBHelper)
         {
             this.cameraBox = cameraBox;
             this.camera = camera;
             aTimer = new System.Windows.Forms.Timer();
+            this.bookDBHelper = bookDBHelper;
         }
 
         public bool SetUser(Person user)
@@ -163,24 +164,17 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------------------
         private Book RecogniseBookBarcode()
         {
-            /*if (barcode.Length != 0)                                  //12 to 13 barcode numbers
-            {
-                
-                char[] BarcodeNumbersChar = barcode[0].ToCharArray();
-                int[] BNr = Array.ConvertAll(BarcodeNumbersChar, c => (int)Char.GetNumericValue(c));
-                int LastNumber = 10 - (BNr[0] + BNr[1] * 3 + BNr[2] + BNr[3] * 3 + BNr[4] + BNr[5] * 3 + BNr[6] + BNr[7] * 3 + BNr[8] + BNr[9] * 3 + BNr[10] + BNr[11] * 3 ) % 10;
-                Array.Resize(ref BNr, 13);
-                BNr[12] = LastNumber;
-                string result = string.Join("", BNr);
-                MessageBox.Show(result);
-
-            }*/
+            String BarcodeNew = Convert12to13(barcode);
             if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16,barcode[0]))
             {
                 
                 aTimer.Stop();
                 camera.Camera.Pause();               
-                Book book = ContainsBook();
+                Book book = ContainsBook(barcode[0]);
+                if(book == null)
+                {
+                    book = ContainsBook(BarcodeNew);
+                }
                 
                 return book;              
             }
@@ -204,25 +198,54 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------
         //-------------Check if xml file conatains book-----------------
         //--------------------------------------------------------------
-        private Book ContainsBook()
+        private Book ContainsBook(String Isbn)
         {
-            bool contains = false;
+            
             Book knyga = null;
-            try
-            {               
-                knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
-            }
-            catch (Exception ex)
-            {
-
-            }
-            if (knyga != null)
-            {
-                contains = true;
-            }
+            //knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
+            knyga = bookDBHelper.GetBookByIsbn(Isbn);
+            
             return knyga;
         }
+        //--------------------------------------------------------------
+        //-----Convert barcode from 12 to 13 numbers when scanning------
+        //--------------------------------------------------------------
+        private String Convert12to13(String[] barcode)
+        {
+            String NewBarcode=null;
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13, barcode[0])&& IsDigitsOnly(barcode[0]))                                  //12 to 13 barcode numbers
+            {
 
+                char[] BarcodeNumbersChar = barcode[0].ToCharArray();
+                int[] BNr = Array.ConvertAll(BarcodeNumbersChar, c => (int)Char.GetNumericValue(c));
+                int LastNumber = 10 - (BNr[0] + BNr[1] * 3 + BNr[2] + BNr[3] * 3 + BNr[4] + BNr[5] * 3 + BNr[6] + BNr[7] * 3 + BNr[8] + BNr[9] * 3 + BNr[10] + BNr[11] * 3) % 10;
+                Array.Resize(ref BNr, 13);
+                BNr[12] = LastNumber;
+                char[] newBarcodeArray = new char[13];
+                for (int i = 0; i < BNr.Length; i++)
+                {
+                    char[] convertedInt = BNr[i].ToString().ToCharArray();
+                    newBarcodeArray[i] = convertedInt[0];
+                }
+                NewBarcode = new String(newBarcodeArray);
+               
+
+            }
+            return NewBarcode;
+        }
+        //--------------------------------------------------------------
+        //-----------Check if barcode only contains digits--------------
+        //--------------------------------------------------------------
+        bool IsDigitsOnly(String str)
+        {
+            foreach (char c in str)
+            {
+                if (c < '0' || c > '9')
+                    return false;
+            }
+
+            return true;
+        }
 
     }
 }
