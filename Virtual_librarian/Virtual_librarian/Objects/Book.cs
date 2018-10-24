@@ -29,16 +29,10 @@ namespace Virtual_librarian
 
         }
 
-        public Book(int id, string name, string author, string publisher, DateTime year, int pages, string isbn, string code)
+        public Book(int id, string name, string author, string publisher, DateTime year, int pages, string isbn, string code) 
         {
             this.id = id;
-            this.name = name;
-            this.author = author;
-            this.publisher = publisher;
-            this.year = year;
-            this.pages = pages;
-            this.isbn = isbn;
-            this.code = code;
+            SetProperties(name, author, publisher, year, pages, isbn, code);
 
             this.isTaken = false;
             this.reader = null;
@@ -48,13 +42,7 @@ namespace Virtual_librarian
 
         public Book(string name, string author, string publisher, DateTime year, int pages, string isbn, string code)
         {
-            this.name = name;
-            this.author = author;
-            this.publisher = publisher;
-            this.year = year;
-            this.pages = pages;
-            this.isbn = isbn;
-            this.code = code;
+            SetProperties(name, author, publisher, year, pages, isbn, code);
 
             this.isTaken = false;
             this.reader = null;
@@ -64,6 +52,16 @@ namespace Virtual_librarian
 
         public Book(string name, string author, string publisher, DateTime year, int pages, string isbn, string code, Person reader, DateTime takenAt, DateTime returnAt)
         {
+            SetProperties(name, author, publisher, year, pages, isbn, code);
+
+            this.isTaken = true;
+            this.reader = reader;
+            this.takenAt = takenAt;
+            this.returnAt = returnAt;
+        }
+
+        private void SetProperties(string name, string author, string publisher, DateTime year, int pages, string isbn, string code)
+        {
             this.name = name;
             this.author = author;
             this.publisher = publisher;
@@ -71,11 +69,6 @@ namespace Virtual_librarian
             this.pages = pages;
             this.isbn = isbn;
             this.code = code;
-
-            this.isTaken = true;
-            this.reader = reader;
-            this.takenAt = takenAt;
-            this.returnAt = returnAt;
         }
 
         public int Id { get => id; set => id = value; }
