@@ -20,28 +20,24 @@ namespace Virtual_librarian
 {
     public partial class UCScanBook : MetroFramework.Controls.MetroUserControl
     {
-        private MainForm mainForm;
-        private UCMainUserMeniu ucMainUserMeniu;
-
         BarcodeRecognition recognition;
         
         public UseCamera camera;
         private object lockobject = new object();
         public List<Bitmap> images;
+        BookDBHelper bookDBHelper = new BookDBHelper();
         String[] barcode;
-        Zmogus logedInUser;
+        Person logedInUser;
 
 
 
-        public UCScanBook(MainForm mainForm, UCMainUserMeniu ucMainUserMeniu)
+        public UCScanBook()
         {
             camera = new UseCamera();
             
             InitializeComponent();
-            this.mainForm = mainForm;
-            this.ucMainUserMeniu = ucMainUserMeniu;
         }
-        public bool setUser(Zmogus user)
+        public bool setUser(Person user)
         {
             logedInUser = user;
             return true;
@@ -56,7 +52,7 @@ namespace Virtual_librarian
             
             camera.TurnOn();
             recognition = new BarcodeRecognition(cameraBox, camera);
-            recognition.startRecognising();
+            recognition.StartRecognising();
 
             recognition.OnBookRecognised += Recognition_OnBookRecognised;
 
@@ -65,7 +61,7 @@ namespace Virtual_librarian
 
         private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
         {
-            Knyga knyga = e.book;
+            Book book = e.book;
 
             BarcodeBox1.Clear();
 
@@ -76,67 +72,23 @@ namespace Virtual_librarian
             {
 
                 BarcodeBox1.AppendText(barcode[0]);
-
-                bool isBookTaken = mainForm.bookDBHelper.isBookAlreadyTaken(knyga);
-
-                if (isBookTaken) //Jei paimta, norim grąžinti
+                DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + book.Author + "\n" +
+                                "Book Name: " + book.Name + " \n" +
+                                "Book ISBN: " + book.Isbn + "\n" +
+                                "Do you want to take this book? ", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
+                if (dr == DialogResult.Yes)
                 {
-                    DialogResult dr = MetroMessageBox.Show(this,
-                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
-                                "Autorius: " + knyga.Autorius + "\n" +
-                                "ISBN numeris: " + knyga.Isbn,
-                                "Ar norite grąžinti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-                    if (dr == DialogResult.Yes)
+                    bool isSuccessful = bookDBHelper.TakeBook(book, logedInUser);
+                    if (isSuccessful == true)
                     {
-                        bool arSekmingai = mainForm.bookDBHelper.grazintiKnyga(knyga);
-                        if (arSekmingai == true)
-                        {
 
-                            MetroMessageBox.Show(this,
-                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
-                                "Autorius: " + knyga.Autorius + "\n" +
-                                "ISBN numeris: " + knyga.Isbn,
-                                "Knyga sėkmingai grąžinta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
-                        else
-                        {
-                            MetroMessageBox.Show(this, knyga.Pavadinimas, "Klaida grąžinant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", book.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    else
+                    {
+                        MetroMessageBox.Show(this, "Klaida paimant knygą", book.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else //Jei nepaimta, norim pasiimti
-                {
-                    DialogResult dr = MetroMessageBox.Show(this,
-                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
-                                "Autorius: " + knyga.Autorius + "\n" +
-                                "ISBN numeris: " + knyga.Isbn,
-                                "Ar norite pasiimti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
-                    if (dr == DialogResult.Yes)
-                    {
-                        bool arSekmingai = mainForm.bookDBHelper.paimtiKnyga(knyga, logedInUser);
-                        if (arSekmingai == true)
-                        {
-
-                            MetroMessageBox.Show(this,
-                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
-                                "Autorius: " + knyga.Autorius + "\n" +
-                                "ISBN numeris: " + knyga.Isbn, 
-                                "Knyga sėkmingai paimta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        }
-                        else
-                        {
-                            MetroMessageBox.Show(this,
-                                "Pavadinimas: " + knyga.Pavadinimas + " \n" +
-                                "Autorius: " + knyga.Autorius + "\n" +
-                                "ISBN numeris: " + knyga.Isbn, 
-                                "Klaida paimant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-
-                //Atnaujinam visų ir pasiimtų knygų sąrašus
-                ucMainUserMeniu.pakrautiTerminus();
-                ucMainUserMeniu.pakrautiKnyguKataloga();
             }
         }
 

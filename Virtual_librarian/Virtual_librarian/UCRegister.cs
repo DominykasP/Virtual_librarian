@@ -20,7 +20,7 @@ namespace Virtual_librarian
         private MainForm mainForm;
         UseCamera camera;
         FaceRegistration faceRegistration;
-        int howManyImagesOfOnePerson = 5;
+        int imageCountPerPerson = 5;
 
 
         public UCRegister(MainForm mainForma)
@@ -29,7 +29,7 @@ namespace Virtual_librarian
             mainForm = mainForma;
 
             camera = new UseCamera();
-            faceRegistration = new FaceRegistration(howManyImagesOfOnePerson);
+            faceRegistration = new FaceRegistration(imageCountPerPerson);
 
             if (camera.Camera == null)
             {
@@ -60,21 +60,21 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucChooseLogin);
         }
 
-        private void btnRegistruoti_Click(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
-            DateTime gimimoData = dtpGimimoData.Value;
+            DateTime birthDate = dtpBirthDate.Value;
 
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
-            System.Text.RegularExpressions.Regex sablonas = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
+            System.Text.RegularExpressions.Regex pattern = new System.Text.RegularExpressions.Regex(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$"); //@, nes reikia kad būtų \. //Reikia System.Text.RegularExpressions. nes kitaip konfliktina su Emgu.cv
 
-            if (!sablonas.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
+            if (!pattern.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
             {
                 MetroMessageBox.Show(this, "Neteisingai įvestas elektroninis paštas", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Clear();
                 txtEmail.Focus();
             }
-            else if (prbTakingPictures.Value != howManyImagesOfOnePerson)
+            else if (prbTakingPictures.Value != imageCountPerPerson)
             {
                 MetroMessageBox.Show(this, "Norint užsiregistruoti dar reikia nusifotografuoti", "Registracija", MessageBoxButtons.OK);
             }
@@ -86,17 +86,17 @@ namespace Virtual_librarian
                     camera.TurnOff();
                 }
 
-                int naujasID = mainForm.humanDBHelper.getNextId();
+                int newID = mainForm.humanDBHelper.getNextId();
 
                 List<Image> userImages = faceRegistration.getFaceImages();
-                DarbasSuFailais.IrasytiID(PathsToFiles.pathToFacesFile, naujasID, howManyImagesOfOnePerson);
-                DarbasSuFailais.IrasytiNuotraukas(PathsToFiles.pathToFacesFolder, userImages, naujasID);
+                FileIO.WriteID(PathsToFiles.pathToFacesFile, newID, imageCountPerPerson);
+                FileIO.WritePhotos(PathsToFiles.pathToFacesFolder, userImages, newID);
 
-                Zmogus naujasZmogus = new Zmogus(naujasID, txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text, gimimoData, txtTelefonoNr.Text,email: txtEmail.Text);
-                
-                if (mainForm.humanDBHelper.addNewZmogus(naujasZmogus) == true)
+                Person newPerson = new Person(newID, txtName.Text, txtSurname.Text, txtPassword.Text, birthDate, txtPhoneNumber.Text, email: txtEmail.Text);
+
+                if (mainForm.humanDBHelper.AddNewPerson(newPerson) == true)
                 {
-                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, naujasZmogus);
+                    UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, newPerson);
                     ucMainUserMeniu.Dock = DockStyle.Bottom;
                     mainForm.Controls.Remove(this);
                     mainForm.Controls.Add(ucMainUserMeniu);
@@ -115,7 +115,7 @@ namespace Virtual_librarian
             prbTakingPictures.Visible = true;
             lblTakingPictures.Visible = true;
 
-            prbTakingPictures.Maximum = howManyImagesOfOnePerson;
+            prbTakingPictures.Maximum = imageCountPerPerson;
             prbTakingPictures.Step = 1;
 
             faceRegistration.saveFaceImages();
@@ -125,7 +125,7 @@ namespace Virtual_librarian
         private void FaceRegistration_OnPictureTaken(object sender, EventArgs e)
         {
             prbTakingPictures.Value += prbTakingPictures.Step; //Padidinam vienu progress bar'ą
-            if (prbTakingPictures.Value == howManyImagesOfOnePerson) //Jei padarė reikiamą kiekį nuotraukų
+            if (prbTakingPictures.Value == imageCountPerPerson) //Jei padarė reikiamą kiekį nuotraukų
             {
                 faceRegistration.StopRecognition();
                 camera.TurnOff();

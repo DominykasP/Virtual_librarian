@@ -15,13 +15,13 @@ namespace Virtual_librarian
     {
         private static MainForm mainForm;
 
-        public UCChooseLogin(MainForm mainForma)
+        public UCChooseLogin(MainForm mForm)
         {
             InitializeComponent();
-            mainForm = mainForma;
+            mainForm = mForm;
         }
 
-        private void btnPrisijungti_Click(object sender, EventArgs e)
+        private void btnLogIn_Click(object sender, EventArgs e)
         {
             UCLogin ucLogin = new UCLogin(mainForm);
             ucLogin.Dock = DockStyle.Bottom;
@@ -29,7 +29,7 @@ namespace Virtual_librarian
             mainForm.Controls.Add(ucLogin);
         }
 
-        private void btnRegistruotis_Click(object sender, EventArgs e)
+        private void btnRegister_Click(object sender, EventArgs e)
         {
             UCRegister ucRegister = new UCRegister(mainForm);
             ucRegister.Dock = DockStyle.Bottom;

@@ -43,7 +43,7 @@
             this.btnRegistruotis.TabIndex = 1;
             this.btnRegistruotis.Text = "Registruotis";
             this.btnRegistruotis.UseSelectable = true;
-            this.btnRegistruotis.Click += new System.EventHandler(this.btnRegistruotis_Click);
+            this.btnRegistruotis.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnPrisijungti
             // 
@@ -54,7 +54,7 @@
             this.btnPrisijungti.TabIndex = 1;
             this.btnPrisijungti.Text = "Prisijungti";
             this.btnPrisijungti.UseSelectable = true;
-            this.btnPrisijungti.Click += new System.EventHandler(this.btnPrisijungti_Click);
+            this.btnPrisijungti.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // pictureBox1
             // 

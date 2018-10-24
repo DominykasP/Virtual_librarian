@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian.Objects
 {
-    public class Admin : Zmogus
+    public class Admin : Person
     {
         private AdminJob Job;
 
-        public Admin(string name, string surname, string password, DateTime birthdate, string phoneNumber, string email,AdminJob job)
+        public Admin(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email,AdminJob job)
         {
             Name = name;
             Surname = surname;
             Password = password;
-            Birthdate = birthdate;
+            BirthDate = birthDate;
             PhoneNumber = phoneNumber;
             Email = email;
             Job = job;
@@ -28,7 +28,7 @@ namespace Virtual_librarian.Objects
             Name = name;
             Surname = surname;
             Password = password;
-            Birthdate = birthdate;
+            BirthDate = birthdate;
             PhoneNumber = phoneNumber;
             Email = email;
             Job = job;
@@ -40,7 +40,7 @@ namespace Virtual_librarian.Objects
             Name = name;
             Surname = surname;
             Password = password;
-            Birthdate = birthdate;
+            BirthDate = birthdate;
             PhoneNumber = phoneNumber;
             Email = email;
             Job = job;

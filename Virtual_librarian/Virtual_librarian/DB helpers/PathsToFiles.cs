@@ -10,7 +10,7 @@ namespace Virtual_librarian.DB_helpers
     {
         public static string pathToFacesFile = "..\\..\\Faces\\Faces.xml";
         public static string pathToFacesFolder = "..\\..\\Faces\\";
-        public static string pathToUsersFile = "..\\..\\Duomenu failai\\naudotojai.xml";
-        public static string pathToBooksFile = "..\\..\\Duomenu failai\\knygos.xml";
+        public static string pathToUsersFile = "..\\..\\Data_Files\\users.xml";
+        public static string pathToBooksFile = "..\\..\\Data_Files\\books.xml";
     }
 }

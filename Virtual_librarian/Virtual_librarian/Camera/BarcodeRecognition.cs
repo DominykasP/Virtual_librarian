@@ -21,18 +21,18 @@ namespace Virtual_librarian.Camera
 {
     class BarcodeRecognition
     {
-        Zmogus logedInUser;
-        private object lockobject = new object();
+        Person loggedInUser;
+        private object lockObject = new object();
         public List<Bitmap> images;
         Image<Bgr, byte> frame;
         BookDBHelper bookDBHelper = new BookDBHelper();
-        private BindingList<Knyga> manoUzklausos = new BindingList<Knyga>();
-        BindingList<Knyga> visosKnygos;
+        private BindingList<Book> myRequests = new BindingList<Book>();
+        BindingList<Book> allBooks;
         public String[] barcode;
         private static int nEventsFired = 0;
         UseCamera camera;
         PictureBox cameraBox;
-        Knyga knyga;
+        Book book;
         //Image<Gray, Byte> grayImage;
 
         private System.Windows.Forms.Timer aTimer;
@@ -50,21 +50,21 @@ namespace Virtual_librarian.Camera
             aTimer = new System.Windows.Forms.Timer();
         }
 
-        public bool setUser(Zmogus user)
+        public bool SetUser(Person user)
         {
-            logedInUser = user;
+            loggedInUser = user;
             return true;
         }
         //------------------------------------------------
         //------------Start Book Recognising--------------
         //------------------------------------------------
-        public void startRecognising()
+        public void StartRecognising()
         {
-            visosKnygos = new BindingList<Knyga>(bookDBHelper.gautiVisasKnygas());
-            BindingSource visuKnyguSource = new BindingSource(visosKnygos, null);
+            allBooks = new BindingList<Book>(bookDBHelper.GetAllBooks());
+            BindingSource allBookSource = new BindingSource(allBooks, null);
             images = new List<Bitmap>();
             nEventsFired = 0;
-            useTimer();
+            UseTimer();
             camera.TurnOn();
             Application.Idle += new EventHandler(FrameProcedure);
             aTimer.Tick += ATimer_Tick;
@@ -74,7 +74,7 @@ namespace Virtual_librarian.Camera
         //------------------------------------------------------------
         //-------Convert Barcodes from image to string----------------
         //------------------------------------------------------------
-        public String[] getBarcodesString(Image<Gray, Byte> grayImage)
+        public String[] GetBarcodesString(Image<Gray, Byte> grayImage)
         {
             
             String[] barcodes = BarcodeScanner.Scan(grayImage.ToBitmap());
@@ -95,13 +95,13 @@ namespace Virtual_librarian.Camera
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
             aTimer.Stop();
-            barcode = getBarcodesString(grayImage);
+            barcode = GetBarcodesString(grayImage);
             
-            knyga = recogniseBookBarcode();
+            book = RecogniseBookBarcode();
 
-            if (knyga != null)
+            if (book != null)
             {
-                OnBookRecognised(this, new RecognisedBookEventArgs(knyga));
+                OnBookRecognised(this, new RecognisedBookEventArgs(book));
             }
             else
             {
@@ -129,7 +129,7 @@ namespace Virtual_librarian.Camera
             {
                 frame = camera.Camera.QueryFrame();
                 cameraBox.Image = frame.ToBitmap();
-                if(knyga != null)
+                if(book != null)
                 {
                     Application.Idle -= new EventHandler(FrameProcedure);
                 }
@@ -142,7 +142,7 @@ namespace Virtual_librarian.Camera
         //------------------------------------------
         //-------------Turn on camera---------------
         //------------------------------------------
-        private void useTimer()
+        private void UseTimer()
         {
             aTimer.Interval = 2000;
             aTimer.Start();
@@ -152,8 +152,8 @@ namespace Virtual_librarian.Camera
         //------------------------------------------
         private Image<Gray,Byte> ImageToGray()
         {
-            Image<Bgr, Byte> ColordImage = frame;
-            Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
+            Image<Bgr, Byte> ColoredImage = frame;
+            Image<Gray, Byte> grayImage = ColoredImage.Convert<Gray, Byte>();
 
             return grayImage;
         }
@@ -161,7 +161,7 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------------------
         //-----------------Get knyga if barcode recognised--------------------------
         //--------------------------------------------------------------------------
-        private Knyga recogniseBookBarcode()
+        private Book RecogniseBookBarcode()
         {
             /*if (barcode.Length != 0)                                  //12 to 13 barcode numbers
             {
@@ -175,14 +175,14 @@ namespace Virtual_librarian.Camera
                 MessageBox.Show(result);
 
             }*/
-            if (barcode.Length != 0 && barcodesRecognisedCorect(10,16,barcode[0]))
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16,barcode[0]))
             {
                 
                 aTimer.Stop();
                 camera.Camera.Pause();               
-                Knyga knyga = ContainsBook();
+                Book book = ContainsBook();
                 
-                return knyga;              
+                return book;              
             }
             return null;
         }
@@ -190,7 +190,7 @@ namespace Virtual_librarian.Camera
         //------------------------------------------
         //---Check if barcode contains format-------
         //------------------------------------------
-        private bool barcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan,String Barcode)
+        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan,String Barcode)
         {
             if (moreSimbolsThan < Barcode.Length && lessSimbolsThan > Barcode.Length)
             {
@@ -204,13 +204,13 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------
         //-------------Check if xml file conatains book-----------------
         //--------------------------------------------------------------
-        private Knyga ContainsBook()
+        private Book ContainsBook()
         {
             bool contains = false;
-            Knyga knyga = null;
+            Book knyga = null;
             try
             {               
-                knyga = visosKnygos.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
+                knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
             }
             catch (Exception ex)
             {

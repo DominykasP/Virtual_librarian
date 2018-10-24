@@ -6,95 +6,80 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian.DB_helpers
 {
-    public class BookDBHelper : BookDBHelperInterface
+    public class BookDBHelper : IBookDBHelper
     {
-        private List<Knyga> knygos;
-        //private int i = 0;
-        //private KnyguKolekcija<Knyga> knygos;
-        KnyguKolekcija<Knyga> knyguKolekcija = new KnyguKolekcija<Knyga>();
+        private List<Book> books;
+
+        BookCollection<Book> bookCollection = new BookCollection<Book>();
 
         public BookDBHelper()
         {
-            //knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml");
-            knygos = DarbasSuFailais.NuskaitytiIsFailo<List<Knyga>>(PathsToFiles.pathToBooksFile);
-            /*
-            while (i < knygos.Count)//pridedam knygas i indeksuota klase
+            books = FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile);
+
+            foreach(Book book in books)
             {
-                knyguKolekcija.prideti(knygos[i++]);               
+                bookCollection.Add(book);
             }
-            */
-            foreach(Knyga knyga in knygos)
-            {
-                knyguKolekcija.prideti(knyga);
-            }
-            
         }
 
-        public Knyga gautiKnygaPagalIndeksa(int id)
+        public Book getBookByIndex(int id)
         {
-            return knyguKolekcija[id];
+            return bookCollection[id];
         }
 
 
-        public Knyga gautiKnygaPagalKodus(string isbn, string kodas)
+        public Book GetBookByCode(string isbn, string code)
         {
-            //Knyga rastaKnyga = knygos.Find(knyga => knyga.Isbn == isbn && knyga.Kodas == kodas);
-            Knyga rastaKnyga = new Knyga();
-            var knyguSarasas = knygos.OfType<Knyga>();
-            var rastosKnygos = from knyga in knyguSarasas
-                               where (knyga.Isbn == isbn) && (knyga.Kodas == kodas)
-                               select knyga;
-            foreach(var knyga in rastosKnygos)
-            {
-                rastaKnyga = knyga;
-            }
-            return rastaKnyga;
+             Book foundBook = new Book();
+             var bookList = books.OfType<Book>();
+             var foundBooks = from book in bookList
+                                  where (book.Isbn == isbn) && (book.Code == code)
+                                  select book;
+             foreach(var book in foundBooks)
+             {
+                 foundBook = book;
+             }
+             return foundBook;
         }
 
-        public List<Knyga> gautiVisasKnygas()
+        public List<Book> GetAllBooks()
         {
-            
-            return knygos;
-
+            return books;
         }
 
-        public List<Knyga> gautiZmogausKnygas(Zmogus zmogus)
+        public List<Book> GetReadersBooks(Person reader)
         {
-            /* List<Knyga> zmogausKnygos = new List<Knyga>(
-                     knygos.FindAll(knyga => knyga.ArPaimta == true && knyga.Skaitytojas.Equals(zmogus))
-                 );*/
-            List<Knyga> zmogausKnygos = new List<Knyga>();
-            var knyguSarasas = knygos.OfType<Knyga>();
-            var rastosKnygos = from knyga in knyguSarasas
-                               where (knyga.ArPaimta == true) && (knyga.Skaitytojas.Equals(zmogus))
-                               orderby knyga
-                               select knyga;
-            foreach (var knyga in rastosKnygos)
+            List<Book> readersBooks = new List<Book>();
+            var bookList = books.OfType<Book>();
+            var foundBooks = from book in bookList
+                               where (book.IsTaken == true) && (book.Reader.Equals(reader))
+                               orderby book
+                               select book;
+            foreach (var book in foundBooks)
             {
-                zmogausKnygos.Add(knyga);
+                readersBooks.Add(book);
             }
 
 
-            return zmogausKnygos;
+            return readersBooks;
         }
 
-        public bool grazintiKnyga(Knyga grazinamaKnyga)
+        public bool ReturnBook(Book returnedBook)
         {
-            //Knyga grazinama = knygos.Find(knyga => knyga.Equals(grazinamaKnyga));
-            Knyga grazinama = new Knyga();
-            var knyguSarasas = knygos.OfType<Knyga>();
-            var rastosKnygos = from knyga in knyguSarasas
-                               where knyga.Equals(grazinamaKnyga)
-                               select knyga;
-            foreach (var knyga in rastosKnygos)
+            Book returned = new Book();
+            var bookList = books.OfType<Book>();
+            var foundBooks = from book in bookList
+                               where book.Equals(returnedBook)
+                               select book;
+            foreach (var book in foundBooks)
             {
-                grazinama = knyga;
+                returned = book;
             }
-            if (grazinama != null)
+            if (returned != null)
             {
-                grazinama.grazintiKnyga();
+                returned.ReturnBook();
 
-                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
+                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
             }
             else
             {
@@ -102,31 +87,30 @@ namespace Virtual_librarian.DB_helpers
             }
         }
 
-        public List<Knyga> ieskoti(string search)
+        public List<Book> Find(string search)
         {
-            /*List<Knyga> atitinkanciosKnygos = new List<Knyga>(
-                        knygos.FindAll(knyga => knyga.Pavadinimas.Contains(search) || knyga.Autorius.Contains(search))
-                    );*/
-            List<Knyga> atitinkanciosKnygos = new List<Knyga>();
-            var knyguSarasas = knygos.OfType<Knyga>();
-            var rastosKnygos = from knyga in knyguSarasas
-                               where knyga.Pavadinimas.Contains(search) || knyga.Autorius.Contains(search)
-                               orderby knyga
-                               select knyga;
-            foreach (var knyga in rastosKnygos)
+         List<Book> correspondingBooks = new List<Book>();
+                    var bookList = books.OfType<Book>();
+                    var foundBooks = from book in bookList
+                                       where book.Name.Contains(search) || book.Author.Contains(search)
+                                       orderby book
+                                       select book;
+
+            foreach (var book in foundBooks)
             {
-                atitinkanciosKnygos.Add(knyga);
+                correspondingBooks.Add(book);
             }
 
-            return atitinkanciosKnygos;
+
+            return correspondingBooks;
         }
 
-        public bool istrintiKnyga(Knyga knyga)
+        public bool DeleteBook(Book book)
         {
-            bool arSekmingai = knygos.Remove(knyga);
-            if (arSekmingai == true)
+            bool isSuccessful = books.Remove(book);
+            if (isSuccessful == true)
             {
-                return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
+                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
             }
             else
             {
@@ -134,47 +118,45 @@ namespace Virtual_librarian.DB_helpers
             }
         }
 
-        public bool paimtiKnyga(Knyga paimamaKnyga, Zmogus skaitytojas)
+        public bool TakeBook(Book takenBook, Person reader)
         {
-            //Knyga paimta = knygos.Find(knyga => knyga.Equals(paimamaKnyga));
-            Knyga paimta = new Knyga();
-            var knyguSarasas = knygos.OfType<Knyga>();
-            var rastosKnygos = from knyga in knyguSarasas
-                               where knyga.Equals(paimamaKnyga)
-                               select knyga;
-            foreach (var knyga in rastosKnygos)
+            Book taken = new Book();
+            var bookList = books.OfType<Book>();
+            var foundBooks = from book in bookList
+                               where book.Equals(takenBook)
+                               select book;
+            foreach (var book in foundBooks)
             {
-                paimta = knyga;
+                taken = book;
             }
-            paimta.paimtiKnyga(skaitytojas, DateTime.Now, DateTime.Now.AddMonths(1));
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
+            taken.TakeBook(reader, DateTime.Now, DateTime.Now.AddMonths(1));
+
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
         }
 
-        public bool pridetiNaujaKnyga(Knyga knyga)
+        public bool AddNewBook(Book book)
         {
-            knygos.Add(knyga);
-            knyguKolekcija.prideti(knyga);//pridedam knygas i indeksuota klase
-            //return DarbasSuFailais.IrasytiIFaila<List<Knyga>>("..\\..\\Duomenu failai\\knygos.xml", knygos);
-
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
+            books.Add(book);
+            bookCollection.Add(book);
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
         }
 
-        public bool pratestiKnyga(Knyga pratesiamaKnyga)
+        public bool RenewBook(Book renewedBook)
         {
-            //Knyga pratesti = knygos.Find(knyga => knyga.Equals(pratesiamaKnyga));
-            Knyga pratesti = new Knyga();
-            var knyguSarasas = knygos.OfType<Knyga>();
-            var rastosKnygos = from knyga in knyguSarasas
-                               where knyga.Equals(pratesiamaKnyga)
-                               select knyga;
-            foreach (var knyga in rastosKnygos)
+            Book renewed = new Book();
+            var bookList = books.OfType<Book>();
+            var foundBooks = from book in bookList
+                               where book.Equals(renewedBook)
+                               select book;
+            foreach (var book in foundBooks)
             {
-                pratesti = knyga;
+                renewed = book;
             }
-            pratesti.pratestiKnyga(DateTime.Now.AddMonths(1));
 
-            return DarbasSuFailais.IrasytiIFaila<List<Knyga>>(PathsToFiles.pathToBooksFile, knygos);
+            renewed.ExtendLoanPeriod(DateTime.Now.AddMonths(1));
+
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
         }
 
         public bool isBookAlreadyTaken(Knyga bookToCheck)
@@ -194,15 +176,15 @@ namespace Virtual_librarian.DB_helpers
 
         public int getNextId()
         {
-            int maks = 0;
-            foreach (Knyga knyga in knygos)
+            int max = 0;
+            foreach (Book book in books)
             {
-                if (knyga.Id > maks)
+                if (book.Id > max)
                 {
-                    maks = knyga.Id;
+                    max = book.Id;
                 }
             }
-            return maks + 1;
+            return max + 1;
         }
     }
 }

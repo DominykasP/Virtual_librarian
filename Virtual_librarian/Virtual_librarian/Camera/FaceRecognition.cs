@@ -54,8 +54,8 @@ namespace Virtual_librarian
         {
             try
             {
-                usersIds = DarbasSuFailais.NuskaitytiIrasytusID(PathsToFiles.pathToFacesFile);
-                usersImages = DarbasSuFailais.NuskaitytiIrasytasNuotraukas(PathsToFiles.pathToFacesFolder);
+                usersIds = FileIO.ReadID(PathsToFiles.pathToFacesFile);
+                usersImages = FileIO.ReadPhotos(PathsToFiles.pathToFacesFolder);
             }
             catch (Exception ex)
             {

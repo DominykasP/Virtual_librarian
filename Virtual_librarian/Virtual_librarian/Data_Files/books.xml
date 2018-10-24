@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfBook xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Book>
+    <Id>0</Id>
+    <Name>Liūdna pasaka</Name>
+    <Author>Jonas Biliūnas</Author>
+    <Publisher>Alma Littera</Publisher>
+    <Year>1980-05-25T00:00:00</Year>
+    <Pages>5</Pages>
+    <Isbn>12345678</Isbn>
+    <Code>21343244</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>1</Id>
+    <Name>Karlsonas</Name>
+    <Author>Astrida Lindgren</Author>
+    <Publisher>Alma Littera</Publisher>
+    <Year>1996-04-15T00:00:00</Year>
+    <Pages>500</Pages>
+    <Isbn>13644563</Isbn>
+    <Code>24954972</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>2018-10-10T23:57:55.1886154+03:00</TakenAt>
+    <ReturnAt>2018-11-11T00:05:24.7147531+02:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>2</Id>
+    <Name>Metro</Name>
+    <Author>Dimitrij Gluchovski</Author>
+    <Publisher>Zaltvykste</Publisher>
+    <Year>2014-06-12T00:00:00</Year>
+    <Pages>700</Pages>
+    <Isbn>35435534</Isbn>
+    <Code>97234594</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>2018-10-10T23:41:50.2936275+03:00</TakenAt>
+    <ReturnAt>2018-11-10T23:41:50.2936275+02:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>3</Id>
+    <Name>Skirgaila</Name>
+    <Author>Martynas Mažvydas</Author>
+    <Publisher>Alma Literra</Publisher>
+    <Year>1975-03-24T00:00:00</Year>
+    <Pages>150</Pages>
+    <Isbn>21324356754321</Isbn>
+    <Code>2134532</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>4</Id>
+    <Name>Dievų miškas</Name>
+    <Author>Balys Sruoga</Author>
+    <Publisher>Žaltvykstė</Publisher>
+    <Year>2001-04-14T00:00:00</Year>
+    <Pages>200</Pages>
+    <Isbn>3464653434343</Isbn>
+    <Code>243534</Code>
+    <IsTaken>true</IsTaken>
+    <Reader>
+      <Id>3</Id>
+      <Name>Dominykas</Name>
+      <Surname>Pakalnis</Surname>
+      <Password>slaptazodis</Password>
+      <BirthDate>1998-02-25T21:12:29</BirthDate>
+      <PhoneNumber>+37061111111</PhoneNumber>
+      <Email>dominykp@gmail.com</Email>
+    </Reader>
+    <TakenAt>2018-10-11T00:13:04.8562788+03:00</TakenAt>
+    <ReturnAt>2018-11-11T00:13:04.8562788+02:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>5</Id>
+    <Name>Balta drobulė</Name>
+    <Author>Antanas Škėma</Author>
+    <Publisher>Nykštukas</Publisher>
+    <Year>1987-06-30T00:00:00</Year>
+    <Pages>200</Pages>
+    <Isbn>2344324234</Isbn>
+    <Code>345435453</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>6</Id>
+    <Name>Altorių Šešėly</Name>
+    <Author>Vincas Mykolaitis Putinas</Author>
+    <Publisher>Alma Littera</Publisher>
+    <Year>1995-07-25T00:00:00</Year>
+    <Pages>200</Pages>
+    <Isbn>34457665667536</Isbn>
+    <Code>2345544454223</Code>
+    <IsTaken>true</IsTaken>
+    <Reader>
+      <Id>4</Id>
+      <Name>Eimantas</Name>
+      <Surname>Pakalnis</Surname>
+      <Password>eimantas</Password>
+      <BirthDate>1998-02-25T00:15:17</BirthDate>
+      <PhoneNumber>+37012121212</PhoneNumber>
+      <Email>eimantas@gmail.com</Email>
+    </Reader>
+    <TakenAt>2018-10-11T00:16:38.2603687+03:00</TakenAt>
+    <ReturnAt>2018-11-11T00:16:38.2603687+02:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>7</Id>
+    <Name>Duomenų bazių valdymo sistemos</Name>
+    <Author>Romas Baronas</Author>
+    <Publisher>TEV</Publisher>
+    <Year>2005-10-03T00:00:00</Year>
+    <Pages>150</Pages>
+    <Isbn>003078220554</Isbn>
+    <Code>2134532</Code>
+    <IsTaken>true</IsTaken>
+    <Reader>
+      <Id>6</Id>
+      <Name />
+      <Surname />
+      <Password />
+      <BirthDate>0001-01-01T00:00:00</BirthDate>
+      <PhoneNumber />
+      <Email>dcscdc@gmail.com</Email>
+    </Reader>
+    <TakenAt>2018-10-17T18:04:26.5893201+03:00</TakenAt>
+    <ReturnAt>2018-11-17T18:04:26.5893201+02:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>7</Id>
+    <Name>Sasiuvinys</Name>
+    <Author>Martynas</Author>
+    <Publisher>Alma Literra</Publisher>
+    <Year>1975-03-24T00:00:00</Year>
+    <Pages>150</Pages>
+    <Isbn>460300808471</Isbn>
+    <Code>2134532</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>8</Id>
+    <Name>Didysis Getsbis</Name>
+    <Author>F.Scott Fitzgerald</Author>
+    <Publisher>Obuolys</Publisher>
+    <Year>1925-04-10T00:00:00</Year>
+    <Pages>319</Pages>
+    <Isbn>9786094035098</Isbn>
+    <Code>9786094035098</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+</ArrayOfBook>
