@@ -16,13 +16,8 @@ namespace Virtual_librarian
         } 
         public void TurnOn()
         {
-            Camera = null;
-            if (Camera == null)
-            {
-                Camera = new Capture(0);
-                Camera.Start();
-            }
-            
+            Camera = new Capture(0);
+            Camera.Start();
         }
         public void TurnOff()
         {

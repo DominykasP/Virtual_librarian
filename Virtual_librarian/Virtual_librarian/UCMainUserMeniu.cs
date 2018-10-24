@@ -44,13 +44,7 @@ namespace Virtual_librarian
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             //Sustabdyti knygu skenavima
-            if(ucScanBook.camera.Camera != null)
-            {
-                ucScanBook.timer1.Stop();
-                ucScanBook.camera.Camera.Dispose();
-                ucScanBook.Dispose();
-            }
-            
+            ucScanBook.StopRecognising();
 
             mainForm.Controls.Remove(this);
 

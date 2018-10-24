@@ -29,7 +29,6 @@ namespace Virtual_librarian.Camera
         private BindingList<Book> myRequests = new BindingList<Book>();
         BindingList<Book> allBooks;
         public String[] barcode;
-        private static int nEventsFired = 0;
         UseCamera camera;
         PictureBox cameraBox;
         Book book;
@@ -48,6 +47,7 @@ namespace Virtual_librarian.Camera
             this.cameraBox = cameraBox;
             this.camera = camera;
             aTimer = new System.Windows.Forms.Timer();
+            aTimer.Tick += ATimer_Tick;
         }
 
         public bool SetUser(Person user)
@@ -63,13 +63,10 @@ namespace Virtual_librarian.Camera
             allBooks = new BindingList<Book>(bookDBHelper.GetAllBooks());
             BindingSource allBookSource = new BindingSource(allBooks, null);
             images = new List<Bitmap>();
-            nEventsFired = 0;
-            UseTimer();
+            aTimer.Interval = 2000;
+            aTimer.Start();
             camera.TurnOn();
-            Application.Idle += new EventHandler(FrameProcedure);
-            aTimer.Tick += ATimer_Tick;
-            
-            
+            Application.Idle += FrameProcedure;
         }
         //------------------------------------------------
         //-------------Stop Book Recognition--------------
@@ -77,7 +74,7 @@ namespace Virtual_librarian.Camera
         public void StopRecognising()
         {
             aTimer.Stop();
-            if (camera != null)
+            if (camera.Camera != null)
             {
                 camera.TurnOff();
             }
@@ -100,8 +97,6 @@ namespace Virtual_librarian.Camera
         //-----------------------------------------------------------
         private void ATimer_Tick(object sender, EventArgs e)
         {
-            nEventsFired++;
-
             Image<Bgr, Byte> ColordImage = frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
@@ -138,14 +133,6 @@ namespace Virtual_librarian.Camera
             {
                 MessageBox.Show("Test");
             }
-        }
-        //------------------------------------------
-        //-------------Turn on camera---------------
-        //------------------------------------------
-        private void UseTimer()
-        {
-            aTimer.Interval = 2000;
-            aTimer.Start();
         }
         //------------------------------------------
         //-------Convert image to gray image--------
