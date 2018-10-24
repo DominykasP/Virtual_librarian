@@ -42,6 +42,20 @@ namespace Virtual_librarian.DB_helpers
              return foundBook;
         }
 
+        public Book GetBookByIsbn(string isbn)
+        {
+            Book foundBook = null;
+            var bookList = books.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where book.Isbn == isbn
+                             select book;
+            foreach (var book in foundBooks)
+            {
+                foundBook = book;
+            }
+            return foundBook;
+        }
+
         public List<Book> GetAllBooks()
         {
             return books;

@@ -27,7 +27,6 @@ namespace Virtual_librarian
         
         public UseCamera camera;
         public List<Bitmap> images;
-        BookDBHelper bookDBHelper;
         String[] barcode;
         Person logedInUser;
 
@@ -36,8 +35,7 @@ namespace Virtual_librarian
         public UCScanBook(MainForm mainForm, UCMainUserMeniu ucMainUserMeniu)
         {
             camera = new UseCamera();
-            bookDBHelper = new BookDBHelper();
-
+            
             InitializeComponent();
             this.mainForm = mainForm;
             this.ucMainUserMeniu = ucMainUserMeniu;
