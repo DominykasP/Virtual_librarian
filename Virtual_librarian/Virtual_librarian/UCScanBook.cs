@@ -141,5 +141,14 @@ namespace Virtual_librarian
             }
         }
 
+        public void StopRecognising()
+        {
+            if (recognition != null)
+            {
+                recognition.StopRecognising();
+                camera.TurnOff();
+            }
+        }
+
     }
 }

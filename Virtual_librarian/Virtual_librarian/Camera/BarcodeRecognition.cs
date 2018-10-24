@@ -71,6 +71,18 @@ namespace Virtual_librarian.Camera
             
             
         }
+        //------------------------------------------------
+        //-------------Stop Book Recognition--------------
+        //------------------------------------------------
+        public void StopRecognising()
+        {
+            aTimer.Stop();
+            if (camera != null)
+            {
+                camera.TurnOff();
+            }
+            Application.Idle -= FrameProcedure;
+        }
         //------------------------------------------------------------
         //-------Convert Barcodes from image to string----------------
         //------------------------------------------------------------
@@ -88,7 +100,6 @@ namespace Virtual_librarian.Camera
         //-----------------------------------------------------------
         private void ATimer_Tick(object sender, EventArgs e)
         {
-
             nEventsFired++;
 
             Image<Bgr, Byte> ColordImage = frame;
@@ -106,17 +117,6 @@ namespace Virtual_librarian.Camera
             else
             {
                 aTimer.Start();
-            }
-
-            if (nEventsFired == 20)
-            {
-
-                aTimer.Stop();
-                if (camera != null)
-                {
-                    camera.TurnOff();
-
-                }
             }
         }
         
