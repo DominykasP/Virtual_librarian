@@ -49,7 +49,7 @@ namespace Virtual_librarian.DB_helpers
 
         public Person GetPersonByID(int id)
         {
-            Person foundPerson = new Person();
+            Person foundPerson = null;
             var userList = users.OfType<Person>();
             var foundUsers = from user in userList
                                   where (user.Id == id)
@@ -65,7 +65,7 @@ namespace Virtual_librarian.DB_helpers
 
         public Person GetPersonByNameSurnamePassword(string name, string surname, string password)
         {
-            Person foundUser = new Person();
+            Person foundUser = null;
             var userList = users.OfType<Person>();
             var foundUsers = from user in userList
                                   where user.Name.Equals(name) && user.Surname.Equals(surname) && user.Password.Equals(password)

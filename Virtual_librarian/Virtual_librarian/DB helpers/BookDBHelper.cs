@@ -159,6 +159,21 @@ namespace Virtual_librarian.DB_helpers
             return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
         }
 
+        public bool isBookAlreadyTaken(Book bookToCheck)
+        {
+            Book currentBook = new Book();
+            var bookList = books.OfType<Book>();
+            var booksFound = from book in bookList
+                               where book.Equals(bookToCheck)
+                               select book;
+            foreach (var book in booksFound)
+            {
+                currentBook = book;
+            }
+
+            return currentBook.IsTaken;
+        }
+
         public int getNextId()
         {
             int max = 0;
