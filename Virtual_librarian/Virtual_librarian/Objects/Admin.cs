@@ -24,14 +24,6 @@ namespace Virtual_librarian.Objects
 
         }
 
-        public Admin(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, AdminJob job, Bitmap image)
-        {
-            Id = id;
-            SetProperties(name, surname, password, birthDate, phoneNumber, email, job);
-
-            Image = image;
-        }
-
         private void SetProperties(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, AdminJob job)
         {
             Name = name;

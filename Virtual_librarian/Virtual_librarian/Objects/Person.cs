@@ -34,12 +34,6 @@ namespace Virtual_librarian
             SetProperties(name, surname, password, birthDate, phoneNumber, email);
         }
 
-        public Person(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, Bitmap image)
-        {
-            SetProperties(name, surname, password, birthDate, phoneNumber, email);
-            this.image = image;
-        }
-
         private void SetProperties(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
             this.name = name;
@@ -57,7 +51,6 @@ namespace Virtual_librarian
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Email { get => email; set => email = value; }
-        public Bitmap Image { get => image; set => image = value; }
 
         public bool Equals(Person other)
         {
