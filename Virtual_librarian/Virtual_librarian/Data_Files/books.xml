@@ -100,18 +100,9 @@
     <Pages>150</Pages>
     <Isbn>003078220554</Isbn>
     <Code>2134532</Code>
-    <IsTaken>true</IsTaken>
-    <Reader>
-      <Id>6</Id>
-      <Name />
-      <Surname />
-      <Password />
-      <BirthDate>2018-10-17T19:41:25.1112673+03:00</BirthDate>
-      <PhoneNumber />
-      <Email>fsdf@fds.com</Email>
-    </Reader>
-    <TakenAt>2018-10-24T12:38:26.5950292+03:00</TakenAt>
-    <ReturnAt>2018-11-24T12:38:26.5950292+02:00</ReturnAt>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
   <Book>
     <Id>8</Id>
@@ -161,17 +152,8 @@
     <Pages>150</Pages>
     <Isbn>9789955680093</Isbn>
     <Code>2134532</Code>
-    <IsTaken>true</IsTaken>
-    <Reader>
-      <Id>6</Id>
-      <Name />
-      <Surname />
-      <Password />
-      <BirthDate>2018-10-17T19:41:25.1112673+03:00</BirthDate>
-      <PhoneNumber />
-      <Email>fsdf@fds.com</Email>
-    </Reader>
-    <TakenAt>2018-10-24T13:40:12.0565281+03:00</TakenAt>
-    <ReturnAt>2018-11-24T13:40:12.0565281+02:00</ReturnAt>
+    <IsTaken>false</IsTaken>
+    <TakenAt>2018-10-24T13:45:22.9902632+03:00</TakenAt>
+    <ReturnAt>2018-11-24T13:45:22.9902632+02:00</ReturnAt>
   </Book>
 </ArrayOfBook>

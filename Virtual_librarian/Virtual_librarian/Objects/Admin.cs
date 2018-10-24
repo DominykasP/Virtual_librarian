@@ -13,6 +13,19 @@ namespace Virtual_librarian.Objects
 
         public Admin(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email,AdminJob job)
         {
+            SetProperties(name, surname, password, birthDate, phoneNumber, email, job);
+
+        }
+
+        public Admin(int id,string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, AdminJob job)
+        {
+            Id = id;
+            SetProperties(name, surname, password, birthDate, phoneNumber, email, job);
+
+        }
+
+        private void SetProperties(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, AdminJob job)
+        {
             Name = name;
             Surname = surname;
             Password = password;
@@ -20,31 +33,6 @@ namespace Virtual_librarian.Objects
             PhoneNumber = phoneNumber;
             Email = email;
             Job = job;
-        }
-
-        public Admin(int id,string name, string surname, string password, DateTime birthdate, string phoneNumber, string email, AdminJob job)
-        {
-            Id = id;
-            Name = name;
-            Surname = surname;
-            Password = password;
-            BirthDate = birthdate;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            Job = job;
-        }
-
-        public Admin(int id, string name, string surname, string password, DateTime birthdate, string phoneNumber, string email, AdminJob job, Bitmap image)
-        {
-            Id = id;
-            Name = name;
-            Surname = surname;
-            Password = password;
-            BirthDate = birthdate;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            Job = job;
-            Image = image;
         }
         public AdminJob job { get => job; private set => job = value; }
     }

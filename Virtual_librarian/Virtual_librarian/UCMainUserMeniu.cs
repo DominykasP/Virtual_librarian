@@ -23,11 +23,17 @@ namespace Virtual_librarian
             ucScanBook = new UCScanBook(mainForm, this);
             ucScanBook.Dock = DockStyle.Top;
             mtbPasiimti.Controls.Add(ucScanBook);
+            mtbPasiimti.Leave += MtbPasiimti_Leave;
 
             ucScanBook.setUser(loggedIn);
             LoadLoanPeriods();
             LoadBookCatalog();
             LoadMyRequests();
+        }
+
+        private void MtbPasiimti_Leave(object sender, EventArgs e)
+        {
+            ucScanBook.StopRecognising();
         }
 
         private void UCMainUserMeniu_Load(object sender, EventArgs e)
@@ -38,13 +44,7 @@ namespace Virtual_librarian
         private void btnLogOut_Click(object sender, EventArgs e)
         {
             //Sustabdyti knygu skenavima
-            if(ucScanBook.camera.Camera != null)
-            {
-                ucScanBook.timer1.Stop();
-                ucScanBook.camera.Camera.Dispose();
-                ucScanBook.Dispose();
-            }
-            
+            ucScanBook.StopRecognising();
 
             mainForm.Controls.Remove(this);
 

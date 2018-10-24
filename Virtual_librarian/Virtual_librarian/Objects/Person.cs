@@ -16,7 +16,6 @@ namespace Virtual_librarian
         private DateTime birthDate;
         private string phoneNumber;
         private string email;
-        private Bitmap image;
 
         public Person() //Reikia darbui su failais
         {
@@ -26,25 +25,15 @@ namespace Virtual_librarian
         public Person(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
             this.id = id;
-            this.name = name;
-            this.surname = surname;
-            this.password = password;
-            this.birthDate = birthDate;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
+            SetProperties(name, surname, password, birthDate, phoneNumber, email);
         }
 
         public Person(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
-            this.name = name;
-            this.surname = surname;
-            this.password = password;
-            this.birthDate = birthDate;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
+            SetProperties(name, surname, password, birthDate, phoneNumber, email);
         }
 
-        public Person(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, Bitmap image)
+        private void SetProperties(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
             this.name = name;
             this.surname = surname;
@@ -52,7 +41,6 @@ namespace Virtual_librarian
             this.birthDate = birthDate;
             this.phoneNumber = phoneNumber;
             this.email = email;
-            this.image = image;
         }
 
         public int Id { get => id; set => id = value; }
@@ -62,7 +50,6 @@ namespace Virtual_librarian
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Email { get => email; set => email = value; }
-        public Bitmap Image { get => image; set => image = value; }
 
         public bool Equals(Person other)
         {

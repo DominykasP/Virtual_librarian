@@ -50,7 +50,6 @@
             this.lblUsername = new MetroFramework.Controls.MetroLabel();
             this.btnAtsijungti = new MetroFramework.Controls.MetroTile();
             this.metroTabControl1.SuspendLayout();
-            this.mtbPasiimti.SuspendLayout();
             this.mtbTerminai.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdLoanPeriods)).BeginInit();
             this.mtbKnyguKatalogas.SuspendLayout();
@@ -104,7 +103,7 @@
             this.mtbTerminai.VerticalScrollbarHighlightOnWheel = false;
             this.mtbTerminai.VerticalScrollbarSize = 10;
             // 
-            // grdTerminai
+            // grdLoanPeriods
             // 
             this.grdLoanPeriods.AllowUserToAddRows = false;
             this.grdLoanPeriods.AllowUserToDeleteRows = false;
@@ -137,7 +136,7 @@
             this.grdLoanPeriods.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.grdLoanPeriods.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.grdLoanPeriods.Location = new System.Drawing.Point(3, 3);
-            this.grdLoanPeriods.Name = "grdTerminai";
+            this.grdLoanPeriods.Name = "grdLoanPeriods";
             this.grdLoanPeriods.ReadOnly = true;
             this.grdLoanPeriods.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -307,11 +306,11 @@
             this.metroLabel1.TabIndex = 1;
             this.metroLabel1.Text = "Prisijungęs naudotojas:";
             // 
-            // lblNaudotojoVardas
+            // lblUsername
             // 
             this.lblUsername.AutoSize = true;
             this.lblUsername.Location = new System.Drawing.Point(155, 3);
-            this.lblUsername.Name = "lblNaudotojoVardas";
+            this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 19);
             this.lblUsername.TabIndex = 2;
             this.lblUsername.Text = "[vardas]";
@@ -339,7 +338,6 @@
             this.Size = new System.Drawing.Size(683, 345);
             this.Load += new System.EventHandler(this.UCMainUserMeniu_Load);
             this.metroTabControl1.ResumeLayout(false);
-            this.mtbPasiimti.ResumeLayout(false);
             this.mtbTerminai.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdLoanPeriods)).EndInit();
             this.mtbKnyguKatalogas.ResumeLayout(false);

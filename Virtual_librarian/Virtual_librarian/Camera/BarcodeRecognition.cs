@@ -30,7 +30,6 @@ namespace Virtual_librarian.Camera
         private BindingList<Book> myRequests = new BindingList<Book>();
         BindingList<Book> allBooks;
         public String[] barcode;
-        private static int nEventsFired = 0;
         UseCamera camera;
         PictureBox cameraBox;
         Book book;
@@ -50,6 +49,7 @@ namespace Virtual_librarian.Camera
             this.camera = camera;
             aTimer = new System.Windows.Forms.Timer();
             this.bookDBHelper = bookDBHelper;
+            aTimer.Tick += ATimer_Tick;
         }
 
         public bool SetUser(Person user)
@@ -62,16 +62,21 @@ namespace Virtual_librarian.Camera
         //------------------------------------------------
         public void StartRecognising()
         {
-            allBooks = new BindingList<Book>(bookDBHelper.GetAllBooks());
-            BindingSource allBookSource = new BindingSource(allBooks, null);
             images = new List<Bitmap>();
-            nEventsFired = 0;
-            UseTimer();
+            aTimer.Interval = 2000;
+            aTimer.Start();
             camera.TurnOn();
-            Application.Idle += new EventHandler(FrameProcedure);
-            aTimer.Tick += ATimer_Tick;
-            
-            
+            Application.Idle += FrameProcedure;
+        }
+        //------------------------------------------------
+        //-------------Stop Book Recognition--------------
+        //------------------------------------------------
+        public void StopRecognising()
+        {
+            aTimer.Stop();
+            camera.TurnOff();
+            Application.Idle -= FrameProcedure;
+            book = null;
         }
         //------------------------------------------------------------
         //-------Convert Barcodes from image to string----------------
@@ -90,9 +95,6 @@ namespace Virtual_librarian.Camera
         //-----------------------------------------------------------
         private void ATimer_Tick(object sender, EventArgs e)
         {
-
-            nEventsFired++;
-
             Image<Bgr, Byte> ColordImage = frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
@@ -108,17 +110,6 @@ namespace Virtual_librarian.Camera
             else
             {
                 aTimer.Start();
-            }
-
-            if (nEventsFired == 20)
-            {
-
-                aTimer.Stop();
-                if (camera != null)
-                {
-                    camera.TurnOff();
-
-                }
             }
         }
         
@@ -138,16 +129,8 @@ namespace Virtual_librarian.Camera
             }
             catch (Exception)
             {
-                MessageBox.Show("Test");
+                
             }
-        }
-        //------------------------------------------
-        //-------------Turn on camera---------------
-        //------------------------------------------
-        private void UseTimer()
-        {
-            aTimer.Interval = 2000;
-            aTimer.Start();
         }
         //------------------------------------------
         //-------Convert image to gray image--------

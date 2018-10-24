@@ -26,7 +26,6 @@ namespace Virtual_librarian
         BarcodeRecognition recognition;
         
         public UseCamera camera;
-        private object lockobject = new object();
         public List<Bitmap> images;
         String[] barcode;
         Person logedInUser;
@@ -40,6 +39,9 @@ namespace Virtual_librarian
             InitializeComponent();
             this.mainForm = mainForm;
             this.ucMainUserMeniu = ucMainUserMeniu;
+
+            recognition = new BarcodeRecognition(cameraBox, camera, mainForm.bookDBHelper);
+            recognition.OnBookRecognised += Recognition_OnBookRecognised;
         }
         public bool setUser(Person user)
         {
@@ -53,14 +55,8 @@ namespace Virtual_librarian
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            
-            camera.TurnOn();
-            recognition = new BarcodeRecognition(cameraBox, camera, mainForm.bookDBHelper);
+            recognition.StopRecognising();
             recognition.StartRecognising();
-
-            recognition.OnBookRecognised += Recognition_OnBookRecognised;
-
-           
         }
 
         private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
@@ -137,6 +133,15 @@ namespace Virtual_librarian
                 //Atnaujinam visų ir pasiimtų knygų sąrašus
                 ucMainUserMeniu.LoadLoanPeriods();
                 ucMainUserMeniu.LoadBookCatalog();
+            }
+        }
+
+        public void StopRecognising()
+        {
+            if (camera.Camera != null)
+            {
+                recognition.StopRecognising();
+                camera.TurnOff();
             }
         }
 
