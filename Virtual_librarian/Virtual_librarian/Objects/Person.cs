@@ -16,7 +16,6 @@ namespace Virtual_librarian
         private DateTime birthDate;
         private string phoneNumber;
         private string email;
-        private Bitmap image;
 
         public Person() //Reikia darbui su failais
         {
