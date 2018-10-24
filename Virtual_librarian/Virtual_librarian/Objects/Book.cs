@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Virtual_librarian
 {
-    public class Book : IEquatable<Book>
+    public class Book : IEquatable<Book>,IComparable<Book>
     {
         private int id;
         private String name;
@@ -124,6 +124,13 @@ namespace Virtual_librarian
         public bool Equals(Book other)
         {
             return (this.isbn == other.isbn) && (this.code == other.code);
+        }
+
+        public int CompareTo(Book other)
+        {
+            if (this.year > other.year) return 1;
+            if (this.year == other.year) return 0;
+            return -1;
         }
     }
 }
