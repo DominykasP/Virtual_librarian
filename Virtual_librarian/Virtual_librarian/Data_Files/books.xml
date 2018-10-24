@@ -124,7 +124,7 @@
       <Name />
       <Surname />
       <Password />
-      <Birthdate>2018-10-17T12:46:39.7211424+03:00</Birthdate>
+      <BirthDate>0001-01-01T00:00:00</BirthDate>
       <PhoneNumber />
       <Email>dcscdc@gmail.com</Email>
     </Reader>
@@ -140,6 +140,19 @@
     <Pages>150</Pages>
     <Isbn>460300808471</Isbn>
     <Code>2134532</Code>
+    <IsTaken>false</IsTaken>
+    <TakenAt>0001-01-01T00:00:00</TakenAt>
+    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+  </Book>
+  <Book>
+    <Id>8</Id>
+    <Name>Didysis Getsbis</Name>
+    <Author>F.Scott Fitzgerald</Author>
+    <Publisher>Obuolys</Publisher>
+    <Year>1925-04-10T00:00:00</Year>
+    <Pages>319</Pages>
+    <Isbn>9786094035098</Isbn>
+    <Code>9786094035098</Code>
     <IsTaken>false</IsTaken>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>

@@ -164,7 +164,7 @@
             this.grdLoanPeriods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdLoanPeriods.Size = new System.Drawing.Size(663, 258);
             this.grdLoanPeriods.TabIndex = 2;
-            this.grdLoanPeriods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdTerminai_CellDoubleClick);
+            this.grdLoanPeriods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLoanPeriods_CellDoubleClick);
             this.grdLoanPeriods.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdLoanPeriods_KeyPress);
             // 
             // mtbKnyguKatalogas

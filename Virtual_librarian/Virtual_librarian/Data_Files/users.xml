@@ -27,4 +27,13 @@
     <PhoneNumber />
     <Email>fsdf@fds.com</Email>
   </Person>
+  <Person>
+    <Id>7</Id>
+    <Name>Džėjus</Name>
+    <Surname>Getsbis</Surname>
+    <Password>Getsbis</Password>
+    <BirthDate>2018-10-24T03:43:00.5041438+03:00</BirthDate>
+    <PhoneNumber>112</PhoneNumber>
+    <Email>d@g.com</Email>
+  </Person>
 </ArrayOfPerson>

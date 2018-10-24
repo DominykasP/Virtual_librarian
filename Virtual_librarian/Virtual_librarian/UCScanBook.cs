@@ -52,7 +52,7 @@ namespace Virtual_librarian
             
             camera.TurnOn();
             recognition = new BarcodeRecognition(cameraBox, camera);
-            recognition.startRecognising();
+            recognition.StartRecognising();
 
             recognition.OnBookRecognised += Recognition_OnBookRecognised;
 
@@ -61,7 +61,7 @@ namespace Virtual_librarian
 
         private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
         {
-            Book knyga = e.book;
+            Book book = e.book;
 
             BarcodeBox1.Clear();
 
@@ -72,21 +72,21 @@ namespace Virtual_librarian
             {
 
                 BarcodeBox1.AppendText(barcode[0]);
-                DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + knyga.Author + "\n" +
-                                "Book Name: " + knyga.Name + " \n" +
-                                "Book ISBN: " + knyga.Isbn + "\n" +
+                DialogResult dr = MetroMessageBox.Show(this, "Book Author: " + book.Author + "\n" +
+                                "Book Name: " + book.Name + " \n" +
+                                "Book ISBN: " + book.Isbn + "\n" +
                                 "Do you want to take this book? ", " ", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                 if (dr == DialogResult.Yes)
                 {
-                    bool arSekmingai = bookDBHelper.TakeBook(knyga, logedInUser);
-                    if (arSekmingai == true)
+                    bool isSuccessful = bookDBHelper.TakeBook(book, logedInUser);
+                    if (isSuccessful == true)
                     {
 
-                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", knyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MetroMessageBox.Show(this, "Knyga sėkmingai paimta", book.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else
                     {
-                        MetroMessageBox.Show(this, "Klaida paimant knygą", knyga.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MetroMessageBox.Show(this, "Klaida paimant knygą", book.Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
