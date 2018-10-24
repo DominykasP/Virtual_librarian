@@ -119,12 +119,14 @@ namespace Virtual_librarian
             return (this.isbn == other.isbn) && (this.code == other.code);
         }
 
+
         public int CompareTo(Book other)
         {
             if (this.year > other.year) return 1;
             if (this.year == other.year) return 0;
             return -1;
         }
+
     }
 }
 

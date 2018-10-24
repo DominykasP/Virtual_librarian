@@ -17,6 +17,7 @@ using MetroFramework;
 using System.Threading;
 
 
+
 namespace Virtual_librarian.Camera
 {
     class BarcodeRecognition
@@ -196,7 +197,8 @@ namespace Virtual_librarian.Camera
         private String Convert12to13(String[] barcode)
         {
             String NewBarcode=null;
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13, barcode[0])&& IsDigitsOnly(barcode[0]))                                  //12 to 13 barcode numbers
+
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13, barcode[0])&& ExtensionMethods.IsDigitsOnly(barcode[0]))                                  //12 to 13 barcode numbers
             {
 
                 char[] BarcodeNumbersChar = barcode[0].ToCharArray();
@@ -219,16 +221,7 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------
         //-----------Check if barcode only contains digits--------------
         //--------------------------------------------------------------
-        bool IsDigitsOnly(String str)
-        {
-            foreach (char c in str)
-            {
-                if (c < '0' || c > '9')
-                    return false;
-            }
-
-            return true;
-        }
+        
 
     }
 }
