@@ -121,7 +121,7 @@ namespace Virtual_librarian
             MetroMessageBox.Show(this, "Mano užklausų sąrašas sėkmingai išsiųstas bibliotekininkei", "Išsiųsta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
         }
 
-        private void grdTerminai_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void grdLoanPeriods_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int selectedIndex = grdLoanPeriods.Rows[e.RowIndex].Index;
             string selectedBookISBN = grdLoanPeriods.Rows[e.RowIndex].Cells[6].Value.ToString(); //6 - isbn
@@ -206,7 +206,7 @@ namespace Virtual_librarian
             }
         }
 
-        private void grdTerminai_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void grdLoanPeriods_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

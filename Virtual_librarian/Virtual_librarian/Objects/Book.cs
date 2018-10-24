@@ -136,7 +136,7 @@ class BookCollection<Book>
     // Apibreziamas indeksavima, kad butu galima kreiptis su [] kabutemis
     public Book this[int i] => arr[i];
 
-    public void add(Book value)
+    public void Add(Book value)
     {
         if (nextIndex >= arr.Length)
             throw new IndexOutOfRangeException($"Knygų kolekcija turi tik {arr.Length} elementų.");

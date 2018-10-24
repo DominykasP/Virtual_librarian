@@ -9,7 +9,7 @@ namespace Virtual_librarian
     interface IPersonDBHelper
     {
         Person GetPersonByID(int ID);
-        Person getPersonByNameSurnamePassword(string name, string surname, string password);
+        Person GetPersonByNameSurnamePassword(string name, string surname, string password);
 
         bool AddNewPerson(Person person);
         bool DeletePerson(Person person);

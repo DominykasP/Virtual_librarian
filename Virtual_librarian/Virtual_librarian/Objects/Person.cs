@@ -75,7 +75,7 @@ namespace Virtual_librarian
         }
     }
 }
-class ZmoniuKolekcija<Person>
+class PersonCollection<Person>
 {
     private Person[] arr = new Person[100];
     int nextIndex = 0;
