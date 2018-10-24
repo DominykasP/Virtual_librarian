@@ -17,7 +17,7 @@ namespace Virtual_librarian.Objects
 
         }
 
-        public Admin(int id,string name, string surname, string password, DateTime birthdate, string phoneNumber, string email, AdminJob job)
+        public Admin(int id,string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, AdminJob job)
         {
             Id = id;
             SetProperties(name, surname, password, birthDate, phoneNumber, email, job);
