@@ -164,13 +164,17 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------------------
         private Book RecogniseBookBarcode()
         {
-            Convert12to13(barcode);
+            String BarcodeNew = Convert12to13(barcode);
             if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16,barcode[0]))
             {
                 
                 aTimer.Stop();
                 camera.Camera.Pause();               
-                Book book = ContainsBook();
+                Book book = ContainsBook(barcode[0]);
+                if(book == null)
+                {
+                    book = ContainsBook(BarcodeNew);
+                }
                 
                 return book;              
             }
@@ -194,16 +198,13 @@ namespace Virtual_librarian.Camera
         //--------------------------------------------------------------
         //-------------Check if xml file conatains book-----------------
         //--------------------------------------------------------------
-        private Book ContainsBook()
+        private Book ContainsBook(String Isbn)
         {
-            bool contains = false;
+            
             Book knyga = null;
-            knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
-            //PATAISYTI IS MAINFORM BOOKDBHELPER
-            if (knyga != null)
-            {
-                contains = true;
-            }
+            //knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
+            knyga = bookDBHelper.GetBookByIsbn(Isbn);
+            
             return knyga;
         }
         //--------------------------------------------------------------
@@ -227,7 +228,7 @@ namespace Virtual_librarian.Camera
                     newBarcodeArray[i] = convertedInt[0];
                 }
                 NewBarcode = new String(newBarcodeArray);
-                MessageBox.Show(NewBarcode);
+               
 
             }
             return NewBarcode;
