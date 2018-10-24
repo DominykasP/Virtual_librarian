@@ -26,25 +26,21 @@ namespace Virtual_librarian
         public Person(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
             this.id = id;
-            this.name = name;
-            this.surname = surname;
-            this.password = password;
-            this.birthDate = birthDate;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
+            SetProperties(name, surname, password, birthDate, phoneNumber, email);
         }
 
         public Person(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
-            this.name = name;
-            this.surname = surname;
-            this.password = password;
-            this.birthDate = birthDate;
-            this.phoneNumber = phoneNumber;
-            this.email = email;
+            SetProperties(name, surname, password, birthDate, phoneNumber, email);
         }
 
         public Person(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, Bitmap image)
+        {
+            SetProperties(name, surname, password, birthDate, phoneNumber, email);
+            this.image = image;
+        }
+
+        private void SetProperties(string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
         {
             this.name = name;
             this.surname = surname;
@@ -52,7 +48,6 @@ namespace Virtual_librarian
             this.birthDate = birthDate;
             this.phoneNumber = phoneNumber;
             this.email = email;
-            this.image = image;
         }
 
         public int Id { get => id; set => id = value; }
