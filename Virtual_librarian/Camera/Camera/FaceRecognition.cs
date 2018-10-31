@@ -32,7 +32,7 @@ namespace Camera
         //Face recognition'o kintamieji
         MCvFont font;
         HaarCascade faceHaarCascase;
-        string pathToHaarCascade = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"x86\haarcascade_frontalface_default.xml");
+        string pathToHaarCascade = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"..\..\..\Camera\x86\haarcascade_frontalface_default.xml");
         Image<Gray, byte> faceImage;
         Image<Gray, byte> grayFrame;
 

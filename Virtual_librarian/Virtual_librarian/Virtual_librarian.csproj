@@ -205,9 +205,6 @@
     <Content Include="License-LGPL.txt" />
     <Content Include="Resources\barcode-scanner.png" />
     <Content Include="Resources\icons8-barcode-64.png" />
-    <EmbeddedResource Include="x86\haarcascade_frontalface_default.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
     <None Include="Resources\icons8-barcode-641.png" />
     <None Include="Resources\icons8-barcode-scanner-64.png" />
     <None Include="Resources\avatar.jpg" />
@@ -225,7 +222,7 @@
       <Project>{f13f1843-ddb0-49a0-b576-ee612fa4e7a1}</Project>
       <Name>Camera</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ClassLibrary2\Db_Helpers.csproj">
+    <ProjectReference Include="..\Db_Helpers\Db_Helpers.csproj">
       <Project>{30f1f581-5479-4629-8046-517f66c15a8b}</Project>
       <Name>Db_Helpers</Name>
     </ProjectReference>

@@ -106,7 +106,7 @@
     <None Include="tessdata\eng.traineddata" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary2\Db_Helpers.csproj">
+    <ProjectReference Include="..\Db_Helpers\Db_Helpers.csproj">
       <Project>{30f1f581-5479-4629-8046-517f66c15a8b}</Project>
       <Name>Db_Helpers</Name>
     </ProjectReference>
@@ -126,6 +126,11 @@
       <Project>{29e7ae70-746a-4fbf-bfda-6bdab75f0a8a}</Project>
       <Name>LibraryObjects</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="x86\haarcascade_frontalface_default.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
