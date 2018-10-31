@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using LibraryObjects;
+using Db_Helpers;
 
 namespace Virtual_librarian
 {

@@ -7,8 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Virtual_librarian.DB_helpers;
-using Virtual_librarian.Input_Output;
+using Db_Helpers;
+using FilesFunctions;
 
 namespace Virtual_librarian
 {

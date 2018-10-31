@@ -10,8 +10,10 @@ using System.Windows.Forms;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using MetroFramework;
-using Virtual_librarian.Camera;
-using Virtual_librarian.DB_helpers;
+using Camera;
+using Db_Helpers;
+using FilesFunctions;
+using LibraryObjects;
 
 namespace Virtual_librarian
 {

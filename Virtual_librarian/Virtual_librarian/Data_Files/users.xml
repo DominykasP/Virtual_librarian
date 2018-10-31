@@ -3,46 +3,19 @@
   <Person>
     <Id>1</Id>
     <Name>Dominykas</Name>
-    <Surname>Pakalnis</Surname>
-    <Password>slaptazodis</Password>
-    <BirthDate>2018-10-22T12:11:17.7806087+03:00</BirthDate>
-    <PhoneNumber>SFD,DSFDSBKJ</PhoneNumber>
-    <Email>domin@djbskjds.com</Email>
+    <Surname>p</Surname>
+    <Password>123</Password>
+    <BirthDate>2018-10-25T09:27:49.8890193+03:00</BirthDate>
+    <PhoneNumber>12</PhoneNumber>
+    <Email>dominykp@gm.ocm</Email>
   </Person>
   <Person>
-    <Id>5</Id>
-    <Name>Martynas</Name>
-    <Surname>Baškys</Surname>
-    <Password>1234</Password>
-    <BirthDate>2018-10-17T19:31:23.5298131+03:00</BirthDate>
-    <PhoneNumber />
-    <Email>g@g.com</Email>
-  </Person>
-  <Person>
-    <Id>6</Id>
-    <Name />
-    <Surname />
-    <Password />
-    <BirthDate>2018-10-17T19:41:25.1112673+03:00</BirthDate>
-    <PhoneNumber />
-    <Email>fsdf@fds.com</Email>
-  </Person>
-  <Person>
-    <Id>7</Id>
-    <Name>Džėjus</Name>
-    <Surname>Getsbis</Surname>
-    <Password>Getsbis</Password>
-    <BirthDate>2018-10-24T03:43:00.5041438+03:00</BirthDate>
-    <PhoneNumber>112</PhoneNumber>
-    <Email>d@g.com</Email>
-  </Person>
-  <Person>
-    <Id>8</Id>
+    <Id>2</Id>
     <Name>Eligijus</Name>
     <Surname>Puplinskas</Surname>
     <Password>slap</Password>
-    <BirthDate>2018-10-24T10:34:37.9164256+03:00</BirthDate>
-    <PhoneNumber>860233850</PhoneNumber>
-    <Email>aacadc@gmail.com</Email>
+    <BirthDate>2018-10-31T17:13:36.9125997+02:00</BirthDate>
+    <PhoneNumber>860233584</PhoneNumber>
+    <Email>sbvsavb@gmail.com</Email>
   </Person>
 </ArrayOfPerson>
