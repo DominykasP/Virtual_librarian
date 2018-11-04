@@ -106,9 +106,9 @@
     <None Include="tessdata\eng.traineddata" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Db_Helpers\Db_Helpers.csproj">
+    <ProjectReference Include="..\Database\Database.csproj">
       <Project>{30f1f581-5479-4629-8046-517f66c15a8b}</Project>
-      <Name>Db_Helpers</Name>
+      <Name>Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\ExtensionMethods\ExtensionMethods.csproj">
       <Project>{73c4b7e8-6cc2-4555-afa7-bbf75a06cabf}</Project>

@@ -8,7 +8,7 @@ using FilesFunctions;
 using LibraryObjects;
 using Interfaces;
 
-namespace Db_Helpers
+namespace Database
 {
     public class HumanDBHelper : IPersonDBHelper
     {

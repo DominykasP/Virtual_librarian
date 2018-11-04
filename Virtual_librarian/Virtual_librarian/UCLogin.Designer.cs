@@ -50,18 +50,16 @@
             // 
             // 
             this.txtVardas.CustomButton.Image = null;
-            this.txtVardas.CustomButton.Location = new System.Drawing.Point(602, 2);
-            this.txtVardas.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtVardas.CustomButton.Location = new System.Drawing.Point(63, 0);
             this.txtVardas.CustomButton.Name = "";
-            this.txtVardas.CustomButton.Size = new System.Drawing.Size(86, 89);
+            this.txtVardas.CustomButton.Size = new System.Drawing.Size(9, 9);
             this.txtVardas.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtVardas.CustomButton.TabIndex = 1;
             this.txtVardas.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtVardas.CustomButton.UseSelectable = true;
             this.txtVardas.CustomButton.Visible = false;
             this.txtVardas.Lines = new string[0];
-            this.txtVardas.Location = new System.Drawing.Point(1113, 283);
-            this.txtVardas.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtVardas.Location = new System.Drawing.Point(477, 127);
             this.txtVardas.MaxLength = 32767;
             this.txtVardas.Name = "txtVardas";
             this.txtVardas.PasswordChar = '\0';
@@ -70,7 +68,7 @@
             this.txtVardas.SelectionLength = 0;
             this.txtVardas.SelectionStart = 0;
             this.txtVardas.ShortcutsEnabled = true;
-            this.txtVardas.Size = new System.Drawing.Size(394, 51);
+            this.txtVardas.Size = new System.Drawing.Size(169, 23);
             this.txtVardas.TabIndex = 0;
             this.txtVardas.UseSelectable = true;
             this.txtVardas.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -82,18 +80,16 @@
             // 
             // 
             this.txtPavarde.CustomButton.Image = null;
-            this.txtPavarde.CustomButton.Location = new System.Drawing.Point(602, 2);
-            this.txtPavarde.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtPavarde.CustomButton.Location = new System.Drawing.Point(63, 0);
             this.txtPavarde.CustomButton.Name = "";
-            this.txtPavarde.CustomButton.Size = new System.Drawing.Size(86, 89);
+            this.txtPavarde.CustomButton.Size = new System.Drawing.Size(9, 9);
             this.txtPavarde.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPavarde.CustomButton.TabIndex = 1;
             this.txtPavarde.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtPavarde.CustomButton.UseSelectable = true;
             this.txtPavarde.CustomButton.Visible = false;
             this.txtPavarde.Lines = new string[0];
-            this.txtPavarde.Location = new System.Drawing.Point(1113, 348);
-            this.txtPavarde.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtPavarde.Location = new System.Drawing.Point(477, 156);
             this.txtPavarde.MaxLength = 32767;
             this.txtPavarde.Name = "txtPavarde";
             this.txtPavarde.PasswordChar = '\0';
@@ -102,7 +98,7 @@
             this.txtPavarde.SelectionLength = 0;
             this.txtPavarde.SelectionStart = 0;
             this.txtPavarde.ShortcutsEnabled = true;
-            this.txtPavarde.Size = new System.Drawing.Size(394, 51);
+            this.txtPavarde.Size = new System.Drawing.Size(169, 23);
             this.txtPavarde.TabIndex = 1;
             this.txtPavarde.UseSelectable = true;
             this.txtPavarde.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -114,18 +110,16 @@
             // 
             // 
             this.txtSlaptazodis.CustomButton.Image = null;
-            this.txtSlaptazodis.CustomButton.Location = new System.Drawing.Point(602, 2);
-            this.txtSlaptazodis.CustomButton.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtSlaptazodis.CustomButton.Location = new System.Drawing.Point(63, 0);
             this.txtSlaptazodis.CustomButton.Name = "";
-            this.txtSlaptazodis.CustomButton.Size = new System.Drawing.Size(86, 89);
+            this.txtSlaptazodis.CustomButton.Size = new System.Drawing.Size(9, 9);
             this.txtSlaptazodis.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtSlaptazodis.CustomButton.TabIndex = 1;
             this.txtSlaptazodis.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.txtSlaptazodis.CustomButton.UseSelectable = true;
             this.txtSlaptazodis.CustomButton.Visible = false;
             this.txtSlaptazodis.Lines = new string[0];
-            this.txtSlaptazodis.Location = new System.Drawing.Point(1113, 413);
-            this.txtSlaptazodis.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.txtSlaptazodis.Location = new System.Drawing.Point(477, 185);
             this.txtSlaptazodis.MaxLength = 32767;
             this.txtSlaptazodis.Name = "txtSlaptazodis";
             this.txtSlaptazodis.PasswordChar = '*';
@@ -134,7 +128,7 @@
             this.txtSlaptazodis.SelectionLength = 0;
             this.txtSlaptazodis.SelectionStart = 0;
             this.txtSlaptazodis.ShortcutsEnabled = true;
-            this.txtSlaptazodis.Size = new System.Drawing.Size(394, 51);
+            this.txtSlaptazodis.Size = new System.Drawing.Size(169, 23);
             this.txtSlaptazodis.TabIndex = 2;
             this.txtSlaptazodis.UseSelectable = true;
             this.txtSlaptazodis.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -143,8 +137,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(917, 292);
-            this.metroLabel1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel1.Location = new System.Drawing.Point(393, 131);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(50, 19);
             this.metroLabel1.TabIndex = 1;
@@ -153,8 +146,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(917, 357);
-            this.metroLabel2.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel2.Location = new System.Drawing.Point(393, 160);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(59, 19);
             this.metroLabel2.TabIndex = 1;
@@ -163,8 +155,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(917, 422);
-            this.metroLabel3.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel3.Location = new System.Drawing.Point(393, 189);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(78, 19);
             this.metroLabel3.TabIndex = 1;
@@ -173,8 +164,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(96, 0);
-            this.metroLabel4.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.metroLabel4.Location = new System.Drawing.Point(41, 0);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(401, 19);
             this.metroLabel4.TabIndex = 4;
@@ -183,10 +173,9 @@
             // btnLogInWIthName
             // 
             this.btnLogInWIthName.ActiveControl = null;
-            this.btnLogInWIthName.Location = new System.Drawing.Point(917, 526);
-            this.btnLogInWIthName.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.btnLogInWIthName.Location = new System.Drawing.Point(393, 236);
             this.btnLogInWIthName.Name = "btnLogInWIthName";
-            this.btnLogInWIthName.Size = new System.Drawing.Size(590, 125);
+            this.btnLogInWIthName.Size = new System.Drawing.Size(253, 56);
             this.btnLogInWIthName.TabIndex = 3;
             this.btnLogInWIthName.Text = "Prisijungti";
             this.btnLogInWIthName.UseSelectable = true;
@@ -195,10 +184,9 @@
             // btnTakePicture
             // 
             this.btnTakePicture.ActiveControl = null;
-            this.btnTakePicture.Location = new System.Drawing.Point(96, 526);
-            this.btnTakePicture.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.btnTakePicture.Location = new System.Drawing.Point(41, 236);
             this.btnTakePicture.Name = "btnTakePicture";
-            this.btnTakePicture.Size = new System.Drawing.Size(546, 125);
+            this.btnTakePicture.Size = new System.Drawing.Size(234, 56);
             this.btnTakePicture.TabIndex = 5;
             this.btnTakePicture.TabStop = false;
             this.btnTakePicture.Text = "Atpažinti veidą";
@@ -210,10 +198,9 @@
             this.cameraBox.BackColor = System.Drawing.Color.Transparent;
             this.cameraBox.BackgroundImage = global::Virtual_librarian.Properties.Resources.avatar;
             this.cameraBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.cameraBox.Location = new System.Drawing.Point(96, 147);
-            this.cameraBox.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.cameraBox.Location = new System.Drawing.Point(41, 66);
             this.cameraBox.Name = "cameraBox";
-            this.cameraBox.Size = new System.Drawing.Size(546, 364);
+            this.cameraBox.Size = new System.Drawing.Size(234, 163);
             this.cameraBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.cameraBox.TabIndex = 4;
             this.cameraBox.TabStop = false;
@@ -221,10 +208,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Virtual_librarian.Properties.Resources.gray_line_png1;
-            this.pictureBox1.Location = new System.Drawing.Point(698, 94);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+            this.pictureBox1.Location = new System.Drawing.Point(299, 42);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(205, 616);
+            this.pictureBox1.Size = new System.Drawing.Size(88, 276);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -232,10 +218,10 @@
             // btnCancel
             // 
             this.btnCancel.ActiveControl = null;
-            this.btnCancel.Location = new System.Drawing.Point(1248, 4);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.btnCancel.Location = new System.Drawing.Point(535, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(341, 85);
+            this.btnCancel.Size = new System.Drawing.Size(146, 38);
             this.btnCancel.TabIndex = 6;
             this.btnCancel.TabStop = false;
             this.btnCancel.Text = "Atšaukti";
@@ -244,7 +230,7 @@
             // 
             // UCLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnTakePicture);
@@ -258,9 +244,8 @@
             this.Controls.Add(this.txtPavarde);
             this.Controls.Add(this.txtVardas);
             this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
             this.Name = "UCLogin";
-            this.Size = new System.Drawing.Size(1594, 770);
+            this.Size = new System.Drawing.Size(683, 399);
             ((System.ComponentModel.ISupportInitialize)(this.cameraBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

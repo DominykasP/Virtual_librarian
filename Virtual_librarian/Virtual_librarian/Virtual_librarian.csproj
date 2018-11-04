@@ -214,17 +214,15 @@
     <None Include="Resources\vu_logo.png" />
     <None Include="Resources\logo.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data_Files\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Camera\Camera.csproj">
       <Project>{f13f1843-ddb0-49a0-b576-ee612fa4e7a1}</Project>
       <Name>Camera</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Db_Helpers\Db_Helpers.csproj">
+    <ProjectReference Include="..\Database\Database.csproj">
       <Project>{30f1f581-5479-4629-8046-517f66c15a8b}</Project>
-      <Name>Db_Helpers</Name>
+      <Name>Database</Name>
     </ProjectReference>
     <ProjectReference Include="..\FilesFunctions\FilesFunctions.csproj">
       <Project>{b03640dd-7c52-4b76-8006-128428132ec4}</Project>

@@ -10,7 +10,7 @@ using System.Reflection;
 using System.IO;
 using Camera;
 using System.Drawing;
-using Db_Helpers;
+using Database;
 using FilesFunctions;
 
 namespace Camera

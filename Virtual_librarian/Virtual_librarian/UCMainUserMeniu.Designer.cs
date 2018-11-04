@@ -70,7 +70,7 @@
             this.metroTabControl1.Location = new System.Drawing.Point(3, 36);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(677, 309);
+            this.metroTabControl1.Size = new System.Drawing.Size(677, 353);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -96,7 +96,7 @@
             this.mtbTerminai.HorizontalScrollbarSize = 10;
             this.mtbTerminai.Location = new System.Drawing.Point(4, 38);
             this.mtbTerminai.Name = "mtbTerminai";
-            this.mtbTerminai.Size = new System.Drawing.Size(669, 267);
+            this.mtbTerminai.Size = new System.Drawing.Size(669, 311);
             this.mtbTerminai.TabIndex = 3;
             this.mtbTerminai.Text = "Patikrinti terminus";
             this.mtbTerminai.VerticalScrollbarBarColor = true;
@@ -149,7 +149,7 @@
             this.grdLoanPeriods.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdLoanPeriods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.grdLoanPeriods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdLoanPeriods.Size = new System.Drawing.Size(663, 258);
+            this.grdLoanPeriods.Size = new System.Drawing.Size(663, 302);
             this.grdLoanPeriods.TabIndex = 2;
             this.grdLoanPeriods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLoanPeriods_CellDoubleClick);
             this.grdLoanPeriods.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdLoanPeriods_KeyPress);
@@ -335,7 +335,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UCMainUserMeniu";
-            this.Size = new System.Drawing.Size(683, 345);
+            this.Size = new System.Drawing.Size(683, 389);
             this.Load += new System.EventHandler(this.UCMainUserMeniu_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.mtbTerminai.ResumeLayout(false);

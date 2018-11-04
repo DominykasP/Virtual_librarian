@@ -73,15 +73,15 @@
             this.metroLabel2.TabIndex = 5;
             this.metroLabel2.Text = "Įveskite savo duomenis ir pasidarykite nuotrauką";
             // 
-            // txtSlaptazodis
+            // txtPassword
             // 
             // 
             // 
             // 
             this.txtPassword.CustomButton.Image = null;
-            this.txtPassword.CustomButton.Location = new System.Drawing.Point(76, 0);
+            this.txtPassword.CustomButton.Location = new System.Drawing.Point(178, 1);
             this.txtPassword.CustomButton.Name = "";
-            this.txtPassword.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtPassword.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtPassword.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPassword.CustomButton.TabIndex = 1;
             this.txtPassword.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -90,7 +90,7 @@
             this.txtPassword.Lines = new string[0];
             this.txtPassword.Location = new System.Drawing.Point(462, 142);
             this.txtPassword.MaxLength = 32767;
-            this.txtPassword.Name = "txtSlaptazodis";
+            this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPassword.SelectedText = "";
@@ -103,15 +103,15 @@
             this.txtPassword.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPassword.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // txtPavarde
+            // txtSurname
             // 
             // 
             // 
             // 
             this.txtSurname.CustomButton.Image = null;
-            this.txtSurname.CustomButton.Location = new System.Drawing.Point(76, 0);
+            this.txtSurname.CustomButton.Location = new System.Drawing.Point(178, 1);
             this.txtSurname.CustomButton.Name = "";
-            this.txtSurname.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtSurname.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtSurname.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtSurname.CustomButton.TabIndex = 1;
             this.txtSurname.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -120,7 +120,7 @@
             this.txtSurname.Lines = new string[0];
             this.txtSurname.Location = new System.Drawing.Point(462, 113);
             this.txtSurname.MaxLength = 32767;
-            this.txtSurname.Name = "txtPavarde";
+            this.txtSurname.Name = "txtSurname";
             this.txtSurname.PasswordChar = '\0';
             this.txtSurname.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSurname.SelectedText = "";
@@ -133,15 +133,15 @@
             this.txtSurname.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtSurname.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // txtVardas
+            // txtName
             // 
             // 
             // 
             // 
             this.txtName.CustomButton.Image = null;
-            this.txtName.CustomButton.Location = new System.Drawing.Point(76, 0);
+            this.txtName.CustomButton.Location = new System.Drawing.Point(178, 1);
             this.txtName.CustomButton.Name = "";
-            this.txtName.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtName.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtName.CustomButton.TabIndex = 1;
             this.txtName.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -150,7 +150,7 @@
             this.txtName.Lines = new string[0];
             this.txtName.Location = new System.Drawing.Point(462, 84);
             this.txtName.MaxLength = 32767;
-            this.txtName.Name = "txtVardas";
+            this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
             this.txtName.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtName.SelectedText = "";
@@ -163,15 +163,15 @@
             this.txtName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // txtTelefonoNr
+            // txtPhoneNumber
             // 
             // 
             // 
             // 
             this.txtPhoneNumber.CustomButton.Image = null;
-            this.txtPhoneNumber.CustomButton.Location = new System.Drawing.Point(76, 0);
+            this.txtPhoneNumber.CustomButton.Location = new System.Drawing.Point(178, 1);
             this.txtPhoneNumber.CustomButton.Name = "";
-            this.txtPhoneNumber.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtPhoneNumber.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtPhoneNumber.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPhoneNumber.CustomButton.TabIndex = 1;
             this.txtPhoneNumber.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -180,7 +180,7 @@
             this.txtPhoneNumber.Lines = new string[0];
             this.txtPhoneNumber.Location = new System.Drawing.Point(462, 197);
             this.txtPhoneNumber.MaxLength = 32767;
-            this.txtPhoneNumber.Name = "txtTelefonoNr";
+            this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.PasswordChar = '\0';
             this.txtPhoneNumber.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtPhoneNumber.SelectedText = "";
@@ -199,9 +199,9 @@
             // 
             // 
             this.txtEmail.CustomButton.Image = null;
-            this.txtEmail.CustomButton.Location = new System.Drawing.Point(76, 0);
+            this.txtEmail.CustomButton.Location = new System.Drawing.Point(178, 1);
             this.txtEmail.CustomButton.Name = "";
-            this.txtEmail.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtEmail.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtEmail.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtEmail.CustomButton.TabIndex = 1;
             this.txtEmail.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -277,10 +277,10 @@
             this.metroLabel8.TabIndex = 18;
             this.metroLabel8.Text = "El. paštas:";
             // 
-            // dtpGimimoData
+            // dtpBirthDate
             // 
             this.dtpBirthDate.Location = new System.Drawing.Point(462, 171);
-            this.dtpBirthDate.Name = "dtpGimimoData";
+            this.dtpBirthDate.Name = "dtpBirthDate";
             this.dtpBirthDate.Size = new System.Drawing.Size(200, 20);
             this.dtpBirthDate.TabIndex = 3;
             // 
@@ -372,7 +372,7 @@
             this.Controls.Add(this.lblTakingPictures);
             this.Controls.Add(this.prbTakingPictures);
             this.Name = "UCRegister";
-            this.Size = new System.Drawing.Size(683, 342);
+            this.Size = new System.Drawing.Size(683, 407);
             this.Load += new System.EventHandler(this.UCRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCamera)).EndInit();

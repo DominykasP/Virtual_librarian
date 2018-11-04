@@ -12,7 +12,7 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
 using Spire.Barcode;
-using Db_Helpers;
+using Database;
 using MetroFramework;
 using Camera;
 using LibraryObjects;

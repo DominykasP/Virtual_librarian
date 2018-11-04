@@ -18,4 +18,13 @@
     <PhoneNumber>860233584</PhoneNumber>
     <Email>sbvsavb@gmail.com</Email>
   </Person>
+  <Person>
+    <Id>3</Id>
+    <Name>Eligijus</Name>
+    <Surname>Puplinskas</Surname>
+    <Password>slap</Password>
+    <BirthDate>2018-11-04T15:22:37.0794741+02:00</BirthDate>
+    <PhoneNumber>afcawac</PhoneNumber>
+    <Email>fwcw@gmail.com</Email>
+  </Person>
 </ArrayOfPerson>

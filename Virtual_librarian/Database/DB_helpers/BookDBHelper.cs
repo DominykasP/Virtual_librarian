@@ -7,7 +7,7 @@ using FilesFunctions;
 using Interfaces;
 using LibraryObjects;
 
-namespace Db_Helpers
+namespace Database
 {
     public class BookDBHelper : IBookDBHelper
     {
