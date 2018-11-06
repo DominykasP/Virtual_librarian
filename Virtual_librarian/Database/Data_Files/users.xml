@@ -2,38 +2,20 @@
 <ArrayOfPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Person>
     <Id>1</Id>
-    <Name>Dominykas</Name>
-    <Surname>p</Surname>
-    <Password>123</Password>
-    <BirthDate>2018-10-25T09:27:49.8890193+03:00</BirthDate>
-    <PhoneNumber>12</PhoneNumber>
-    <Email>dominykp@gm.ocm</Email>
+    <Name>E</Name>
+    <Surname>P</Surname>
+    <Password>s</Password>
+    <BirthDate>2018-11-06T16:31:32.9001423+02:00</BirthDate>
+    <PhoneNumber>6247</PhoneNumber>
+    <Email>davcazv@gmail.com</Email>
   </Person>
   <Person>
     <Id>2</Id>
-    <Name>Eligijus</Name>
-    <Surname>Puplinskas</Surname>
-    <Password>slap</Password>
-    <BirthDate>2018-10-31T17:13:36.9125997+02:00</BirthDate>
-    <PhoneNumber>860233584</PhoneNumber>
-    <Email>sbvsavb@gmail.com</Email>
-  </Person>
-  <Person>
-    <Id>3</Id>
-    <Name>Eligijus</Name>
-    <Surname>Puplinskas</Surname>
-    <Password>slap</Password>
-    <BirthDate>2018-11-04T15:22:37.0794741+02:00</BirthDate>
-    <PhoneNumber>afcawac</PhoneNumber>
-    <Email>fwcw@gmail.com</Email>
-  </Person>
-  <Person>
-    <Id>4</Id>
     <Name>e</Name>
-    <Surname>p</Surname>
-    <Password>s</Password>
-    <BirthDate>2018-11-06T16:24:10.4686957+02:00</BirthDate>
-    <PhoneNumber>sbsB</PhoneNumber>
-    <Email>GAVA@gmail.com</Email>
+    <Surname>t</Surname>
+    <Password>svs</Password>
+    <BirthDate>2018-11-06T16:33:38.2544873+02:00</BirthDate>
+    <PhoneNumber>860233892</PhoneNumber>
+    <Email>avsaz@gmail.com</Email>
   </Person>
 </ArrayOfPerson>
