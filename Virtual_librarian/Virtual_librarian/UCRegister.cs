@@ -17,7 +17,7 @@ using LibraryObjects;
 
 namespace Virtual_librarian
 {
-    delegate void ErrorMessageBoxPrinter(string topMessage, string text);
+    delegate void ErrorMessageBoxPrinter(string topText, string message);
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
@@ -65,9 +65,9 @@ namespace Virtual_librarian
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            ErrorMessageBoxPrinter p = delegate (string tM, string t)
+            ErrorMessageBoxPrinter p = delegate (string topText, string message)
             {
-                MetroMessageBox.Show(this, tM, t, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MetroMessageBox.Show(this, topText, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
             DateTime birthDate = dtpBirthDate.Value;
 
