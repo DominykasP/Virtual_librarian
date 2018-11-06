@@ -245,7 +245,7 @@
             this.Controls.Add(this.txtVardas);
             this.Controls.Add(this.pictureBox1);
             this.Name = "UCLogin";
-            this.Size = new System.Drawing.Size(683, 340);
+            this.Size = new System.Drawing.Size(683, 345);
             ((System.ComponentModel.ISupportInitialize)(this.cameraBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

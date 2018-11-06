@@ -139,7 +139,7 @@
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel1);
             this.Name = "UCScanBook";
-            this.Size = new System.Drawing.Size(650, 258);
+            this.Size = new System.Drawing.Size(650, 250);
             this.Load += new System.EventHandler(this.UCScanBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cameraBox)).EndInit();
