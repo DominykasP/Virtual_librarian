@@ -65,7 +65,7 @@ namespace Virtual_librarian
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            ErrorMessageBoxPrinter p = delegate (string topText, string message)
+            ErrorMessageBoxPrinter errorPrinter = delegate (string topText, string message)
             {
                 MetroMessageBox.Show(this, topText, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
@@ -77,7 +77,7 @@ namespace Virtual_librarian
 
             if (!pattern.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
             {
-                p("Neteisingai įvestas elektroninis paštas", "Klaida");
+                errorPrinter("Neteisingai įvestas elektroninis paštas", "Klaida");
                 txtEmail.Clear();
                 txtEmail.Focus();
             }
@@ -110,7 +110,7 @@ namespace Virtual_librarian
                 }
                 else
                 {
-                    p("Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida");
+                    errorPrinter("Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida");
                 }
             }
             // }
