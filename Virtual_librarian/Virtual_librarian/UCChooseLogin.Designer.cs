@@ -74,7 +74,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRegistruotis);
             this.Name = "UCChooseLogin";
-            this.Size = new System.Drawing.Size(683, 398);
+            this.Size = new System.Drawing.Size(683, 322);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

@@ -50,9 +50,9 @@
             // 
             // 
             this.txtVardas.CustomButton.Image = null;
-            this.txtVardas.CustomButton.Location = new System.Drawing.Point(63, 0);
+            this.txtVardas.CustomButton.Location = new System.Drawing.Point(147, 1);
             this.txtVardas.CustomButton.Name = "";
-            this.txtVardas.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtVardas.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtVardas.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtVardas.CustomButton.TabIndex = 1;
             this.txtVardas.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -80,9 +80,9 @@
             // 
             // 
             this.txtPavarde.CustomButton.Image = null;
-            this.txtPavarde.CustomButton.Location = new System.Drawing.Point(63, 0);
+            this.txtPavarde.CustomButton.Location = new System.Drawing.Point(147, 1);
             this.txtPavarde.CustomButton.Name = "";
-            this.txtPavarde.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtPavarde.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtPavarde.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtPavarde.CustomButton.TabIndex = 1;
             this.txtPavarde.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -110,9 +110,9 @@
             // 
             // 
             this.txtSlaptazodis.CustomButton.Image = null;
-            this.txtSlaptazodis.CustomButton.Location = new System.Drawing.Point(63, 0);
+            this.txtSlaptazodis.CustomButton.Location = new System.Drawing.Point(147, 1);
             this.txtSlaptazodis.CustomButton.Name = "";
-            this.txtSlaptazodis.CustomButton.Size = new System.Drawing.Size(9, 9);
+            this.txtSlaptazodis.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.txtSlaptazodis.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.txtSlaptazodis.CustomButton.TabIndex = 1;
             this.txtSlaptazodis.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -219,7 +219,7 @@
             // 
             this.btnCancel.ActiveControl = null;
             this.btnCancel.Location = new System.Drawing.Point(535, 2);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(146, 38);
             this.btnCancel.TabIndex = 6;
@@ -245,7 +245,7 @@
             this.Controls.Add(this.txtVardas);
             this.Controls.Add(this.pictureBox1);
             this.Name = "UCLogin";
-            this.Size = new System.Drawing.Size(683, 399);
+            this.Size = new System.Drawing.Size(683, 340);
             ((System.ComponentModel.ISupportInitialize)(this.cameraBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

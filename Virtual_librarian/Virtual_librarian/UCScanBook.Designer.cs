@@ -53,7 +53,7 @@
             // 
             this.metroTile1.ActiveControl = null;
             this.metroTile1.Location = new System.Drawing.Point(24, 67);
-            this.metroTile1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroTile1.Margin = new System.Windows.Forms.Padding(2);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(226, 41);
             this.metroTile1.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.pictureBox2.BackgroundImage = global::Virtual_librarian.Properties.Resources.icons8_barcode_64;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox2.Location = new System.Drawing.Point(24, 35);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 28);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -79,7 +79,7 @@
             this.cameraBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.cameraBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.cameraBox.Location = new System.Drawing.Point(291, 35);
-            this.cameraBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cameraBox.Margin = new System.Windows.Forms.Padding(2);
             this.cameraBox.Name = "cameraBox";
             this.cameraBox.Size = new System.Drawing.Size(342, 197);
             this.cameraBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -92,10 +92,10 @@
             // 
             // 
             this.BarcodeBox1.CustomButton.Image = null;
-            this.BarcodeBox1.CustomButton.Location = new System.Drawing.Point(141, 2);
-            this.BarcodeBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BarcodeBox1.CustomButton.Location = new System.Drawing.Point(188, 2);
+            this.BarcodeBox1.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.BarcodeBox1.CustomButton.Name = "";
-            this.BarcodeBox1.CustomButton.Size = new System.Drawing.Size(26, 28);
+            this.BarcodeBox1.CustomButton.Size = new System.Drawing.Size(35, 35);
             this.BarcodeBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.BarcodeBox1.CustomButton.TabIndex = 1;
             this.BarcodeBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -104,7 +104,7 @@
             this.BarcodeBox1.Enabled = false;
             this.BarcodeBox1.Lines = new string[0];
             this.BarcodeBox1.Location = new System.Drawing.Point(24, 192);
-            this.BarcodeBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BarcodeBox1.Margin = new System.Windows.Forms.Padding(2);
             this.BarcodeBox1.MaxLength = 32767;
             this.BarcodeBox1.Name = "BarcodeBox1";
             this.BarcodeBox1.PasswordChar = '\0';
@@ -139,7 +139,7 @@
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel1);
             this.Name = "UCScanBook";
-            this.Size = new System.Drawing.Size(650, 325);
+            this.Size = new System.Drawing.Size(650, 258);
             this.Load += new System.EventHandler(this.UCScanBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cameraBox)).EndInit();

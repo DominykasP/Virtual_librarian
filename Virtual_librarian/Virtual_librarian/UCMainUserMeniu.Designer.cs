@@ -70,7 +70,7 @@
             this.metroTabControl1.Location = new System.Drawing.Point(3, 36);
             this.metroTabControl1.Name = "metroTabControl1";
             this.metroTabControl1.SelectedIndex = 1;
-            this.metroTabControl1.Size = new System.Drawing.Size(677, 353);
+            this.metroTabControl1.Size = new System.Drawing.Size(677, 311);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
             // 
@@ -81,7 +81,7 @@
             this.mtbPasiimti.HorizontalScrollbarSize = 10;
             this.mtbPasiimti.Location = new System.Drawing.Point(4, 38);
             this.mtbPasiimti.Name = "mtbPasiimti";
-            this.mtbPasiimti.Size = new System.Drawing.Size(669, 267);
+            this.mtbPasiimti.Size = new System.Drawing.Size(669, 311);
             this.mtbPasiimti.TabIndex = 0;
             this.mtbPasiimti.Text = "Pasiimti/Grąžinti knygą";
             this.mtbPasiimti.VerticalScrollbarBarColor = true;
@@ -96,7 +96,7 @@
             this.mtbTerminai.HorizontalScrollbarSize = 10;
             this.mtbTerminai.Location = new System.Drawing.Point(4, 38);
             this.mtbTerminai.Name = "mtbTerminai";
-            this.mtbTerminai.Size = new System.Drawing.Size(669, 311);
+            this.mtbTerminai.Size = new System.Drawing.Size(669, 269);
             this.mtbTerminai.TabIndex = 3;
             this.mtbTerminai.Text = "Patikrinti terminus";
             this.mtbTerminai.VerticalScrollbarBarColor = true;
@@ -149,7 +149,7 @@
             this.grdLoanPeriods.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.grdLoanPeriods.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.grdLoanPeriods.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdLoanPeriods.Size = new System.Drawing.Size(663, 302);
+            this.grdLoanPeriods.Size = new System.Drawing.Size(663, 260);
             this.grdLoanPeriods.TabIndex = 2;
             this.grdLoanPeriods.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLoanPeriods_CellDoubleClick);
             this.grdLoanPeriods.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.grdLoanPeriods_KeyPress);
@@ -162,7 +162,7 @@
             this.mtbKnyguKatalogas.HorizontalScrollbarSize = 10;
             this.mtbKnyguKatalogas.Location = new System.Drawing.Point(4, 38);
             this.mtbKnyguKatalogas.Name = "mtbKnyguKatalogas";
-            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 267);
+            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 311);
             this.mtbKnyguKatalogas.TabIndex = 1;
             this.mtbKnyguKatalogas.Text = "Knygų katalogas";
             this.mtbKnyguKatalogas.VerticalScrollbarBarColor = true;
@@ -229,7 +229,7 @@
             this.mtbManoUžklausos.HorizontalScrollbarSize = 10;
             this.mtbManoUžklausos.Location = new System.Drawing.Point(4, 38);
             this.mtbManoUžklausos.Name = "mtbManoUžklausos";
-            this.mtbManoUžklausos.Size = new System.Drawing.Size(669, 267);
+            this.mtbManoUžklausos.Size = new System.Drawing.Size(669, 311);
             this.mtbManoUžklausos.TabIndex = 2;
             this.mtbManoUžklausos.Text = "Mano užklausos";
             this.mtbManoUžklausos.VerticalScrollbarBarColor = true;
@@ -335,7 +335,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "UCMainUserMeniu";
-            this.Size = new System.Drawing.Size(683, 389);
+            this.Size = new System.Drawing.Size(683, 347);
             this.Load += new System.EventHandler(this.UCMainUserMeniu_Load);
             this.metroTabControl1.ResumeLayout(false);
             this.mtbTerminai.ResumeLayout(false);

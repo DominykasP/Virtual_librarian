@@ -372,7 +372,7 @@
             this.Controls.Add(this.lblTakingPictures);
             this.Controls.Add(this.prbTakingPictures);
             this.Name = "UCRegister";
-            this.Size = new System.Drawing.Size(683, 407);
+            this.Size = new System.Drawing.Size(683, 341);
             this.Load += new System.EventHandler(this.UCRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picCamera)).EndInit();
