@@ -17,13 +17,14 @@ using LibraryObjects;
 
 namespace Virtual_librarian
 {
+    delegate void ErrorMessageBoxPrinter(string topText, string message);
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
         UseCamera camera;
         FaceRegistration faceRegistration;
         int imageCountPerPerson = 5;
-
+        
 
         public UCRegister(MainForm mainForma)
         {
@@ -64,6 +65,10 @@ namespace Virtual_librarian
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            ErrorMessageBoxPrinter errorPrinter = delegate (string topText, string message)
+            {
+                MetroMessageBox.Show(this, topText, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            };
             DateTime birthDate = dtpBirthDate.Value;
 
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
@@ -72,7 +77,7 @@ namespace Virtual_librarian
 
             if (!pattern.IsMatch(txtEmail.Text)) //Jei neteisingas emailas
             {
-                MetroMessageBox.Show(this, "Neteisingai įvestas elektroninis paštas", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                errorPrinter("Neteisingai įvestas elektroninis paštas", "Klaida");
                 txtEmail.Clear();
                 txtEmail.Focus();
             }
@@ -105,7 +110,7 @@ namespace Virtual_librarian
                 }
                 else
                 {
-                    MetroMessageBox.Show(this, "Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    errorPrinter("Klaida sukuriant naują vartotoją. Prašome kreiptis į sistemos administratorių.", "Klaida");
                 }
             }
             // }
