@@ -81,7 +81,7 @@
             this.mtbPasiimti.HorizontalScrollbarSize = 10;
             this.mtbPasiimti.Location = new System.Drawing.Point(4, 38);
             this.mtbPasiimti.Name = "mtbPasiimti";
-            this.mtbPasiimti.Size = new System.Drawing.Size(669, 267);
+            this.mtbPasiimti.Size = new System.Drawing.Size(669, 269);
             this.mtbPasiimti.TabIndex = 0;
             this.mtbPasiimti.Text = "Pasiimti/Grąžinti knygą";
             this.mtbPasiimti.VerticalScrollbarBarColor = true;
@@ -162,7 +162,7 @@
             this.mtbKnyguKatalogas.HorizontalScrollbarSize = 10;
             this.mtbKnyguKatalogas.Location = new System.Drawing.Point(4, 38);
             this.mtbKnyguKatalogas.Name = "mtbKnyguKatalogas";
-            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 267);
+            this.mtbKnyguKatalogas.Size = new System.Drawing.Size(669, 269);
             this.mtbKnyguKatalogas.TabIndex = 1;
             this.mtbKnyguKatalogas.Text = "Knygų katalogas";
             this.mtbKnyguKatalogas.VerticalScrollbarBarColor = true;
@@ -229,7 +229,7 @@
             this.mtbManoUžklausos.HorizontalScrollbarSize = 10;
             this.mtbManoUžklausos.Location = new System.Drawing.Point(4, 38);
             this.mtbManoUžklausos.Name = "mtbManoUžklausos";
-            this.mtbManoUžklausos.Size = new System.Drawing.Size(669, 267);
+            this.mtbManoUžklausos.Size = new System.Drawing.Size(669, 269);
             this.mtbManoUžklausos.TabIndex = 2;
             this.mtbManoUžklausos.Text = "Mano užklausos";
             this.mtbManoUžklausos.VerticalScrollbarBarColor = true;

@@ -12,9 +12,10 @@ using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
 using Spire.Barcode;
-using Virtual_librarian.DB_helpers;
+using Database;
 using MetroFramework;
-using Virtual_librarian.Camera;
+using Camera;
+using LibraryObjects;
 
 namespace Virtual_librarian
 {

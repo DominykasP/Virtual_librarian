@@ -12,6 +12,8 @@ using Emgu.CV.Structure;
 using System.Reflection;
 using System.IO;
 using MetroFramework;
+using Camera;
+using LibraryObjects;
 
 namespace Virtual_librarian
 {

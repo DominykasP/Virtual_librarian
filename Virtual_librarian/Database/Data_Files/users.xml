@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPerson xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Person>
+    <Id>1</Id>
+    <Name>E</Name>
+    <Surname>P</Surname>
+    <Password>s</Password>
+    <BirthDate>2018-11-06T16:31:32.9001423+02:00</BirthDate>
+    <PhoneNumber>6247</PhoneNumber>
+    <Email>davcazv@gmail.com</Email>
+  </Person>
+  <Person>
+    <Id>2</Id>
+    <Name>e</Name>
+    <Surname>t</Surname>
+    <Password>svs</Password>
+    <BirthDate>2018-11-06T16:33:38.2544873+02:00</BirthDate>
+    <PhoneNumber>860233892</PhoneNumber>
+    <Email>avsaz@gmail.com</Email>
+  </Person>
+</ArrayOfPerson>
