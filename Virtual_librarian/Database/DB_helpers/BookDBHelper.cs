@@ -22,14 +22,15 @@ namespace Database
             {
                 books = new List<Book>();
             }*/
-            /*foreach(Book book in books.Value)//panaikinta norint isnaudoti Lazy privalumus
-            {
-                bookCollection.Add(book);
-            }*/
+            
         }
 
         public Book getBookByIndex(int id)
         {
+            foreach(Book book in books.Value)
+            {
+                bookCollection.Add(book);
+            }
             return bookCollection[id];
         }
 
