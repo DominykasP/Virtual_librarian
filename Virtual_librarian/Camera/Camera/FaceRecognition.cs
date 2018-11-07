@@ -37,8 +37,8 @@ namespace Camera
         Image<Gray, byte> grayFrame;
 
         //Event'o kintamieji
-        public delegate void FoundHandler(object sender, RecognisedPersonEventArgs e);
-        public event FoundHandler OnFoundRegisteredFace;
+        public delegate void FoundHandler<RecognisedPersonEventArgs>(object sender, RecognisedPersonEventArgs e);
+        public event FoundHandler<RecognisedPersonEventArgs> OnFoundRegisteredFace;
 
         public FaceRecognition()
         {
