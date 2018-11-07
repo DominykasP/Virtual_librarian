@@ -13,6 +13,8 @@ namespace FilesFunctions
 {
     public static class FileIO
     {
+        //To read and save information about users and books
+
         public static bool FileWrite<T>(string pathToFile, T objectToWrite)
         {
             XmlSerializer xmlSerz = new XmlSerializer(typeof(T));
@@ -39,6 +41,8 @@ namespace FilesFunctions
                 return default(T);
             }
         }
+
+        //To read and save information about users - for face recognition
 
         private static List<String> userID;
 
@@ -87,6 +91,21 @@ namespace FilesFunctions
             {
                 photo.Save(pathToFolder + "face" + photoNumber-- + ".bmp");
             }
+        }
+
+        //To save information about exceptions
+
+        public static void SaveException(string pathToFile, string exceptionMessage, string exceptionSource)
+        {
+            StreamWriter writer = new StreamWriter(pathToFile, true); //True - append
+            StringBuilder exceptionText = new StringBuilder();
+            exceptionText.Append(DateTime.Now.ToString());
+            exceptionText.Append(" in ");
+            exceptionText.Append(exceptionSource);
+            exceptionText.Append(" - ");
+            exceptionText.Append(exceptionMessage);
+            writer.WriteLine(exceptionText);
+            writer.Close();
         }
     }
 }
