@@ -11,25 +11,26 @@ namespace Database
 {
     public class BookDBHelper : IBookDBHelper
     {
-        private List<Book> books;
+        private Lazy<List<Book>> books = null;
 
         BookCollection<Book> bookCollection = new BookCollection<Book>();
 
         public BookDBHelper()
         {
-            books = FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile);
-            if (books == null)
+            books = new Lazy<List<Book>>(() => FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile));
+            /*if (books == null)
             {
                 books = new List<Book>();
-            }
-            foreach(Book book in books)
-            {
-                bookCollection.Add(book);
-            }
+            }*/
+            
         }
 
         public Book getBookByIndex(int id)
         {
+            foreach(Book book in books.Value)
+            {
+                bookCollection.Add(book);
+            }
             return bookCollection[id];
         }
 
@@ -37,7 +38,7 @@ namespace Database
         public Book GetBookByCode(string isbn, string code)
         {
              Book foundBook = new Book();
-             var bookList = books.OfType<Book>();
+             var bookList = books.Value.OfType<Book>();
              var foundBooks = from book in bookList
                                   where (book.Isbn == isbn) && (book.Code == code)
                                   select book;
@@ -51,7 +52,7 @@ namespace Database
         public Book GetBookByIsbn(string isbn)
         {
             Book foundBook = null;
-            var bookList = books.OfType<Book>();
+            var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
                              where book.Isbn == isbn
                              select book;
@@ -64,13 +65,13 @@ namespace Database
 
         public List<Book> GetAllBooks()
         {
-            return books;
+            return books.Value;
         }
 
         public List<Book> GetReadersBooks(Person reader)
         {
             List<Book> readersBooks = new List<Book>();
-            var bookList = books.OfType<Book>();
+            var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
                                where (book.IsTaken == true) && (book.Reader.Equals(reader))
                                orderby book
@@ -87,7 +88,7 @@ namespace Database
         public bool ReturnBook(Book returnedBook)
         {
             Book returned = new Book();
-            var bookList = books.OfType<Book>();
+            var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
                                where book.Equals(returnedBook)
                                select book;
@@ -99,7 +100,7 @@ namespace Database
             {
                 returned.ReturnBook();
 
-                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
             }
             else
             {
@@ -110,7 +111,7 @@ namespace Database
         public List<Book> Find(string search)
         {
          List<Book> correspondingBooks = new List<Book>();
-                    var bookList = books.OfType<Book>();
+                    var bookList = books.Value.OfType<Book>();
                     var foundBooks = from book in bookList
                                        where book.Name.Contains(search) || book.Author.Contains(search)
                                        orderby book
@@ -127,10 +128,10 @@ namespace Database
 
         public bool DeleteBook(Book book)
         {
-            bool isSuccessful = books.Remove(book);
+            bool isSuccessful = books.Value.Remove(book);
             if (isSuccessful == true)
             {
-                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
             }
             else
             {
@@ -141,7 +142,7 @@ namespace Database
         public bool TakeBook(Book takenBook, Person reader)
         {
             Book taken = new Book();
-            var bookList = books.OfType<Book>();
+            var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
                                where book.Equals(takenBook)
                                select book;
@@ -152,20 +153,20 @@ namespace Database
 
             taken.TakeBook(reader, DateTime.Now, DateTime.Now.AddMonths(1));
 
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool AddNewBook(Book book)
         {
-            books.Add(book);
+            books.Value.Add(book);
             bookCollection.Add(book);
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool RenewBook(Book renewedBook)
         {
             Book renewed = new Book();
-            var bookList = books.OfType<Book>();
+            var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
                                where book.Equals(renewedBook)
                                select book;
@@ -176,13 +177,13 @@ namespace Database
 
             renewed.ExtendLoanPeriod(DateTime.Now.AddMonths(1));
 
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool isBookAlreadyTaken(Book bookToCheck)
         {
             Book currentBook = new Book();
-            var bookList = books.OfType<Book>();
+            var bookList = books.Value.OfType<Book>();
             var booksFound = from book in bookList
                                where book.Equals(bookToCheck)
                                select book;
@@ -197,7 +198,7 @@ namespace Database
         public int getNextId()
         {
             int max = 0;
-            foreach (Book book in books)
+            foreach (Book book in books.Value)
             {
                 if (book.Id > max)
                 {

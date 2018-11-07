@@ -12,30 +12,30 @@ namespace Database
 {
     public class HumanDBHelper : IPersonDBHelper
     {
-        private List<Person> users;
+        private Lazy<List<Person>> users;
 
         public HumanDBHelper()
         {
-            users = FileIO.FileRead<List<Person>>(PathsToFiles.pathToUsersFile);
-            if (users == null)
+            users = new Lazy < List < Person >>(() => FileIO.FileRead<List<Person>>(PathsToFiles.pathToUsersFile));
+            /*if (users == null)
             {
                 users = new List<Person>();
-            }
+            }*/
         }
 
         public bool AddNewPerson(Person person)
         {
-            users.Add(person);
-            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users);
+            users.Value.Add(person);
+            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
         }
 
 
         public bool DeletePerson(Person person)
         {
-            bool isSuccessful = users.Remove(person);
+            bool isSuccessful = users.Value.Remove(person);
             if (isSuccessful == true)
             {
-                return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users);
+                return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
             }
             else
             {
@@ -45,19 +45,19 @@ namespace Database
 
         public bool EditPerson(Person oldPerson, Person newPerson)
         {
-            bool isSuccessful = users.Remove(oldPerson);
+            bool isSuccessful = users.Value.Remove(oldPerson);
             if (isSuccessful == true)
             {
-                users.Add(newPerson);
+                users.Value.Add(newPerson);
             }
 
-            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users);
+            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
         }
 
         public Person GetPersonByID(int id)
         {
             Person foundPerson = null;
-            var userList = users.OfType<Person>();
+            var userList = users.Value.OfType<Person>();
             var foundUsers = from user in userList
                                   where (user.Id == id)
                                   select user;
@@ -73,7 +73,7 @@ namespace Database
         public Person GetPersonByNameSurnamePassword(string name, string surname, string password)
         {
             Person foundUser = null;
-            var userList = users.OfType<Person>();
+            var userList = users.Value.OfType<Person>();
             var foundUsers = from user in userList
                                   where user.Name.Equals(name) && user.Surname.Equals(surname) && user.Password.Equals(password)
                                   select user;
@@ -87,7 +87,7 @@ namespace Database
         public int getNextId()
         {
             int max = 0;
-            foreach (Person person in users)
+            foreach (Person person in users.Value)
             {
                 if (person.Id > max)
                 {
