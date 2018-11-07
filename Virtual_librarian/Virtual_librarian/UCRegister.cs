@@ -17,7 +17,7 @@ using LibraryObjects;
 
 namespace Virtual_librarian
 {
-    delegate void ErrorMessageBoxPrinter(string topText, string message);
+    delegate void ErrorMessageBoxPrinter<T>(T topText, T message);
     public partial class UCRegister : MetroFramework.Controls.MetroUserControl
     {
         private MainForm mainForm;
@@ -65,11 +65,10 @@ namespace Virtual_librarian
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            ErrorMessageBoxPrinter errorPrinter = delegate (string topText, string message)
+            ErrorMessageBoxPrinter<string> errorPrinter = delegate (string topText, string message)
             {
                 MetroMessageBox.Show(this, topText, message, MessageBoxButtons.OK, MessageBoxIcon.Error);
             };
-            DateTime birthDate = dtpBirthDate.Value;
 
             // if(String.IsNullOrEmpty(txtVardas.Text) && String.IsNullOrEmpty(txtPavarde.Text) && String.IsNullOrEmpty(txtSlaptazodis.Text) && String.IsNullOrEmpty(txtTelefonoNr.Text) && String.IsNullOrEmpty(txtEmail.Text))
             // {
@@ -99,7 +98,7 @@ namespace Virtual_librarian
                 FileIO.WriteID(PathsToFiles.pathToFacesFile, newID, imageCountPerPerson);
                 FileIO.WritePhotos(PathsToFiles.pathToFacesFolder, userImages, newID);
 
-                Person newPerson = new Person(newID, txtName.Text, txtSurname.Text, txtPassword.Text, birthDate, txtPhoneNumber.Text, email: txtEmail.Text);
+                Person newPerson = new Person(newID, txtName.Text, txtSurname.Text, txtPassword.Text, dtpBirthDate.Value, txtPhoneNumber.Text, email: txtEmail.Text);
 
                 if (mainForm.humanDBHelper.AddNewPerson(newPerson) == true)
                 {

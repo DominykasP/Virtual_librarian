@@ -36,8 +36,8 @@ namespace Camera
         private System.Windows.Forms.Timer aTimer;
 
         //Evento kintamieji
-        public delegate void RecognisedHandler(object sender, RecognisedBookEventArgs e);
-        public event RecognisedHandler OnBookRecognised;
+        public delegate void RecognisedHandler<RecognisedBookEventArgs>(object sender, RecognisedBookEventArgs e);
+        public event RecognisedHandler<RecognisedBookEventArgs> OnBookRecognised;
         //-----------------------------------------------
         //--------------Public Methods-------------------
         //-----------------------------------------------
