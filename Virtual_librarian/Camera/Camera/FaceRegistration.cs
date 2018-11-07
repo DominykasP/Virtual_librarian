@@ -59,14 +59,7 @@ namespace Camera
 
         private void GetRegisteredUsersCount()
         {
-            try
-            {
-                usersIds = FileIO.ReadID(PathsToFiles.pathToFacesFile);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Klaida pasiekiant veidų failus", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            usersIds = FileIO.ReadID(PathsToFiles.pathToFacesFile);
         }
 
         public void Display(PictureBox pictureBox, Capture capture)

@@ -27,7 +27,7 @@ namespace Camera
         //Visų naudotojų info
         int numberOfElements;
         List<Image<Gray, byte>> usersImages;
-        List<String> usersIds;
+        public List<String> usersIds;
 
         //Face recognition'o kintamieji
         MCvFont font;
@@ -53,15 +53,8 @@ namespace Camera
 
         private void GetAllRegisteredUsersInfo()
         {
-            try
-            {
-                usersIds = FileIO.ReadID(PathsToFiles.pathToFacesFile);
-                usersImages = FileIO.ReadPhotos(PathsToFiles.pathToFacesFolder);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Klaida pasiekiant veidų failus", "Klaida", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            usersIds = FileIO.ReadID(PathsToFiles.pathToFacesFile);
+            usersImages = FileIO.ReadPhotos(PathsToFiles.pathToFacesFolder);
         }
 
         public void Display(PictureBox pictureBox, Capture capture)

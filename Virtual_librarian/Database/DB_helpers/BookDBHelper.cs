@@ -18,7 +18,10 @@ namespace Database
         public BookDBHelper()
         {
             books = FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile);
-
+            if (books == null)
+            {
+                books = new List<Book>();
+            }
             foreach(Book book in books)
             {
                 bookCollection.Add(book);
