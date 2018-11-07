@@ -15,6 +15,7 @@ using LibraryObjects;
 using System.Windows.Forms;
 using ExtensionMethods;
 using FilesFunctions;
+using System.Threading;
 
 namespace Camera
 {
@@ -97,8 +98,10 @@ namespace Camera
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
             aTimer.Stop();
-            barcode = GetBarcodesString(grayImage);
-            
+            Thread scanThread = new Thread(() => GetBarcodesString(grayImage));
+            scanThread.Start();
+            //barcode = GetBarcodesString(grayImage);
+
             book = RecogniseBookBarcode();
 
             if (book != null)

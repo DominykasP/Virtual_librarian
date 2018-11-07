@@ -9,9 +9,18 @@
     <Pages>5</Pages>
     <Isbn>12345678</Isbn>
     <Code>21343244</Code>
-    <IsTaken>false</IsTaken>
-    <TakenAt>0001-01-01T00:00:00</TakenAt>
-    <ReturnAt>0001-01-01T00:00:00</ReturnAt>
+    <IsTaken>true</IsTaken>
+    <Reader>
+      <Id>1</Id>
+      <Name>E</Name>
+      <Surname>P</Surname>
+      <Password>s</Password>
+      <BirthDate>2018-11-06T16:31:32.9001423+02:00</BirthDate>
+      <PhoneNumber>6247</PhoneNumber>
+      <Email>davcazv@gmail.com</Email>
+    </Reader>
+    <TakenAt>2018-11-07T22:17:49.575073+02:00</TakenAt>
+    <ReturnAt>2018-12-07T22:18:01.077867+02:00</ReturnAt>
   </Book>
   <Book>
     <Id>1</Id>
