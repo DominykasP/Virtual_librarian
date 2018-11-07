@@ -14,6 +14,7 @@ using Database;
 using LibraryObjects;
 using System.Windows.Forms;
 using ExtensionMethods;
+using FilesFunctions;
 
 namespace Camera
 {
@@ -124,9 +125,10 @@ namespace Camera
                     Application.Idle -= new EventHandler(FrameProcedure);
                 }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                
+                StopRecognising();
+                FileIO.SaveException(System.IO.Directory.GetCurrentDirectory() + @"\errors.txt", exc.Message, exc.Source);
             }
         }
         //------------------------------------------

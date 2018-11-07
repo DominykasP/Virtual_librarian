@@ -30,6 +30,11 @@ namespace Virtual_librarian
 
             faceRecognition = new FaceRecognition();
             camera = new UseCamera();
+
+            if (faceRecognition.usersIds.Count == 0)
+            {
+                btnTakePicture.Enabled = false;
+            }
         }
 
         private void btnTakePicture_Click(object sender, EventArgs e)

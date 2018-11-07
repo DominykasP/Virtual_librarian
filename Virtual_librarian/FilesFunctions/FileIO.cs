@@ -17,17 +17,25 @@ namespace FilesFunctions
 
         public static bool FileWrite<T>(string pathToFile, T objectToWrite)
         {
-            XmlSerializer xmlSerz = new XmlSerializer(typeof(T));
-            StreamWriter streamWrt = new StreamWriter(pathToFile);
-            xmlSerz.Serialize(streamWrt, objectToWrite);
-            streamWrt.Close();
+            try
+            {
+                XmlSerializer xmlSerz = new XmlSerializer(typeof(T));
+                StreamWriter streamWrt = new StreamWriter(pathToFile);
+                xmlSerz.Serialize(streamWrt, objectToWrite);
+                streamWrt.Close();
+            }
+            catch (Exception exc)
+            {
+                SaveException(Directory.GetCurrentDirectory() + @"\errors.txt", exc.Message, exc.Source);
+            }
             return File.Exists(pathToFile);
         }
 
         public static T FileRead<T>(string pathToFile)
         {
-            Object result;
+            Object result = default(T);
 
+            /*
             if (File.Exists(pathToFile))
             {
                 XmlSerializer xmlSerz = new XmlSerializer(typeof(T));
@@ -40,34 +48,66 @@ namespace FilesFunctions
             {
                 return default(T);
             }
+            */
+            try
+            {
+                XmlSerializer xmlSerz = new XmlSerializer(typeof(T));
+                StreamReader streamRead = new StreamReader(pathToFile);
+                result = (T)xmlSerz.Deserialize(streamRead);
+                streamRead.Close();
+            }
+            catch (Exception exc)
+            {
+                SaveException(Directory.GetCurrentDirectory() + @"\errors.txt", exc.Message, exc.Source);
+            }
+
+            return (T)result;
         }
 
         //To read and save information about users - for face recognition
 
-        private static List<String> userID;
+        private static List<String> userIDs;
 
         private static void SetUserID(string pathToFile)
         {
-            userID = FileRead<List<String>>(pathToFile);
+            try
+            {
+                userIDs = FileRead<List<String>>(pathToFile);
+            }
+            catch (Exception exc)
+            {
+                SaveException(Directory.GetCurrentDirectory() + @"\errors.txt", exc.Message, exc.Source);
+            }
+
         }
 
         public static List<String> ReadID(string pathToFile) //"..\\..\\Faces\\faces.txt"
         {
             SetUserID(pathToFile);
-            return userID;
+            return userIDs;
         }
 
         public static List<Image<Gray, byte>> ReadPhotos(string pathToFolder) //"..\\..\\Faces\\"
         {
-            if (userID == null)
+            if (userIDs == null)
             {
                 return null;
             }
             List<Image<Gray, byte>> photos = new List<Image<Gray, byte>>();
 
-            for (int i = 1; i <= userID.Count; i++)
+            for (int i = 1; i <= userIDs.Count; i++)
             {
-                photos.Add(new Image<Gray, byte>(pathToFolder + "face" + i + ".bmp"));
+                try
+                {
+                    photos.Add(new Image<Gray, byte>(pathToFolder + "face" + i + ".bmp"));
+                }
+                catch (Exception exc)
+                {
+                    //Nenuskaicius vienos nuotraukos sugriuna visa likusiu nuotrauku tvarka, nebeimanoma vykdyti veido atpazinimo
+                    userIDs.Clear();
+                    photos.Clear();
+                    SaveException(Directory.GetCurrentDirectory() + @"\errors.txt", exc.Message, exc.Source);
+                }
             }
 
             return photos;
@@ -78,18 +118,25 @@ namespace FilesFunctions
         {
             for (int i = 0; i < count; i++)
             {
-                FileIO.userID.Add(userID.ToString());
+                FileIO.userIDs.Add(userID.ToString());
             }
-            FileWrite(pathToFile, FileIO.userID);
+            FileWrite(pathToFile, FileIO.userIDs);
         }
 
         public static void WritePhotos(string pathToFolder, List<Image> photoList, int userID) //"..\\..\\Faces\\face"
         {
-            int photoNumber = FileIO.userID.Count;
+            int photoNumber = FileIO.userIDs.Count;
 
             foreach (Image photo in photoList)
             {
-                photo.Save(pathToFolder + "face" + photoNumber-- + ".bmp");
+                try
+                {
+                    photo.Save(pathToFolder + "face" + photoNumber-- + ".bmp");
+                }
+                catch (Exception exc)
+                {
+                    SaveException(Directory.GetCurrentDirectory() + @"\errors.txt", exc.Message, exc.Source);
+                }
             }
         }
 

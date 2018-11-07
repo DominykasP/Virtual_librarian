@@ -17,6 +17,10 @@ namespace Database
         public HumanDBHelper()
         {
             users = FileIO.FileRead<List<Person>>(PathsToFiles.pathToUsersFile);
+            if (users == null)
+            {
+                users = new List<Person>();
+            }
         }
 
         public bool AddNewPerson(Person person)
