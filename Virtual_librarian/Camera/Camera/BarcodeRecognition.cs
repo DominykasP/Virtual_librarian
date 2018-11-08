@@ -15,6 +15,7 @@ using LibraryObjects;
 using System.Windows.Forms;
 using ExtensionMethods;
 using FilesFunctions;
+using System.Threading;
 
 namespace Camera
 {
@@ -91,12 +92,19 @@ namespace Camera
         //-----------------------------------------------------------
         //--------------------Timer Event----------------------------
         //-----------------------------------------------------------
-        private void ATimer_Tick(object sender, EventArgs e)
+        private async void ATimer_Tick(object sender, EventArgs e)
         {
             Image<Bgr, Byte> ColordImage = frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
             aTimer.Stop();
+            //Task<String[]> barThread = new Task<String[]>(() => GetBarcodesString(grayImage));
+            //Task<String[]> barThread = GetBarcodesString(grayImage);
+            //barThread.Start();
+            //barcode = await barThread;
+            //Thread barThread = new Thread(() => barcode = GetBarcodesString(grayImage));
+            //barThread.Start();
+
             barcode = GetBarcodesString(grayImage);
             
             book = RecogniseBookBarcode();
