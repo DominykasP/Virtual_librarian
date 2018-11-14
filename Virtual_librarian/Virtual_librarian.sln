@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "Extensi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{30F1F581-5479-4629-8046-517F66C15A8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTServer", "RESTServer\RESTServer.csproj", "{4A000626-99C2-4A43-92C6-91A2D90C44D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{30F1F581-5479-4629-8046-517F66C15A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F1F581-5479-4629-8046-517F66C15A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30F1F581-5479-4629-8046-517F66C15A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
