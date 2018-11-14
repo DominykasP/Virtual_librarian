@@ -74,6 +74,7 @@
       <HintPath>..\packages\VDK.EmguCV.x86.2.4.10\lib\Emgu.Util.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -87,6 +88,9 @@
     <Compile Include="DB_helpers\BookDBHelper.cs" />
     <Compile Include="DB_helpers\HumanDBHelper.cs" />
     <Compile Include="DB_helpers\PathsToFiles.cs" />
+    <Compile Include="MockDBmdfDataSet.cs">
+      <DependentUpon>MockDBmdfDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="MockDBmdfDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
