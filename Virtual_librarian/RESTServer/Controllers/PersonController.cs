@@ -4,36 +4,75 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Database;
+using LibraryObjects;
 
 namespace RESTServer.Controllers
 {
     public class PersonController : ApiController
     {
+        HumanDBHelper humanDBHelper = new HumanDBHelper();
+
         // GET: api/Person
-        public IEnumerable<string> Get()
+        public IEnumerable<Person> Get()
         {
-            return new string[] { "value1", "value2" };
+            System.Windows.Forms.MessageBox.Show("Test 1");
+            return humanDBHelper.GetAllPersons();
         }
 
         // GET: api/Person/5
-        public string Get(int id)
+        public Person Get(int id)
         {
-            return "value";
+            System.Windows.Forms.MessageBox.Show("Test 2");
+            return humanDBHelper.GetPersonByID(id);
+        }
+
+        public Person Get(string name, string surname, string password)
+        {
+            System.Windows.Forms.MessageBox.Show("Test 3");
+            return humanDBHelper.GetPersonByNameSurnamePassword(name, surname, password);
         }
 
         // POST: api/Person
-        public void Post([FromBody]string value)
+        public HttpResponseMessage Post([FromBody]Person person)
         {
+            int newPersonId = humanDBHelper.AddNewPerson(person);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
+            response.Headers.Location = new Uri(Request.RequestUri, String.Format("person/{0}", newPersonId));
+            return response;
         }
 
         // PUT: api/Person/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(int id, [FromBody]Person newPerson)
         {
+            bool successfulEdit = humanDBHelper.EditPerson(id, newPerson);
+            HttpResponseMessage response;
+            if (successfulEdit)
+            {
+                response = Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            else
+            {
+                response = Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return response;
+
         }
 
         // DELETE: api/Person/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            bool successfullDelete = humanDBHelper.DeletePerson(id);
+            HttpResponseMessage response;
+            if (successfullDelete)
+            {
+                response = Request.CreateResponse(HttpStatusCode.NoContent);
+            }
+            else
+            {
+                response = Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return response;
         }
     }
 }

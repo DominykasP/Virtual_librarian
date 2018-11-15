@@ -25,7 +25,7 @@ namespace Database
             
         }
 
-        public Book getBookByIndex(int id)
+        public Book GetBookById(int id)
         {
             foreach(Book book in books.Value)
             {
@@ -126,9 +126,69 @@ namespace Database
             return correspondingBooks;
         }
 
+        public bool EditBook(int bookId, Book newBook)
+        {
+            Book bookToEdit = null;
+            var bookList = books.Value.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where book.Id == bookId
+                             select book;
+            foreach (var book in foundBooks)
+            {
+                bookToEdit = book;
+            }
+
+            if (bookToEdit == null)
+            {
+                return false;
+            }
+
+            bookToEdit.Author = newBook.Author;
+            bookToEdit.Code = newBook.Code;
+            bookToEdit.Isbn = newBook.Isbn;
+            bookToEdit.IsTaken = newBook.IsTaken;
+            bookToEdit.Name = newBook.Name;
+            bookToEdit.Pages = newBook.Pages;
+            bookToEdit.Publisher = newBook.Publisher;
+            bookToEdit.Reader = newBook.Reader;
+            bookToEdit.ReturnAt = newBook.ReturnAt;
+            bookToEdit.TakenAt = newBook.TakenAt;
+            bookToEdit.Year = newBook.Year;
+
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+        }
+
         public bool DeleteBook(Book book)
         {
             bool isSuccessful = books.Value.Remove(book);
+            if (isSuccessful == true)
+            {
+                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteBook(int bookId)
+        {
+            Book bookToDelete = null;
+            var bookList = books.Value.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where book.Id == bookId
+                             select book;
+            foreach (var book in foundBooks)
+            {
+                bookToDelete = book;
+            }
+
+            if (bookToDelete == null)
+            {
+                return false;
+            }
+
+            bool isSuccessful = books.Value.Remove(bookToDelete);
             if (isSuccessful == true)
             {
                 return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
@@ -156,11 +216,12 @@ namespace Database
             return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
-        public bool AddNewBook(Book book)
+        public int AddNewBook(Book book)
         {
             books.Value.Add(book);
             bookCollection.Add(book);
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+            FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+            return book.Id;
         }
 
         public bool RenewBook(Book renewedBook)

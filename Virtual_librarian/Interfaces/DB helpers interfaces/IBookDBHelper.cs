@@ -15,7 +15,7 @@ namespace Interfaces
         Book GetBookByCode(string isbn, string code);
         List<Book> GetReadersBooks(Person reader);
 
-        bool AddNewBook(Book book);
+        int AddNewBook(Book book);
         bool DeleteBook(Book book);
         bool TakeBook(Book takenBook, Person reader);
         bool ReturnBook(Book returnedBook);

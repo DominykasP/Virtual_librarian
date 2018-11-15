@@ -23,16 +23,45 @@ namespace Database
             }*/
         }
 
-        public bool AddNewPerson(Person person)
+        public int AddNewPerson(Person person)
         {
             users.Value.Add(person);
-            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
+            FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
+            return person.Id;
         }
 
 
         public bool DeletePerson(Person person)
         {
             bool isSuccessful = users.Value.Remove(person);
+            if (isSuccessful == true)
+            {
+                return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool DeletePerson(int personId)
+        {
+            Person personToRemove = null;
+            var userList = users.Value.OfType<Person>();
+            var foundUsers = from user in userList
+                             where (user.Id == personId)
+                             select user;
+            foreach (var user in foundUsers)
+            {
+                personToRemove = user;
+            }
+
+            if (personToRemove == null)
+            {
+                return false;
+            }
+
+            bool isSuccessful = users.Value.Remove(personToRemove);
             if (isSuccessful == true)
             {
                 return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
@@ -50,6 +79,33 @@ namespace Database
             {
                 users.Value.Add(newPerson);
             }
+
+            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
+        }
+
+        public bool EditPerson(int oldPersonId, Person newPerson)
+        {
+            Person oldPerson = null;
+            var userList = users.Value.OfType<Person>();
+            var foundUsers = from user in userList
+                             where (user.Id == oldPersonId)
+                             select user;
+            foreach (var user in foundUsers)
+            {
+                oldPerson = user;
+            }
+
+            if (oldPerson == null)
+            {
+                return false;
+            }
+
+            oldPerson.Name = newPerson.Name;
+            oldPerson.Surname = newPerson.Surname;
+            oldPerson.Password = newPerson.Password;
+            oldPerson.Email = newPerson.Email;
+            oldPerson.PhoneNumber = newPerson.PhoneNumber;
+            oldPerson.BirthDate = newPerson.BirthDate;
 
             return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
         }
@@ -82,6 +138,11 @@ namespace Database
                 foundUser = user;
             }
             return foundUser;
+        }
+
+        public List<Person> GetAllPersons()
+        {
+            return users.Value;
         }
 
         public int getNextId()
