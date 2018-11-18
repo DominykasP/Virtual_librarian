@@ -23,11 +23,10 @@ namespace Database
             }*/
         }
 
-        public int AddNewPerson(Person person)
+        public bool AddNewPerson(Person person)
         {
             users.Value.Add(person);
-            FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
-            return person.Id;
+            return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
         }
 
 

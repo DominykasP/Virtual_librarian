@@ -216,12 +216,11 @@ namespace Database
             return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
-        public int AddNewBook(Book book)
+        public bool AddNewBook(Book book)
         {
             books.Value.Add(book);
             bookCollection.Add(book);
-            FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
-            return book.Id;
+            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool RenewBook(Book renewedBook)
@@ -241,7 +240,7 @@ namespace Database
             return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
-        public bool isBookAlreadyTaken(Book bookToCheck)
+        public bool IsBookAlreadyTaken(Book bookToCheck)
         {
             Book currentBook = new Book();
             var bookList = books.Value.OfType<Book>();
@@ -256,7 +255,7 @@ namespace Database
             return currentBook.IsTaken;
         }
 
-        public int getNextId()
+        public int GetNextId()
         {
             int max = 0;
             foreach (Book book in books.Value)

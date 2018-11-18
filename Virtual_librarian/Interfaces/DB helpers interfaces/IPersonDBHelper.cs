@@ -12,7 +12,7 @@ namespace Interfaces
         Person GetPersonByID(int ID);
         Person GetPersonByNameSurnamePassword(string name, string surname, string password);
 
-        int AddNewPerson(Person person);
+        bool AddNewPerson(Person person);
         bool DeletePerson(Person person);
         bool EditPerson(Person oldPerson, Person newPerson);
     }

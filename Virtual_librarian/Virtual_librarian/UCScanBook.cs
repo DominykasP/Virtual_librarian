@@ -74,7 +74,7 @@ namespace Virtual_librarian
 
                 BarcodeBox1.AppendText(barcode[0]);
 
-                bool isBookTaken = mainForm.bookDBHelper.isBookAlreadyTaken(book);
+                bool isBookTaken = mainForm.bookDBHelper.IsBookAlreadyTaken(book);
 
                 if (isBookTaken) //Jei paimta, norim grąžinti
                 {
