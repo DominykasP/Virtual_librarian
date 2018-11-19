@@ -71,8 +71,14 @@ namespace Virtual_librarian
         {
             //Book book = e.book;
             Book scannedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByIsbn(e.barcode));
-
             BarcodeBox1.Text = e.barcode;
+
+            if (scannedBook == null)
+            {
+                scannedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByIsbn(e.barcodeLonger)); //Tikrinam, gal reikia paskaičiuoti 13 skaičių
+                BarcodeBox1.Text = e.barcodeLonger;
+            }
+
             if (scannedBook != null)
             {
                 bool isBookTaken = mainForm.bookDBHelperByBookService.IsBookAlreadyTaken(scannedBook.Id);
