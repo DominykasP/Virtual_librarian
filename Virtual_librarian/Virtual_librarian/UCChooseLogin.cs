@@ -32,7 +32,7 @@ namespace Virtual_librarian
             */
 
             //Sita iki galo istrinti
-            LibraryObjects.Person loggedInPerson = mainForm.humanDBHelper.GetPersonByID(1);
+            LibraryObjects.Person loggedInPerson = ServiceToLibrary.PersonToLibraryObject(mainForm.humanDBHelperByPersonService.GetPersonByID(1));
 
             if (loggedInPerson != null)
             {

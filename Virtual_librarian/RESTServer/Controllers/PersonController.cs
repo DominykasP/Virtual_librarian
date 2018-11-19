@@ -36,9 +36,10 @@ namespace RESTServer.Controllers
         // POST: api/Person
         public HttpResponseMessage Post([FromBody]Person person)
         {
-            int newPersonId = humanDBHelper.AddNewPerson(person);
+            //int newPersonId = humanDBHelper.AddNewPerson(person);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-            response.Headers.Location = new Uri(Request.RequestUri, String.Format("person/{0}", newPersonId));
+            //response.Headers.Location = new Uri(Request.RequestUri, String.Format("person/{0}", newPersonId));
+            response.Headers.Location = new Uri(Request.RequestUri, String.Format("person/{0}", 1));
             return response;
         }
 

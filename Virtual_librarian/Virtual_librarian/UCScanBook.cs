@@ -31,6 +31,7 @@ namespace Virtual_librarian
         String[] barcode;
         Person logedInUser;
 
+        public delegate BookService.Book Delegate(string isbn);
 
 
         public UCScanBook(MainForm mainForm, UCMainUserMeniu ucMainUserMeniu)
@@ -41,7 +42,11 @@ namespace Virtual_librarian
             this.mainForm = mainForm;
             this.ucMainUserMeniu = ucMainUserMeniu;
 
-            recognition = new BarcodeRecognition(cameraBox, camera, mainForm.bookDBHelper);
+            Delegate getBookByIsbnDel = new Delegate(mainForm.bookDBHelperByBookService.GetBookByIsbn); //REIKIA PADARYTI, KAD DELEGATAS MATYTU TIPA IS BARCODERECOGNITION
+            //ServiceToLibrary.Delegate bookToLibraryObjectDel = new ServiceToLibrary.Delegate(ServiceToLibrary.BookToLibraryObject);
+            //recognition = new BarcodeRecognition(cameraBox, camera, bookToLibraryObjectDel);
+            recognition = new BarcodeRecognition(cameraBox, camera, new Delegate(getBookByIsbnDel));
+            //recognition = new BarcodeRecognition(cameraBox, camera, getBookByIsbnDel);
             recognition.OnBookRecognised += Recognition_OnBookRecognised;
         }
         public bool setUser(Person user)
@@ -74,7 +79,7 @@ namespace Virtual_librarian
 
                 BarcodeBox1.AppendText(barcode[0]);
 
-                bool isBookTaken = mainForm.bookDBHelper.IsBookAlreadyTaken(book);
+                bool isBookTaken = mainForm.bookDBHelperByBookService.IsBookAlreadyTaken(book.Id);
 
                 if (isBookTaken) //Jei paimta, norim grąžinti
                 {
@@ -85,7 +90,7 @@ namespace Virtual_librarian
                                 "Ar norite grąžinti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                     if (dr == DialogResult.Yes)
                     {
-                        bool arSekmingai = mainForm.bookDBHelper.ReturnBook(book);
+                        bool arSekmingai = mainForm.bookDBHelperByBookService.ReturnBook(book.Id);
                         if (arSekmingai == true)
                         {
 
@@ -110,7 +115,7 @@ namespace Virtual_librarian
                                 "Ar norite pasiimti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                     if (dr == DialogResult.Yes)
                     {
-                        bool arSekmingai = mainForm.bookDBHelper.TakeBook(book, logedInUser);
+                        bool arSekmingai = mainForm.bookDBHelperByBookService.TakeBook(book.Id, logedInUser.Id);
                         if (arSekmingai == true)
                         {
 

@@ -92,7 +92,7 @@ namespace Virtual_librarian
                     camera.TurnOff();
                 }
 
-                int newID = mainForm.humanDBHelper.getNextId();
+                int newID = mainForm.humanDBHelperByPersonService.getNextId();
 
                 List<Image> userImages = faceRegistration.getFaceImages();
                 FileIO.WriteID(PathsToFiles.pathToFacesFile, newID, imageCountPerPerson);
@@ -100,7 +100,7 @@ namespace Virtual_librarian
 
                 Person newPerson = new Person(newID, txtName.Text, txtSurname.Text, txtPassword.Text, dtpBirthDate.Value, txtPhoneNumber.Text, email: txtEmail.Text);
 
-                if (mainForm.humanDBHelper.AddNewPerson(newPerson) == true)
+                if (mainForm.humanDBHelperByPersonService.AddNewPerson(newID, txtName.Text, txtSurname.Text, txtPassword.Text, dtpBirthDate.Value, txtPhoneNumber.Text, email: txtEmail.Text) == true)
                 {
                     UCMainUserMeniu ucMainUserMeniu = new UCMainUserMeniu(mainForm, newPerson);
                     ucMainUserMeniu.Dock = DockStyle.Bottom;

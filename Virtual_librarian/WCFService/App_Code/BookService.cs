@@ -54,15 +54,15 @@ public class BookService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public List<Book> GetReadersBooks(Person reader)
+    public List<Book> GetReadersBooks(int readerId)
     {
-        return bookDBHelper.GetReadersBooks(reader);
+        return bookDBHelper.GetReadersBooks(readerId);
     }
 
     [WebMethod]
-    public bool ReturnBook(Book returnedBook)
+    public bool ReturnBook(int returnedBookId)
     {
-        return bookDBHelper.ReturnBook(returnedBook);
+        return bookDBHelper.ReturnBook(returnedBookId);
     }
 
     [WebMethod]
@@ -84,9 +84,9 @@ public class BookService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool TakeBook(Book takenBook, Person reader)
+    public bool TakeBook(int takenBookId, int readerId)
     {
-        return bookDBHelper.TakeBook(takenBook, reader);
+        return bookDBHelper.TakeBook(takenBookId, readerId);
     }
 
     [WebMethod]
@@ -96,15 +96,16 @@ public class BookService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public bool RenewBook(Book renewedBook)
+    public bool RenewBook(int renewedBookId)
     {
-        return bookDBHelper.RenewBook(renewedBook);
+        return bookDBHelper.RenewBook(renewedBookId);
     }
 
     [WebMethod]
-    public bool IsBookAlreadyTaken(Book bookToCheck)
+    public bool IsBookAlreadyTaken(int bookToCheckId)
     {
-        return bookDBHelper.IsBookAlreadyTaken(bookToCheck);
+        Book book = GetBookById(bookToCheckId);
+        return bookDBHelper.IsBookAlreadyTaken(book);
     }
 
     [WebMethod]

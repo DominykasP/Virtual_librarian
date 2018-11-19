@@ -24,7 +24,6 @@ namespace Camera
         private object lockObject = new object();
         public List<Bitmap> images;
         Image<Bgr, byte> frame;
-        BookDBHelper bookDBHelper;
         private BindingList<Book> myRequests = new BindingList<Book>();
         BindingList<Book> allBooks;
         public String[] barcode;
@@ -32,6 +31,8 @@ namespace Camera
         PictureBox cameraBox;
         Book book;
         //Image<Gray, Byte> grayImage;
+
+        //Delegate getBookByIsbnDel;
 
         private System.Windows.Forms.Timer aTimer;
 
@@ -41,12 +42,12 @@ namespace Camera
         //-----------------------------------------------
         //--------------Public Methods-------------------
         //-----------------------------------------------
-        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera, BookDBHelper bookDBHelper)
+        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera, Delegate getBookByIsbnDel)
         {
             this.cameraBox = cameraBox;
             this.camera = camera;
             aTimer = new System.Windows.Forms.Timer();
-            this.bookDBHelper = bookDBHelper;
+            //this.getBookByIsbnDel = getBookByIsbnDel;
             aTimer.Tick += ATimer_Tick;
         }
 
@@ -186,7 +187,8 @@ namespace Camera
             
             Book knyga = null;
             //knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
-            knyga = bookDBHelper.GetBookByIsbn(Isbn);
+            //knyga = bookDBHelper.GetBookByIsbn(Isbn);
+            //knyga = getBookByIsbnDel(Isbn);
             
             return knyga;
         }

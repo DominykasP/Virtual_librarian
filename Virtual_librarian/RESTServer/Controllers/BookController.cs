@@ -28,9 +28,11 @@ namespace RESTServer.Controllers
         // POST: api/Book
         public HttpResponseMessage Post([FromBody]Book newBook)
         {
-            int newBookId = bookDBHelper.AddNewBook(newBook);
+            //int newBookId = bookDBHelper.AddNewBook(newBook);
+            bookDBHelper.AddNewBook(newBook);
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created);
-            response.Headers.Location = new Uri(Request.RequestUri, String.Format("book/{0}", newBookId));
+            //response.Headers.Location = new Uri(Request.RequestUri, String.Format("book/{0}", newBookId));
+            response.Headers.Location = new Uri(Request.RequestUri, String.Format("book/{0}", 1));
             return response;
         }
 

@@ -9,7 +9,7 @@ using Database;
 /// <summary>
 /// Summary description for PersonService
 /// </summary>
-[WebService(Namespace = "http://tempuri.org/")]
+[WebService]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 // [System.Web.Script.Services.ScriptService]
@@ -30,9 +30,10 @@ public class PersonService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void AddNewPerson(Person person)
+    public bool AddNewPerson(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
     {
-        humanDBHelper.AddNewPerson(person);
+        Person person = new Person(id, name, surname, password, birthDate, phoneNumber, email);
+        return humanDBHelper.AddNewPerson(person);
     }
 
     [WebMethod]
@@ -69,5 +70,10 @@ public class PersonService : System.Web.Services.WebService
     public int getNextId()
     {
         return humanDBHelper.getNextId();
+    }
+
+    public static Person returnPerson(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
+    {
+        return new Person(id, name, surname, password, birthDate, phoneNumber, email);
     }
 }
