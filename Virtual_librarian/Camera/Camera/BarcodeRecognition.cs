@@ -37,8 +37,14 @@ namespace Camera
         private System.Windows.Forms.Timer aTimer;
 
         //Evento kintamieji
+        /*
         public delegate void RecognisedHandler<RecognisedBookEventArgs>(object sender, RecognisedBookEventArgs e);
         public event RecognisedHandler<RecognisedBookEventArgs> OnBookRecognised;
+        */
+
+        public delegate void RecognisedHandler<RecognisedBarcodeEventArgs>(object sender, RecognisedBarcodeEventArgs e);
+        public event RecognisedHandler<RecognisedBarcodeEventArgs> OnBarcodeRecognised;
+
         //-----------------------------------------------
         //--------------Public Methods-------------------
         //-----------------------------------------------
@@ -99,7 +105,20 @@ namespace Camera
 
             aTimer.Stop();
             barcode = GetBarcodesString(grayImage);
-            
+            if (barcode.Length!=0)
+            {
+                MessageBox.Show(barcode[0]);
+            }
+
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10, 16))
+            {
+                OnBarcodeRecognised(this, new RecognisedBarcodeEventArgs(barcode[0], Convert12to13(barcode)));
+            }
+            else
+            {
+                aTimer.Start();
+            }
+            /*
             book = RecogniseBookBarcode();
 
             if (book != null)
@@ -109,7 +128,7 @@ namespace Camera
             else
             {
                 aTimer.Start();
-            }
+            }*/
         }
         
         //------------------------------------------------------
@@ -149,7 +168,7 @@ namespace Camera
         private Book RecogniseBookBarcode()
         {
             String BarcodeNew = Convert12to13(barcode);
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16,barcode[0]))
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16))
             {
                 
                 aTimer.Stop();
@@ -168,9 +187,9 @@ namespace Camera
         //------------------------------------------
         //---Check if barcode contains format-------
         //------------------------------------------
-        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan,String Barcode)
+        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan)
         {
-            if (moreSimbolsThan < Barcode.Length && lessSimbolsThan > Barcode.Length)
+            if (moreSimbolsThan < barcode[0].Length && lessSimbolsThan > barcode[0].Length)
             {
                 return true;
             }
@@ -199,7 +218,7 @@ namespace Camera
         {
             String NewBarcode=null;
 
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13, barcode[0])&& barcode[0].IsDigitsOnly())                                  //12 to 13 barcode numbers
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13)&& barcode[0].IsDigitsOnly())                                  //12 to 13 barcode numbers
             {
 
                 char[] BarcodeNumbersChar = barcode[0].ToCharArray();

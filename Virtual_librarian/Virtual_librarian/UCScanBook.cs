@@ -47,8 +47,10 @@ namespace Virtual_librarian
             //recognition = new BarcodeRecognition(cameraBox, camera, bookToLibraryObjectDel);
             recognition = new BarcodeRecognition(cameraBox, camera, new Delegate(getBookByIsbnDel));
             //recognition = new BarcodeRecognition(cameraBox, camera, getBookByIsbnDel);
-            recognition.OnBookRecognised += Recognition_OnBookRecognised;
+            //recognition.OnBookRecognised += Recognition_OnBookRecognised;
+            recognition.OnBarcodeRecognised += Recognition_OnBarcodeRecognised;
         }
+
         public bool setUser(Person user)
         {
             logedInUser = user;
@@ -65,19 +67,18 @@ namespace Virtual_librarian
             recognition.StartRecognising();
         }
 
-        private void Recognition_OnBookRecognised(object sender, RecognisedBookEventArgs e)
+        private void Recognition_OnBarcodeRecognised(object sender, RecognisedBarcodeEventArgs e)
         {
-            Book book = e.book;
+            //Book book = e.book;
+            Book book = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByIsbn(e.barcode));
 
             BarcodeBox1.Clear();
-
-            barcode = recognition.barcode;
 
 
             if (barcode.Length != 0 && barcode[0].Length > 10)
             {
 
-                BarcodeBox1.AppendText(barcode[0]);
+                BarcodeBox1.AppendText(e.barcode);
 
                 bool isBookTaken = mainForm.bookDBHelperByBookService.IsBookAlreadyTaken(book.Id);
 
