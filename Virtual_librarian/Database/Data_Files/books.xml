@@ -108,7 +108,7 @@
     <Isbn>003078220554</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
-    <ReaderId>0</ReaderId>
+    <ReaderId>1</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>

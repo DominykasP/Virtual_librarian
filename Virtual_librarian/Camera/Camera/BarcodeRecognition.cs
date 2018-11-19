@@ -83,6 +83,14 @@ namespace Camera
             Application.Idle -= FrameProcedure;
             book = null;
         }
+        //------------------------------------------------
+        //-------------Continue Book Recognition--------------
+        //------------------------------------------------
+        public void ContinueRecognising()
+        {
+            aTimer.Start();
+        }
+
         //------------------------------------------------------------
         //-------Convert Barcodes from image to string----------------
         //------------------------------------------------------------
@@ -90,8 +98,11 @@ namespace Camera
         {
             
             String[] barcodes = BarcodeScanner.Scan(grayImage.ToBitmap());
-            
-            return barcodes;
+            //BAIGĖSI SPIRE.BARCODE evaluation licensija, todėl returninu DBVS knygos barkodą.
+            //return barcodes;
+            String[] mockBarcode = new string[1];
+            mockBarcode[0] = "003078220554";
+            return mockBarcode;
         }
         //-----------------------------------------------------------
         //------------------Private Methods--------------------------
@@ -105,10 +116,6 @@ namespace Camera
 
             aTimer.Stop();
             barcode = GetBarcodesString(grayImage);
-            if (barcode.Length!=0)
-            {
-                MessageBox.Show(barcode[0]);
-            }
 
             if (barcode.Length != 0 && BarcodesRecognisedCorect(10, 16))
             {

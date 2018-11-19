@@ -70,68 +70,63 @@ namespace Virtual_librarian
         private void Recognition_OnBarcodeRecognised(object sender, RecognisedBarcodeEventArgs e)
         {
             //Book book = e.book;
-            Book book = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByIsbn(e.barcode));
+            Book scannedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByIsbn(e.barcode));
 
-            BarcodeBox1.Clear();
-
-
-            if (barcode.Length != 0 && barcode[0].Length > 10)
+            BarcodeBox1.Text = e.barcode;
+            if (scannedBook != null)
             {
-
-                BarcodeBox1.AppendText(e.barcode);
-
-                bool isBookTaken = mainForm.bookDBHelperByBookService.IsBookAlreadyTaken(book.Id);
+                bool isBookTaken = mainForm.bookDBHelperByBookService.IsBookAlreadyTaken(scannedBook.Id);
 
                 if (isBookTaken) //Jei paimta, norim grąžinti
                 {
                     DialogResult dr = MetroMessageBox.Show(this,
-                                "Pavadinimas: " + book.Name + " \n" +
-                                "Autorius: " + book.Author + "\n" +
-                                "ISBN numeris: " + book.Isbn,
+                                "Pavadinimas: " + scannedBook.Name + " \n" +
+                                "Autorius: " + scannedBook.Author + "\n" +
+                                "ISBN numeris: " + scannedBook.Isbn,
                                 "Ar norite grąžinti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                     if (dr == DialogResult.Yes)
                     {
-                        bool arSekmingai = mainForm.bookDBHelperByBookService.ReturnBook(book.Id);
+                        bool arSekmingai = mainForm.bookDBHelperByBookService.ReturnBook(scannedBook.Id);
                         if (arSekmingai == true)
                         {
 
                             MetroMessageBox.Show(this,
-                                "Pavadinimas: " + book.Name + " \n" +
-                                "Autorius: " + book.Author + "\n" +
-                                "ISBN numeris: " + book.Isbn,
+                                "Pavadinimas: " + scannedBook.Name + " \n" +
+                                "Autorius: " + scannedBook.Author + "\n" +
+                                "ISBN numeris: " + scannedBook.Isbn,
                                 "Knyga sėkmingai grąžinta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else
                         {
-                            MetroMessageBox.Show(this, book.Name, "Klaida grąžinant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MetroMessageBox.Show(this, scannedBook.Name, "Klaida grąžinant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
                 else //Jei nepaimta, norim pasiimti
                 {
                     DialogResult dr = MetroMessageBox.Show(this,
-                                "Pavadinimas: " + book.Name + " \n" +
-                                "Autorius: " + book.Author + "\n" +
-                                "ISBN numeris: " + book.Isbn,
+                                "Pavadinimas: " + scannedBook.Name + " \n" +
+                                "Autorius: " + scannedBook.Author + "\n" +
+                                "ISBN numeris: " + scannedBook.Isbn,
                                 "Ar norite pasiimti šią knygą?", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                     if (dr == DialogResult.Yes)
                     {
-                        bool arSekmingai = mainForm.bookDBHelperByBookService.TakeBook(book.Id, logedInUser.Id);
+                        bool arSekmingai = mainForm.bookDBHelperByBookService.TakeBook(scannedBook.Id, logedInUser.Id);
                         if (arSekmingai == true)
                         {
 
                             MetroMessageBox.Show(this,
-                                "Pavadinimas: " + book.Name + " \n" +
-                                "Autorius: " + book.Author + "\n" +
-                                "ISBN numeris: " + book.Isbn,
+                                "Pavadinimas: " + scannedBook.Name + " \n" +
+                                "Autorius: " + scannedBook.Author + "\n" +
+                                "ISBN numeris: " + scannedBook.Isbn,
                                 "Knyga sėkmingai paimta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         }
                         else
                         {
                             MetroMessageBox.Show(this,
-                                "Pavadinimas: " + book.Name + " \n" +
-                                "Autorius: " + book.Author + "\n" +
-                                "ISBN numeris: " + book.Isbn,
+                                "Pavadinimas: " + scannedBook.Name + " \n" +
+                                "Autorius: " + scannedBook.Author + "\n" +
+                                "ISBN numeris: " + scannedBook.Isbn,
                                 "Klaida paimant knygą", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
@@ -141,6 +136,9 @@ namespace Virtual_librarian
                 ucMainUserMeniu.LoadLoanPeriods();
                 ucMainUserMeniu.LoadBookCatalog();
             }
+
+            //Pasiemus/grazinus knyga tesiame skenavima
+            recognition.ContinueRecognising();
         }
 
         public void StopRecognising()

@@ -10,6 +10,11 @@ namespace Virtual_librarian
     {
         public static LibraryObjects.Person PersonToLibraryObject(PersonService.Person personFromPersonService)
         {
+            if (personFromPersonService == null)
+            {
+                return null;
+            }
+
             return new LibraryObjects.Person(personFromPersonService.Id, personFromPersonService.Name, personFromPersonService.Surname, personFromPersonService.Password, personFromPersonService.BirthDate, personFromPersonService.PhoneNumber, personFromPersonService.Email);
         }
         /*
@@ -35,6 +40,11 @@ namespace Virtual_librarian
 
         public static LibraryObjects.Book BookToLibraryObject(BookService.Book bookFromBookService)
         {
+            if (bookFromBookService == null)
+            {
+                return null;
+            }
+
             return new LibraryObjects.Book(bookFromBookService.Id, bookFromBookService.Name, bookFromBookService.Author, bookFromBookService.Publisher, bookFromBookService.Year, bookFromBookService.Pages, bookFromBookService.Isbn, bookFromBookService.Code, bookFromBookService.IsTaken, bookFromBookService.ReaderId, bookFromBookService.TakenAt, bookFromBookService.ReturnAt);
         }
 
