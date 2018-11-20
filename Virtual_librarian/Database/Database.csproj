@@ -104,7 +104,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="MockDBmdfDataSet.xsc">
       <DependentUpon>MockDBmdfDataSet.xsd</DependentUpon>
     </None>

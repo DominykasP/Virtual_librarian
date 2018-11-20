@@ -7,6 +7,7 @@ using FilesFunctions;
 using Interfaces;
 using LibraryObjects;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Configuration;
 
 namespace Database
@@ -20,7 +21,7 @@ namespace Database
         public BookDBHelper()
         {
             //books = FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile);
-            books =  SQLbooks();
+            books =  SQLBooks();
             if (books == null)
             {
                 books = new List<Book>();
@@ -31,9 +32,9 @@ namespace Database
             }
         }
 
-        public List<Book> SQLbooks()
+        public List<Book> SQLBooks()
         {
-            string provider = ConfigurationManager.AppSettings["providerName"];
+            /*string provider = ConfigurationManager.AppSettings["providerName"];
 
             string connectionString = ConfigurationManager.AppSettings["connectionString"];
 
@@ -109,6 +110,166 @@ namespace Database
                 //Console.ReadLine();
                 //return read;
                 return books;
+            }*/
+            SqlConnection conn;
+            string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                List<Book> books = new List<Book>();
+
+                SqlDataReader mySQLReader = null;
+                String sqlString = "SELECT * FROM books";
+                SqlCommand cmd = new SqlCommand(sqlString, conn);
+                mySQLReader = cmd.ExecuteReader();
+                while (mySQLReader.Read())
+                {
+                    // Output results using row names
+                    //Console.WriteLine($"{dataReader["ProdId"]} " +
+                    // $"{dataReader["Product"]}");
+                    // read.Append(($"{dataReader["Id"]} + " + $"{dataReader["Name"]}" + $"{dataReader["Author"]}" + $"{dataReader["Publisher"]}" + $"{dataReader["Year"]}" + $"{dataReader["Pages"]}" + $"{dataReader["Isbn"]}" + $"{dataReader["Code"]}" + $"{dataReader["IsTaken"]}" + $"{dataReader["TakenAt"]}" + $"{dataReader["TakenAt"]}" + $"{dataReader["ReturnAt"]}" + $"{dataReader["reader"]}"));
+                    Book book = new Book();
+                    book.Id = Convert.ToInt32(mySQLReader["Id"]);
+                    book.Name = mySQLReader["Name"].ToString();
+                    book.Author = mySQLReader["Author"].ToString();
+                    book.Publisher = mySQLReader["Publisher"].ToString();
+                    book.Year = Convert.ToDateTime(mySQLReader["Year"]);
+                    book.Isbn = mySQLReader["Isbn"].ToString();
+                    book.Code = mySQLReader["Code"].ToString();
+                    book.IsTaken = Convert.ToBoolean(mySQLReader["IsTaken"]);
+                    //book.Reader = Convert.ToInt32(dataReader["Id"]);
+                    book.TakenAt = Convert.ToDateTime(mySQLReader["TakenAt"]);
+                    book.ReturnAt = Convert.ToDateTime(mySQLReader["ReturnAt"]);
+                    //book.TimeRemaining = Convert.ToInt32(dataReader["Id"]);
+                    books.Add(book);
+                }
+                return books;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public bool SQLBooksUpdate(Book changedBook)
+        {
+            SqlConnection conn;
+            string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                List<Book> books = new List<Book>();
+
+                
+                String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
+                SqlCommand cmd = new SqlCommand(sqlString, conn);
+                cmd.ExecuteNonQuery();
+                sqlString = "INSERT INTO books (Id, Name, Author, Publisher, Year, Pages, Isbn, Code, IsTaken, TakenAt, ReturnAt, UserId)";
+                sqlString += " VALUES  (@Id, @Name, @Author, @Publisher, @Year, @Pages, @Isbn, @Code, @IsTaken, @TakenAt, @ReturnAt, @UserId)";
+                SqlCommand cmd2 = new SqlCommand(sqlString, conn);
+                cmd2.Parameters.AddWithValue("@Id", changedBook.Id);
+                cmd2.Parameters.AddWithValue("@Name", changedBook.Name);
+                cmd2.Parameters.AddWithValue("@Author", changedBook.Author);
+                cmd2.Parameters.AddWithValue("@Publisher", changedBook.Publisher);
+                cmd2.Parameters.AddWithValue("@Year", changedBook.Year);
+                cmd2.Parameters.AddWithValue("@Pages", changedBook.Pages);
+                cmd2.Parameters.AddWithValue("@Isbn", changedBook.Isbn);
+                cmd2.Parameters.AddWithValue("@Code", changedBook.Code);
+                cmd2.Parameters.AddWithValue("@IsTaken", changedBook.IsTaken);
+                cmd2.Parameters.AddWithValue("@TakenAt", changedBook.TakenAt);
+                cmd2.Parameters.AddWithValue("@ReturnAt", changedBook.ReturnAt);
+                //cmd2.Parameters.AddWithValue("@UserId", changedBook.UserId);
+                cmd2.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+               conn.Close();
+            }
+        }
+
+        public bool SQLBooksDelete(Book changedBook)
+        {
+            SqlConnection conn;
+            string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                List<Book> books = new List<Book>();
+
+
+                String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
+                SqlCommand cmd = new SqlCommand(sqlString, conn);
+                cmd.ExecuteNonQuery();
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public bool SQLBooksAdd(Book changedBook)
+        {
+            SqlConnection conn;
+            string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                List<Book> books = new List<Book>();
+
+
+                String sqlString;
+                sqlString = "INSERT INTO books (Id, Name, Author, Publisher, Year, Pages, Isbn, Code, IsTaken, TakenAt, ReturnAt, UserId)";
+                sqlString += " VALUES  (@Id, @Name, @Author, @Publisher, @Year, @Pages, @Isbn, @Code, @IsTaken, @TakenAt, @ReturnAt, @UserId)";
+                SqlCommand cmd2 = new SqlCommand(sqlString, conn);
+                cmd2.Parameters.AddWithValue("@Id", changedBook.Id);
+                cmd2.Parameters.AddWithValue("@Name", changedBook.Name);
+                cmd2.Parameters.AddWithValue("@Author", changedBook.Author);
+                cmd2.Parameters.AddWithValue("@Publisher", changedBook.Publisher);
+                cmd2.Parameters.AddWithValue("@Year", changedBook.Year);
+                cmd2.Parameters.AddWithValue("@Pages", changedBook.Pages);
+                cmd2.Parameters.AddWithValue("@Isbn", changedBook.Isbn);
+                cmd2.Parameters.AddWithValue("@Code", changedBook.Code);
+                cmd2.Parameters.AddWithValue("@IsTaken", changedBook.IsTaken);
+                cmd2.Parameters.AddWithValue("@TakenAt", changedBook.TakenAt);
+                cmd2.Parameters.AddWithValue("@ReturnAt", changedBook.ReturnAt);
+                //cmd2.Parameters.AddWithValue("@UserId", changedBook.UserId);
+                cmd2.ExecuteNonQuery();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
             }
         }
 
@@ -183,7 +344,8 @@ namespace Database
             {
                 returned.ReturnBook();
 
-                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+                //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+                return SQLBooksUpdate(returned);
             }
             else
             {
@@ -214,7 +376,8 @@ namespace Database
             bool isSuccessful = books.Remove(book);
             if (isSuccessful == true)
             {
-                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+                //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+                return SQLBooksDelete(book);
             }
             else
             {
@@ -236,14 +399,16 @@ namespace Database
 
             taken.TakeBook(reader, DateTime.Now, DateTime.Now.AddMonths(1));
 
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            return SQLBooksUpdate(taken);
         }
 
         public bool AddNewBook(Book book)
         {
             books.Add(book);
             bookCollection.Add(book);
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            return SQLBooksAdd(book);
         }
 
         public bool RenewBook(Book renewedBook)
@@ -260,7 +425,8 @@ namespace Database
 
             renewed.ExtendLoanPeriod(DateTime.Now.AddMonths(1));
 
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books);
+            return SQLBooksUpdate(renewed);
         }
 
         public bool isBookAlreadyTaken(Book bookToCheck)
