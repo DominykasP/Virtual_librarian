@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Timers;
 using Emgu.CV;
 using Emgu.CV.Structure;
-using Spire.Barcode;
 using Database;
 using LibraryObjects;
 using System.Windows.Forms;
 using ExtensionMethods;
 using FilesFunctions;
+using Spire.Barcode;
 
 namespace Camera
 {
@@ -48,12 +48,11 @@ namespace Camera
         //-----------------------------------------------
         //--------------Public Methods-------------------
         //-----------------------------------------------
-        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera, Delegate getBookByIsbnDel)
+        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera)
         {
             this.cameraBox = cameraBox;
             this.camera = camera;
             aTimer = new System.Windows.Forms.Timer();
-            //this.getBookByIsbnDel = getBookByIsbnDel;
             aTimer.Tick += ATimer_Tick;
         }
 
@@ -68,7 +67,7 @@ namespace Camera
         public void StartRecognising()
         {
             images = new List<Bitmap>();
-            aTimer.Interval = 2000;
+            aTimer.Interval = 1000;
             aTimer.Start();
             camera.TurnOn();
             Application.Idle += FrameProcedure;
@@ -98,44 +97,35 @@ namespace Camera
         {
             
             String[] barcodes = BarcodeScanner.Scan(grayImage.ToBitmap());
-            //BAIGĖSI SPIRE.BARCODE evaluation licensija, todėl returninu DBVS knygos barkodą.
-            //return barcodes;
-            String[] mockBarcode = new string[1];
-            mockBarcode[0] = "003078220554";
-            return mockBarcode;
+            return barcodes;
+        }
+        public Task<String[]> GetBarcodesStringAsync(Image<Gray, Byte> grayImage)
+        {
+            return Task<String[]>.Run(() => GetBarcodesString(grayImage));
         }
         //-----------------------------------------------------------
         //------------------Private Methods--------------------------
         //-----------------------------------------------------------
         //--------------------Timer Event----------------------------
         //-----------------------------------------------------------
-        private void ATimer_Tick(object sender, EventArgs e)
+        private async void ATimer_Tick(object sender, EventArgs e)
         {
             Image<Bgr, Byte> ColordImage = frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
-            aTimer.Stop();
-            barcode = GetBarcodesString(grayImage);
+            //aTimer.Stop();
+            //barcode = GetBarcodesString(grayImage);
+            barcode = await GetBarcodesStringAsync(grayImage);
 
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(10, 16))
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10, 16, barcode[0]))
             {
+                aTimer.Stop();
                 OnBarcodeRecognised(this, new RecognisedBarcodeEventArgs(barcode[0], Convert12to13(barcode)));
             }
             else
             {
-                aTimer.Start();
+                //aTimer.Start();
             }
-            /*
-            book = RecogniseBookBarcode();
-
-            if (book != null)
-            {
-                OnBookRecognised(this, new RecognisedBookEventArgs(book));
-            }
-            else
-            {
-                aTimer.Start();
-            }*/
         }
         
         //------------------------------------------------------
@@ -175,7 +165,7 @@ namespace Camera
         private Book RecogniseBookBarcode()
         {
             String BarcodeNew = Convert12to13(barcode);
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16))
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16, barcode[0]))
             {
                 
                 aTimer.Stop();
@@ -194,9 +184,9 @@ namespace Camera
         //------------------------------------------
         //---Check if barcode contains format-------
         //------------------------------------------
-        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan)
+        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan, string barcode)
         {
-            if (moreSimbolsThan < barcode[0].Length && lessSimbolsThan > barcode[0].Length)
+            if (moreSimbolsThan < barcode.Length && lessSimbolsThan > barcode.Length)
             {
                 return true;
             }
@@ -225,7 +215,7 @@ namespace Camera
         {
             String NewBarcode=null;
 
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13)&& barcode[0].IsDigitsOnly())                                  //12 to 13 barcode numbers
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(11, 13, barcode[0])&& barcode[0].IsDigitsOnly())                                  //12 to 13 barcode numbers
             {
 
                 char[] BarcodeNumbersChar = barcode[0].ToCharArray();

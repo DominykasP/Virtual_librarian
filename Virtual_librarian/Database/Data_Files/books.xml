@@ -136,7 +136,7 @@
     <Isbn>003075812561</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
-    <ReaderId>0</ReaderId>
+    <ReaderId>1</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -164,7 +164,7 @@
     <Isbn>9789955680093</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
-    <ReaderId>0</ReaderId>
+    <ReaderId>1</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>

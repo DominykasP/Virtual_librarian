@@ -11,7 +11,6 @@ using System.Timers;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using Emgu.Util;
-using Spire.Barcode;
 using Database;
 using MetroFramework;
 using Camera;
@@ -42,12 +41,7 @@ namespace Virtual_librarian
             this.mainForm = mainForm;
             this.ucMainUserMeniu = ucMainUserMeniu;
 
-            Delegate getBookByIsbnDel = new Delegate(mainForm.bookDBHelperByBookService.GetBookByIsbn); //REIKIA PADARYTI, KAD DELEGATAS MATYTU TIPA IS BARCODERECOGNITION
-            //ServiceToLibrary.Delegate bookToLibraryObjectDel = new ServiceToLibrary.Delegate(ServiceToLibrary.BookToLibraryObject);
-            //recognition = new BarcodeRecognition(cameraBox, camera, bookToLibraryObjectDel);
-            recognition = new BarcodeRecognition(cameraBox, camera, new Delegate(getBookByIsbnDel));
-            //recognition = new BarcodeRecognition(cameraBox, camera, getBookByIsbnDel);
-            //recognition.OnBookRecognised += Recognition_OnBookRecognised;
+            recognition = new BarcodeRecognition(cameraBox, camera);
             recognition.OnBarcodeRecognised += Recognition_OnBarcodeRecognised;
         }
 
