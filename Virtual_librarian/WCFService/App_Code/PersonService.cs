@@ -69,7 +69,7 @@ public class PersonService : System.Web.Services.WebService
     [WebMethod]
     public int getNextId()
     {
-        return humanDBHelper.getNextId();
+        return humanDBHelper.GetNextId();
     }
 
     public static Person returnPerson(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)

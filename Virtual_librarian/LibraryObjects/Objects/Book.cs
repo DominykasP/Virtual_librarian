@@ -116,8 +116,8 @@ namespace LibraryObjects
         public void ReturnBook()
         {
             this.isTaken = false;
-            this.takenAt = default(DateTime);
-            this.returnAt = default(DateTime);
+            this.takenAt = DateTime.Now;
+            this.returnAt = DateTime.Now;
         }
 
         public void ExtendLoanPeriod(DateTime newReturnTime)
