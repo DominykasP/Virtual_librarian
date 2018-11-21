@@ -57,7 +57,7 @@ namespace Virtual_librarian
 
         public void LoadLoanPeriods()
         {
-            BindingList<Book> myBooks = new BindingList<Book>(mainForm.bookDBHelper.GetReadersBooks(loggedInPerson));
+            BindingList<Book> myBooks = new BindingList<Book>(ServiceToLibrary.BookListToLibraryObject(mainForm.bookDBHelperByBookService.GetReadersBooks(loggedInPerson.Id)));
             BindingSource myBookSource = new BindingSource(myBooks, null);
             foreach (Book book in myBooks)
             {
@@ -73,7 +73,7 @@ namespace Virtual_librarian
 
         public void LoadBookCatalog()
         {
-            BindingList<Book> allBooks = new BindingList<Book>(mainForm.bookDBHelper.GetAllBooks());
+            BindingList<Book> allBooks = new BindingList<Book>(ServiceToLibrary.BookListToLibraryObject(mainForm.bookDBHelperByBookService.GetAllBooks()));
             BindingSource allBookSource = new BindingSource(allBooks, null);
             grdAllBooks.DataSource = allBookSource;
             grdAllBooks.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
@@ -97,7 +97,7 @@ namespace Virtual_librarian
             int selectedIndex = grdAllBooks.Rows[e.RowIndex].Index;
             string selectedBookISBN = grdAllBooks.Rows[e.RowIndex].Cells[6].Value.ToString(); //6 - isbn
             string selectedBookCode = grdAllBooks.Rows[e.RowIndex].Cells[7].Value.ToString(); //7 - mūsų kodas
-            Book selectedBook = mainForm.bookDBHelper.GetBookByCode(selectedBookISBN, selectedBookCode);
+            Book selectedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByCode(selectedBookISBN, selectedBookCode));
 
             DialogResult dr = MetroMessageBox.Show(this, "Pridėti šią knygą prie mano užklausų?", selectedBook.Name, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.Yes)
@@ -112,7 +112,7 @@ namespace Virtual_librarian
             int selectedIndex = grdManoUzklausos.Rows[e.RowIndex].Index;
             string selectedBookISBN = grdManoUzklausos.Rows[e.RowIndex].Cells[6].Value.ToString(); //6 - isbn
             string selectedBookCode = grdManoUzklausos.Rows[e.RowIndex].Cells[7].Value.ToString(); //7 - mūsų kodas
-            Book selectedBook = mainForm.bookDBHelper.GetBookByCode(selectedBookISBN, selectedBookCode);
+            Book selectedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByCode(selectedBookISBN, selectedBookCode));
 
             DialogResult dr = MetroMessageBox.Show(this, "Ar norite pašalinti šią knygą iš mano užklausų?", selectedBook.Name, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.Yes)
@@ -133,12 +133,12 @@ namespace Virtual_librarian
             int selectedIndex = grdLoanPeriods.Rows[e.RowIndex].Index;
             string selectedBookISBN = grdLoanPeriods.Rows[e.RowIndex].Cells[6].Value.ToString(); //6 - isbn
             string selectedBookCode = grdLoanPeriods.Rows[e.RowIndex].Cells[7].Value.ToString(); //7 - mūsų kodas
-            Book selectedBook = mainForm.bookDBHelper.GetBookByCode(selectedBookISBN, selectedBookCode);
+            Book selectedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByCode(selectedBookISBN, selectedBookCode));
 
             DialogResult dr = MetroMessageBox.Show(this, "Ar norite pratęsti šios knygos terminą vienam mėnesiui?", selectedBook.Name, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (dr == DialogResult.Yes)
             {
-                if (mainForm.bookDBHelper.RenewBook(selectedBook) == true)
+                if (mainForm.bookDBHelperByBookService.RenewBook(selectedBook.Id) == true)
                 {
                     MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", selectedBook.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
@@ -156,15 +156,16 @@ namespace Virtual_librarian
                 int selectedRow = grdAllBooks.CurrentRow.Index;
                 string selectedBookISBN = grdAllBooks.Rows[selectedRow].Cells[6].Value.ToString(); //6 - isbn
                 string selectedBookCode = grdAllBooks.Rows[selectedRow].Cells[7].Value.ToString(); //7 - mūsų kodas
-                Book selectedBook = mainForm.bookDBHelper.GetBookByCode(selectedBookISBN, selectedBookCode);
+                Book selectedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByCode(selectedBookISBN, selectedBookCode));
 
                 DialogResult dr = MetroMessageBox.Show(this, "Ar norite pasiimti šią knygą", selectedBook.Name, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                 if (dr == DialogResult.Yes)
                 {
-                    bool isSuccessful = mainForm.bookDBHelper.TakeBook(selectedBook, loggedInPerson);
+                    bool isSuccessful = mainForm.bookDBHelperByBookService.TakeBook(selectedBook.Id, loggedInPerson.Id);
                     if (isSuccessful == true)
                     {
                         LoadLoanPeriods();
+                        LoadBookCatalog();
                         MetroMessageBox.Show(this, "Knyga sėkmingai paimta", selectedBook.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else
@@ -183,15 +184,16 @@ namespace Virtual_librarian
                 int selectedRow = grdLoanPeriods.CurrentRow.Index;
                 string selectedBookISBN = grdLoanPeriods.Rows[selectedRow].Cells[6].Value.ToString(); //6 - isbn
                 string selectedBookCode = grdLoanPeriods.Rows[selectedRow].Cells[7].Value.ToString(); //7 - mūsų kodas
-                Book selectedBook = mainForm.bookDBHelper.GetBookByCode(selectedBookISBN, selectedBookCode);
+                Book selectedBook = ServiceToLibrary.BookToLibraryObject(mainForm.bookDBHelperByBookService.GetBookByCode(selectedBookISBN, selectedBookCode));
 
                 DialogResult dr = MetroMessageBox.Show(this, "Ar norite grąžinti šią knygą", selectedBook.Name, MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
                 if (dr == DialogResult.Yes)
                 {
-                    bool isSuccessful = mainForm.bookDBHelper.ReturnBook(selectedBook);
+                    bool isSuccessful = mainForm.bookDBHelperByBookService.ReturnBook(selectedBook.Id);
                     if (isSuccessful == true)
                     {
                         LoadLoanPeriods();
+                        LoadBookCatalog();
                         MetroMessageBox.Show(this, "Knyga sėkmingai grąžinta", selectedBook.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     else

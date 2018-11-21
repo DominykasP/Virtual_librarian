@@ -19,7 +19,7 @@ namespace LibraryObjects
         private String code;
 
         private bool isTaken;
-        private Person reader;
+        private int readerId;
         private DateTime takenAt;
         private DateTime returnAt;
         private int timeRemaining;
@@ -35,7 +35,6 @@ namespace LibraryObjects
             SetProperties(name, author, publisher, year, pages, isbn, code);
 
             this.isTaken = false;
-            this.reader = null;
             this.takenAt = default(DateTime);
             this.returnAt = default(DateTime);
         }
@@ -45,17 +44,38 @@ namespace LibraryObjects
             SetProperties(name, author, publisher, year, pages, isbn, code);
 
             this.isTaken = false;
-            this.reader = null;
             this.takenAt = default(DateTime);
             this.returnAt = default(DateTime);
         }
 
-        public Book(string name, string author, string publisher, DateTime year, int pages, string isbn, string code, Person reader, DateTime takenAt, DateTime returnAt)
+        public Book(string name, string author, string publisher, DateTime year, int pages, string isbn, string code, int readerId, DateTime takenAt, DateTime returnAt)
         {
             SetProperties(name, author, publisher, year, pages, isbn, code);
 
             this.isTaken = true;
-            this.reader = reader;
+            this.readerId = readerId;
+            this.takenAt = takenAt;
+            this.returnAt = returnAt;
+        }
+
+        public Book(int id, string name, string author, string publisher, DateTime year, int pages, string isbn, string code, int readerId, DateTime takenAt, DateTime returnAt)
+        {
+            SetProperties(name, author, publisher, year, pages, isbn, code);
+
+            this.id = id;
+            this.isTaken = true;
+            this.readerId = readerId;
+            this.takenAt = takenAt;
+            this.returnAt = returnAt;
+        }
+
+        public Book(int id, string name, string author, string publisher, DateTime year, int pages, string isbn, string code, bool isTaken, int readerId, DateTime takenAt, DateTime returnAt)
+        {
+            SetProperties(name, author, publisher, year, pages, isbn, code);
+
+            this.id = id;
+            this.isTaken = isTaken;
+            this.readerId = readerId;
             this.takenAt = takenAt;
             this.returnAt = returnAt;
         }
@@ -80,15 +100,15 @@ namespace LibraryObjects
         public string Isbn { get => isbn; set => isbn = value; }
         public string Code { get => code; set => code = value; }
         public bool IsTaken { get => isTaken; set => isTaken = value; }
-        public Person Reader { get => reader; set => reader = value; }
+        public int ReaderId { get => readerId; set => readerId = value; }
         public DateTime TakenAt { get => takenAt; set => takenAt = value; }
         public DateTime ReturnAt { get => returnAt; set => returnAt = value; }
         public int TimeRemaining { get => timeRemaining; }
 
-        public void TakeBook(Person reader, DateTime takenAt, DateTime returnAt)
+        public void TakeBook(int readerId, DateTime takenAt, DateTime returnAt)
         {
             this.isTaken = true;
-            this.reader = reader;
+            this.readerId = readerId;
             this.takenAt = takenAt;
             this.returnAt = returnAt;
         }
@@ -96,7 +116,6 @@ namespace LibraryObjects
         public void ReturnBook()
         {
             this.isTaken = false;
-            this.reader = null;
             this.takenAt = default(DateTime);
             this.returnAt = default(DateTime);
         }

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtual_librarian", "Virtual_librarian\Virtual_librarian.csproj", "{E99B3268-E580-47FA-898C-F56B9D99AC72}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2CA7BD5B-ED1A-4706-B859-B54634F70020} = {2CA7BD5B-ED1A-4706-B859-B54634F70020}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilesFunctions", "FilesFunctions\FilesFunctions.csproj", "{B03640DD-7C52-4B76-8006-128428132EC4}"
 EndProject
@@ -14,10 +17,36 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryObjects", "LibraryObjects\LibraryObjects.csproj", "{29E7AE70-746A-4FBF-BFDA-6BDAB75F0A8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{73C4B7E8-6CC2-4555-AFA7-BBF75A06CABF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2CA7BD5B-ED1A-4706-B859-B54634F70020} = {2CA7BD5B-ED1A-4706-B859-B54634F70020}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{30F1F581-5479-4629-8046-517F66C15A8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactAPP", "ReactAPP\ReactAPP.csproj", "{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTServer", "RESTServer\RESTServer.csproj", "{4A000626-99C2-4A43-92C6-91A2D90C44D5}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFService", "WCFService\", "{2CA7BD5B-ED1A-4706-B859-B54634F70020}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
+		ProjectReferences = "{B03640DD-7C52-4B76-8006-128428132EC4}|FilesFunctions.dll;{5F0E20B8-C3C6-41D9-9F46-E7B974351552}|Interfaces.dll;{29e7ae70-746a-4fbf-bfda-6bdab75f0a8a}|LibraryObjects.dll;{30f1f581-5479-4629-8046-517f66c15a8b}|ClassLibrary2.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52312"
+		Debug.AspNetCompiler.PhysicalPath = "WCFService\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52312\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52312"
+		Release.AspNetCompiler.PhysicalPath = "WCFService\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52312\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "52312"
+		SlnRelativePath = "WCFService\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +82,14 @@ Global
 		{30F1F581-5479-4629-8046-517F66C15A8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{30F1F581-5479-4629-8046-517F66C15A8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{30F1F581-5479-4629-8046-517F66C15A8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A000626-99C2-4A43-92C6-91A2D90C44D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA7BD5B-ED1A-4706-B859-B54634F70020}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA7BD5B-ED1A-4706-B859-B54634F70020}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA7BD5B-ED1A-4706-B859-B54634F70020}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA7BD5B-ED1A-4706-B859-B54634F70020}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU

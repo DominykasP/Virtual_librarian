@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 using System.Timers;
 using Emgu.CV;
 using Emgu.CV.Structure;
-using Spire.Barcode;
 using Database;
 using LibraryObjects;
 using System.Windows.Forms;
 using ExtensionMethods;
 using FilesFunctions;
+using Spire.Barcode;
 
 namespace Camera
 {
@@ -24,7 +24,6 @@ namespace Camera
         private object lockObject = new object();
         public List<Bitmap> images;
         Image<Bgr, byte> frame;
-        BookDBHelper bookDBHelper;
         private BindingList<Book> myRequests = new BindingList<Book>();
         BindingList<Book> allBooks;
         public String[] barcode;
@@ -33,20 +32,27 @@ namespace Camera
         Book book;
         //Image<Gray, Byte> grayImage;
 
+        //Delegate getBookByIsbnDel;
+
         private System.Windows.Forms.Timer aTimer;
 
         //Evento kintamieji
+        /*
         public delegate void RecognisedHandler<RecognisedBookEventArgs>(object sender, RecognisedBookEventArgs e);
         public event RecognisedHandler<RecognisedBookEventArgs> OnBookRecognised;
+        */
+
+        public delegate void RecognisedHandler<RecognisedBarcodeEventArgs>(object sender, RecognisedBarcodeEventArgs e);
+        public event RecognisedHandler<RecognisedBarcodeEventArgs> OnBarcodeRecognised;
+
         //-----------------------------------------------
         //--------------Public Methods-------------------
         //-----------------------------------------------
-        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera, BookDBHelper bookDBHelper)
+        public BarcodeRecognition(PictureBox cameraBox,UseCamera camera)
         {
             this.cameraBox = cameraBox;
             this.camera = camera;
             aTimer = new System.Windows.Forms.Timer();
-            this.bookDBHelper = bookDBHelper;
             aTimer.Tick += ATimer_Tick;
         }
 
@@ -61,7 +67,7 @@ namespace Camera
         public void StartRecognising()
         {
             images = new List<Bitmap>();
-            aTimer.Interval = 2000;
+            aTimer.Interval = 1000;
             aTimer.Start();
             camera.TurnOn();
             Application.Idle += FrameProcedure;
@@ -76,6 +82,14 @@ namespace Camera
             Application.Idle -= FrameProcedure;
             book = null;
         }
+        //------------------------------------------------
+        //-------------Continue Book Recognition--------------
+        //------------------------------------------------
+        public void ContinueRecognising()
+        {
+            aTimer.Start();
+        }
+
         //------------------------------------------------------------
         //-------Convert Barcodes from image to string----------------
         //------------------------------------------------------------
@@ -83,31 +97,34 @@ namespace Camera
         {
             
             String[] barcodes = BarcodeScanner.Scan(grayImage.ToBitmap());
-            
             return barcodes;
+        }
+        public Task<String[]> GetBarcodesStringAsync(Image<Gray, Byte> grayImage)
+        {
+            return Task<String[]>.Run(() => GetBarcodesString(grayImage));
         }
         //-----------------------------------------------------------
         //------------------Private Methods--------------------------
         //-----------------------------------------------------------
         //--------------------Timer Event----------------------------
         //-----------------------------------------------------------
-        private void ATimer_Tick(object sender, EventArgs e)
+        private async void ATimer_Tick(object sender, EventArgs e)
         {
             Image<Bgr, Byte> ColordImage = frame;
             Image<Gray, Byte> grayImage = ColordImage.Convert<Gray, Byte>();
 
-            aTimer.Stop();
-            barcode = GetBarcodesString(grayImage);
-            
-            book = RecogniseBookBarcode();
+            //aTimer.Stop();
+            //barcode = GetBarcodesString(grayImage);
+            barcode = await GetBarcodesStringAsync(grayImage);
 
-            if (book != null)
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10, 16, barcode[0]))
             {
-                OnBookRecognised(this, new RecognisedBookEventArgs(book));
+                aTimer.Stop();
+                OnBarcodeRecognised(this, new RecognisedBarcodeEventArgs(barcode[0], Convert12to13(barcode)));
             }
             else
             {
-                aTimer.Start();
+                //aTimer.Start();
             }
         }
         
@@ -148,7 +165,7 @@ namespace Camera
         private Book RecogniseBookBarcode()
         {
             String BarcodeNew = Convert12to13(barcode);
-            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16,barcode[0]))
+            if (barcode.Length != 0 && BarcodesRecognisedCorect(10,16, barcode[0]))
             {
                 
                 aTimer.Stop();
@@ -167,9 +184,9 @@ namespace Camera
         //------------------------------------------
         //---Check if barcode contains format-------
         //------------------------------------------
-        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan,String Barcode)
+        private bool BarcodesRecognisedCorect(int moreSimbolsThan,int lessSimbolsThan, string barcode)
         {
-            if (moreSimbolsThan < Barcode.Length && lessSimbolsThan > Barcode.Length)
+            if (moreSimbolsThan < barcode.Length && lessSimbolsThan > barcode.Length)
             {
                 return true;
             }
@@ -186,7 +203,8 @@ namespace Camera
             
             Book knyga = null;
             //knyga = allBooks.SingleOrDefault(k => k.Isbn == barcode[0]); //KREIPTIS PER BOOKDBHELPER
-            knyga = bookDBHelper.GetBookByIsbn(Isbn);
+            //knyga = bookDBHelper.GetBookByIsbn(Isbn);
+            //knyga = getBookByIsbnDel(Isbn);
             
             return knyga;
         }
