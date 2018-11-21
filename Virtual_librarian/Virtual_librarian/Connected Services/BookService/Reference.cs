@@ -15,7 +15,7 @@ namespace Virtual_librarian.BookService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Book", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Book", Namespace="api/BookService")]
     [System.SerializableAttribute()]
     public partial class Book : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -228,107 +228,107 @@ namespace Virtual_librarian.BookService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BookService.BookServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="api/BookService", ConfigurationName="BookService.BookServiceSoap")]
     public interface BookServiceSoap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/HelloWorld", ReplyAction="*")]
         Virtual_librarian.BookService.HelloWorldResponse HelloWorld(Virtual_librarian.BookService.HelloWorldRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/HelloWorld", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.HelloWorldResponse> HelloWorldAsync(Virtual_librarian.BookService.HelloWorldRequest request);
         
-        // CODEGEN: Generating message contract since element name GetBookByIdResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookById", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name GetBookByIdResult from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetBookById", ReplyAction="*")]
         Virtual_librarian.BookService.GetBookByIdResponse GetBookById(Virtual_librarian.BookService.GetBookByIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookById", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetBookById", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.GetBookByIdResponse> GetBookByIdAsync(Virtual_librarian.BookService.GetBookByIdRequest request);
         
-        // CODEGEN: Generating message contract since element name isbn from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookByCode", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name isbn from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetBookByCode", ReplyAction="*")]
         Virtual_librarian.BookService.GetBookByCodeResponse GetBookByCode(Virtual_librarian.BookService.GetBookByCodeRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookByCode", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetBookByCode", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.GetBookByCodeResponse> GetBookByCodeAsync(Virtual_librarian.BookService.GetBookByCodeRequest request);
         
-        // CODEGEN: Generating message contract since element name isbn from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookByIsbn", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name isbn from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetBookByIsbn", ReplyAction="*")]
         Virtual_librarian.BookService.GetBookByIsbnResponse GetBookByIsbn(Virtual_librarian.BookService.GetBookByIsbnRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetBookByIsbn", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetBookByIsbn", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.GetBookByIsbnResponse> GetBookByIsbnAsync(Virtual_librarian.BookService.GetBookByIsbnRequest request);
         
-        // CODEGEN: Generating message contract since element name GetAllBooksResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBooks", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name GetAllBooksResult from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetAllBooks", ReplyAction="*")]
         Virtual_librarian.BookService.GetAllBooksResponse GetAllBooks(Virtual_librarian.BookService.GetAllBooksRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllBooks", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetAllBooks", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.GetAllBooksResponse> GetAllBooksAsync(Virtual_librarian.BookService.GetAllBooksRequest request);
         
-        // CODEGEN: Generating message contract since element name GetReadersBooksResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetReadersBooks", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name GetReadersBooksResult from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetReadersBooks", ReplyAction="*")]
         Virtual_librarian.BookService.GetReadersBooksResponse GetReadersBooks(Virtual_librarian.BookService.GetReadersBooksRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetReadersBooks", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetReadersBooks", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.GetReadersBooksResponse> GetReadersBooksAsync(Virtual_librarian.BookService.GetReadersBooksRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReturnBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/ReturnBook", ReplyAction="*")]
         bool ReturnBook(int returnedBookId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ReturnBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/ReturnBook", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> ReturnBookAsync(int returnedBookId);
         
-        // CODEGEN: Generating message contract since element name search from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Find", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name search from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/Find", ReplyAction="*")]
         Virtual_librarian.BookService.FindResponse Find(Virtual_librarian.BookService.FindRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Find", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/Find", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.FindResponse> FindAsync(Virtual_librarian.BookService.FindRequest request);
         
-        // CODEGEN: Generating message contract since element name newBook from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditBook", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name newBook from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/EditBook", ReplyAction="*")]
         Virtual_librarian.BookService.EditBookResponse EditBook(Virtual_librarian.BookService.EditBookRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/EditBook", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.EditBookResponse> EditBookAsync(Virtual_librarian.BookService.EditBookRequest request);
         
-        // CODEGEN: Generating message contract since element name book from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteBook", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name book from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/DeleteBook", ReplyAction="*")]
         Virtual_librarian.BookService.DeleteBookResponse DeleteBook(Virtual_librarian.BookService.DeleteBookRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeleteBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/DeleteBook", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.DeleteBookResponse> DeleteBookAsync(Virtual_librarian.BookService.DeleteBookRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TakeBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/TakeBook", ReplyAction="*")]
         bool TakeBook(int takenBookId, int readerId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/TakeBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/TakeBook", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> TakeBookAsync(int takenBookId, int readerId);
         
-        // CODEGEN: Generating message contract since element name book from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddNewBook", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name book from namespace api/BookService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/AddNewBook", ReplyAction="*")]
         Virtual_librarian.BookService.AddNewBookResponse AddNewBook(Virtual_librarian.BookService.AddNewBookRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddNewBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/AddNewBook", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.BookService.AddNewBookResponse> AddNewBookAsync(Virtual_librarian.BookService.AddNewBookRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RenewBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/RenewBook", ReplyAction="*")]
         bool RenewBook(int renewedBookId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/RenewBook", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/RenewBook", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> RenewBookAsync(int renewedBookId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IsBookAlreadyTaken", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/IsBookAlreadyTaken", ReplyAction="*")]
         bool IsBookAlreadyTaken(int bookToCheckId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IsBookAlreadyTaken", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/IsBookAlreadyTaken", ReplyAction="*")]
         System.Threading.Tasks.Task<bool> IsBookAlreadyTakenAsync(int bookToCheckId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNextId", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetNextId", ReplyAction="*")]
         int GetNextId();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetNextId", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/BookService/GetNextId", ReplyAction="*")]
         System.Threading.Tasks.Task<int> GetNextIdAsync();
     }
     
@@ -338,7 +338,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class HelloWorldRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.HelloWorldRequestBody Body;
         
         public HelloWorldRequest() {
@@ -365,7 +365,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class HelloWorldResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.HelloWorldResponseBody Body;
         
         public HelloWorldResponse() {
@@ -379,7 +379,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class HelloWorldResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -399,7 +399,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetBookByIdRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookById", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookById", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetBookByIdRequestBody Body;
         
         public GetBookByIdRequest() {
@@ -413,7 +413,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetBookByIdRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -433,7 +433,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetBookByIdResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByIdResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByIdResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetBookByIdResponseBody Body;
         
         public GetBookByIdResponse() {
@@ -447,7 +447,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetBookByIdResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -467,7 +467,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetBookByCodeRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByCode", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByCode", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetBookByCodeRequestBody Body;
         
         public GetBookByCodeRequest() {
@@ -481,7 +481,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetBookByCodeRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -505,7 +505,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetBookByCodeResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByCodeResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByCodeResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetBookByCodeResponseBody Body;
         
         public GetBookByCodeResponse() {
@@ -519,7 +519,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetBookByCodeResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -539,7 +539,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetBookByIsbnRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByIsbn", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByIsbn", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetBookByIsbnRequestBody Body;
         
         public GetBookByIsbnRequest() {
@@ -553,7 +553,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetBookByIsbnRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -573,7 +573,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetBookByIsbnResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByIsbnResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetBookByIsbnResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetBookByIsbnResponseBody Body;
         
         public GetBookByIsbnResponse() {
@@ -587,7 +587,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetBookByIsbnResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -607,7 +607,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetAllBooksRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBooks", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBooks", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetAllBooksRequestBody Body;
         
         public GetAllBooksRequest() {
@@ -634,7 +634,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetAllBooksResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBooksResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllBooksResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetAllBooksResponseBody Body;
         
         public GetAllBooksResponse() {
@@ -648,7 +648,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetAllBooksResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -668,7 +668,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetReadersBooksRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReadersBooks", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReadersBooks", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetReadersBooksRequestBody Body;
         
         public GetReadersBooksRequest() {
@@ -682,7 +682,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetReadersBooksRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -702,7 +702,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetReadersBooksResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReadersBooksResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetReadersBooksResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.GetReadersBooksResponseBody Body;
         
         public GetReadersBooksResponse() {
@@ -716,7 +716,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class GetReadersBooksResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -736,7 +736,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class FindRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="Find", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="Find", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.FindRequestBody Body;
         
         public FindRequest() {
@@ -750,7 +750,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class FindRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -770,7 +770,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class FindResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="FindResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.FindResponseBody Body;
         
         public FindResponse() {
@@ -784,7 +784,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class FindResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -804,7 +804,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class EditBookRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditBook", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditBook", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.EditBookRequestBody Body;
         
         public EditBookRequest() {
@@ -818,7 +818,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class EditBookRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -842,7 +842,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class EditBookResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditBookResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.EditBookResponseBody Body;
         
         public EditBookResponse() {
@@ -856,7 +856,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class EditBookResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -876,7 +876,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class DeleteBookRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBook", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBook", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.DeleteBookRequestBody Body;
         
         public DeleteBookRequest() {
@@ -890,7 +890,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class DeleteBookRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -910,7 +910,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class DeleteBookResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeleteBookResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.DeleteBookResponseBody Body;
         
         public DeleteBookResponse() {
@@ -924,7 +924,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class DeleteBookResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -944,7 +944,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class AddNewBookRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewBook", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewBook", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.AddNewBookRequestBody Body;
         
         public AddNewBookRequest() {
@@ -958,7 +958,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class AddNewBookRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -978,7 +978,7 @@ namespace Virtual_librarian.BookService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class AddNewBookResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewBookResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewBookResponse", Namespace="api/BookService", Order=0)]
         public Virtual_librarian.BookService.AddNewBookResponseBody Body;
         
         public AddNewBookResponse() {
@@ -992,7 +992,7 @@ namespace Virtual_librarian.BookService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/BookService")]
     public partial class AddNewBookResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
