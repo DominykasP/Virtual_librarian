@@ -17,7 +17,8 @@ namespace Interfaces
 
         bool AddNewBook(Book book);
         bool DeleteBook(Book book);
-        bool TakeBook(Book takenBook, Person reader);
+        //bool TakeBook(Book takenBook, Person reader);
+        bool TakeBook(int takenBookId, int readerId);
         bool ReturnBook(Book returnedBook);
         bool RenewBook(Book renewedBook);
     }

@@ -1,0 +1,15 @@
+﻿.center {
+    padding: var(--space) var(--space) 0;
+    margin: 100px;
+    background: none;
+    width: 66%;
+}
+.outside {
+    padding: var(--space) var(--space) 0;
+    margin: 100px;
+    background: none;
+    width: 66%;
+}
+.nomargins {
+    margin:auto;
+}

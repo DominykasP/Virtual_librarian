@@ -56,7 +56,7 @@ namespace Virtual_librarian
 
             int recognisedID;
             Int32.TryParse(e.recognisedID, out recognisedID);
-            Person loggedInPerson = mainForm.humanDBHelper.GetPersonByID(recognisedID);
+            Person loggedInPerson = ServiceToLibrary.PersonToLibraryObject(mainForm.humanDBHelperByPersonService.GetPersonByID(recognisedID));
 
             if (loggedInPerson != null)
             {
@@ -78,7 +78,7 @@ namespace Virtual_librarian
 
         private void btnLogInWIthName_Click(object sender, EventArgs e)
         {
-            Person loggedInPerson = mainForm.humanDBHelper.GetPersonByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text);
+            Person loggedInPerson = ServiceToLibrary.PersonToLibraryObject(mainForm.humanDBHelperByPersonService.GetPersonByNameSurnamePassword(txtVardas.Text, txtPavarde.Text, txtSlaptazodis.Text));
             camera.TurnOff();
             faceRecognition.StopRecognition();
 

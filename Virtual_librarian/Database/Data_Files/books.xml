@@ -10,6 +10,7 @@
     <Isbn>12345678</Isbn>
     <Code>21343244</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -22,9 +23,10 @@
     <Pages>500</Pages>
     <Isbn>13644563</Isbn>
     <Code>24954972</Code>
-    <IsTaken>false</IsTaken>
-    <TakenAt>2018-10-10T23:57:55.1886154+03:00</TakenAt>
-    <ReturnAt>2018-11-11T00:05:24.7147531+02:00</ReturnAt>
+    <IsTaken>true</IsTaken>
+    <ReaderId>1</ReaderId>
+    <TakenAt>2018-11-19T12:50:53.1310584+02:00</TakenAt>
+    <ReturnAt>2018-12-19T12:50:53.1310584+02:00</ReturnAt>
   </Book>
   <Book>
     <Id>2</Id>
@@ -36,6 +38,7 @@
     <Isbn>35435534</Isbn>
     <Code>97234594</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>2018-10-10T23:41:50.2936275+03:00</TakenAt>
     <ReturnAt>2018-11-10T23:41:50.2936275+02:00</ReturnAt>
   </Book>
@@ -49,6 +52,7 @@
     <Isbn>21324356754321</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -62,6 +66,7 @@
     <Isbn>3464653434343</Isbn>
     <Code>243534</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>2018-10-11T00:13:04.8562788+03:00</TakenAt>
     <ReturnAt>2018-11-11T00:13:04.8562788+02:00</ReturnAt>
   </Book>
@@ -75,6 +80,7 @@
     <Isbn>2344324234</Isbn>
     <Code>345435453</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -87,9 +93,10 @@
     <Pages>200</Pages>
     <Isbn>34457665667536</Isbn>
     <Code>2345544454223</Code>
-    <IsTaken>false</IsTaken>
-    <TakenAt>2018-10-11T00:16:38.2603687+03:00</TakenAt>
-    <ReturnAt>2018-11-11T00:16:38.2603687+02:00</ReturnAt>
+    <IsTaken>true</IsTaken>
+    <ReaderId>1</ReaderId>
+    <TakenAt>2018-11-19T12:50:58.6309714+02:00</TakenAt>
+    <ReturnAt>2018-12-19T12:50:58.6309714+02:00</ReturnAt>
   </Book>
   <Book>
     <Id>7</Id>
@@ -101,6 +108,7 @@
     <Isbn>003078220554</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>1</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -114,6 +122,7 @@
     <Isbn>460300808471</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -127,6 +136,7 @@
     <Isbn>003075812561</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>1</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -140,6 +150,7 @@
     <Isbn>9786094035098</Isbn>
     <Code>9786094035098</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>0</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>
@@ -153,6 +164,7 @@
     <Isbn>9789955680093</Isbn>
     <Code>2134532</Code>
     <IsTaken>false</IsTaken>
+    <ReaderId>1</ReaderId>
     <TakenAt>0001-01-01T00:00:00</TakenAt>
     <ReturnAt>0001-01-01T00:00:00</ReturnAt>
   </Book>

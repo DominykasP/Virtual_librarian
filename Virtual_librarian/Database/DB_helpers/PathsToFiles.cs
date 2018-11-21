@@ -12,6 +12,5 @@ namespace Database
         public static string pathToFacesFolder = System.Configuration.ConfigurationManager.AppSettings["pathToFacesFolder"];
         public static string pathToUsersFile = System.Configuration.ConfigurationManager.AppSettings["pathToUsersFile"];
         public static string pathToBooksFile = System.Configuration.ConfigurationManager.AppSettings["pathToBooksFile"];
-
     }
 }

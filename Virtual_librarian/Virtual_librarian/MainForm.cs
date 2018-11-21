@@ -14,8 +14,14 @@ namespace Virtual_librarian
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
-        public BookDBHelper bookDBHelper = new BookDBHelper();
-        public HumanDBHelper humanDBHelper = new HumanDBHelper();
+        /*
+        public BookDBHelper bookDBHelperByBookService = new BookDBHelper();
+        public HumanDBHelper humanDBHelperByPersonService = new HumanDBHelper();
+        */
+
+        public BookService.BookServiceSoapClient bookDBHelperByBookService = new BookService.BookServiceSoapClient();
+        public PersonService.PersonServiceSoapClient humanDBHelperByPersonService = new PersonService.PersonServiceSoapClient();
+
         private CopyFiles copyFiles = new CopyFiles();
 
         private UCChooseLogin ucChooseLogin;
