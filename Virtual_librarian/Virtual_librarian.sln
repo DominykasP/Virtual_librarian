@@ -48,6 +48,8 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFService", "WCFService\",
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactAPP", "ReactAPP\ReactAPP.csproj", "{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
