@@ -171,11 +171,11 @@ namespace Database
                 List<Book> books = new List<Book>();
 
                 
-                String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
-                SqlCommand cmd = new SqlCommand(sqlString, conn);
-                cmd.ExecuteNonQuery();
-                sqlString = "INSERT INTO books (Id, Name, Author, Publisher, Year, Pages, Isbn, Code, IsTaken, TakenAt, ReturnAt, UserId)";
-                sqlString += " VALUES  (@Id, @Name, @Author, @Publisher, @Year, @Pages, @Isbn, @Code, @IsTaken, @TakenAt, @ReturnAt, @UserId)";
+                //String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
+                //SqlCommand cmd = new SqlCommand(sqlString, conn);
+                //cmd.ExecuteNonQuery();
+                String sqlString = "UPDATE books Set Id = @id, Name = @Name, Author = @Author, Publisher = @Publisher, Year = @Year, Pages = @Pages, Isbn = @Isbn, Code = @Code, IsTaken = @IsTaken, TakenAt = @TakenAt, ReturnAt = @ReturnAt WHERE" + changedBook.Id + "'";
+                //sqlString += " VALUES  (@Id, @Name, @Author, @Publisher, @Year, @Pages, @Isbn, @Code, @IsTaken, @TakenAt, @ReturnAt, @UserId)";
                 SqlCommand cmd2 = new SqlCommand(sqlString, conn);
                 cmd2.Parameters.AddWithValue("@Id", changedBook.Id);
                 cmd2.Parameters.AddWithValue("@Name", changedBook.Name);
@@ -248,7 +248,7 @@ namespace Database
                 sqlString = "INSERT INTO books (Id, Name, Author, Publisher, Year, Pages, Isbn, Code, IsTaken, TakenAt, ReturnAt, UserId)";
                 sqlString += " VALUES  (@Id, @Name, @Author, @Publisher, @Year, @Pages, @Isbn, @Code, @IsTaken, @TakenAt, @ReturnAt, @UserId)";
                 SqlCommand cmd2 = new SqlCommand(sqlString, conn);
-                cmd2.Parameters.AddWithValue("@Id", changedBook.Id);
+                cmd2.Parameters.AddWithValue("@Id", getNextId());
                 cmd2.Parameters.AddWithValue("@Name", changedBook.Name);
                 cmd2.Parameters.AddWithValue("@Author", changedBook.Author);
                 cmd2.Parameters.AddWithValue("@Publisher", changedBook.Publisher);
