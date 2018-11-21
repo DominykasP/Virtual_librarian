@@ -15,7 +15,7 @@ namespace Virtual_librarian.PersonService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Person", Namespace="api/PersonService")]
     [System.SerializableAttribute()]
     public partial class Person : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -153,62 +153,62 @@ namespace Virtual_librarian.PersonService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="PersonService.PersonServiceSoap")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="api/PersonService", ConfigurationName="PersonService.PersonServiceSoap")]
     public interface PersonServiceSoap {
         
-        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name HelloWorldResult from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/HelloWorld", ReplyAction="*")]
         Virtual_librarian.PersonService.HelloWorldResponse HelloWorld(Virtual_librarian.PersonService.HelloWorldRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/HelloWorld", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/HelloWorld", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.HelloWorldResponse> HelloWorldAsync(Virtual_librarian.PersonService.HelloWorldRequest request);
         
-        // CODEGEN: Generating message contract since element name name from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddNewPerson", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name name from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/AddNewPerson", ReplyAction="*")]
         Virtual_librarian.PersonService.AddNewPersonResponse AddNewPerson(Virtual_librarian.PersonService.AddNewPersonRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/AddNewPerson", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/AddNewPerson", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.AddNewPersonResponse> AddNewPersonAsync(Virtual_librarian.PersonService.AddNewPersonRequest request);
         
-        // CODEGEN: Generating message contract since element name person from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeletePerson", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name person from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/DeletePerson", ReplyAction="*")]
         Virtual_librarian.PersonService.DeletePersonResponse DeletePerson(Virtual_librarian.PersonService.DeletePersonRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/DeletePerson", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/DeletePerson", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.DeletePersonResponse> DeletePersonAsync(Virtual_librarian.PersonService.DeletePersonRequest request);
         
-        // CODEGEN: Generating message contract since element name oldPerson from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditPerson", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name oldPerson from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/EditPerson", ReplyAction="*")]
         Virtual_librarian.PersonService.EditPersonResponse EditPerson(Virtual_librarian.PersonService.EditPersonRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/EditPerson", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/EditPerson", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.EditPersonResponse> EditPersonAsync(Virtual_librarian.PersonService.EditPersonRequest request);
         
-        // CODEGEN: Generating message contract since element name GetPersonByIDResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPersonByID", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name GetPersonByIDResult from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/GetPersonByID", ReplyAction="*")]
         Virtual_librarian.PersonService.GetPersonByIDResponse GetPersonByID(Virtual_librarian.PersonService.GetPersonByIDRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPersonByID", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/GetPersonByID", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.GetPersonByIDResponse> GetPersonByIDAsync(Virtual_librarian.PersonService.GetPersonByIDRequest request);
         
-        // CODEGEN: Generating message contract since element name name from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPersonByNameSurnamePassword", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name name from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/GetPersonByNameSurnamePassword", ReplyAction="*")]
         Virtual_librarian.PersonService.GetPersonByNameSurnamePasswordResponse GetPersonByNameSurnamePassword(Virtual_librarian.PersonService.GetPersonByNameSurnamePasswordRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetPersonByNameSurnamePassword", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/GetPersonByNameSurnamePassword", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.GetPersonByNameSurnamePasswordResponse> GetPersonByNameSurnamePasswordAsync(Virtual_librarian.PersonService.GetPersonByNameSurnamePasswordRequest request);
         
-        // CODEGEN: Generating message contract since element name GetAllPersonsResult from namespace http://tempuri.org/ is not marked nillable
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllPersons", ReplyAction="*")]
+        // CODEGEN: Generating message contract since element name GetAllPersonsResult from namespace api/PersonService is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/GetAllPersons", ReplyAction="*")]
         Virtual_librarian.PersonService.GetAllPersonsResponse GetAllPersons(Virtual_librarian.PersonService.GetAllPersonsRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/GetAllPersons", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/GetAllPersons", ReplyAction="*")]
         System.Threading.Tasks.Task<Virtual_librarian.PersonService.GetAllPersonsResponse> GetAllPersonsAsync(Virtual_librarian.PersonService.GetAllPersonsRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getNextId", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/getNextId", ReplyAction="*")]
         int getNextId();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/getNextId", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="api/PersonService/getNextId", ReplyAction="*")]
         System.Threading.Tasks.Task<int> getNextIdAsync();
     }
     
@@ -218,7 +218,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class HelloWorldRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorld", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.HelloWorldRequestBody Body;
         
         public HelloWorldRequest() {
@@ -245,7 +245,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class HelloWorldResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="HelloWorldResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.HelloWorldResponseBody Body;
         
         public HelloWorldResponse() {
@@ -259,7 +259,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class HelloWorldResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -279,7 +279,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class AddNewPersonRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewPerson", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewPerson", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.AddNewPersonRequestBody Body;
         
         public AddNewPersonRequest() {
@@ -293,7 +293,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class AddNewPersonRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -337,7 +337,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class AddNewPersonResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewPersonResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="AddNewPersonResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.AddNewPersonResponseBody Body;
         
         public AddNewPersonResponse() {
@@ -351,7 +351,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class AddNewPersonResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -371,7 +371,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class DeletePersonRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeletePerson", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeletePerson", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.DeletePersonRequestBody Body;
         
         public DeletePersonRequest() {
@@ -385,7 +385,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class DeletePersonRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -405,7 +405,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class DeletePersonResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeletePersonResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="DeletePersonResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.DeletePersonResponseBody Body;
         
         public DeletePersonResponse() {
@@ -419,7 +419,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class DeletePersonResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -439,7 +439,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class EditPersonRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditPerson", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditPerson", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.EditPersonRequestBody Body;
         
         public EditPersonRequest() {
@@ -453,7 +453,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class EditPersonRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -477,7 +477,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class EditPersonResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditPersonResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="EditPersonResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.EditPersonResponseBody Body;
         
         public EditPersonResponse() {
@@ -491,7 +491,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class EditPersonResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -511,7 +511,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetPersonByIDRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByID", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByID", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.GetPersonByIDRequestBody Body;
         
         public GetPersonByIDRequest() {
@@ -525,7 +525,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class GetPersonByIDRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(Order=0)]
@@ -545,7 +545,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetPersonByIDResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByIDResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByIDResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.GetPersonByIDResponseBody Body;
         
         public GetPersonByIDResponse() {
@@ -559,7 +559,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class GetPersonByIDResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -579,7 +579,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetPersonByNameSurnamePasswordRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByNameSurnamePassword", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByNameSurnamePassword", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.GetPersonByNameSurnamePasswordRequestBody Body;
         
         public GetPersonByNameSurnamePasswordRequest() {
@@ -593,7 +593,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class GetPersonByNameSurnamePasswordRequestBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -621,7 +621,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetPersonByNameSurnamePasswordResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByNameSurnamePasswordResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetPersonByNameSurnamePasswordResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.GetPersonByNameSurnamePasswordResponseBody Body;
         
         public GetPersonByNameSurnamePasswordResponse() {
@@ -635,7 +635,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class GetPersonByNameSurnamePasswordResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
@@ -655,7 +655,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetAllPersonsRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllPersons", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllPersons", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.GetAllPersonsRequestBody Body;
         
         public GetAllPersonsRequest() {
@@ -682,7 +682,7 @@ namespace Virtual_librarian.PersonService {
     [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
     public partial class GetAllPersonsResponse {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllPersonsResponse", Namespace="http://tempuri.org/", Order=0)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="GetAllPersonsResponse", Namespace="api/PersonService", Order=0)]
         public Virtual_librarian.PersonService.GetAllPersonsResponseBody Body;
         
         public GetAllPersonsResponse() {
@@ -696,7 +696,7 @@ namespace Virtual_librarian.PersonService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="api/PersonService")]
     public partial class GetAllPersonsResponseBody {
         
         [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
