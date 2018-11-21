@@ -1,11 +1,12 @@
 ﻿import React from "react"
-
+import "./margins.css"
 export default class Featured extends React.Component {
 
     render() {
         return (
-
-            <h1>featured</h1>
+            <div>
+                <h1 >Featured</h1>
+                </div>
         );
     }
 }

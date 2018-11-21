@@ -1,0 +1,12 @@
+﻿.hero {
+    background-image: url('/Components/images/sharon-mccutcheon-532782-unsplash.png');
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    top: 0;
+    margin: 100px;
+    padding: var(--space) var(--space) 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: -10;
+}

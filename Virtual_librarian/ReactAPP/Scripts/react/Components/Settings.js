@@ -1,12 +1,15 @@
 ﻿import React from "react"
-
+import "./margins.css"
 export default class Settings extends React.Component {
 
     render() {
         return (
-            <div>
+            
+            <div className="outside">
                 <h1>Settings</h1>
                 </div>
+
+                
         );
     }
 }

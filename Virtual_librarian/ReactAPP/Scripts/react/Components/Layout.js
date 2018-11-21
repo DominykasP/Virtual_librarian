@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import { Link } from 'react-router-dom'
+import "./margins.css"
 import Header from "./Header";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 export default class LayoutMy extends React.Component {
     constructor() {
         super();
@@ -17,7 +18,7 @@ export default class LayoutMy extends React.Component {
             <div>
                 
                 {this.props.children}
-                <Link to="/"></Link>
+                <Link to="/home"></Link>
                 <Link to="archives"></Link>
                 <Link to="settings"></Link>
                 

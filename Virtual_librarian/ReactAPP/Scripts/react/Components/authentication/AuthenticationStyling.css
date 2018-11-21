@@ -1,0 +1,14 @@
+﻿.center {
+    margin: auto;
+    background: none;
+    width: 66%;
+}
+.outside {
+    margin: 5rem 10rem 10rem 25rem;
+    background: none;
+    width: 66%;
+}
+.buttonPlace{
+    margin: 5px 100px 20px 100px;
+    width: 200px;
+}

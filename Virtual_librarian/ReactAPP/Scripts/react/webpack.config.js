@@ -28,7 +28,7 @@ module.exports = {
     context: __dirname ,
             entry: "./app.js",
    
-    
+        
         output: {
         path: __dirname + "/dist",
         filename: "bundle.js"
@@ -36,8 +36,15 @@ module.exports = {
             resolve: {
                 extensions: ['*', '.js', '.jsx']
             },
+            /*exclude: [/\.js$/, /\.html$/, /\.json$/, /\.ejs$/],
+            loader: require.resolve('file-loader'),
+            options: {
+                name: 'static/media/[name].[hash:8].[ext]',
+            },
+            */
            
-        watch : true,
+            watch: true,
+            
     module: {
         rules: [
             {
@@ -48,11 +55,7 @@ module.exports = {
                     options: {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     },
-                   
-                   
                 }
-                
-
             },
             
             {

@@ -1,13 +1,16 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
+
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Vistual Librarian</title>
-    
+
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
     <link href="~/Content/Site.css" rel="stylesheet" />
-    @RenderSection("head", required: false)
+    @RenderSection("head", required: false);
+    <!--<link rel="stylesheet" href="app.css" type="text/css" />-->
 
 </head>
 <body>
@@ -28,12 +31,14 @@
         </div>
     </div>-->
 
-    <div class="container body-content">
+    <link href="~/Scripts/react/Components/margins.css" rel="stylesheet" />
+    <div className="center">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Virtual Librarian</p>
-        </footer>
+        <!--
+    <hr />
+    <footer>
+        <p>&copy;@DateTime.Now.Year - Virtual Librarian</p>
+    </footer>-->
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
