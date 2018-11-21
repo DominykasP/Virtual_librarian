@@ -94,8 +94,8 @@ export default class Register extends React.Component{
                     />
                        
                     </form>
-                    <div className="buttonPlace">
-                        <Button width="100px" color="primary"  >Submit</Button>
+                    <div >
+                        <Button width="100px" color="primary"  >Register</Button>
                         </div>
                 </Container>
             </div>

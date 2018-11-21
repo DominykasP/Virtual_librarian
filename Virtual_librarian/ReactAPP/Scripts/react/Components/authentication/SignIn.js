@@ -3,15 +3,18 @@ import React, { Component } from "react";
 import "./AuthenticationStyling.css"
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+//import { Button, Radio, Icon } from 'antd';
+
+import 'antd/dist/antd.css';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
-    Button,
+    Button
 } from 'reactstrap';
-
+/*Text box*/
 const styles = theme => ({
     container: {
         display: 'flex',
@@ -35,6 +38,11 @@ const styles = theme => ({
 });
 
 export default class SignIn extends React.Component{
+    /*Button*/
+    state = {
+        size: 'large',
+    };
+    /*textboxes state*/
     constructor(props) {
         super(props);
 
@@ -48,7 +56,8 @@ export default class SignIn extends React.Component{
 
     
     render() {
-        const  classes  = styles;
+        const size = this.state.size;
+        const classes = styles;
         return (
             <div className="outside">
                
@@ -58,14 +67,15 @@ export default class SignIn extends React.Component{
                         <TextField
                             id="Username"
                             label="Username"
+                          
                             className={classNames(classes.textField, classes.dense)}
                             margin="dense"
-                            style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '30em', }}
+                            style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '<50>', }}
                         />
                     <TextField
                             id="standard-password-input"
                             className={classes.textField}
-                            style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '30em', }}
+                            style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '80em', }}
                         label="Password"
                         type="password"
                         title={this.state.name}
@@ -76,8 +86,9 @@ export default class SignIn extends React.Component{
                        
                         
                     </form>
-                    <Button width="100px" color="primary">Submit</Button>
-                   </Container>
+                    <Button color="primary">Login</Button>
+                </Container>
+              
                
             </div>
         );

@@ -14,12 +14,24 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "presets": [
-    "module:metro-react-native-babel-preset"
+    "module:metro-react-native-babel-preset",
+    "@babel/preset-env",
+    "@babel/preset-react"
   ],
   "env": {
     "production": {
       "plugins": [
         "transform-remove-console"
+      ]
+    },
+    "development": {
+      "presets": [
+        [
+          "@babel/preset-react",
+          {
+            "development": true
+          }
+        ]
       ]
     }
   },
@@ -39,11 +51,14 @@
     "@babel/core": "^7.1.5",
     "@babel/plugin-proposal-class-properties": "^7.1.0",
     "@babel/plugin-proposal-decorators": "^7.1.6",
+    "@babel/plugin-transform-react-jsx-self": "^7.0.0",
+    "@babel/plugin-transform-react-jsx-source": "^7.0.0",
     "@babel/preset-env": "^7.1.5",
     "@babel/preset-react": "^7.0.0",
     "@material-ui/core": "^3.5.1",
     "@material-ui/icons": "^3.0.1",
     "@trendmicro/react-sidenav": "^0.4.5",
+    "antd": "^3.10.8",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
     "babel-preset-env": "^1.7.0",
@@ -66,6 +81,7 @@
     "peer": "^0.2.10",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
+    "react-apollo": "^2.3.1",
     "react-background-image-loader": "0.0.5",
     "react-bigtext": "^1.0.1",
     "react-data-grid": "^5.0.4",
