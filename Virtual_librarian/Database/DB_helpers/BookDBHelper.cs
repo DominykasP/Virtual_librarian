@@ -11,13 +11,17 @@ namespace Database
 {
     public class BookDBHelper : IBookDBHelper
     {
+        private IInputOutput io = null;
         private Lazy<List<Book>> books = null;
 
         BookCollection<Book> bookCollection = new BookCollection<Book>();
 
-        public BookDBHelper()
+        public BookDBHelper(IInputOutput io)
         {
-            books = new Lazy<List<Book>>(() => FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile));
+            this.io = io;
+
+            books = new Lazy<List<Book>>(() => io.Read<List<Book>>());
+            //books = new Lazy<List<Book>>(() => FileIO.FileRead<List<Book>>(PathsToFiles.pathToBooksFile));
             /*if (books == null)
             {
                 books = new List<Book>();
@@ -100,7 +104,8 @@ namespace Database
             {
                 returned.ReturnBook();
 
-                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+                return io.Write<List<Book>>(books.Value);
+                //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
             }
             else
             {
@@ -131,7 +136,8 @@ namespace Database
             bool isSuccessful = books.Value.Remove(book);
             if (isSuccessful == true)
             {
-                return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+                return io.Write<List<Book>>(books.Value);
+                //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
             }
             else
             {
@@ -153,14 +159,16 @@ namespace Database
 
             taken.TakeBook(reader, DateTime.Now, DateTime.Now.AddMonths(1));
 
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+            return io.Write<List<Book>>(books.Value);
+            //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool AddNewBook(Book book)
         {
             books.Value.Add(book);
             bookCollection.Add(book);
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+            return io.Write<List<Book>>(books.Value);
+            //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool RenewBook(Book renewedBook)
@@ -177,7 +185,8 @@ namespace Database
 
             renewed.ExtendLoanPeriod(DateTime.Now.AddMonths(1));
 
-            return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
+            return io.Write<List<Book>>(books.Value);
+            //return FileIO.FileWrite<List<Book>>(PathsToFiles.pathToBooksFile, books.Value);
         }
 
         public bool isBookAlreadyTaken(Book bookToCheck)

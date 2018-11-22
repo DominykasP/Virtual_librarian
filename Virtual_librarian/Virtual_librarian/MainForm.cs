@@ -9,12 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Database;
 using FilesFunctions;
+using Interfaces;
 
 namespace Virtual_librarian
 {
     public partial class MainForm : MetroFramework.Forms.MetroForm
     {
-        public BookDBHelper bookDBHelper = new BookDBHelper();
+        static IInputOutput io = new DIReaderWriter(PathsToFiles.pathToBooksFile);
+        public BookDBHelper bookDBHelper = new BookDBHelper(io);
+
+        //public BookDBHelper bookDBHelper = new BookDBHelper();
         public HumanDBHelper humanDBHelper = new HumanDBHelper();
         private CopyFiles copyFiles = new CopyFiles();
 
