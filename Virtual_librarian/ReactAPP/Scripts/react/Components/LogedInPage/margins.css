@@ -1,0 +1,37 @@
+﻿body {
+    background-color: #f0e0af;
+    text-align:right;
+}
+.picture {
+    margin-top: -60px;
+}
+.center {
+    padding: var(--space) var(--space) 0;
+    margin: 100px;
+    background: none;
+    width: 66%;
+}
+.homepage {
+  
+    background-color: aliceblue;
+    margin-top:-600px;
+    margin-left:800px;
+    text-align: center;
+    align-items:flex-end;
+    color: blue;
+    font-size: 15px;
+    width: 500px;
+}
+
+.LinkColor{
+    color:blue;
+}
+.outside {
+    padding: var(--space) var(--space) 0;
+    margin: 100px;
+    background: none;
+    width: 66%;
+}
+.nomargins {
+    margin:auto;
+}

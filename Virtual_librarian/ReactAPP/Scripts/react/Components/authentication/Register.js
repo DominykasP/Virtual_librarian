@@ -1,10 +1,12 @@
 ﻿import React, { Component } from "react";
-import "./AuthenticationStyling.css"
+import "../LogedInPage/margins.css";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import { Link } from "react-router-dom";
+import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
@@ -47,32 +49,33 @@ export default class Register extends React.Component{
     render() {
         const classes = styles;
         return (
-            <div className="outside">
-
-                <Container>
+            <div>
+            <img className="picture" src={Background} alt="Background" />
+            <Container>
+                <div background-size = 'cover' className="homepage">
                     <h2>Sign Up</h2>
-                    <form noValidate autoComplete="off">
+                    <form  noValidate autoComplete="off">
                     <TextField
                         id="registerEmail"
                         label="Email"
-                            style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '30em', }}
-                        className={classNames(classes.textField, classes.dense)}
+                            style={{ marginRight: -120, marginTop: 8,   fontSize: '30em', }}
+                       
                         margin="dense"
                         
                     />
                     <TextField
                         id="registerUsername"
                         label="Username"
-                        className={classNames(classes.textField, classes.dense)}
-                            style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '30em', }}
+                        
+                            style={{ marginRight: -120,  marginTop: 68, fontSize: '30em', }}
                         margin="dense"
                        
                     />
                    
                     <TextField
                         id="registerPassword"
-                        className={classes.textField}
-                        style={{ marginLeft: 8, marginRight: 500, marginTop: 8, marginBottom: 8, width: 300, fontSize: '30em', }}
+                        
+                            style={{ marginRight: -120, marginTop: 128,  fontSize: '30em', }}
                         label="Password"
                         type="password"
                         title={this.state.password}
@@ -83,10 +86,10 @@ export default class Register extends React.Component{
                    
                     <TextField
                         id="register-repeat-password"
-                        className={classes.textField}
-                            style={{ marginLeft: 8, marginRight: 50, marginTop: 8, marginBottom: 8, width: 300, fontSize: '30em', }}
-                        label="Repeat password"
-                        type="password"
+                       
+                            style={{ marginTop: 188,  fontSize: '30em', }}
+                    label="Repeat password"
+                    type="password"
                         title={this.state.name}
 
                         margin="normal"
@@ -95,10 +98,12 @@ export default class Register extends React.Component{
                        
                     </form>
                     <div >
-                        <Button width="100px" color="primary"  >Register</Button>
-                        </div>
+                            <Button width="100px" color="primary"  >Register</Button>
+                            <Link to="/">Cancel</Link>
+                    </div>
+                </div>
                 </Container>
-            </div>
+         </div>
 
         );
     }
