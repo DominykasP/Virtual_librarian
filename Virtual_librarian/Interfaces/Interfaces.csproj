@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="DB helpers interfaces\IBookDBHelper.cs" />
     <Compile Include="DB helpers interfaces\IPersonDBHelper.cs" />
+    <Compile Include="IInputOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

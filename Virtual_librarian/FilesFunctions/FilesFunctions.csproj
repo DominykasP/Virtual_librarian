@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CopyFiles.cs" />
+    <Compile Include="DIReaderWriter.cs" />
     <Compile Include="FileCompare.cs" />
     <Compile Include="FileIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +86,12 @@
     <None Include="tessdata\eng.cube.word-freq" />
     <None Include="tessdata\eng.tesseract_cube.nn" />
     <None Include="tessdata\eng.traineddata" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj">
+      <Project>{5f0e20b8-c3c6-41d9-9f46-e7b974351552}</Project>
+      <Name>Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
