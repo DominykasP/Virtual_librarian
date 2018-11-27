@@ -3,17 +3,26 @@ import ReactDOM from "react-dom";
 import "./Components/LogedInPage/margins.css"
 import {  Route} from "react-router";
 import { HashRouter } from 'react-router-dom';
-import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
+import { ApolloProvider } from 'react-apollo';
+import ApolloClient from "apollo-boost";
+
+
+
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 // Be sure to include styles at some point, probably during your bootstraping
 
 
 //import Bootstrap from "./vendor/bootstrap-without-jquery";
 import Home from "./Components/Home";
+import Login from "./Components/authentication/SignIn";
 import Layout from "./Components/LogedInPage/Layout";
 import Footer from "./Components/LogedInPage/Footer/Footer";
 import Register from "./Components/authentication/Register";
 import LibraryHome from "./Components/LogedInPage/LibraryHome";
+
+const client = new ApolloClient({
+    uri: 'https://api-euwest.graphcms.com/v1/cjp05opy767ky01dgqqco0zjz/master',
+});
 
 const app = document.getElementById('app');
 
@@ -22,10 +31,11 @@ ReactDOM.render(
         
         <HashRouter basename="/">
         <Layout>
-        
-                <Route path="/" exact component={Home}></Route>
-                <Route path="/home" exact component={Home}></Route>
-                <Route path="/register" exact component={Register}></Route>
+                <ApolloProvider client={client}>
+                    <Route exact path="/" render={props => <Login{...props} />} />
+                    <Route exact path="/login" render={props => <Login{...props} />} />
+                    <Route exact path="/register" render={props => <Register{...props} />} />
+                </ApolloProvider>
            <LibraryHome/>
             
             

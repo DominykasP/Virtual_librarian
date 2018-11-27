@@ -29,24 +29,15 @@ export default class Home extends React.Component {
 
         return (
             <div>
-                
-            
-            <div>
-           
+                <div>
                     <img className="picture" src={Background} alt="Background" />
-            <div>
-                       
-                <LogIn/>
-                <div className="LinkColor">
-                {/*<section style={sectionStyle}>*/}
-                
+                    <div>   
+                    
+                        <div className="LinkColor">
+                        </div>
                     </div>
-                {/* </section>*/}
-                    </div>
-                
-                    </div>
-               
                 </div>
+            </div>
         );
     }
 }

@@ -149,8 +149,8 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\react\Components\authenticationBackground.js" />
     <Content Include="Scripts\react\Components\LogedInPage\Archives.js" />
     <Content Include="Scripts\react\Components\authentication\AuthenticationStyling.css" />
     <Content Include="Scripts\react\Components\LogedInPage\Contacts.js" />
@@ -181,6 +181,7 @@
     <Content Include="Scripts\react\Components\LogedInPage\LibraryObjects\LibraryBooks.js" />
     <Content Include="Scripts\react\Components\authentication\Register.js" />
     <Content Include="Scripts\react\Components\LogedInPage\LibraryObjects\LibraryStyling.css" />
+    <Content Include="Scripts\react\Components\LogedInPage\LoginHome.js" />
     <Content Include="Scripts\react\Components\LogedInPage\margins.css" />
     <Content Include="Scripts\react\Components\LogedInPage\Settings.js" />
     <Content Include="Scripts\react\Components\authentication\SignIn.js" />
@@ -207,7 +208,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <None Include="packages.config" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

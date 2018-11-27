@@ -5,10 +5,10 @@ import Archives from "./Archives";
 import Featured from "./Featured";
 import Layout from "./Layout";
 import Settings from "./Settings";
-import Home from "../Home";
+import Home from "./LoginHome";
 import Devices from "./Devices";
-import Register from "../authentication/Register";
-import Login from "../authentication/SignIn";
+
+
 import Library from "./LibraryObjects/Library";
 import MyBooks from "./LibraryObjects/LibraryBooks";
 import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/react-sidenav';
@@ -73,7 +73,7 @@ export default class LibraryHome extends React.Component {
                                         Contacts
                         </NavText>
                                 </NavItem>
-                                <NavItem eventKey="home">
+                                <NavItem eventKey="login">
                                     <NavIcon>
                                         <i class="fas fa-sign-out-alt" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
@@ -94,7 +94,7 @@ export default class LibraryHome extends React.Component {
                             <Route exact={true} path="/library/library" component={Library} />
                             <Route path="/library/mybooks" component={MyBooks} />
                             <Route path="/library/contacts" component={Contacts} />
-                            <Route exact={true} path="home"/>
+                            <Route exact={true} path="login"/>
                         </main>
                     </React.Fragment>
                 )}

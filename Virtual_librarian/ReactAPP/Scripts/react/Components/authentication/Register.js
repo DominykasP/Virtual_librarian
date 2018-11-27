@@ -7,6 +7,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import { Link } from "react-router-dom";
 import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
+import gql from 'graphql-tag';
+import 'babel-polyfill';
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
@@ -22,7 +24,6 @@ const styles = theme => ({
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 200,
-        fontSize: 50,
     },
     dense: {
         marginTop: 19,
@@ -30,82 +31,90 @@ const styles = theme => ({
     menu: {
         width: 200,
     },
-    resizeFont: {
-        fontSize: 50,
-    },
 });
 
-export default class Register extends React.Component{
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            name: "Cat in the Hat",
-            email: "",
-            password: "",
-            repeatpassword: "",
-        };
-    }
+class Register extends React.Component{
+    state = {
+        username: 'Cat in the Hat',
+        email: '',
+        password: 'Controlled',
+        repeatpassword: 'EUR',
+    };
+    handleChange = name => event => {
+        this.setState({
+            [name]: event.target.value,
+        });
+    };
+    onSubmit = async () => {
+        const response = await this.props.mutate({
+            variables: this.state,
+        });
+        console.log(response);
+    };
     render() {
-        const classes = styles;
+        const { classes } = this.props;
+       
         return (
             <div>
-            <img className="picture" src={Background} alt="Background" />
-            <Container>
-                <div background-size = 'cover' className="homepage">
-                    <h2>Sign Up</h2>
-                    <form  noValidate autoComplete="off">
-                    <TextField
-                        id="registerEmail"
-                        label="Email"
-                            style={{ marginRight: -120, marginTop: 8,   fontSize: '30em', }}
-                       
-                        margin="dense"
-                        
-                    />
-                    <TextField
-                        id="registerUsername"
-                        label="Username"
-                        
-                            style={{ marginRight: -120,  marginTop: 68, fontSize: '30em', }}
-                        margin="dense"
-                       
-                    />
-                   
-                    <TextField
-                        id="registerPassword"
-                        
-                            style={{ marginRight: -120, marginTop: 128,  fontSize: '30em', }}
-                        label="Password"
-                        type="password"
-                        title={this.state.password}
-
-                       
-                        autoComplete="current-password"
-                    />
-                   
-                    <TextField
-                        id="register-repeat-password"
-                       
-                            style={{ marginTop: 188,  fontSize: '30em', }}
-                    label="Repeat password"
-                    type="password"
-                        title={this.state.name}
-
-                        margin="normal"
-                        autoComplete="current-password"
-                    />
-                       
+                <img className="picture" src={Background} alt="Background" />
+                    <div background-size='cover' className="homepage">
+                    <h2>Sign In</h2>
+                    <form className={classes.container} noValidate autoComplete="off">
+                        <TextField
+                            id="username"
+                            label="Username"
+                            className={classes.textField}
+                            value={this.state.username}
+                            onChange={this.handleChange('username')}
+                            margin="normal"
+                        />
+                        <TextField
+                            id="email"
+                            label="Email"
+                            className={classes.textField}
+                            value={this.state.email}
+                            onChange={this.handleChange('email')}
+                            margin="normal"
+                        />
+                        <TextField
+                            id="password"
+                            label="Password"
+                            className={classes.textField}
+                            value={this.state.password}
+                            onChange={this.handleChange('password')}
+                            type="password"
+                            autoComplete="current-password"
+                            margin="normal"
+                        />
+                        <TextField
+                            id="repeatpassword"
+                            label="Repeat Password"
+                            className={classes.textField}
+                            value={this.state.repeatpassword}
+                            onChange={this.handleChange('repeatpassword')}
+                            type="password"
+                            autoComplete="repeat-password"
+                            margin="normal"
+                        />
                     </form>
-                    <div >
-                            <Button width="100px" color="primary"  >Register</Button>
-                            <Link to="/">Cancel</Link>
+                    <Button onClick={() => this.onSubmit()} type = "primary">Submit</Button>
                     </div>
-                </div>
-                </Container>
-         </div>
-
+            </div>
         );
     }
+
 }
+
+const mutation = gql`
+mutation($username: String!, $email: String!, $password: String!, $repeatpassword: String!) {
+	register(username: $username, email: $email, password: $password, repeatpassword: $repeatpassword) {
+	  id
+	} 
+}
+`;
+
+
+
+export default withStyles(mutation, styles)(Register);
+
 Register.id = "app";
