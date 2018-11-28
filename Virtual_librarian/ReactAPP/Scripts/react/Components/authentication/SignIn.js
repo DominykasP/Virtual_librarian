@@ -46,7 +46,7 @@ const styles = theme => ({
     },
 });
 
-class SignIn extends React.Component{
+class SignIn extends React.Component {
     /*Button*/
     const
     state = {
@@ -57,70 +57,84 @@ class SignIn extends React.Component{
         super(props);
 
         this.state = {
-            name: "Cat in the Hat",
-            age: "",
-            multiline: "Controlled",
-            currency: "EUR", };
+            username: '',
+            password: ''
+        }
+        this.login = this.login.bind(this);
+        this.onChange = this.handleChange.bind(this);
     }
-    
-
-    
-    render() {
-        const { classes } = this.props;
-        const size = this.state.size;
+    login() {
+        console.log("Login function");
+    }
+    handleChange = name => event => {
         
-        return (
-           
-           <div>
-            <img className="picture" src={Background} alt="Background" />
-            <Container>
-                    <div background-size='cover' className="homepage">
-                    <h2>Sign In</h2>
+        this.setState({
+            [name]: event.target.value,
+        });
+        console.log(this.state);
+    };
 
-                    <form className={classes.container} noValidate autoComplete="off">
-                        <TextField
-                            id="Username"
-                            label="Username"
-                            InputProps={{
-                                classes: {
-                                    input: classes.resizeFont,
-                                },
-                            }}
-                            className={classes.textField}
-                            margin="dense"
-                            style={{ marginRight: -120, marginTop: 20, fontSize: '<50>', }}
-                            
-                        />
-                        <TextField
-                            id="standard-password-input"
-                            style={{ marginTop:80,  fontSize: '80em', }}
-                            label="Password"
-                            type="password"
-                            title={this.state.name}
-                            InputProps={{
-                                classes: {
-                                    input: classes.resizeFont,
-                                },
-                            }}
-                            className={classes.textField}
-                            margin="normal"
-                            autoComplete="current-password"
-                        />
-                    </form>
+        render() {
+            const { classes } = this.props;
+            const size = this.state.size;
 
-                    <Link to="/library/home">
-                        <Button size = "large" variant="contained" color="primary" className={classes.button}>SignIn</Button>
-                    </Link>
+            return (
 
-                    <Link to="/register">
-                        <Button color="primary">Register</Button>
-                    </Link>
+                <div>
+                    <img className="picture" src={Background} alt="Background" />
+                    <Container>
+                        <div background-size='cover' className="homepage">
+                            <h2>Sign In</h2>
+
+                            <form className={classes.container} noValidate autoComplete="off">
+                                <TextField
+                                    id="Username"
+                                    label="Username"
+                                    onChange={this.handleChange('username')}
+                                    value={this.state.username}
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resizeFont,
+                                        },
+                                    }}
+                                    className={classes.textField}
+                                    margin="dense"
+                                    style={{ marginRight: -120, marginTop: 20, fontSize: '<50>', }}
+
+                                />
+                                <TextField
+                                    id="standard-password-input"
+                                    style={{ marginTop: 80, fontSize: '80em', }}
+                                    label="Password"
+                                    type="password"
+                                    title={this.state.name}
+                                    value={this.state.password}
+                                    onChange={this.handleChange('password')}
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resizeFont,
+                                        },
+                                    }}
+                                    className={classes.textField}
+                                    margin="normal"
+                                    autoComplete="current-password"
+                                />
+                            </form>
+
+                            {/*<Link to="/library/home">*/}
+                            <Button size="large" onClick={this.login} variant="contained" color="primary" className={classes.button}>SignIn</Button>
+                            {/*</Link>*/}
+
+                            <Link to="/register">
+                                <Button color="primary">Register</Button>
+                            </Link>
+                        </div>
+                    </Container>
                 </div>
-                </Container>
-                </div>
-        );
-    }
+            );
+        }
 }
+
 
 export default withStyles(styles)(SignIn);
 SignIn.id = "app";
