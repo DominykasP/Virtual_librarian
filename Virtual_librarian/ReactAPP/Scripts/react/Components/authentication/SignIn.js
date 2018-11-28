@@ -65,7 +65,7 @@ class SignIn extends React.Component {
     }
     login() {
         console.log("Login function");
-    }
+    };
     handleChange = name => event => {
         
         this.setState({
@@ -121,9 +121,9 @@ class SignIn extends React.Component {
                                 />
                             </form>
 
-                            {/*<Link to="/library/home">*/}
+                           <Link to="/library/home">
                             <Button size="large" onClick={this.login} variant="contained" color="primary" className={classes.button}>SignIn</Button>
-                            {/*</Link>*/}
+                            </Link>
 
                             <Link to="/register">
                                 <Button color="primary">Register</Button>

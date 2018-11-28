@@ -75,7 +75,7 @@ export default class LibraryHome extends React.Component {
                                 </NavItem>
                                 <NavItem eventKey="login">
                                     <NavIcon>
-                                        <i class="fas fa-sign-out-alt" style={{ fontSize: '1.75em' }} />
+                                        <i className="fas fa-sign-out-alt" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
                                     <NavText>
                                         Sign Out
