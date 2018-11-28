@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="api/PersonService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="api/PersonService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+    <s:schema elementFormDefault="qualified" targetNamespace="api/PersonService">
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -214,7 +214,7 @@
   <wsdl:binding name="PersonServiceSoap" type="tns:PersonServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <soap:operation soapAction="api/PersonService/HelloWorld" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -223,7 +223,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddNewPerson">
-      <soap:operation soapAction="http://tempuri.org/AddNewPerson" style="document" />
+      <soap:operation soapAction="api/PersonService/AddNewPerson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -232,7 +232,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeletePerson">
-      <soap:operation soapAction="http://tempuri.org/DeletePerson" style="document" />
+      <soap:operation soapAction="api/PersonService/DeletePerson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -241,7 +241,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="EditPerson">
-      <soap:operation soapAction="http://tempuri.org/EditPerson" style="document" />
+      <soap:operation soapAction="api/PersonService/EditPerson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -250,7 +250,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPersonByID">
-      <soap:operation soapAction="http://tempuri.org/GetPersonByID" style="document" />
+      <soap:operation soapAction="api/PersonService/GetPersonByID" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -259,7 +259,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPersonByNameSurnamePassword">
-      <soap:operation soapAction="http://tempuri.org/GetPersonByNameSurnamePassword" style="document" />
+      <soap:operation soapAction="api/PersonService/GetPersonByNameSurnamePassword" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -268,7 +268,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAllPersons">
-      <soap:operation soapAction="http://tempuri.org/GetAllPersons" style="document" />
+      <soap:operation soapAction="api/PersonService/GetAllPersons" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -277,7 +277,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getNextId">
-      <soap:operation soapAction="http://tempuri.org/getNextId" style="document" />
+      <soap:operation soapAction="api/PersonService/getNextId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -289,7 +289,7 @@
   <wsdl:binding name="PersonServiceSoap12" type="tns:PersonServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <soap12:operation soapAction="api/PersonService/HelloWorld" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -298,7 +298,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddNewPerson">
-      <soap12:operation soapAction="http://tempuri.org/AddNewPerson" style="document" />
+      <soap12:operation soapAction="api/PersonService/AddNewPerson" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -307,7 +307,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeletePerson">
-      <soap12:operation soapAction="http://tempuri.org/DeletePerson" style="document" />
+      <soap12:operation soapAction="api/PersonService/DeletePerson" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -316,7 +316,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="EditPerson">
-      <soap12:operation soapAction="http://tempuri.org/EditPerson" style="document" />
+      <soap12:operation soapAction="api/PersonService/EditPerson" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -325,7 +325,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPersonByID">
-      <soap12:operation soapAction="http://tempuri.org/GetPersonByID" style="document" />
+      <soap12:operation soapAction="api/PersonService/GetPersonByID" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -334,7 +334,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetPersonByNameSurnamePassword">
-      <soap12:operation soapAction="http://tempuri.org/GetPersonByNameSurnamePassword" style="document" />
+      <soap12:operation soapAction="api/PersonService/GetPersonByNameSurnamePassword" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -343,7 +343,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAllPersons">
-      <soap12:operation soapAction="http://tempuri.org/GetAllPersons" style="document" />
+      <soap12:operation soapAction="api/PersonService/GetAllPersons" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -352,7 +352,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getNextId">
-      <soap12:operation soapAction="http://tempuri.org/getNextId" style="document" />
+      <soap12:operation soapAction="api/PersonService/getNextId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

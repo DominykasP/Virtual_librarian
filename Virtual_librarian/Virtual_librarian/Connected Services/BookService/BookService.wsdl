@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="api/BookService" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="api/BookService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:types>
-    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+    <s:schema elementFormDefault="qualified" targetNamespace="api/BookService">
       <s:element name="HelloWorld">
         <s:complexType />
       </s:element>
@@ -381,7 +381,7 @@
   <wsdl:binding name="BookServiceSoap" type="tns:BookServiceSoap">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
-      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <soap:operation soapAction="api/BookService/HelloWorld" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -390,7 +390,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookById">
-      <soap:operation soapAction="http://tempuri.org/GetBookById" style="document" />
+      <soap:operation soapAction="api/BookService/GetBookById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -399,7 +399,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookByCode">
-      <soap:operation soapAction="http://tempuri.org/GetBookByCode" style="document" />
+      <soap:operation soapAction="api/BookService/GetBookByCode" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -408,7 +408,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookByIsbn">
-      <soap:operation soapAction="http://tempuri.org/GetBookByIsbn" style="document" />
+      <soap:operation soapAction="api/BookService/GetBookByIsbn" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -417,7 +417,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAllBooks">
-      <soap:operation soapAction="http://tempuri.org/GetAllBooks" style="document" />
+      <soap:operation soapAction="api/BookService/GetAllBooks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -426,7 +426,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetReadersBooks">
-      <soap:operation soapAction="http://tempuri.org/GetReadersBooks" style="document" />
+      <soap:operation soapAction="api/BookService/GetReadersBooks" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -435,7 +435,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReturnBook">
-      <soap:operation soapAction="http://tempuri.org/ReturnBook" style="document" />
+      <soap:operation soapAction="api/BookService/ReturnBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -444,7 +444,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Find">
-      <soap:operation soapAction="http://tempuri.org/Find" style="document" />
+      <soap:operation soapAction="api/BookService/Find" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -453,7 +453,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="EditBook">
-      <soap:operation soapAction="http://tempuri.org/EditBook" style="document" />
+      <soap:operation soapAction="api/BookService/EditBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -462,7 +462,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteBook">
-      <soap:operation soapAction="http://tempuri.org/DeleteBook" style="document" />
+      <soap:operation soapAction="api/BookService/DeleteBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -471,7 +471,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="TakeBook">
-      <soap:operation soapAction="http://tempuri.org/TakeBook" style="document" />
+      <soap:operation soapAction="api/BookService/TakeBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -480,7 +480,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddNewBook">
-      <soap:operation soapAction="http://tempuri.org/AddNewBook" style="document" />
+      <soap:operation soapAction="api/BookService/AddNewBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -489,7 +489,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RenewBook">
-      <soap:operation soapAction="http://tempuri.org/RenewBook" style="document" />
+      <soap:operation soapAction="api/BookService/RenewBook" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -498,7 +498,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsBookAlreadyTaken">
-      <soap:operation soapAction="http://tempuri.org/IsBookAlreadyTaken" style="document" />
+      <soap:operation soapAction="api/BookService/IsBookAlreadyTaken" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -507,7 +507,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetNextId">
-      <soap:operation soapAction="http://tempuri.org/GetNextId" style="document" />
+      <soap:operation soapAction="api/BookService/GetNextId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -519,7 +519,7 @@
   <wsdl:binding name="BookServiceSoap12" type="tns:BookServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="HelloWorld">
-      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <soap12:operation soapAction="api/BookService/HelloWorld" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -528,7 +528,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookById">
-      <soap12:operation soapAction="http://tempuri.org/GetBookById" style="document" />
+      <soap12:operation soapAction="api/BookService/GetBookById" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -537,7 +537,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookByCode">
-      <soap12:operation soapAction="http://tempuri.org/GetBookByCode" style="document" />
+      <soap12:operation soapAction="api/BookService/GetBookByCode" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -546,7 +546,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetBookByIsbn">
-      <soap12:operation soapAction="http://tempuri.org/GetBookByIsbn" style="document" />
+      <soap12:operation soapAction="api/BookService/GetBookByIsbn" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -555,7 +555,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAllBooks">
-      <soap12:operation soapAction="http://tempuri.org/GetAllBooks" style="document" />
+      <soap12:operation soapAction="api/BookService/GetAllBooks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -564,7 +564,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetReadersBooks">
-      <soap12:operation soapAction="http://tempuri.org/GetReadersBooks" style="document" />
+      <soap12:operation soapAction="api/BookService/GetReadersBooks" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -573,7 +573,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="ReturnBook">
-      <soap12:operation soapAction="http://tempuri.org/ReturnBook" style="document" />
+      <soap12:operation soapAction="api/BookService/ReturnBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -582,7 +582,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="Find">
-      <soap12:operation soapAction="http://tempuri.org/Find" style="document" />
+      <soap12:operation soapAction="api/BookService/Find" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -591,7 +591,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="EditBook">
-      <soap12:operation soapAction="http://tempuri.org/EditBook" style="document" />
+      <soap12:operation soapAction="api/BookService/EditBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -600,7 +600,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="DeleteBook">
-      <soap12:operation soapAction="http://tempuri.org/DeleteBook" style="document" />
+      <soap12:operation soapAction="api/BookService/DeleteBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -609,7 +609,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="TakeBook">
-      <soap12:operation soapAction="http://tempuri.org/TakeBook" style="document" />
+      <soap12:operation soapAction="api/BookService/TakeBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -618,7 +618,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="AddNewBook">
-      <soap12:operation soapAction="http://tempuri.org/AddNewBook" style="document" />
+      <soap12:operation soapAction="api/BookService/AddNewBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -627,7 +627,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="RenewBook">
-      <soap12:operation soapAction="http://tempuri.org/RenewBook" style="document" />
+      <soap12:operation soapAction="api/BookService/RenewBook" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -636,7 +636,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="IsBookAlreadyTaken">
-      <soap12:operation soapAction="http://tempuri.org/IsBookAlreadyTaken" style="document" />
+      <soap12:operation soapAction="api/BookService/IsBookAlreadyTaken" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -645,7 +645,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetNextId">
-      <soap12:operation soapAction="http://tempuri.org/GetNextId" style="document" />
+      <soap12:operation soapAction="api/BookService/GetNextId" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

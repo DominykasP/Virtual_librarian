@@ -9,7 +9,7 @@ using Database;
 /// <summary>
 /// Summary description for PersonService
 /// </summary>
-[WebService]
+[WebService(Namespace = "api/PersonService")]
 [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
 // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
 // [System.Web.Script.Services.ScriptService]
@@ -69,7 +69,7 @@ public class PersonService : System.Web.Services.WebService
     [WebMethod]
     public int getNextId()
     {
-        return humanDBHelper.getNextId();
+        return humanDBHelper.GetNextId();
     }
 
     public static Person returnPerson(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
