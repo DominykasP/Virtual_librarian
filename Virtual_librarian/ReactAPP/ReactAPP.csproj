@@ -153,6 +153,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\react\Components\authentication\Utils.js" />
     <Content Include="Scripts\react\Components\LogedInPage\Archives.js" />
     <Content Include="Scripts\react\Components\authentication\AuthenticationStyling.css" />
     <Content Include="Scripts\react\Components\LogedInPage\Contacts.js" />

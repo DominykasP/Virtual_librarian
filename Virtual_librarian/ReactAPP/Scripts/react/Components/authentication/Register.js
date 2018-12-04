@@ -1,18 +1,21 @@
 ﻿import React, { Component } from "react";
 import "../LogedInPage/margins.css";
+import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { Link } from "react-router-dom";
+import Button from '@material-ui/core/Button';
+import 'antd/dist/antd.css';
+
 import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
 import gql from 'graphql-tag';
 import 'babel-polyfill';
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
-    Button,
+    
 } from 'reactstrap';
 
 const styles = theme => ({
@@ -31,14 +34,18 @@ const styles = theme => ({
     menu: {
         width: 200,
     },
+    resizeFont: {
+        fontSize: 12,
+    },
 });
 
 class Register extends React.Component{
     state = {
-        username: 'Cat in the Hat',
+        username: '',
+        surename: '',
         email: '',
-        password: 'Controlled',
-        repeatpassword: 'EUR',
+        password: '',
+        repeatpassword: '',
     };
     handleChange = name => event => {
         this.setState({
@@ -67,6 +74,26 @@ class Register extends React.Component{
                             value={this.state.username}
                             onChange={this.handleChange('username')}
                             margin="normal"
+                            InputProps={{
+                                classes: {
+                                    input: classes.resizeFont,
+                                },
+                            }}
+                            style={{ marginRight: 120, marginTop: 30, }}
+                        />
+                        <TextField
+                            id="surename"
+                            label="Surename"
+                            className={classes.textField}
+                            value={this.state.surename}
+                            onChange={this.handleChange('surename')}
+                            margin="normal"
+                            InputProps={{
+                                classes: {
+                                    input: classes.resizeFont,
+                                },
+                            }}
+                            style={{ marginRight: 120, marginTop: 30, }}
                         />
                         <TextField
                             id="email"
@@ -75,6 +102,12 @@ class Register extends React.Component{
                             value={this.state.email}
                             onChange={this.handleChange('email')}
                             margin="normal"
+                            InputProps={{
+                                classes: {
+                                    input: classes.resizeFont,
+                                },
+                            }}
+                            style={{ marginRight: 120, marginTop: 30, }}
                         />
                         <TextField
                             id="password"
@@ -85,6 +118,12 @@ class Register extends React.Component{
                             type="password"
                             autoComplete="current-password"
                             margin="normal"
+                            InputProps={{
+                                classes: {
+                                    input: classes.resizeFont,
+                                },
+                            }}
+                            style={{ marginRight: 120, marginTop: 30, }}
                         />
                         <TextField
                             id="repeatpassword"
@@ -95,9 +134,20 @@ class Register extends React.Component{
                             type="password"
                             autoComplete="repeat-password"
                             margin="normal"
+                            InputProps={{
+                                classes: {
+                                    input: classes.resizeFont,
+                                },
+                            }}
+                            style={{ marginRight: 120, marginTop: 30, }}
                         />
                     </form>
-                    <Button onClick={() => this.onSubmit()} type = "primary">Submit</Button>
+                    <Link to="/login">
+                        <Button  onClick={() => this.onSubmit()} color="primary">Submit</Button>
+                    </Link>  
+                    <Link to="/login">
+                        <Button onClick={() => this.onSubmit()} color="primary">Cancel</Button>
+                    </Link>  
                     </div>
             </div>
         );
@@ -105,16 +155,10 @@ class Register extends React.Component{
 
 }
 
-const mutation = gql`
-mutation($username: String!, $email: String!, $password: String!, $repeatpassword: String!) {
-	register(username: $username, email: $email, password: $password, repeatpassword: $repeatpassword) {
-	  id
-	} 
-}
-`;
 
 
 
-export default withStyles(mutation, styles)(Register);
+
+export default withStyles(styles)(Register);
 
 Register.id = "app";

@@ -1,33 +1,65 @@
 ﻿import React from "react";
 import { render } from "react-dom";
 import { makeData, getBooksFromServer, Logo, Tips } from "./Utils";
-
+import "xml-js";
 // Import React Table
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 import "./LibraryStyling.css"
 
+var response = getBooksFromServer(function (response) {
+    console.log(response);
+    return response;
+});
+
+var reponseafter;
 export default class Library extends React.Component {
+    
     constructor() {
         super();
         this.state = {
-            booksInXML: getBooksFromServer(function (response) {
-                console.log(response);
-            }),
-            data: makeData()
-        };
+            booksInXML:[]
+        }
         //this.handleClick();
-
+      
         //this.handleClick = this.handleClick.bind(this)
     }
+    onLoad = async () => {
+
+        await getBooksFromServer(function (res) {
+
+            response = res;
+        })
+
+
+    }
+    onClick = async () => {
+        //getBooksFromServer(callback);
+        var response1 = await ({
+            
+            booksInXML: getBooksFromServer(await function (res) {
+                
+                response = res;
+                return res;
+            }),
+            
+        });
+        //reponseafter = response;
+        console.debug(response);
+        var convert = require('xml-js');
+        var result2 = convert.xml2json(response, { compact: false, spaces: 100 });
+        
+        console.debug(result2);
+    };
 
     render() {
         return (
-            <div className='outside'>
-                <button className='button'>
+            <div onChange={() => this.onLoad()} className='outside'>
+                <button onClick={() => this.onClick()} className='button'>
                     Click Me
                 </button>
-                <p>{console.log(this.state.booksInXML)}</p>
+                
+                
                 
             </div>
         )

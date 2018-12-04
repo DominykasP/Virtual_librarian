@@ -1,6 +1,7 @@
 ﻿
-import React, { Component } from "react";
+import React, { Component, useCallback } from "react";
 import "../LogedInPage/margins.css"
+import { getPersonByLoginData} from "./Utils";
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 //import { Button, Radio, Icon } from 'antd';
@@ -11,6 +12,9 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
+//import { getPersonByLoginData } from "./Utils";
+import axios from 'axios';
+import { render } from "react-dom";
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
@@ -45,26 +49,103 @@ const styles = theme => ({
        fontSize: 50,
     },
 });
-
+var callback;
 class SignIn extends React.Component {
     /*Button*/
-    const
-    state = {
-        size: 'large',
-    };
+    
+    
     /*textboxes state*/
     constructor(props) {
         super(props);
 
         this.state = {
             username: '',
-            password: ''
+            surname: '',
+            password: '',
+            
         }
         this.login = this.login.bind(this);
-        this.onChange = this.handleChange.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.getPerson = this.getPerson.bind(this);
     }
-    login() {
-        console.log("Login function");
+    getPerson = async() => {
+        let xmls =
+            '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\
+         <soap12:Body>\
+            <GetPersonByNameSurnamePassword xmlns="api/PersonService">\
+                <name>' + "E" + '</name>\
+                <surname>' + "P" + '</surname>\
+                <password>' + "s" + '</password>\
+            </GetPersonByNameSurnamePassword>\
+        </soap12:Body >\
+        </soap12:Envelope >';
+
+
+         axios.post('http://localhost:52312/PersonService.asmx?wsdl',
+            xmls,
+            {
+                headers:
+                {
+                    'Content-Type': 'text/xml',
+                    SOAPAction: "api/PersonService/GetPersonByNameSurnamePassword"
+                }
+            }).then(function (response) {
+                console.log(response.data);
+               /* var doc = new DOMParser().parseFromString(response, 'text/xml');
+                var valueXML = doc.getElementsByTagName('return');
+                var temps = valueXML[0].children;
+                var nortifications = [];
+                for (var i = 0; i < temps.length; i++) {
+                    var temp = temps[i].children;
+                    var obj = {};
+                    for (var j = 0; j < temp.length; j++) {
+                        var property = temp[j];
+
+                        obj[property.localName] = property.innerHTML;
+                    }
+                    console.log(JSON.stringify(obj));
+                    nortifications.push(obj);
+                }*/
+                
+
+
+                return response.data;
+                /* atsakymas yra res.data */
+
+            }).catch(err => {
+                console.log("unable to load");
+            });
+}
+  login = async() => {
+
+      var get = await getPersonByLoginData(this.state.username, this.state.surname, this.state.password, callback)
+          .then((response) => {
+              //console.log(response);
+              callback = response;
+              return callback;
+          })
+          ; 
+      console.log("something");
+      console.log(callback.data);
+      var doc = new DOMParser().parseFromString(callback.data, 'text/xml');
+      var valueXML = doc.getElementsByTagName('GetPersonByNameSurnamePasswordResult');
+      var temps = valueXML[0].children;
+      var nortifications = [];
+      for (var i = 0; i < temps.length; i++) {
+          var temp = temps[i].children;
+          var obj = {};
+          for (var j = 0; j < temp.length; j++) {
+              var property = temp[j];
+
+              obj[property.localName] = property.innerHTML;
+          }
+          
+          console.log(JSON.stringify(obj));
+
+          nortifications.push(obj);
+      }
+      console.log(valueXML[0].children);
+      <h3>callback</h3>
     };
     handleChange = name => event => {
         
@@ -89,7 +170,7 @@ class SignIn extends React.Component {
                             <form className={classes.container} noValidate autoComplete="off">
                                 <TextField
                                     id="Username"
-                                    label="Username"
+                                    label="Name"
                                     onChange={this.handleChange('username')}
                                     value={this.state.username}
                                     InputProps={{
@@ -99,12 +180,27 @@ class SignIn extends React.Component {
                                     }}
                                     className={classes.textField}
                                     margin="dense"
-                                    style={{ marginRight: -120, marginTop: 20, fontSize: '<50>', }}
+                                    style={{  marginTop: 20, }}
+
+                                />
+                                <TextField
+                                    id="Surename"
+                                    label="Surname"
+                                    onChange={this.handleChange('surname')}
+                                    value={this.state.surname}
+                                    InputProps={{
+                                        classes: {
+                                            input: classes.resizeFont,
+                                        },
+                                    }}
+                                    className={classes.textField}
+                                    margin="dense"
+                                    style={{ marginRight: 120,  marginTop: 50,}}
 
                                 />
                                 <TextField
                                     id="standard-password-input"
-                                    style={{ marginTop: 80, fontSize: '80em', }}
+                                    style={{ marginTop: 120, marginTop:50, }}
                                     label="Password"
                                     type="password"
                                     title={this.state.name}
@@ -121,7 +217,7 @@ class SignIn extends React.Component {
                                 />
                             </form>
 
-                           <Link to="/library/home">
+                            <Link to="/library/home">
                             <Button size="large" onClick={this.login} variant="contained" color="primary" className={classes.button}>SignIn</Button>
                             </Link>
 
@@ -130,6 +226,7 @@ class SignIn extends React.Component {
                             </Link>
                         </div>
                     </Container>
+                    
                 </div>
             );
         }

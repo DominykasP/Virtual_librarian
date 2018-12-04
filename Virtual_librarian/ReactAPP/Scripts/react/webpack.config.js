@@ -38,7 +38,9 @@ module.exports = {
             },
           
             watch: true,
-            
+            node: {
+                fs: 'empty'
+            },
             module: {
                 
             

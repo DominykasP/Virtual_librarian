@@ -49,14 +49,15 @@ export function getBooksFromServer(callback) {
                 SOAPAction: 'api/BookService/GetAllBooks'
             }
         }).then(res => {
+            //console.log(res);
             var XMLParser = require('react-xml-parser');
             var InXML = new XMLParser().parseFromString(res.data);
             var booksInXML = InXML.getElementsByTagName('Book');
             //console.log(booksInXML);
-            callback(booksInXML);
+            callback(res);
             //return booksInXML;
-        }).catch(err => {
-            console.log(err.response.data)
+        }).catch(Error => {
+            console.log(Error.response.data)
             //return err.response.data;
         });
 }
