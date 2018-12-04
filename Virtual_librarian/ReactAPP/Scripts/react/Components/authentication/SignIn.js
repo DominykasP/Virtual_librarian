@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Redirect } from 'react-router-dom'
 import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
 //import { getPersonByLoginData } from "./Utils";
 import axios from 'axios';
@@ -62,60 +63,16 @@ class SignIn extends React.Component {
             username: '',
             surname: '',
             password: '',
+            link: "/login",
+            authenticated: 0
             
         }
         this.login = this.login.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.getPerson = this.getPerson.bind(this);
+        
+        this.protectedComponent = this.protectedComponent.bind(this);
     }
-    getPerson = async() => {
-        let xmls =
-            '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\
-         <soap12:Body>\
-            <GetPersonByNameSurnamePassword xmlns="api/PersonService">\
-                <name>' + "E" + '</name>\
-                <surname>' + "P" + '</surname>\
-                <password>' + "s" + '</password>\
-            </GetPersonByNameSurnamePassword>\
-        </soap12:Body >\
-        </soap12:Envelope >';
-
-
-         axios.post('http://localhost:52312/PersonService.asmx?wsdl',
-            xmls,
-            {
-                headers:
-                {
-                    'Content-Type': 'text/xml',
-                    SOAPAction: "api/PersonService/GetPersonByNameSurnamePassword"
-                }
-            }).then(function (response) {
-                console.log(response.data);
-               /* var doc = new DOMParser().parseFromString(response, 'text/xml');
-                var valueXML = doc.getElementsByTagName('return');
-                var temps = valueXML[0].children;
-                var nortifications = [];
-                for (var i = 0; i < temps.length; i++) {
-                    var temp = temps[i].children;
-                    var obj = {};
-                    for (var j = 0; j < temp.length; j++) {
-                        var property = temp[j];
-
-                        obj[property.localName] = property.innerHTML;
-                    }
-                    console.log(JSON.stringify(obj));
-                    nortifications.push(obj);
-                }*/
-                
-
-
-                return response.data;
-                /* atsakymas yra res.data */
-
-            }).catch(err => {
-                console.log("unable to load");
-            });
-}
+    
   login = async() => {
 
       var get = await getPersonByLoginData(this.state.username, this.state.surname, this.state.password, callback)
@@ -125,26 +82,34 @@ class SignIn extends React.Component {
               return callback;
           })
           ; 
-      console.log("something");
-      console.log(callback.data);
-      var doc = new DOMParser().parseFromString(callback.data, 'text/xml');
-      var valueXML = doc.getElementsByTagName('GetPersonByNameSurnamePasswordResult');
-      var temps = valueXML[0].children;
-      var nortifications = [];
-      for (var i = 0; i < temps.length; i++) {
-          var temp = temps[i].children;
-          var obj = {};
-          for (var j = 0; j < temp.length; j++) {
-              var property = temp[j];
+   
+      var XMLParser = require('react-xml-parser');
+      
+      var InXML = new XMLParser().parseFromString(callback.data);
+      
+      var UserinXML = InXML.getElementsByTagName('GetPersonByNameSurnamePasswordResponse');
+      console.log(UserinXML);
+      this.state.authenticated  = UserinXML[0].children.length;
+      /*console.log(UserinXML[0].children[0].children[0].value);*/
+      console.log("authenticated");
+      console.log(this.state.authenticated);
+     
+      console.log("ilgis");
+      console.log(UserinXML[0].children.length);
+      console.log(UserinXML);
+      if (UserinXML[0].children.length == 0) {
+          console.log("yey");
 
-              obj[property.localName] = property.innerHTML;
-          }
-          
-          console.log(JSON.stringify(obj));
-
-          nortifications.push(obj);
       }
-      console.log(valueXML[0].children);
+      if (this.state.authenticated > 0) {
+          console.log("yeyyey");
+          let path = `/library/home`;
+          this.props.history.push(path);
+      }
+
+
+
+
       <h3>callback</h3>
     };
     handleChange = name => event => {
@@ -154,6 +119,14 @@ class SignIn extends React.Component {
         });
         console.log(this.state);
     };
+    protectedComponent = () => {
+        if (this.state.authenticated == 0) {
+            return <Redirect to='/login' />
+
+        }
+        else if (this.state.authenticated > 0)
+            return <Redirect to='/library/home' />
+    }
 
         render() {
             const { classes } = this.props;
@@ -172,6 +145,7 @@ class SignIn extends React.Component {
                                     id="Username"
                                     label="Name"
                                     onChange={this.handleChange('username')}
+
                                     value={this.state.username}
                                     InputProps={{
                                         classes: {
@@ -180,13 +154,14 @@ class SignIn extends React.Component {
                                     }}
                                     className={classes.textField}
                                     margin="dense"
-                                    style={{  marginTop: 20, }}
+                                    style={{ marginTop: 20, }}
 
                                 />
                                 <TextField
                                     id="Surename"
                                     label="Surname"
                                     onChange={this.handleChange('surname')}
+
                                     value={this.state.surname}
                                     InputProps={{
                                         classes: {
@@ -195,17 +170,18 @@ class SignIn extends React.Component {
                                     }}
                                     className={classes.textField}
                                     margin="dense"
-                                    style={{ marginRight: 120,  marginTop: 50,}}
+                                    style={{ marginRight: 120, marginTop: 50, }}
 
                                 />
                                 <TextField
                                     id="standard-password-input"
-                                    style={{ marginTop: 120, marginTop:50, }}
+                                    style={{ marginTop: 120, marginTop: 50, }}
                                     label="Password"
                                     type="password"
                                     title={this.state.name}
                                     value={this.state.password}
                                     onChange={this.handleChange('password')}
+
                                     InputProps={{
                                         classes: {
                                             input: classes.resizeFont,
@@ -217,13 +193,19 @@ class SignIn extends React.Component {
                                 />
                             </form>
 
-                            <Link to="/library/home">
-                            <Button size="large" onClick={this.login} variant="contained" color="primary" className={classes.button}>SignIn</Button>
-                            </Link>
+
+                            <Button size="large" onClick={this.login} variant="contained" color="primary" className={classes.button}>
+                                SignIn
+                                {/*<Redirect to={this.state.link}>
+                                </Redirect>*/}
+                                    </Button>
+                            
 
                             <Link to="/register">
                                 <Button color="primary">Register</Button>
                             </Link>
+                                
+                            
                         </div>
                     </Container>
                     
