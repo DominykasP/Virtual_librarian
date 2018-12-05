@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DB_helpers\BookDBHelper.cs" />
+    <Compile Include="DB_helpers\GroupTables.cs" />
     <Compile Include="DB_helpers\HumanDBHelper.cs" />
     <Compile Include="DB_helpers\PathsToFiles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

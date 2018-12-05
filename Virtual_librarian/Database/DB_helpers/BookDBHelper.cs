@@ -92,6 +92,7 @@ namespace Database
                 conn.Open();
 
                 List<Book> books = new List<Book>();
+                var sqlua = new SqlDataAdapter("SELECT * FROM books", conn);
 
 
                 //String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
@@ -113,6 +114,8 @@ namespace Database
                 cmd2.Parameters.AddWithValue("@TakenAt", changedBook.TakenAt);
                 cmd2.Parameters.AddWithValue("@ReturnAt", changedBook.ReturnAt);
                 cmd2.Parameters.AddWithValue("@UserId", changedBook.ReaderId);
+                sqlua.UpdateCommand = cmd2;
+                sqlua.UpdateCommand.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
                 return true;
             }
