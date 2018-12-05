@@ -1,6 +1,6 @@
 ﻿import React from "react"
 import "./margins.css"
-import { Route } from "react-router";
+import { Route } from "react-router-dom";
 import Archives from "./Archives";
 import Featured from "./Featured";
 import Layout from "./Layout";
@@ -16,11 +16,21 @@ import Contacts from "./Contacts";
 import Footer from "./Footer/Footer";
 
 export default class LibraryHome extends React.Component {
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            IDd: 'labas'
+           
+        }
+        //console.log(props.location.state.id)
+        //console.log(this.props.location.state.id);
+    }
     render() {
+        //console.log(this.props.location.state.ID);
         return (
-
+            
             <div className="nomargins">
+                
                 <Route  path="/library" render={({ location, history }) => (
                     <React.Fragment>
                         <SideNav
@@ -37,7 +47,7 @@ export default class LibraryHome extends React.Component {
                                         <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
                                     <NavText>
-                                        Home
+                                        Home {/*this.props.location.state.id*/}
                         </NavText>
                                 </NavItem>
                                 
@@ -84,17 +94,16 @@ export default class LibraryHome extends React.Component {
                             </SideNav.Nav>
                         </SideNav>
                         <main>
-                            <Route exact={true} path="/welcome" render={() => (
-                                <h1>Welcome</h1>
+                            <Route exact={true} path="/library" render={() => (
+                                <h1>Welcome </h1>
                             )} />
                             
-                            <Route exact={true} path="/library/home" component={Home} />
-                            
+                            <Route path="/library/home" component={Home} />                           
                             <Route path="/library/devices" component={props => <Devices />} />
-                            <Route exact={true} path="/library/library" component={Library} />
+                            <Route path="/library/library" component={Library} />
                             <Route path="/library/mybooks" component={MyBooks} />
                             <Route path="/library/contacts" component={Contacts} />
-                            <Route exact={true} path="login"/>
+                            <Route path="login"/>
                         </main>
                     </React.Fragment>
                 )}

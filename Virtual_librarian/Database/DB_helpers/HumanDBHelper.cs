@@ -181,8 +181,8 @@ namespace Database
 
 
                 String sqlString;
-                sqlString = "INSERT INTO users1 (Id, Name, Surname, Password, BirthDate)";
-                sqlString += " VALUES  (@Id, @Name, @Surname, @Password, @BirthDate)";
+                sqlString = "INSERT INTO users1 (Id, Name, Surname, Password, BirthDate, Email)";
+                sqlString += " VALUES  (@Id, @Name, @Surname, @Password, @BirthDate, @Email)";
                 SqlCommand cmd2 = new SqlCommand(sqlString, conn);
                 cmd2.Parameters.AddWithValue("@Id", GetNextId());
                 cmd2.Parameters.AddWithValue("@Name", changedUser.Name);

@@ -2,17 +2,18 @@
 import React, { Component, useCallback } from "react";
 import "../LogedInPage/margins.css"
 import { getPersonByLoginData} from "./Utils";
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 //import { Button, Radio, Icon } from 'antd';
-import { Link } from "react-router-dom";
+import ReactDOM from "react-dom";
+import { Link, Route } from "react-router-dom";
 import 'antd/dist/antd.css';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+
 import { Redirect } from 'react-router-dom'
+import { withRouter } from "react-router";
 import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
+import LibraryHome from "../LogedInPage/LibraryHome"
 //import { getPersonByLoginData } from "./Utils";
 import axios from 'axios';
 import { render } from "react-dom";
@@ -64,8 +65,8 @@ class SignIn extends React.Component {
             surname: '',
             password: '',
             link: "/login",
-            authenticated: 0
-            
+            authenticated: 0,
+            ID:0
         }
         this.login = this.login.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -94,23 +95,24 @@ class SignIn extends React.Component {
       console.log("authenticated");
       console.log(this.state.authenticated);
      
-      console.log("ilgis");
-      console.log(UserinXML[0].children.length);
-      console.log(UserinXML);
+     
       if (UserinXML[0].children.length == 0) {
-          console.log("yey");
+         // console.log("yey");
 
       }
       if (this.state.authenticated > 0) {
-          console.log("yeyyey");
+          //console.log("yeyyey");
+          //console.log(UserinXML[0].children[0].children[0].value);
+          localStorage.setItem('userId', UserinXML[0].children[0].children[0].value);
           let path = `/library/home`;
-          this.props.history.push(path);
+          this.state.ID = UserinXML[0].children[0].children[0].value;
+          this.props.history.push({
+              pathname: path,
+              search: '',
+              state: { id: this.state.ID }
+          });
+        //  console.log("after"); 
       }
-
-
-
-
-      <h3>callback</h3>
     };
     handleChange = name => event => {
         
@@ -199,7 +201,7 @@ class SignIn extends React.Component {
                                 {/*<Redirect to={this.state.link}>
                                 </Redirect>*/}
                                     </Button>
-                            
+                            <Route path="/library" component={LibraryHome} something={this.state.ID} />
 
                             <Link to="/register">
                                 <Button color="primary">Register</Button>
@@ -213,7 +215,7 @@ class SignIn extends React.Component {
             );
         }
 }
+SignIn = withStyles(styles)(SignIn);
+export default withRouter(SignIn);
 
-
-export default withStyles(styles)(SignIn);
 SignIn.id = "app";

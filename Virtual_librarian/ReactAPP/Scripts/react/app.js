@@ -1,7 +1,8 @@
 ﻿import React from "react";
+import { createBrowserHistory } from 'history';
 import ReactDOM from "react-dom";
 import "./Components/LogedInPage/margins.css"
-import {  Route} from "react-router";
+import { Route} from "react-router-dom";
 import { HashRouter } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
 import ApolloClient from "apollo-boost";
@@ -26,10 +27,11 @@ const client = new ApolloClient({
 
 const app = document.getElementById('app');
 
+
 ReactDOM.render(
     <div >
         
-        <HashRouter basename="/">
+        <HashRouter>
         <Layout>
                 <ApolloProvider client={client}>
                     <Route exact path="/" render={props => <Login{...props} />} />
@@ -41,7 +43,7 @@ ReactDOM.render(
             
          </Layout>   
         </HashRouter>
-        <Footer/>
+        {/*<Footer/>*/}
            
         </div>,
     app);
