@@ -1,7 +1,8 @@
 ﻿import React from "react";
 import namor from "namor";
 import "./index.css";
-import axios from 'axios'
+import axios from 'axios';
+import { useCallback } from "react";
 
 const range = len => {
   const arr = [];
@@ -26,13 +27,8 @@ const newPerson = () => {
   };
 };
 
-export function getBooksFromServer(callback) {
-    /*
-    console.log('Success!');
-    axios.get('http://localhost:52312/BookService.asmx/GetAllBooks')
-        .then(response => this.setState({ booksFromServer: response}))
-    */
-
+/*
+export function getBooksFromServer() {
     let xmls =
         '<soap12:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://www.w3.org/2003/05/soap-envelope">\
             <soap12:Body>\
@@ -52,14 +48,12 @@ export function getBooksFromServer(callback) {
             var XMLParser = require('react-xml-parser');
             var InXML = new XMLParser().parseFromString(res.data);
             var booksInXML = InXML.getElementsByTagName('Book');
-            //console.log(booksInXML);
-            callback(booksInXML);
-            //return booksInXML;
+            return booksInXML;
         }).catch(err => {
             console.log(err.response.data)
-            //return err.response.data;
         });
 }
+*/
 
 export function makeData(len = 5) {
   return range(len).map(d => {
