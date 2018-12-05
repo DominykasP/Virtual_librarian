@@ -12,17 +12,8 @@ export default class Library extends React.Component {
     constructor() {
         super();
         this.state = {
-            /*
-            booksInXML: getBooksFromServer(function (response) {
-                console.log(response);
-            }),
-            */
-            allBooks: [],
-            data: makeData()
+            allBooks: []
         };
-        //this.handleClick();
-
-        //this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
@@ -60,11 +51,11 @@ export default class Library extends React.Component {
                     oneBook.isbn = allBooksInXML[i].children[6].value;
                     oneBook.code = allBooksInXML[i].children[7].value;
 
-                    console.log(oneBook);
+                    //console.log(oneBook);
                     allBooksWithProperties.push(oneBook);
                 }
 
-                console.log(allBooksWithProperties);
+                //console.log(allBooksWithProperties);
                 
                 this.setState({
                     allBooks: allBooksWithProperties
@@ -77,7 +68,7 @@ export default class Library extends React.Component {
     render() {
         const columns = [{
                 Header: 'Pavadinimas',
-                accessor: 'name' // String-based value accessors!
+                accessor: 'name'
             }, {
                 Header: 'Autorius',
                 accessor: 'author',
@@ -107,68 +98,7 @@ export default class Library extends React.Component {
                     defaultPageSize={10}
                     className="-striped -highlight"
                 />
-                
             </div>
         )
-        
-        /*
-         * <p>{this.state.booksInXML[0].children[0].name}</p>
-         * 
-        const { data } = this.state;
-
-        console.log(data);
-
-        return (
-            <div className="outside">
-                <ReactTable
-                    data={data}
-                    columns={[
-                        {
-                            Header: "Name",
-                            columns: [
-                                {
-                                    Header: "First Name",
-                                    accessor: "firstName"
-                                },
-                                {
-                                    Header: "Last Name",
-                                    id: "lastName",
-                                    accessor: d => d.lastName
-                                }
-                            ]
-                        },
-                        {
-                            Header: "Info",
-                            columns: [
-                                {
-                                    Header: "Age",
-                                    accessor: "age"
-                                },
-                                {
-                                    Header: "Status",
-                                    accessor: "status"
-                                }
-                            ]
-                        },
-                        {
-                            Header: 'Stats',
-                            columns: [
-                                {
-                                    Header: "Visits",
-                                    accessor: "visits"
-                                }
-                            ]
-                        }
-                    ]}
-                    defaultPageSize={10}
-                    className="-striped -highlight"
-                />
-                <br />
-                <Tips />
-                <Logo />
-            </div>
-
-        );
-        */
     }
 }
