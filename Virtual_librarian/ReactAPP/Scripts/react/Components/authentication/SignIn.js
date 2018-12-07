@@ -1,6 +1,6 @@
 ﻿
 import React, { Component, useCallback } from "react";
-import "../LogedInPage/margins.css"
+import "../LogedInPage/margins.css";
 import { getPersonByLoginData} from "./Utils";
 //import { Button, Radio, Icon } from 'antd';
 import ReactDOM from "react-dom";
@@ -17,11 +17,7 @@ import LibraryHome from "../LogedInPage/LibraryHome"
 //import { getPersonByLoginData } from "./Utils";
 import axios from 'axios';
 import { render } from "react-dom";
-import {
-    Container, Col, Form,
-    FormGroup, Label, Input,
-   /* Button,*/
-} from 'reactstrap';
+import {Container} from 'reactstrap';
 /*Text box*/
 const styles = theme => ({
     container: {
@@ -71,18 +67,14 @@ class SignIn extends React.Component {
         this.login = this.login.bind(this);
         this.handleChange = this.handleChange.bind(this);
         
-        this.protectedComponent = this.protectedComponent.bind(this);
+        
     }
     
-  login = async() => {
-
-      var get = await getPersonByLoginData(this.state.username, this.state.surname, this.state.password, callback)
-          .then((response) => {
-              //console.log(response);
+  login = async() => { var get = await getPersonByLoginData(this.state.username, this.state.surname, this.state.password, callback).then((response) => {
+             
               callback = response;
               return callback;
-          })
-          ; 
+          }); 
    
       var XMLParser = require('react-xml-parser');
       
@@ -121,14 +113,7 @@ class SignIn extends React.Component {
         });
         console.log(this.state);
     };
-    protectedComponent = () => {
-        if (this.state.authenticated == 0) {
-            return <Redirect to='/login' />
-
-        }
-        else if (this.state.authenticated > 0)
-            return <Redirect to='/library/home' />
-    }
+   
 
         render() {
             const { classes } = this.props;
@@ -137,9 +122,9 @@ class SignIn extends React.Component {
             return (
 
                 <div>
-                    <img className="picture" src={Background} alt="Background" />
+                   
                     <Container>
-                        <div background-size='cover' className="homepage">
+                        <div className="homepage">
                             <h2>Sign In</h2>
 
                             <form className={classes.container} noValidate autoComplete="off">
