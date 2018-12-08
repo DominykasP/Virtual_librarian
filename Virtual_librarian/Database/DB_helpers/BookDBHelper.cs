@@ -16,6 +16,7 @@ namespace Database
     public class BookDBHelper : IBookDBHelper
     {
         private Lazy<List<Book>> books = null;
+        private Lazy<List<BookWithPerson>> booksWithPersons = null;
         private string db;
 
         BookCollection<Book> bookCollection = new BookCollection<Book>();
@@ -29,6 +30,38 @@ namespace Database
             }*/
             books = new Lazy<List<Book>>(() => SQLBooksRead());
             db = "Server=tcp:biblioteka.database.windows.net,1433;Initial Catalog=biblioteka;Persist Security Info=False;User ID='biblioteka';Password='sqlbaze1!';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        }
+
+        public List<BookWithPerson> JoinBP(List<Person> people, List<Book> books)
+        {
+            //List<BookWithPerson> newList = new List<BookWithPerson>();
+            var result =
+                from book in books
+                where book.IsTaken = true
+                join person in people on book.ReaderId equals person.Id into bwp
+                from person in bwp.DefaultIfEmpty()
+                select new
+                {
+                    id = book.Id,
+                    name = book.Name,
+                    author = book.Author,
+                    publisher = book.Publisher,
+                    year = book.Year,
+                    pages = book.Pages,
+                    isbn = book.Isbn,
+                    code = book.Code,
+                    isTaken = book.IsTaken == false ? "false" : "true",
+                    readerId = book.ReaderId,
+                    takenAt = book.TakenAt,
+                    returnAt = book.ReturnAt,
+                    timeRemaining = book.TimeRemaining,
+                    personName = person.Name,
+                    personSurname = person.Surname
+                };
+
+            
+            List<BookWithPerson> newList = result.ToList<BookWithPerson>();
+            List<BookWithPerson> sarasas = new List<BookWithPerson>(result.ToList<BookWithPerson>());
         }
 
         public List<Book> SQLBooksRead()
@@ -68,7 +101,7 @@ namespace Database
         {
             List<DataRow> list = books1.Tables["books"].AsEnumerable().ToList();
             List<Book> books = new List<Book>();
-            foreach(var dr in list)
+            foreach (var dr in list)
             {
                 Book book = new Book
                 {
@@ -262,7 +295,7 @@ namespace Database
 
         public Book GetBookById(int id)
         {
-            foreach(Book book in books.Value)
+            foreach (Book book in books.Value)
             {
                 bookCollection.Add(book);
             }
@@ -272,16 +305,16 @@ namespace Database
 
         public Book GetBookByCode(string isbn, string code)
         {
-             Book foundBook = new Book();
-             var bookList = books.Value.OfType<Book>();
-             var foundBooks = from book in bookList
-                                  where (book.Isbn == isbn) && (book.Code == code)
-                                  select book;
-             foreach(var book in foundBooks)
-             {
-                 foundBook = book;
-             }
-             return foundBook;
+            Book foundBook = new Book();
+            var bookList = books.Value.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where (book.Isbn == isbn) && (book.Code == code)
+                             select book;
+            foreach (var book in foundBooks)
+            {
+                foundBook = book;
+            }
+            return foundBook;
         }
 
         public Book GetBookByIsbn(string isbn)
@@ -308,9 +341,9 @@ namespace Database
             List<Book> readersBooks = new List<Book>();
             var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
-                               where (book.IsTaken == true) && (book.ReaderId == reader.Id)
-                               orderby book
-                               select book;
+                             where (book.IsTaken == true) && (book.ReaderId == reader.Id)
+                             orderby book
+                             select book;
             foreach (var book in foundBooks)
             {
                 readersBooks.Add(book);
@@ -342,8 +375,8 @@ namespace Database
             Book returned = new Book();
             var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
-                               where book.Equals(returnedBook)
-                               select book;
+                             where book.Equals(returnedBook)
+                             select book;
             foreach (var book in foundBooks)
             {
                 returned = book;
@@ -387,12 +420,12 @@ namespace Database
 
         public List<Book> Find(string search)
         {
-         List<Book> correspondingBooks = new List<Book>();
-                    var bookList = books.Value.OfType<Book>();
-                    var foundBooks = from book in bookList
-                                       where book.Name.Contains(search) || book.Author.Contains(search)
-                                       orderby book
-                                       select book;
+            List<Book> correspondingBooks = new List<Book>();
+            var bookList = books.Value.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where book.Name.Contains(search) || book.Author.Contains(search)
+                             orderby book
+                             select book;
 
             foreach (var book in foundBooks)
             {
@@ -529,8 +562,8 @@ namespace Database
             Book renewed = new Book();
             var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
-                               where book.Equals(renewedBook)
-                               select book;
+                             where book.Equals(renewedBook)
+                             select book;
             foreach (var book in foundBooks)
             {
                 renewed = book;
@@ -565,8 +598,8 @@ namespace Database
             Book currentBook = new Book();
             var bookList = books.Value.OfType<Book>();
             var booksFound = from book in bookList
-                               where book.Equals(bookToCheck)
-                               select book;
+                             where book.Equals(bookToCheck)
+                             select book;
             foreach (var book in booksFound)
             {
                 currentBook = book;
