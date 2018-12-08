@@ -58,8 +58,30 @@ namespace Database
                     personName = person.Name,
                     personSurname = person.Surname
                 };
-
             
+            var query = people    // your starting point - table in the "from" statement
+               .Join(books, // the source table of the inner join
+                  person => person.Id,        // Select the primary key (the first part of the "on" clause in an sql "join" statement)
+                  book => book.ReaderId,   // Select the foreign key (the second part of the "on" clause)
+                  (person, book) => new {
+                      id = book.Id,
+                      name = book.Name,
+                      author = book.Author,
+                      publisher = book.Publisher,
+                      year = book.Year,
+                      pages = book.Pages,
+                      isbn = book.Isbn,
+                      code = book.Code,
+                      isTaken = book.IsTaken == false ? "false" : "true",
+                      readerId = book.ReaderId,
+                      takenAt = book.TakenAt,
+                      returnAt = book.ReturnAt,
+                      timeRemaining = book.TimeRemaining,
+                      personName = person.Name,
+                      personSurname = person.Surname
+                  }) // selection
+               .Where(bookWithPerson => bookWithPerson.Person.ID == id);    // where statement
+
             List<BookWithPerson> newList = result.ToList<BookWithPerson>();
             List<BookWithPerson> sarasas = new List<BookWithPerson>(result.ToList<BookWithPerson>());
         }
