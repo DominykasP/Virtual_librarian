@@ -7,6 +7,7 @@ using System.Drawing;
 using FilesFunctions;
 using LibraryObjects;
 using Interfaces;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -31,6 +32,45 @@ namespace Database
 
 
         }
+
+        /*public List<Person> SQLPersonsRead()
+        {
+
+            SqlConnection conn;
+            //string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection(db);
+            try
+            {
+                //conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                Lazy<List<Person>> users = new Lazy<List<Person>>();
+
+                //SqlDataReader mySQLReader = null;
+                String sqlString = "SELECT * FROM users1";
+                //SqlCommand cmd = new SqlCommand(sqlString, conn);
+                //mySQLReader = cmd.ExecuteReader();
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlString, conn);
+                DataSet users1 = new DataSet();
+                adapter.Fill(users1, "users1");
+
+                
+                //return users.Value;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public ConvertSet(DataSet users1)
+        {
+            List<DataRow> list = users1.AsEnumerable().ToList();
+        }*/
 
         public List<Person> SQLPersonsRead()
         {
@@ -59,6 +99,7 @@ namespace Database
                     user.Password = mySQLReader["Password"].ToString().TrimEnd();
                     user.BirthDate = Convert.ToDateTime(mySQLReader["BirthDate"]);
                     user.Email = mySQLReader["Email"].ToString().TrimEnd();
+                    user.PhoneNumber = mySQLReader["PhoneNumber"].ToString().TrimEnd();
 
 
                     users.Value.Add(user);
@@ -92,7 +133,7 @@ namespace Database
                 //String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
                 //SqlCommand cmd = new SqlCommand(sqlString, conn);
                 //cmd.ExecuteNonQuery();
-                String sqlString = "UPDATE users1 SET Name = @Name, Surname = @Surname, Password = @Password, BirthDate = @BirthDate, Email = @Email WHERE Id = " + changedUserId + "'";
+                String sqlString = "UPDATE users1 SET Name = @Name, Surname = @Surname, Password = @Password, BirthDate = @BirthDate, PhoneNumber = @PhoneNumber, Email = @Email WHERE Id = " + changedUserId + "'";
                 //sqlString += " VALUES  (@Id, @Name, @Author, @Publisher, @Year, @Pages, @Isbn, @Code, @IsTaken, @TakenAt, @ReturnAt, @UserId)";
                 SqlCommand cmd2 = new SqlCommand(sqlString, conn);
                 //cmd2.Parameters.AddWithValue("@Id", changedUser.Id);
@@ -101,7 +142,7 @@ namespace Database
                 cmd2.Parameters.AddWithValue("@Password", changedUser.Password);
                 cmd2.Parameters.AddWithValue("@BirthDate", changedUser.BirthDate);
                 cmd2.Parameters.AddWithValue("@Email", changedUser.Email);
-
+                cmd2.Parameters.AddWithValue("@PhoneNumber", changedUser.PhoneNumber);
                 cmd2.ExecuteNonQuery();
                 return true;
             }
@@ -181,8 +222,8 @@ namespace Database
 
 
                 String sqlString;
-                sqlString = "INSERT INTO users1 (Id, Name, Surname, Password, BirthDate)";
-                sqlString += " VALUES  (@Id, @Name, @Surname, @Password, @BirthDate)";
+                sqlString = "INSERT INTO users1 (Id, Name, Surname, Password, BirthDate, PhoneNumber, Email)";
+                sqlString += " VALUES  (@Id, @Name, @Surname, @Password, @BirthDate, @PhoneNumber, @Email)";
                 SqlCommand cmd2 = new SqlCommand(sqlString, conn);
                 cmd2.Parameters.AddWithValue("@Id", GetNextId());
                 cmd2.Parameters.AddWithValue("@Name", changedUser.Name);
@@ -190,6 +231,7 @@ namespace Database
                 cmd2.Parameters.AddWithValue("@Password", changedUser.Password);
                 cmd2.Parameters.AddWithValue("@BirthDate", changedUser.BirthDate);
                 cmd2.Parameters.AddWithValue("@Email", changedUser.Email);
+                cmd2.Parameters.AddWithValue("@PhoneNumber", changedUser.PhoneNumber);
 
                 cmd2.ExecuteNonQuery();
                 return true;

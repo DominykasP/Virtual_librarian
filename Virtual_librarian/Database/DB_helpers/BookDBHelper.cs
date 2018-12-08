@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FilesFunctions;
 using Interfaces;
 using LibraryObjects;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -31,6 +32,63 @@ namespace Database
         }
 
         public List<Book> SQLBooksRead()
+        {
+
+            SqlConnection conn;
+            //string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection(db);
+            try
+            {
+                //conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                List<Book> books = new List<Book>();
+
+                SqlDataReader mySQLReader = null;
+                String sqlString = "SELECT * FROM books";
+                SqlCommand cmd = new SqlCommand(sqlString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlString, conn);
+                DataSet books1 = new DataSet();
+                adapter.Fill(books1, "books");
+                books = ConvertSet(books1);
+
+                return books;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
+        public List<Book> ConvertSet(DataSet books1)
+        {
+            List<DataRow> list = books1.Tables["books"].AsEnumerable().ToList();
+            List<Book> books = new List<Book>;
+            foreach(var dr in list)
+            {
+                Book book = new Book();
+                book.Id = Convert.ToInt32(dr["Id"]);
+                book.Name = dr["Name"].ToString().TrimEnd();
+                book.Author = dr["Author"].ToString().TrimEnd();
+                book.Publisher = dr["Publisher"].ToString().TrimEnd();
+                book.Pages = Convert.ToInt32(dr["Pages"]);
+                book.Year = Convert.ToDateTime(dr["Year"]);
+                book.Isbn = dr["Isbn"].ToString().TrimEnd();
+                book.Code = dr["Code"].ToString().TrimEnd();
+                book.IsTaken = Convert.ToBoolean(dr["IsTaken"]);
+                book.ReaderId = Convert.ToInt32(dr["UserId"]);
+                book.TakenAt = Convert.ToDateTime(dr["TakenAt"]);
+                book.ReturnAt = Convert.ToDateTime(dr["ReturnAt"]);
+                books.Add(book);
+            }
+            return books;
+        }
+
+        public List<Book> SQLBooksRead2()
         {
 
             SqlConnection conn;
