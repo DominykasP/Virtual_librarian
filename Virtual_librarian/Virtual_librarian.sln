@@ -53,6 +53,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactAPP", "ReactAPP\ReactA
 		{2CA7BD5B-ED1A-4706-B859-B54634F70020} = {2CA7BD5B-ED1A-4706-B859-B54634F70020}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseWithEntity", "DatabaseWithEntity\DatabaseWithEntity.csproj", "{F693C9BF-577B-4289-BAD2-F881A500D9EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -99,6 +101,10 @@ Global
 		{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD70FBC8-6E4D-4EA1-BFCD-90DFE1A68FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F693C9BF-577B-4289-BAD2-F881A500D9EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F693C9BF-577B-4289-BAD2-F881A500D9EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F693C9BF-577B-4289-BAD2-F881A500D9EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F693C9BF-577B-4289-BAD2-F881A500D9EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
