@@ -1,0 +1,50 @@
+﻿
+.picture {
+    margin-top: -60px;
+}
+.center {
+    padding: var(--space) var(--space) 0;
+    
+    background: none;
+    width: 66%;
+}
+.homepage {
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: blue;
+   
+    position: absolute;
+    width: 400px;
+    min-height: 50vh;
+    border-radius: 40px;
+    float: none;
+    margin: 0 auto ;
+    margin-left: 10px auto;
+    margin-top: 100px;
+}
+
+.LinkColor{
+    color:blue;
+}
+.outside {
+    padding: var(--space) var(--space) 0;
+    margin: 100px;
+    background: none;
+    width: 66%;
+}
+.nomargins {
+    margin:auto;
+}
+.hero{
+    background-image: url('images/Modern background.png');
+    background-size: cover;
+    background-position: center center;
+    position:relative;
+    top:0;
+    bottom: 0;
+    height: 100vh;
+
+}
