@@ -1,34 +1,57 @@
 ﻿import React, { Component } from "react";
-import { getPersonByLoginData, addPersonByRegisterData} from "./Utils";
-import "../LogedInPage/margins.css";
 import { Link } from "react-router-dom";
+
+import { getPersonByLoginData, addPersonByRegisterData } from "./Utils";
+
+import "../LogedInPage/margins.css";
+
+
+import { withStyles, MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { DateFormatInput, TimeFormatInput } from 'material-ui-next-pickers'
+
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
+import { DateFormatInput} from 'material-ui-next-pickers'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import 'antd/dist/antd.css';
-import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
-import gql from 'graphql-tag';
+
+
 import 'babel-polyfill';
+
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
     
 } from 'reactstrap';
-
+const theme = createMuiTheme({
+    palette: {
+        primary: green,
+    },
+    typography: {
+        useNextVariants: true,
+    },
+});
 const styles = theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
         marginTop: '1px',
     },
+    margin: {
+        margin: theme.spacing.unit,
+    },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
         width: 200,
+    },
+    cssRoot: {
+        color: theme.palette.getContrastText(purple[500]),
+        backgroundColor: green[500],
+        '&:hover': {
+            backgroundColor: green[700],
+        },
     },
     dense: {
         marginTop: 19,
@@ -111,11 +134,13 @@ class Register extends React.Component{
         const { classes } = this.props;
         const { date } = this.state;
         return (
-            <div>
-                <img className="picture" src={Background} alt="Background" />
-                    <div background-size='cover' className="homepage">
+            
+            <div background-size='cover' className="hero">
+
+                <Container>
+                    <div style={{ marginTop: 50 }} className="homepage">
                     <h2>Sign Up</h2>
-                    <form margin-top={"-200px"} className={classes.container} noValidate >
+                    <form  className={classes.container} noValidate >
                        
                         <TextField
                             id="username"
@@ -129,7 +154,7 @@ class Register extends React.Component{
                                     input: classes.resizeFont,
                                 },
                             }}
-                            style={{ marginRight: 120, marginTop: 30, }}
+                                style={{ marginLeft: 100, marginRight: 120, marginTop: 30, }}
                         />
                        
                         <TextField
@@ -144,11 +169,23 @@ class Register extends React.Component{
                                     input: classes.resizeFont,
                                 },
                             }}
-                            style={{ marginRight: 120, marginTop: 30, }}
+                                style={{ marginLeft: 100,  marginTop: 30,marginBottom:30 }}
                         />
-                        <MuiThemeProvider>
-                            <DateFormatInput label="Birth Date" min={new Date('1950-1-1, 6:37 pm')} name='date-input' dateFormat="MMMM d, yyyy" value={date} onChange={this.onChangeDate} />
-                        </MuiThemeProvider>
+                            <div style={{ marginLeft: 92 }}>
+                                <MuiThemeProvider>
+                                <DateFormatInput
+                                    label="Birth Date"
+                                    min={new Date('1950-1-1, 6:37 pm')}
+                                    className={classes.textField}
+                                    name='date-input'
+                                    dateFormat="MMMM d, yyyy"
+                                    margin = "normal"
+                                    value={date}
+                                    style={{marginLeft: 50000, marginTop: 100, }}
+                                    onChange={this.onChangeDate}
+                                    />
+                                    </MuiThemeProvider>
+                       </div>
                         <TextField
                             id="email"
                             label="Email"
@@ -161,7 +198,7 @@ class Register extends React.Component{
                                     input: classes.resizeFont,
                                 },
                             }}
-                            style={{ marginRight: 120, marginTop: 30, }}
+                                style={{ marginLeft: 100, marginRight: 120, marginTop: 30, }}
                         />
                         <TextField
                             id="email"
@@ -175,7 +212,7 @@ class Register extends React.Component{
                                     input: classes.resizeFont,
                                 },
                             }}
-                            style={{ marginRight: 120, marginTop: 30, }}
+                                style={{ marginLeft: 100, marginRight: 120, marginTop: 30, }}
                         />
                         <TextField
                             id="password"
@@ -191,7 +228,7 @@ class Register extends React.Component{
                                     input: classes.resizeFont,
                                 },
                             }}
-                            style={{ marginRight: 120, marginTop: 30, }}
+                                style={{ marginLeft: 100, marginRight: 120, marginTop: 30, }}
                         />
                         <TextField
                             id="repeatpassword"
@@ -207,18 +244,28 @@ class Register extends React.Component{
                                     input: classes.resizeFont,
                                 },
                             }}
-                            style={{ marginRight: 120, marginTop: 30, }}
+                                style={{ marginLeft: 100, marginRight: 120, marginTop: 30, }}
                             />
                            
                     </form>
-                    <Link to="/login">
-                        <Button  onClick={() => this.onSubmit()} color="primary">Submit</Button>
-                    </Link>  
+                        <Link to="/login">
+                            <Button
+                                size="large"
+                                variant="contained"
+                                color="primary"
+                                className={classNames(classes.margin, classes.cssRoot)}
+                            >
+                                Register
+                                </Button>
+                        </Link>  
                     <Link to="/login">
                         <Button onClick={() => this.onSubmit()} color="primary">Cancel</Button>
-                    </Link>  
+                        </Link>  
+                        
                     </div>
-            </div>
+                    </Container>
+                    </div>
+           
         );
     }
 

@@ -1,27 +1,29 @@
 ﻿
 import React, { Component, useCallback } from "react";
-import "../LogedInPage/margins.css"
-import { getPersonByLoginData} from "./Utils";
-//import { Button, Radio, Icon } from 'antd';
-import ReactDOM from "react-dom";
-import { Link, Route } from "react-router-dom";
-import 'antd/dist/antd.css';
-import Button from '@material-ui/core/Button';
-import { withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
-
-import { Redirect } from 'react-router-dom'
+import { Link, Route, Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
-import Background from '../LogedInPage/images/virtual-librarian-main-page.png';
-import LibraryHome from "../LogedInPage/LibraryHome"
-//import { getPersonByLoginData } from "./Utils";
-import axios from 'axios';
-import { render } from "react-dom";
+import ReactDOM from "react-dom";
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
-   /* Button,*/
+    /* Button,*/
 } from 'reactstrap';
+
+import "../LogedInPage/margins.css"
+import 'antd/dist/antd.css';
+
+import { getPersonByLoginData} from "./Utils";
+
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import purple from '@material-ui/core/colors/purple';
+import green from '@material-ui/core/colors/green';
+
+import LibraryHome from "../LogedInPage/LibraryHome"
+
 /*Text box*/
 const styles = theme => ({
     container: {
@@ -33,6 +35,16 @@ const styles = theme => ({
     },
     input: {
         display: 'none',
+    },
+    margin: {
+        margin: theme.spacing.unit,
+    },
+    cssRoot: {
+        color: theme.palette.getContrastText(purple[500]),
+        backgroundColor: green[500],
+        '&:hover': {
+            backgroundColor: green[700],
+        },
     },
     textField: {
         marginLeft: theme.spacing.unit,
@@ -48,7 +60,8 @@ const styles = theme => ({
         width: 200,
     },
     resizeFont: {
-       fontSize: 50,
+        fontSize: 15,
+        
     },
 });
 var callback;
@@ -136,10 +149,10 @@ class SignIn extends React.Component {
 
             return (
 
-                <div>
-                    <img className="picture" src={Background} alt="Background" />
+                <div className = "hero">
+                   
                     <Container>
-                        <div background-size='cover' className="homepage">
+                        <div  className="homepage">
                             <h2>Sign In</h2>
 
                             <form className={classes.container} noValidate autoComplete="off">
@@ -155,8 +168,8 @@ class SignIn extends React.Component {
                                         },
                                     }}
                                     className={classes.textField}
-                                    margin="dense"
-                                    style={{ marginTop: 20, }}
+                                    margin="normal"
+                                    style={{ marginLeft:575, marginRight: 400}}
 
                                 />
                                 <TextField
@@ -171,13 +184,13 @@ class SignIn extends React.Component {
                                         },
                                     }}
                                     className={classes.textField}
-                                    margin="dense"
-                                    style={{ marginRight: 120, marginTop: 50, }}
+                                    margin="normal"
+                                    style={{ marginLeft: 575, marginRight: 600, marginTop: 30, }}
 
                                 />
                                 <TextField
                                     id="standard-password-input"
-                                    style={{ marginTop: 120, marginTop: 50, }}
+                                    style={{ marginLeft: 575, marginTop: 120, marginTop: 30, }}
                                     label="Password"
                                     type="password"
                                     title={this.state.name}
@@ -204,7 +217,14 @@ class SignIn extends React.Component {
                             <Route path="/library" component={LibraryHome} something={this.state.ID} />
 
                             <Link to="/register">
-                                <Button color="primary">Register</Button>
+                                <Button
+                                    size="large" 
+                                    variant="contained"
+                                    color="primary"
+                                    className={classNames(classes.margin, classes.cssRoot)}
+                                >
+                                    Register
+                                </Button>
                             </Link>
                                 
                             
@@ -215,6 +235,11 @@ class SignIn extends React.Component {
             );
         }
 }
+
+SignIn.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
 SignIn = withStyles(styles)(SignIn);
 export default withRouter(SignIn);
 

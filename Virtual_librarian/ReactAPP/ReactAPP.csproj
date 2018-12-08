@@ -165,6 +165,9 @@
     <Content Include="Scripts\react\Components\Header.js" />
     <Content Include="Scripts\react\Components\Home.js" />
     <Content Include="Scripts\react\Components\homestyle.css" />
+    <Content Include="Scripts\react\Components\LogedInPage\images\BlueLibraryAuthenticationBackground.png" />
+    <Content Include="Scripts\react\Components\LogedInPage\images\LibraryAuthenticationBackground.png" />
+    <Content Include="Scripts\react\Components\LogedInPage\images\Modern background.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\sharon-mccutcheon-532782-unsplash.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\Virtual-Librarian-Homepage.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\virtual-librarian-main-page.png" />
@@ -217,6 +220,7 @@
     <Content Include="Views\web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\react\.babelrc" />
+    <Content Include="Scripts\react\tsconfig.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,6 +237,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\react\Fine.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

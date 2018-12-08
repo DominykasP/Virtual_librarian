@@ -1,6 +1,8 @@
 ﻿import React from "react";
+import { Parallax, ParallaxBanner ,Background } from 'react-scroll-parallax';
+import "./margins.css";
 
-import "./margins.css"
+import "./margins.css";
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
@@ -25,9 +27,29 @@ export default class LoginHome extends React.Component {
     render() {
 
         return (
-            <div className="outside" >
-                <h1>Comming soon</h1>
-                <h1>{localStorage.getItem('userId')}</h1>
+            <div>
+                
+                <ParallaxBanner
+                    className="homepage"
+                    layers={[
+                        {
+                            image: url('./images/BlueLibraryAuthenticationBackground.png'),
+                            amount: 0.1,
+                            slowerScrollRate: false,
+                        },
+                        {
+                            image: url('./images/BlueLibraryAuthenticationBackground.png'),
+                            amount: 0.2,
+                            slowerScrollRate: false,
+                        },
+                    ]}
+                    style={{
+                        height: '500px',
+                    }}
+                >
+                    <h1>Banner Children</h1>
+                </ParallaxBanner>
+               
             </div>
         );
     }
