@@ -67,22 +67,24 @@ namespace Database
         public List<Book> ConvertSet(DataSet books1)
         {
             List<DataRow> list = books1.Tables["books"].AsEnumerable().ToList();
-            List<Book> books = new List<Book>;
+            List<Book> books = new List<Book>();
             foreach(var dr in list)
             {
-                Book book = new Book();
-                book.Id = Convert.ToInt32(dr["Id"]);
-                book.Name = dr["Name"].ToString().TrimEnd();
-                book.Author = dr["Author"].ToString().TrimEnd();
-                book.Publisher = dr["Publisher"].ToString().TrimEnd();
-                book.Pages = Convert.ToInt32(dr["Pages"]);
-                book.Year = Convert.ToDateTime(dr["Year"]);
-                book.Isbn = dr["Isbn"].ToString().TrimEnd();
-                book.Code = dr["Code"].ToString().TrimEnd();
-                book.IsTaken = Convert.ToBoolean(dr["IsTaken"]);
-                book.ReaderId = Convert.ToInt32(dr["UserId"]);
-                book.TakenAt = Convert.ToDateTime(dr["TakenAt"]);
-                book.ReturnAt = Convert.ToDateTime(dr["ReturnAt"]);
+                Book book = new Book
+                {
+                    Id = Convert.ToInt32(dr["Id"]),
+                    Name = dr["Name"].ToString().TrimEnd(),
+                    Author = dr["Author"].ToString().TrimEnd(),
+                    Publisher = dr["Publisher"].ToString().TrimEnd(),
+                    Pages = Convert.ToInt32(dr["Pages"]),
+                    Year = Convert.ToDateTime(dr["Year"]),
+                    Isbn = dr["Isbn"].ToString().TrimEnd(),
+                    Code = dr["Code"].ToString().TrimEnd(),
+                    IsTaken = Convert.ToBoolean(dr["IsTaken"]),
+                    ReaderId = Convert.ToInt32(dr["UserId"]),
+                    TakenAt = Convert.ToDateTime(dr["TakenAt"]),
+                    ReturnAt = Convert.ToDateTime(dr["ReturnAt"])
+                };
                 books.Add(book);
             }
             return books;
