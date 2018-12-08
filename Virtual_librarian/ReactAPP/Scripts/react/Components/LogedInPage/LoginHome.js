@@ -27,28 +27,9 @@ export default class LoginHome extends React.Component {
     render() {
 
         return (
-            <div>
+            <div className="homepage">
                 
-                <ParallaxBanner
-                    className="homepage"
-                    layers={[
-                        {
-                            image: url('./images/BlueLibraryAuthenticationBackground.png'),
-                            amount: 0.1,
-                            slowerScrollRate: false,
-                        },
-                        {
-                            image: url('./images/BlueLibraryAuthenticationBackground.png'),
-                            amount: 0.2,
-                            slowerScrollRate: false,
-                        },
-                    ]}
-                    style={{
-                        height: '500px',
-                    }}
-                >
-                    <h1>Banner Children</h1>
-                </ParallaxBanner>
+              <h1>Comming Soon</h1>
                
             </div>
         );
