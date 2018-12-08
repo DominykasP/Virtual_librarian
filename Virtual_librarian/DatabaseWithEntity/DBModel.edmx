@@ -4,86 +4,171 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bibliotekaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="biblioteka2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="books">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Author" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Publisher" Type="nchar" MaxLength="30" />
-          <Property Name="Year" Type="nchar" MaxLength="20" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Author" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Publisher" Type="varchar" MaxLength="30" />
+          <Property Name="Year" Type="varchar" MaxLength="20" />
           <Property Name="Pages" Type="int" />
-          <Property Name="Isbn" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="Code" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Isbn" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="IsTaken" Type="bit" Nullable="false" />
-          <Property Name="TakenAt" Type="nchar" MaxLength="50" />
-          <Property Name="ReturnAt" Type="nchar" MaxLength="50" />
+          <Property Name="TakenAt" Type="varchar" MaxLength="50" />
+          <Property Name="ReturnAt" Type="varchar" MaxLength="50" />
           <Property Name="UserId" Type="int" />
         </EntityType>
-        <EntityType Name="users1">
+        <EntityType Name="types">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="Surname" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="Password" Type="nchar" MaxLength="30" Nullable="false" />
-          <Property Name="BirthDate" Type="nchar" MaxLength="33" Nullable="false" />
-          <Property Name="PhoneNumber" Type="nchar" MaxLength="12" />
-          <Property Name="Email" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <EntityContainer Name="bibliotekaModelStoreContainer">
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="BirthDate" Type="varchar" MaxLength="33" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="12" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TypeID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_books_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_users_type">
+          <End Role="types" Type="Self.types" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="biblioteka2ModelStoreContainer">
           <EntitySet Name="books" EntityType="Self.books" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="users1" EntityType="Self.users1" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="types" EntityType="Self.types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_books_users" Association="Self.FK_books_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_users_type" Association="Self.FK_users_type">
+            <End Role="types" EntitySet="types" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="bibliotekaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="biblioteka2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="books">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Author" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Publisher" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="Year" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Publisher" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Year" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Pages" Type="Int32" />
-          <Property Name="Isbn" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Isbn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="IsTaken" Type="Boolean" Nullable="false" />
-          <Property Name="TakenAt" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="ReturnAt" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="TakenAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ReturnAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="users" Relationship="biblioteka2Model.FK_books_users" FromRole="books" ToRole="users" />
         </EntityType>
-        <EntityType Name="users1">
+        <EntityType Name="types">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="30" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="BirthDate" Type="String" MaxLength="33" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="true" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="users" Relationship="Self.FK_users_type" FromRole="types" ToRole="users" />
         </EntityType>
-        <EntityContainer Name="bibliotekaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BirthDate" Type="String" MaxLength="33" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="types" Relationship="Self.FK_users_type" FromRole="users" ToRole="types" />
+          <NavigationProperty Name="books" Relationship="biblioteka2Model.FK_books_users" FromRole="users" ToRole="books" />
+        </EntityType>
+        <Association Name="FK_users_type">
+          <End Role="types" Type="Self.types" Multiplicity="1" />
+          <End Role="users" Type="Self.users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="types">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="users">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="biblioteka2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="books" EntityType="Self.books" />
-          <EntitySet Name="users1" EntityType="Self.users1" />
+          <EntitySet Name="types" EntityType="Self.types" />
+          <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="FK_users_type" Association="Self.FK_users_type">
+            <End Role="types" EntitySet="types" />
+            <End Role="users" EntitySet="users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_books_users" Association="biblioteka2Model.FK_books_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_books_users">
+          <End Type="biblioteka2Model.users" Role="users" Multiplicity="0..1" />
+          <End Type="biblioteka2Model.books" Role="books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="bibliotekaModelStoreContainer" CdmEntityContainer="bibliotekaEntities">
+        <EntityContainerMapping StorageEntityContainer="biblioteka2ModelStoreContainer" CdmEntityContainer="biblioteka2Entities">
           <EntitySetMapping Name="books">
-            <EntityTypeMapping TypeName="bibliotekaModel.books">
+            <EntityTypeMapping TypeName="biblioteka2Model.books">
               <MappingFragment StoreEntitySet="books">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -100,9 +185,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="users1">
-            <EntityTypeMapping TypeName="bibliotekaModel.users1">
-              <MappingFragment StoreEntitySet="users1">
+          <EntitySetMapping Name="types">
+            <EntityTypeMapping TypeName="biblioteka2Model.types">
+              <MappingFragment StoreEntitySet="types">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="biblioteka2Model.users">
+              <MappingFragment StoreEntitySet="users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Surname" ColumnName="Surname" />
@@ -110,6 +203,7 @@
                 <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

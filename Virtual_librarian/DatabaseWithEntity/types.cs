@@ -12,14 +12,18 @@ namespace DatabaseWithEntity
     using System;
     using System.Collections.Generic;
     
-    public partial class users1
+    public partial class types
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public types()
+        {
+            this.users = new HashSet<users>();
+        }
+    
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string Password { get; set; }
-        public string BirthDate { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Email { get; set; }
+        public string Type { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<users> users { get; set; }
     }
 }

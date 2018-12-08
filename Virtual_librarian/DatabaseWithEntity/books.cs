@@ -26,5 +26,7 @@ namespace DatabaseWithEntity
         public string TakenAt { get; set; }
         public string ReturnAt { get; set; }
         public Nullable<int> UserId { get; set; }
+    
+        public virtual users users { get; set; }
     }
 }

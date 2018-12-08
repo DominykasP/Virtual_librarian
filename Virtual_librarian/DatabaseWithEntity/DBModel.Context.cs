@@ -13,10 +13,10 @@ namespace DatabaseWithEntity
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class bibliotekaEntities : DbContext
+    public partial class biblioteka2Entities : DbContext
     {
-        public bibliotekaEntities()
-            : base("name=bibliotekaEntities")
+        public biblioteka2Entities()
+            : base("name=biblioteka2Entities")
         {
         }
     
@@ -26,6 +26,7 @@ namespace DatabaseWithEntity
         }
     
         public virtual DbSet<books> books { get; set; }
-        public virtual DbSet<users1> users1 { get; set; }
+        public virtual DbSet<types> types { get; set; }
+        public virtual DbSet<users> users { get; set; }
     }
 }
