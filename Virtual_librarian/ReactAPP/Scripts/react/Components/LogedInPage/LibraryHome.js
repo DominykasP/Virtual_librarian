@@ -5,7 +5,7 @@ import Archives from "./Archives";
 import Featured from "./Featured";
 import Layout from "./Layout";
 import Settings from "./Settings";
-import Home from "./LoginHome";
+import Home from "./HomePage/LoginHome";
 import Devices from "./Devices";
 
 
