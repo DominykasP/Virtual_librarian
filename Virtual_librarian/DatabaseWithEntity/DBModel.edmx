@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="biblioteka2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="biblioteka2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="books">
           <Key>
             <PropertyRef Name="Id" />
@@ -79,7 +79,8 @@
             <End Role="users" EntitySet="users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="biblioteka2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -99,7 +100,7 @@
           <Property Name="TakenAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ReturnAt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserId" Type="Int32" />
-          <NavigationProperty Name="users" Relationship="biblioteka2Model.FK_books_users" FromRole="books" ToRole="users" />
+          <NavigationProperty Name="users" Relationship="Self.FK_books_users" FromRole="books" ToRole="users" />
         </EntityType>
         <EntityType Name="types">
           <Key>
@@ -121,9 +122,21 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TypeID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="books" Relationship="Self.FK_books_users" FromRole="users" ToRole="books" />
           <NavigationProperty Name="types" Relationship="Self.FK_users_type" FromRole="users" ToRole="types" />
-          <NavigationProperty Name="books" Relationship="biblioteka2Model.FK_books_users" FromRole="users" ToRole="books" />
         </EntityType>
+        <Association Name="FK_books_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="books" Type="Self.books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="books">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_users_type">
           <End Role="types" Type="Self.types" Multiplicity="1" />
           <End Role="users" Type="Self.users" Multiplicity="*" />
@@ -140,27 +153,15 @@
           <EntitySet Name="books" EntityType="Self.books" />
           <EntitySet Name="types" EntityType="Self.types" />
           <EntitySet Name="users" EntityType="Self.users" />
+          <AssociationSet Name="FK_books_users" Association="Self.FK_books_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="books" EntitySet="books" />
+          </AssociationSet>
           <AssociationSet Name="FK_users_type" Association="Self.FK_users_type">
             <End Role="types" EntitySet="types" />
             <End Role="users" EntitySet="users" />
           </AssociationSet>
-          <AssociationSet Name="FK_books_users" Association="biblioteka2Model.FK_books_users">
-            <End Role="users" EntitySet="users" />
-            <End Role="books" EntitySet="books" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="FK_books_users">
-          <End Type="biblioteka2Model.users" Role="users" Multiplicity="0..1" />
-          <End Type="biblioteka2Model.books" Role="books" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="users">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="books">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

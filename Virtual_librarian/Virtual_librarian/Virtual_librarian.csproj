@@ -310,6 +310,10 @@
       <Project>{f13f1843-ddb0-49a0-b576-ee612fa4e7a1}</Project>
       <Name>Camera</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DatabaseWithEntity\DatabaseWithEntity.csproj">
+      <Project>{f693c9bf-577b-4289-bad2-f881a500d9ef}</Project>
+      <Name>DatabaseWithEntity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Database\Database.csproj">
       <Project>{30f1f581-5479-4629-8046-517f66c15a8b}</Project>
       <Name>Database</Name>

@@ -4,12 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8cbfd33348954b208a0eecc49f1d83b3" Name="Diagram1">
-        <EntityTypeShape EntityType="biblioteka2Model.books" Width="1.5" PointX="5.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="biblioteka2Model.types" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="biblioteka2Model.users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+      <Diagram DiagramId="1448fe931b8244b68551585fc41d54ce" Name="Diagram1">
+        <EntityTypeShape EntityType="biblioteka2Model.books" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="biblioteka2Model.types" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="biblioteka2Model.users" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="biblioteka2Model.FK_books_users" ManuallyRouted="false" />
         <AssociationConnector Association="biblioteka2Model.FK_users_type" ManuallyRouted="false" />
-        <AssociationConnector Association="biblioteka2Model.FK_books_users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -28,5 +28,25 @@ namespace DatabaseWithEntity
         public Nullable<int> UserId { get; set; }
     
         public virtual users users { get; set; }
+
+        public void TakeBook(int readerId, DateTime takenAt, DateTime returnAt)
+        {
+            this.IsTaken = true;
+            this.UserId = readerId;
+            this.TakenAt = takenAt.ToShortDateString();
+            this.ReturnAt = returnAt.ToShortDateString();
+        }
+
+        public void ReturnBook()
+        {
+            this.IsTaken = false;
+            this.TakenAt = DateTime.Now.ToShortDateString();
+            this.ReturnAt = DateTime.Now.ToShortDateString();
+        }
+
+        public void ExtendLoanPeriod(DateTime newReturnTime)
+        {
+            this.ReturnAt = newReturnTime.ToShortDateString();
+        }
     }
 }

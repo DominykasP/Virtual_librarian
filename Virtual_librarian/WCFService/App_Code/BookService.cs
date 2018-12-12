@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using LibraryObjects;
-using Database;
+using DatabaseWithEntity;
 
 /// <summary>
 /// Summary description for BookService
@@ -20,7 +20,7 @@ public class BookService : System.Web.Services.WebService
     public BookService()
     {
         //Uncomment the following line if using designed components 
-        //InitializeComponent(); 
+        //InitializeComponent();
     }
 
     [WebMethod]

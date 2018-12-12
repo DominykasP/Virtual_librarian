@@ -28,7 +28,7 @@ EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "WCFService", "WCFService\", "{2CA7BD5B-ED1A-4706-B859-B54634F70020}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		ProjectReferences = "{B03640DD-7C52-4B76-8006-128428132EC4}|FilesFunctions.dll;{5F0E20B8-C3C6-41D9-9F46-E7B974351552}|Interfaces.dll;{29e7ae70-746a-4fbf-bfda-6bdab75f0a8a}|LibraryObjects.dll;{30f1f581-5479-4629-8046-517f66c15a8b}|ClassLibrary2.dll;"
+		ProjectReferences = "{B03640DD-7C52-4B76-8006-128428132EC4}|FilesFunctions.dll;{5F0E20B8-C3C6-41D9-9F46-E7B974351552}|Interfaces.dll;{29e7ae70-746a-4fbf-bfda-6bdab75f0a8a}|LibraryObjects.dll;{f693c9bf-577b-4289-bad2-f881a500d9ef}|DatabaseWithEntity.dll;{30f1f581-5479-4629-8046-517f66c15a8b}|ClassLibrary2.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_52312"
 		Debug.AspNetCompiler.PhysicalPath = "WCFService\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52312\"

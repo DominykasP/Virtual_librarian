@@ -29,8 +29,8 @@ namespace DatabaseWithEntity
         public string Email { get; set; }
         public int TypeID { get; set; }
     
-        public virtual types types { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<books> books { get; set; }
+        public virtual types types { get; set; }
     }
 }

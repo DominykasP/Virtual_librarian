@@ -140,6 +140,8 @@ namespace Virtual_librarian
             {
                 if (mainForm.bookDBHelperByBookService.RenewBook(selectedBook.Id) == true)
                 {
+                    LoadLoanPeriods();
+                    LoadBookCatalog();
                     MetroMessageBox.Show(this, "Knyga sėkmingai pratęsta", selectedBook.Name, MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
                 else
