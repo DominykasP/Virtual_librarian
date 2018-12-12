@@ -54,6 +54,23 @@ namespace Virtual_librarian
             });
             */
             /*
+            entityBookDBHelper.AddNewBook(new LibraryObjects.Book()
+            {
+                Id=6,
+                Name="Kuprelis",
+                Author="Ignas Šeinius",
+                Publisher="Alma Littera",
+                Year= new DateTime(1983,04,15),
+                Pages=250,
+                Isbn="1213242536853",
+                Code="3245345654345",
+                IsTaken=false,
+                TakenAt=new DateTime(2018,12,13),
+                ReturnAt=new DateTime(2019,01,10),
+                ReaderId=1
+            });
+            */
+            /*
             using (DatabaseWithEntity.biblioteka2Entities duombaze = new DatabaseWithEntity.biblioteka2Entities())
             {
                 DatabaseWithEntity.users useris = duombaze.users.Where((x) => x.Name == "E").FirstOrDefault();

@@ -16,10 +16,18 @@ namespace LibraryObjects
         private DateTime birthDate;
         private string phoneNumber;
         private string email;
+        private int typeId;
 
         public Person() //Reikia darbui su failais
         {
 
+        }
+
+        public Person(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email, int typeId)
+        {
+            this.id = id;
+            this.typeId = typeId;
+            SetProperties(name, surname, password, birthDate, phoneNumber, email);
         }
 
         public Person(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
@@ -50,6 +58,7 @@ namespace LibraryObjects
         public DateTime BirthDate { get => birthDate; set => birthDate = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string Email { get => email; set => email = value; }
+        public int TypeId { get => typeId; set => typeId = value; }
 
         public bool Equals(Person other)
         {

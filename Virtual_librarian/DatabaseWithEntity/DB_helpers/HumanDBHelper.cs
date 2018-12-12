@@ -18,6 +18,8 @@ namespace DatabaseWithEntity
         private Lazy<List<Person>> users;
         private string db;
 
+        DatabaseWithEntity.biblioteka2Entities database;
+
         public HumanDBHelper()
         {
             //users = new Lazy < List < Person >>(() => FileIO.FileRead<List<Person>>(PathsToFiles.pathToUsersFile));
@@ -29,7 +31,7 @@ namespace DatabaseWithEntity
             db = "Server=tcp:biblioteka.database.windows.net,1433;Initial Catalog=biblioteka;Persist Security Info=False;User ID='biblioteka';Password='sqlbaze1!';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
 
-
+            database = new DatabaseWithEntity.biblioteka2Entities();
         }
 
         public List<Person> SQLPersonsRead()
@@ -206,6 +208,7 @@ namespace DatabaseWithEntity
 
         public bool AddNewPerson(Person person)
         {
+
             users.Value.Add(person);
             //return FileIO.FileWrite<List<Person>>(PathsToFiles.pathToUsersFile, users.Value);
             return SQLPersonAdd(person);

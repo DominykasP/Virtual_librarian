@@ -8,6 +8,9 @@ namespace DatabaseWithEntity
 {
     class DBToLibrary
     {
+        //-----------------------------------
+        //          Books
+        //-----------------------------------
         public static LibraryObjects.Book BookToLibrary(DatabaseWithEntity.books book)
         {
             if (book == null)
@@ -75,7 +78,55 @@ namespace DatabaseWithEntity
                 }
                 return newBooks;
             }
-
         }
+
+        //-----------------------------------
+        //          Users
+        //-----------------------------------
+        public static LibraryObjects.Person UserToLibrary(DatabaseWithEntity.users user)
+        {
+            if (user == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new LibraryObjects.Person()
+                {
+                    Id = user.Id,
+                    Name = user.Name,
+                    Surname = user.Surname,
+                    Password = user.Password,
+                    BirthDate = user.BirthDate != null ? DateTime.ParseExact(user.BirthDate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture) : DateTime.MinValue,
+                    PhoneNumber = user.PhoneNumber,
+                    Email = user.Email,
+                    TypeId = user.TypeID
+                };
+            }
+        }
+
+        public static DatabaseWithEntity.users LibraryToUser(LibraryObjects.Person person)
+        {
+            if (person == null)
+            {
+                return null;
+            }
+            else
+            {
+                return new DatabaseWithEntity.users()
+                {
+                    Id = person.Id,
+                    Name = person.Name,
+                    Surname = person.Surname,
+                    Password = person.Password,
+                    BirthDate = person.BirthDate.ToShortDateString(),
+                    PhoneNumber = person.PhoneNumber,
+                    Email = person.Email,
+                    TypeID = person.TypeId
+                };
+            }
+        }
+
+        //public List<LibraryObjects.Person> UserListToLibrary(List<DatabaseWithEntity.users> users);
     }
 }
