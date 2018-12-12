@@ -127,6 +127,21 @@ namespace DatabaseWithEntity
             }
         }
 
-        //public List<LibraryObjects.Person> UserListToLibrary(List<DatabaseWithEntity.users> users);
+        public static List<LibraryObjects.Person> UserListToLibrary(List<DatabaseWithEntity.users> users)
+        {
+            if (users == null)
+            {
+                return null;
+            }
+            else
+            {
+                List<LibraryObjects.Person> newPersons = new List<LibraryObjects.Person>();
+                foreach (var user in users)
+                {
+                    newPersons.Add(UserToLibrary(user));
+                }
+                return newPersons;
+            }
+        }
     }
 }
