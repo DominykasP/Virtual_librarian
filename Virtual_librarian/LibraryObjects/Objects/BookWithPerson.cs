@@ -8,23 +8,23 @@ namespace LibraryObjects
 {
     public class BookWithPerson
     {
-        private int id;
-        private String name;
-        private String author;
-        private String publisher;
-        private DateTime year;
-        private int pages;
+        public int id;
+        public String name;
+        public String author;
+        public String publisher;
+        public DateTime year;
+        public int pages;
 
-        private String isbn;
-        private String code;
+        public String isbn;
+        public String code;
 
-        private bool isTaken;
-        private int readerId;
-        private DateTime takenAt;
-        private DateTime returnAt;
-        private int timeRemaining;
-        private String personName;
-        private String personSurname;
+        public bool isTaken;
+        public int readerId;
+        public DateTime takenAt;
+        public DateTime returnAt;
+        public int timeRemaining;
+        public String personName;
+        public String personSurname;
 
         public BookWithPerson(int id, string name, string author, string publisher, DateTime year, int pages, string isbn, string code, bool isTaken, int readerId, DateTime takenAt, DateTime returnAt, int timeRemaining, string personName, string personSurname)
         {

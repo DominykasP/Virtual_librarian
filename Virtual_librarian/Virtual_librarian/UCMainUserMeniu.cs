@@ -31,6 +31,7 @@ namespace Virtual_librarian
             LoadLoanPeriods();
             LoadBookCatalog();
             LoadMyRequests();
+            
         }
 
         private void MtbPasiimti_Leave(object sender, EventArgs e)
