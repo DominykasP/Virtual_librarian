@@ -23,13 +23,15 @@ namespace Virtual_librarian
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
+            //REIKIA ATSTATYTI - PRALEIDZIAM PRISIJUNGIMA
+            /*
             UCLogin ucLogin = new UCLogin(mainForm);
             ucLogin.Dock = DockStyle.Bottom;
             mainForm.Controls.Remove(this);
             mainForm.Controls.Add(ucLogin);
+            */
 
-            //Automatinis pirmo vartotojo prijungimas
-            /*
+            //Sita iki galo istrinti
             LibraryObjects.Person loggedInPerson = ServiceToLibrary.PersonToLibraryObject(mainForm.humanDBHelperByPersonService.GetPersonByID(1));
 
             if (loggedInPerson != null)
@@ -39,7 +41,6 @@ namespace Virtual_librarian
                 mainForm.Controls.Remove(this);
                 mainForm.Controls.Add(ucMainUserMeniu);
             }
-            */
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
