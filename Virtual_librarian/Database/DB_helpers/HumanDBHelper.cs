@@ -105,6 +105,7 @@ namespace Database
                     users.Value.Add(user);
 
                 }
+                mySQLReader.Close();
                 return users.Value;
             }
             catch (Exception ex)

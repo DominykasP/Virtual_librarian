@@ -32,7 +32,7 @@ namespace Database
             db = "Server=tcp:biblioteka.database.windows.net,1433;Initial Catalog=biblioteka;Persist Security Info=False;User ID='biblioteka';Password='sqlbaze1!';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
-        public List<BookWithPerson> JoinBP(List<Person> people, List<Book> books)
+        /*public List<BookWithPerson> JoinBP(List<Person> people, List<Book> books)
         {
             //List<BookWithPerson> newList = new List<BookWithPerson>();
             var result =
@@ -84,7 +84,7 @@ namespace Database
 
             List<BookWithPerson> newList = result.ToList<BookWithPerson>();
             List<BookWithPerson> sarasas = new List<BookWithPerson>(result.ToList<BookWithPerson>());
-        }
+        }*/
 
         public List<Book> SQLBooksRead()
         {
@@ -106,7 +106,7 @@ namespace Database
                 DataSet books1 = new DataSet();
                 adapter.Fill(books1, "books");
                 books = ConvertSet(books1);
-
+                adapter.Dispose();
                 return books;
             }
             catch (Exception ex)
@@ -116,6 +116,7 @@ namespace Database
             finally
             {
                 conn.Close();
+                
             }
         }
 
@@ -184,6 +185,7 @@ namespace Database
                     //book.TimeRemaining = Convert.ToInt32(dataReader["Id"]);
                     books.Add(book);
                 }
+                mySQLReader.Close();
                 return books;
             }
             catch (Exception ex)
@@ -193,6 +195,7 @@ namespace Database
             finally
             {
                 conn.Close();
+                
             }
         }
 
@@ -232,6 +235,7 @@ namespace Database
                 sqlua.UpdateCommand = cmd2;
                 sqlua.UpdateCommand.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
+                sqlua.Dispose();
                 return true;
             }
             catch (Exception ex)
