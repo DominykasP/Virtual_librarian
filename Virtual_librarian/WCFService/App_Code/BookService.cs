@@ -92,6 +92,7 @@ public class BookService : System.Web.Services.WebService
     [WebMethod]
     public bool AddNewBook(Book book)
     {
+        book.Id = bookDBHelper.GetNextId();
         return bookDBHelper.AddNewBook(book);
     }
 

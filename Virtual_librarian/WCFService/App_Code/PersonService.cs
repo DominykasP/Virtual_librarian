@@ -33,6 +33,7 @@ public class PersonService : System.Web.Services.WebService
 
     public bool AddNewPerson(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
     {
+        id = humanDBHelper.GetNextId();
         Person person = new Person(id, name, surname, password, birthDate, phoneNumber, email);
         return humanDBHelper.AddNewPerson(person);
     }
