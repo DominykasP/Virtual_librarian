@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using LibraryObjects;
-using Database;
+using DatabaseWithEntity;
 
 /// <summary>
 /// Summary description for PersonService
