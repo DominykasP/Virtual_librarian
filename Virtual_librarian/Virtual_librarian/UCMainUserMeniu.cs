@@ -74,6 +74,22 @@ namespace Virtual_librarian
 
         public void LoadBookCatalog()
         {
+            HumanDBHelper humanDBHelper = new HumanDBHelper();
+            BookDBHelper bookDBHelper = new BookDBHelper();
+
+            BindingList<BookWithPerson> allBooks = new BindingList<BookWithPerson>(bookDBHelper.JoinBP(humanDBHelper.GetAllPersons(), bookDBHelper.GetAllBooks()));
+            BindingSource allBookSource = new BindingSource(allBooks, null);
+            grdAllBooks.DataSource = allBookSource;
+            grdAllBooks.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
+            grdAllBooks.Columns["TakenAt"].Visible = false;
+            grdAllBooks.Columns["ReturnAt"].Visible = false;
+            grdAllBooks.Columns["TimeRemaining"].Visible = false;
+            grdAllBooks.Columns["ReaderId"].Visible = false;
+        }
+
+        /*
+        public void LoadBookCatalog()
+        {
             BindingList<Book> allBooks = new BindingList<Book>(ServiceToLibrary.BookListToLibraryObject(mainForm.bookDBHelperByBookService.GetAllBooks()));
             BindingSource allBookSource = new BindingSource(allBooks, null);
             grdAllBooks.DataSource = allBookSource;
@@ -82,6 +98,7 @@ namespace Virtual_librarian
             grdAllBooks.Columns["ReturnAt"].Visible = false;
             grdAllBooks.Columns["TimeRemaining"].Visible = false;
         }
+        */
 
         private void LoadMyRequests()
         {
