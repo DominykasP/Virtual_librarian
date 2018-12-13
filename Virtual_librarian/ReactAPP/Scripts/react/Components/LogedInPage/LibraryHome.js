@@ -15,24 +15,103 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 import Contacts from "./Contacts";
 import Footer from "./Footer/Footer";
 
-export default class LibraryHome extends React.Component {
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import AppBarClass from './AppBar'
+
+{/*var RightSideStuff = React.createClass({
+    render() {
+        return (
+            <span>
+                <FlatButton label="Foo" style={styles.items} />
+                <FlatButton label="Bar" style={styles.items} />
+                <Toolbar
+                    targetOrigin={{ horizontal: 'right', vertical: 'top' }}
+                    anchorOrigin={{ horizontal: 'right', vertical: 'top' }}>
+                    <IconButton align='center' className={classes.menuButton} color="primary" aria-label="Menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography align='center' color="inherit" className={classes.grow}>
+                        <h1 align='center'> Virtual Library</h1>
+
+                    </Typography>
+                     <Button align='center' color="inherit">Login</Button> 
+
+                </Toolbar>
+               
+            </span>
+        );
+
+    }
+});*/}
+
+const styles = theme =>{
+    root: {
+        flexGrow: 1;
+        
+        
+    };
+    grow: {
+        flexGrow: 1;
+        textAlign: 'center';
+    };
+    menuButton: {
+        marginLeft: -12;
+        marginRight: 20;
+    };
+};
+
+
+
+ class LibraryHome extends React.Component {
+   
     constructor(props) {
         super(props);
         this.state = {
-            IDd: 'labas'
-           
+            IDd: 'labas',
+           expanded: false
         }
         //console.log(props.location.state.id)
         //console.log(this.props.location.state.id);
-    }
+     }
+
+
+
+    
     render() {
+        const { classes } = this.props;
+
         //console.log(this.props.location.state.ID);
         return (
             
             <div className="nomargins">
-                
-                <Route  path="/library" render={({ location, history }) => (
-                    <React.Fragment>
+               
+                <div className = "sidebar">
+                <Route path="/library" render={({ location, history }) => (
+                    <div className={classes.root}>
+                            <AppBar position="static">
+                                <Toolbar >
+                                    <IconButton  align='center' className={classes.menuButton} color="primary" aria-label="Menu">
+                                        <MenuIcon />
+                                    </IconButton>
+                                    <Typography align='center' color="inherit" className={classes.grow}>
+                                        <h1 align='center'> Virtual Library</h1>
+
+                                        </Typography>
+                                    {/*<Button align='center' color="inherit">Login</Button>*/}
+
+                                </Toolbar>
+                                
+                            </AppBar>
+                       
+                        <React.Fragment >
+                            
                         <SideNav
                             onSelect={(selected) => {
                                 const to = '/' + selected;
@@ -40,25 +119,26 @@ export default class LibraryHome extends React.Component {
                                     history.push(to);
                                 }
                             }}>
-                            <SideNav.Toggle />
-                            <SideNav.Nav defaultSelected="/">
-                                <NavItem eventKey="library/home">
+                                <SideNav.Toggle />
+                                
+                                 <SideNav.Nav defaultSelected="/">
+                                     <NavItem eventKey="library/home">
                                     <NavIcon>
                                         <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
                                     <NavText>
-                                        Home {/*this.props.location.state.id*/}
+                                        Home 
                         </NavText>
                                 </NavItem>
                                 
-                                <NavItem eventKey="library/devices">
+                                        {/*<NavItem eventKey="library/devices">
                                     <NavIcon>
                                         <i className="fa fa-laptop" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
                                     <NavText>
                                         Devices
                         </NavText>
-                                </NavItem>
+                                </NavItem>*/}
                                 <NavItem eventKey="library/library">
                                     <NavIcon>
                                         <i className="fas fa-book-reader" style={{ fontSize: '1.75em' }} />
@@ -74,15 +154,15 @@ export default class LibraryHome extends React.Component {
                                     <NavText>
                                         My Books
                         </NavText>
-                                </NavItem>
-                                <NavItem eventKey="library/contacts">
+                                   </NavItem>
+                                    {/*<NavItem eventKey="library/contacts">
                                     <NavIcon>
                                         <i className="fas fa-address-book" style={{ fontSize: '1.75em' }} />
                                     </NavIcon>
                                     <NavText>
                                         Contacts
                         </NavText>
-                                </NavItem>
+                                </NavItem>*/}
                                 <NavItem eventKey="login">
                                     <NavIcon>
                                         <i className="fas fa-sign-out-alt" style={{ fontSize: '1.75em' }} />
@@ -91,8 +171,10 @@ export default class LibraryHome extends React.Component {
                                         Sign Out
                         </NavText>
                                 </NavItem>
-                            </SideNav.Nav>
-                        </SideNav>
+                                    </SideNav.Nav>
+                                
+                                </SideNav>
+                                
                         <main>
                             <Route exact={true} path="/library" render={() => (
                                 <h1>Welcome </h1>
@@ -105,13 +187,26 @@ export default class LibraryHome extends React.Component {
                             <Route path="/library/contacts" component={Contacts} />
                             <Route path="login"/>
                         </main>
-                    </React.Fragment>
+                            </React.Fragment>
+                            <Footer />
+                            </div>
+                    
                 )}
-                />
+                    />
+                    
+                </div>
+                
             </div>
-
 
         );
     }
 }
+
+LibraryHome.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(LibraryHome);
+
 Settings.id = "app";
+

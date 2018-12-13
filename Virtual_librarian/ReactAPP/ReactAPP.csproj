@@ -154,6 +154,7 @@
     <None Include="packages.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\react\Components\authentication\Utils.js" />
+    <Content Include="Scripts\react\Components\LogedInPage\AppBar.js" />
     <Content Include="Scripts\react\Components\LogedInPage\Archives.js" />
     <Content Include="Scripts\react\Components\authentication\AuthenticationStyling.css" />
     <Content Include="Scripts\react\Components\LogedInPage\Contacts.js" />
@@ -170,6 +171,8 @@
     <Content Include="Scripts\react\Components\LogedInPage\HomePage\Plx.js" />
     <Content Include="Scripts\react\Components\LogedInPage\images\BlueLibraryAuthenticationBackground.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\LibraryAuthenticationBackground.png" />
+    <Content Include="Scripts\react\Components\LogedInPage\images\LibraryHome1.png" />
+    <Content Include="Scripts\react\Components\LogedInPage\images\Library_Picture2.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\Modern background.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\sharon-mccutcheon-532782-unsplash.png" />
     <Content Include="Scripts\react\Components\LogedInPage\images\Virtual-Librarian-Homepage.png" />
@@ -190,6 +193,7 @@
     <Content Include="Scripts\react\Components\LogedInPage\LibraryObjects\LibraryBooks.js" />
     <Content Include="Scripts\react\Components\authentication\Register.js" />
     <Content Include="Scripts\react\Components\LogedInPage\LibraryObjects\LibraryStyling.css" />
+    <Content Include="Scripts\react\Components\LogedInPage\LibraryObjects\WithTheme.js" />
     <Content Include="Scripts\react\Components\LogedInPage\margins.css" />
     <Content Include="Scripts\react\Components\LogedInPage\Settings.js" />
     <Content Include="Scripts\react\Components\authentication\SignIn.js" />

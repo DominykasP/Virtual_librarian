@@ -6,6 +6,8 @@ $red: #e34e47;
 $blue: #409ad7;
 $green: #34ba9c;
 $yellow: #efc241;
+$sand: #b1a296;
+$fontBack:#5d5c61;
 $bg-color: #fdfdfd;
 
 // ------ Breakpoints
@@ -90,11 +92,17 @@ h4 {
 }
 .Demo {
     text-align: center;
+    background-color: $sand;
+}
+.Example-marginTop {
+    margin-top: 150px;
 }
 .Examples {
-    color: $red;
-    margin-top: 2rem;
-
+    color: $blue;
+    background-color: $fontBack;
+    font-size: 60px;
+    font-family:sans-serif;
+    height:65px;
     @include md {
         margin-top: 0;
     }
@@ -102,7 +110,7 @@ h4 {
 .Content {
     margin: 0 auto;
     max-width: 60rem;
-    
+   
     padding: 5rem 2rem;
     position: relative;
     text-align: center;
@@ -151,14 +159,39 @@ h4 {
         padding: 0.4rem 0;
     }
 }
-.StickyText {
+.StickyTextR {
     bottom: 0;
-    left: 0;
+    left: -800px;
+    right: 650px;
     max-width: 54rem;
-    opacity:0;
+    opacity: 0;
     padding: 0 2rem;
     position: fixed;
     width: 100%;
+    background: $blue;
+    
+
+    @include md {
+        left: auto;
+        padding: 0;
+    }
+
+    h1 {
+        margin: 0;
+        transform: translateY(50%);
+    }
+}
+.StickyTextL {
+    bottom: 0;
+    left: 0;
+    right: 615px;
+    max-width: 54rem;
+    opacity: 0;
+    padding: 0 2rem;
+    position: fixed;
+    width: 100%;
+    background: $blue;
+
 
     @include md {
         left: auto;
@@ -189,6 +222,11 @@ h4 {
         transform: translateY(50%);
     }
 }
-.StickyText-trigger {
-    margin-top: 1000px;
+.StickyText-trigger1 {
+    margin-top: 800px;
 }
+
+.StickyText-trigger2 {
+    margin-top: 1400px;
+}
+

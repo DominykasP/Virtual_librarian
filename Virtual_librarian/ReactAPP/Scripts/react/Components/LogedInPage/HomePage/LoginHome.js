@@ -29,7 +29,7 @@ const content = [
 ];
 const parallaxData = [
     {
-        start: '.StickyText-trigger',
+        start: '.StickyText-trigger1',
         duration: '30vh',
         properties: [
             {
@@ -46,7 +46,7 @@ const parallaxData = [
         ],
     },
     {
-        start: '.StickyText-trigger',
+        start: '.StickyText-trigger1',
         startOffset: '60vh',
         duration: '30vh',
         properties: [
@@ -66,7 +66,7 @@ const parallaxData = [
 ];
 const parallaxData1 = [
     {
-        start: '.StickyText-trigger1',
+        start: '.StickyText-trigger2',
         duration: '30vh',
         
         properties: [
@@ -84,10 +84,9 @@ const parallaxData1 = [
         ],
     },
     {
-        start: '.StickyText-trigger1',
+        start: '.StickyText-trigger2',
         startOffset: '60vh',
         duration: '30vh',
-        end: '1100vh',
         properties: [
             {
                 startValue: -50,
@@ -105,7 +104,7 @@ const parallaxData1 = [
 ];
 const parallaxData2 = [
     {
-        start: '.StickyText-trigger2',
+        start: '.StickyText-trigger2'+'-20vh',
         duration: '30vh',
         properties: [
             {
@@ -149,41 +148,55 @@ export default class LoginHome extends React.Component {
     render() {
         return (
             <div className = 'Demo'>
-                <div style={{ marginLeft: 65 }}>
+                <div style={{ marginLeft: 0 }}>
                     <div className='Content'>
-                
+                        <div className='Example-marginTop'/>
                         <Plx
                             tagName='h1'
                             className='Examples'
                             parallaxData={content}
                             
                         >
-                            Triangles
+                            Virtual
+                            <div>
+                            library
+                            </div>    
                         </Plx>
-                        <div className='StickyText-trigger' />
+                        <div className='StickyText-trigger1' />
                             <Plx
                                 
-                                className='StickyText'
+                                className='StickyTextR'
                             parallaxData={parallaxData}
                             
-                            >
-                            Make elements fly in and stick for some time before they fly out
-                            </Plx>
+                        >
+                            <img src={require('../images/LibraryHome1.png')} />
+                            
+                        </Plx>
+                        <div className='StickyText-trigger2' />
+                        <Plx
+
+                            className='StickyTextL'
+                            parallaxData={parallaxData1}
+
+                        >
+                            <img src={require('../images/Library_Picture2.png')} />
+
+                        </Plx>
                        
                     </div>
-                    {/* <div className='Footer'>
+                     <div className='Footer'>
                         <div className='Content'>
-                            <h1>Plx</h1>
-                            <h2>React Parallax component</h2>
-                            <div>Awesome isn&#39;t it?</div>
+                            <h1>@Virtual Library</h1>
+                            <h2>by Listerinas</h2>
+                            <div>Books is our knowledge and life</div>
                             <div className='Footer-links'>
-                                <a href='https://muffinman.io'>My blog</a>
-                                <a href='https://www.npmjs.com/package/react-plx'>npm</a>
-                                <a href='https://github.com/Stanko/react-plx'>GitHub</a>
+                                <a href='https://biblioteka.vu.lt/'>Library page</a>
+                                
+                                <a href='https://github.com/DominykasP/Virtual_librarian.git'>GitHub</a>
                             </div>
                             <button onClick={() => this.handleScrollTop()}>Back to top</button>
                         </div>
-                    </div>*/}
+                    </div>
                     {/*
                 <div className='StickyText-trigger1' />
                     <Plx

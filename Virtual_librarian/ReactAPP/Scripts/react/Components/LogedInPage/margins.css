@@ -15,15 +15,34 @@
     justify-content: center;
     align-items: center;
     color: blue;
+    
    
-    position: absolute;
     width: 400px;
     min-height: 50vh;
     border-radius: 40px;
-    float: none;
-    margin: 0 auto ;
+    
+    margin-top:150px;
     margin-left: 10px auto;
-    margin-top: 100px;
+    
+}
+.homepage-Title {
+    justify-content:flex-end;
+    flex: 1;
+    position:absolute;
+    text-align:right;
+    align-items: flex-end;
+    
+    font-size:60px;
+    font-family:'Comic Sans MS';
+    color:white;
+    flex-direction:row;
+    background-color:deepskyblue;
+    height:90px;
+    width:250px;
+    margin-left:700px;
+    margin-right: 50px;
+    margin-top: 250px;
+    
 }
 
 .LinkColor{
@@ -42,9 +61,16 @@
     background-image: url('images/Modern background.png');
     background-size: cover;
     background-position: center center;
-    position:relative;
+    
     top:0;
     bottom: 0;
     height: 100vh;
 
+}
+.sidebar {
+    top: 0;
+    bottom:-100px;
+    position:relative;
+
+   
 }
