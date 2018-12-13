@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FilesFunctions;
 using Interfaces;
 using LibraryObjects;
+using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -15,6 +16,7 @@ namespace Database
     public class BookDBHelper : IBookDBHelper
     {
         private Lazy<List<Book>> books = null;
+        private Lazy<List<BookWithPerson>> booksWithPersons = null;
         private string db;
 
         BookCollection<Book> bookCollection = new BookCollection<Book>();
@@ -30,7 +32,228 @@ namespace Database
             db = "Server=tcp:biblioteka.database.windows.net,1433;Initial Catalog=biblioteka;Persist Security Info=False;User ID='biblioteka';Password='sqlbaze1!';MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
+        public List<BookWithPerson> JoinBP(List<Person> people, List<Book> books)
+        {
+            List<BookWithPerson> newList = new List<BookWithPerson>();
+            /* var result =
+                 from book in books
+                 where book.IsTaken = true
+                 join person in people on book.ReaderId equals person.Id into bwp
+                 from person in bwp.DefaultIfEmpty()
+                 select new
+                 {
+                     id = book.Id,
+                     name = book.Name,
+                     author = book.Author,
+                     publisher = book.Publisher,
+                     year = book.Year,
+                     pages = book.Pages,
+                     isbn = book.Isbn,
+                     code = book.Code,
+                     isTaken = book.IsTaken == false ? "false" : "true",
+                     readerId = book.ReaderId,
+                     takenAt = book.TakenAt,
+                     returnAt = book.ReturnAt,
+                     timeRemaining = book.TimeRemaining,
+                     personName = person.Name,
+                     personSurname = person.Surname
+                 };*/
+
+            /* var query = people    // your starting point - table in the "from" statement
+                .Join(books, // the source table of the inner join
+                   person => person.Id,        // Select the primary key (the first part of the "on" clause in an sql "join" statement)
+                   book => book.ReaderId,   // Select the foreign key (the second part of the "on" clause)
+                   (person, book) => new {
+                       id = book.Id,
+                       name = book.Name,
+                       author = book.Author,
+                       publisher = book.Publisher,
+                       year = book.Year,
+                       pages = book.Pages,
+                       isbn = book.Isbn,
+                       code = book.Code,
+                       isTaken = book.IsTaken == false ? "false" : "true",
+                       readerId = book.ReaderId,
+                       takenAt = book.TakenAt,
+                       returnAt = book.ReturnAt,
+                       timeRemaining = book.TimeRemaining,
+                       personName = person.Name,
+                       personSurname = person.Surname
+                   }) // selection
+                .Where(bookWithPerson => bookWithPerson.Person.ID == id);    // where statement*/
+
+            /* var query = books.GroupJoin(people,
+                 book => book.ReaderId,
+                 person => person.Id,
+                 (book, newGroup) => newGroup.Select(person => new
+                 {
+
+                     timeRemaining = book.TimeRemaining,
+                     personName = person.Name,
+                     personSurname = person.Surname
+                 })).SelectMany(book => book);*/
+            
+           /* var result =
+            from book in books
+            join person in people on book.ReaderId equals person.Id
+            select new
+            {
+                id = book.Id,
+                name = book.Name,
+                author = book.Author,
+                publisher = book.Publisher,
+                year = book.Year,
+                pages = book.Pages,
+                isbn = book.Isbn,
+                code = book.Code,
+                isTaken = book.IsTaken == false ? "false" : "true",
+                readerId = book.ReaderId,
+                takenAt = book.TakenAt,
+                returnAt = book.ReturnAt,
+                timeRemaining = book.TimeRemaining,
+                personName = person.Name,
+                personSurname = person.Surname
+            };
+            var query = people   // your starting point - table in the "from" statement
+                .Join(books, // the source table of the inner join
+                person => person.Id,        // Select the primary key (the first part of the "on" clause in an sql "join" statement)
+                  book => book.ReaderId,   // Select the foreign key (the second part of the "on" clause)
+                  (person, book) => new {person, book }) // selection
+                 .Where(newJoin => newJoin.person.Id == newJoin.book.ReaderId);    // where statement
+            foreach(var p in result)
+            {
+                newList.Add(new {
+                    id = p.Id,
+                    name = p.Name,
+                    author = book.Author,
+                    publisher = book.Publisher,
+                    year = book.Year,
+                    pages = book.Pages,
+                    isbn = book.Isbn,
+                    code = book.Code,
+                    isTaken = book.IsTaken == false ? "false" : "true",
+                    readerId = book.ReaderId,
+                    takenAt = book.TakenAt,
+                    returnAt = book.ReturnAt,
+                    timeRemaining = book.TimeRemaining,
+                    personName = person.Name,
+                    personSurname = person.Surname
+                })
+            }*/
+            var result = from book in books
+                         join person in people on book.ReaderId equals person.Id
+                         select new
+                         {
+                             book.Id,
+                             book.Name,
+                             book.Author,
+                             book.Publisher,
+                             book.Year,
+                             book.Pages,
+                             book.Isbn,
+                             book.Code,
+                             book.IsTaken,
+                             book.ReaderId,
+                             book.TakenAt,
+                             book.ReturnAt,
+                             book.TimeRemaining,
+                             personName = person.Name,
+                             personSurname = person.Surname
+                         };
+            var temp = result.Select(x => new BookWithPerson(x.Id, x.Name, x.Author, x.Publisher, x.Year, x.Pages, x.Isbn, x.Code, x.IsTaken, x.ReaderId, x.TakenAt, x.ReturnAt, x.TimeRemaining, x.personName, x.personSurname)
+            {
+                id = x.Id,
+                name = x.Name,
+                author = x.Author,
+                publisher = x.Publisher,
+                year = x.Year,
+                pages = x.Pages,
+                isbn = x.Isbn,
+                code = x.Code,
+                isTaken = x.IsTaken,
+                readerId = x.ReaderId,
+                takenAt = x.TakenAt,
+                returnAt = x.ReturnAt,
+                timeRemaining = x.TimeRemaining,
+                personName = x.personName,
+                personSurname = x.personSurname
+            });
+            newList = temp.ToList<BookWithPerson>();
+            return newList;
+        }
+
+        public List<BookWithPerson> GroupBP(List<BookWithPerson> bwp)
+        {
+            var byReader = bwp.Where(b => b.IsTaken).GroupBy(b => b.readerId);
+            foreach(var group in byReader)
+            {
+                Console.WriteLine("Naudotojas su id " + group.Key + " turi va tiek knygu: " + group.Count());
+            }
+            List<BookWithPerson> newl = new List<BookWithPerson>();
+            return newl;
+        }
+
         public List<Book> SQLBooksRead()
+        {
+
+            SqlConnection conn;
+            //string myConnectionString = ConfigurationManager.ConnectionStrings["biblioteka"].ConnectionString;
+            conn = new SqlConnection(db);
+            try
+            {
+                //conn.ConnectionString = myConnectionString;
+                conn.Open();
+
+                List<Book> books = new List<Book>();
+
+                SqlDataReader mySQLReader = null;
+                String sqlString = "SELECT * FROM books";
+                SqlCommand cmd = new SqlCommand(sqlString, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlString, conn);
+                DataSet books1 = new DataSet();
+                adapter.Fill(books1, "books");
+                books = ConvertSet(books1);
+                adapter.Dispose();
+                return books;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                conn.Close();
+                
+            }
+        }
+
+        public List<Book> ConvertSet(DataSet books1)
+        {
+            List<DataRow> list = books1.Tables["books"].AsEnumerable().ToList();
+            List<Book> books = new List<Book>();
+            foreach (var dr in list)
+            {
+                Book book = new Book
+                {
+                    Id = Convert.ToInt32(dr["Id"]),
+                    Name = dr["Name"].ToString().TrimEnd(),
+                    Author = dr["Author"].ToString().TrimEnd(),
+                    Publisher = dr["Publisher"].ToString().TrimEnd(),
+                    Pages = Convert.ToInt32(dr["Pages"]),
+                    Year = Convert.ToDateTime(dr["Year"]),
+                    Isbn = dr["Isbn"].ToString().TrimEnd(),
+                    Code = dr["Code"].ToString().TrimEnd(),
+                    IsTaken = Convert.ToBoolean(dr["IsTaken"]),
+                    ReaderId = Convert.ToInt32(dr["UserId"]),
+                    TakenAt = Convert.ToDateTime(dr["TakenAt"]),
+                    ReturnAt = Convert.ToDateTime(dr["ReturnAt"])
+                };
+                books.Add(book);
+            }
+            return books;
+        }
+
+        public List<Book> SQLBooksRead2()
         {
 
             SqlConnection conn;
@@ -69,6 +292,7 @@ namespace Database
                     //book.TimeRemaining = Convert.ToInt32(dataReader["Id"]);
                     books.Add(book);
                 }
+                mySQLReader.Close();
                 return books;
             }
             catch (Exception ex)
@@ -78,6 +302,7 @@ namespace Database
             finally
             {
                 conn.Close();
+                
             }
         }
 
@@ -92,6 +317,7 @@ namespace Database
                 conn.Open();
 
                 List<Book> books = new List<Book>();
+                var sqlua = new SqlDataAdapter("SELECT * FROM books", conn);
 
 
                 //String sqlString = "DELETE FROM books WHERE ID = '" + changedBook.Id + "'";
@@ -113,7 +339,10 @@ namespace Database
                 cmd2.Parameters.AddWithValue("@TakenAt", changedBook.TakenAt);
                 cmd2.Parameters.AddWithValue("@ReturnAt", changedBook.ReturnAt);
                 cmd2.Parameters.AddWithValue("@UserId", changedBook.ReaderId);
+                sqlua.UpdateCommand = cmd2;
+                sqlua.UpdateCommand.ExecuteNonQuery();
                 cmd2.ExecuteNonQuery();
+                sqlua.Dispose();
                 return true;
             }
             catch (Exception ex)
@@ -199,7 +428,7 @@ namespace Database
 
         public Book GetBookById(int id)
         {
-            foreach(Book book in books.Value)
+            foreach (Book book in books.Value)
             {
                 bookCollection.Add(book);
             }
@@ -209,16 +438,16 @@ namespace Database
 
         public Book GetBookByCode(string isbn, string code)
         {
-             Book foundBook = new Book();
-             var bookList = books.Value.OfType<Book>();
-             var foundBooks = from book in bookList
-                                  where (book.Isbn == isbn) && (book.Code == code)
-                                  select book;
-             foreach(var book in foundBooks)
-             {
-                 foundBook = book;
-             }
-             return foundBook;
+            Book foundBook = new Book();
+            var bookList = books.Value.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where (book.Isbn == isbn) && (book.Code == code)
+                             select book;
+            foreach (var book in foundBooks)
+            {
+                foundBook = book;
+            }
+            return foundBook;
         }
 
         public Book GetBookByIsbn(string isbn)
@@ -245,9 +474,9 @@ namespace Database
             List<Book> readersBooks = new List<Book>();
             var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
-                               where (book.IsTaken == true) && (book.ReaderId == reader.Id)
-                               orderby book
-                               select book;
+                             where (book.IsTaken == true) && (book.ReaderId == reader.Id)
+                             orderby book
+                             select book;
             foreach (var book in foundBooks)
             {
                 readersBooks.Add(book);
@@ -279,8 +508,8 @@ namespace Database
             Book returned = new Book();
             var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
-                               where book.Equals(returnedBook)
-                               select book;
+                             where book.Equals(returnedBook)
+                             select book;
             foreach (var book in foundBooks)
             {
                 returned = book;
@@ -324,12 +553,12 @@ namespace Database
 
         public List<Book> Find(string search)
         {
-         List<Book> correspondingBooks = new List<Book>();
-                    var bookList = books.Value.OfType<Book>();
-                    var foundBooks = from book in bookList
-                                       where book.Name.Contains(search) || book.Author.Contains(search)
-                                       orderby book
-                                       select book;
+            List<Book> correspondingBooks = new List<Book>();
+            var bookList = books.Value.OfType<Book>();
+            var foundBooks = from book in bookList
+                             where book.Name.Contains(search) || book.Author.Contains(search)
+                             orderby book
+                             select book;
 
             foreach (var book in foundBooks)
             {
@@ -466,8 +695,8 @@ namespace Database
             Book renewed = new Book();
             var bookList = books.Value.OfType<Book>();
             var foundBooks = from book in bookList
-                               where book.Equals(renewedBook)
-                               select book;
+                             where book.Equals(renewedBook)
+                             select book;
             foreach (var book in foundBooks)
             {
                 renewed = book;
@@ -502,8 +731,8 @@ namespace Database
             Book currentBook = new Book();
             var bookList = books.Value.OfType<Book>();
             var booksFound = from book in bookList
-                               where book.Equals(bookToCheck)
-                               select book;
+                             where book.Equals(bookToCheck)
+                             select book;
             foreach (var book in booksFound)
             {
                 currentBook = book;

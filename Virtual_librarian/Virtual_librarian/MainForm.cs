@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Database;
 using FilesFunctions;
+using LibraryObjects;
 
 namespace Virtual_librarian
 {
@@ -37,6 +38,14 @@ namespace Virtual_librarian
             ucChooseLogin = new UCChooseLogin(this);
             ucChooseLogin.Dock = DockStyle.Bottom;
             this.Controls.Add(ucChooseLogin);
+            BookDBHelper b = new BookDBHelper();
+            HumanDBHelper h = new HumanDBHelper();
+            List<Book> books = new List<Book>();
+            List<Person> people = new List<Person>();
+            List<BookWithPerson> bp = new List<BookWithPerson>();
+            books = b.SQLBooksRead();
+            people = h.SQLPersonsRead();
+            bp = b.JoinBP(people, books);
         }
     }
 }
