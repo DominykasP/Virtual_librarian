@@ -1,0 +1,5 @@
+{
+  "runtimeArgs": [ "-r", "flow-remove-types/register" ],
+  "runtimeArgs1": [ "-r", "babel-register" ]
+
+}

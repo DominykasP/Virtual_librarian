@@ -117,7 +117,7 @@ class SignIn extends React.Component {
           //console.log("yeyyey");
           //console.log(UserinXML[0].children[0].children[0].value);
           localStorage.setItem('userId', UserinXML[0].children[0].children[0].value);
-          let path = `/library/home`;
+          let path = `/library/library`;
           this.state.ID = UserinXML[0].children[0].children[0].value;
           this.props.history.push({
               pathname: path,
@@ -148,9 +148,11 @@ class SignIn extends React.Component {
             const size = this.state.size;
 
             return (
-
-                <div className = "hero">
-                   
+                <div className="hero">
+                    <div className="homepage-Title">
+                        Virtual Library
+                        </div>
+                    <div>
                     <Container>
                         <div  className="homepage">
                             <h2>Sign In</h2>
@@ -230,8 +232,9 @@ class SignIn extends React.Component {
                             
                         </div>
                     </Container>
-                    
+                    </div>
                 </div>
+
             );
         }
 }

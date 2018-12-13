@@ -42,7 +42,7 @@ module.exports = {
                 fs: 'empty'
             },
             module: {
-                
+               
             
         rules: [
             {
@@ -55,10 +55,25 @@ module.exports = {
                     },
                 }
             },
+            
             {
                 test: /\.(graphql|gql)$/,
                 exclude: /node_modules/,
                 loader: 'graphql-tag/loader'
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
             },
             
             {
@@ -90,5 +105,6 @@ module.exports = {
 
         ],
 
-    }
+            }
+          
     }

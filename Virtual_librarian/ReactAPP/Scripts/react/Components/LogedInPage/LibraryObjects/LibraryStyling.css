@@ -5,11 +5,13 @@
     margin: 100px;
 }
 
-.outside {
-    margin: 100px;
-    padding: var(--space) var(--space) 0;
+.outside1 {
+    margin-left: 65px;
+    margin-right: 1px;
+   
+    padding-bottom:600px;
     background: none;
-    width: 66%;
+    width: 90%;
 }
 
 
