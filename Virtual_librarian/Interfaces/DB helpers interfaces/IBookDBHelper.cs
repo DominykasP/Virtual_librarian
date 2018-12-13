@@ -9,17 +9,23 @@ namespace Interfaces
 {
    public interface IBookDBHelper
     {
-        List<Book> GetAllBooks();
-        List<Book> Find(string search);
-
+        Book GetBookById(int id);
         Book GetBookByCode(string isbn, string code);
+        Book GetBookByIsbn(string isbn);
+        List<Book> GetAllBooks();
         List<Book> GetReadersBooks(Person reader);
-
-        bool AddNewBook(Book book);
-        bool DeleteBook(Book book);
-        //bool TakeBook(Book takenBook, Person reader);
-        bool TakeBook(int takenBookId, int readerId);
+        List<Book> GetReadersBooks(int readerId);
         bool ReturnBook(Book returnedBook);
+        bool ReturnBook(int returnedBookId);
+        List<Book> Find(string search);
+        bool EditBook(int bookId, Book newBook);
+        bool DeleteBook(Book book);
+        bool DeleteBook(int bookId);
+        bool TakeBook(int takenBookId, int readerId);
+        bool AddNewBook(Book book);
         bool RenewBook(Book renewedBook);
+        bool RenewBook(int renewedBookId);
+        bool IsBookAlreadyTaken(Book bookToCheck);
+        int GetNextId();
     }
 }

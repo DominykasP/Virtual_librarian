@@ -9,11 +9,14 @@ namespace Interfaces
 {
     public interface IPersonDBHelper
     {
-        Person GetPersonByID(int ID);
-        Person GetPersonByNameSurnamePassword(string name, string surname, string password);
-
         bool AddNewPerson(Person person);
         bool DeletePerson(Person person);
+        bool DeletePerson(int personId);
         bool EditPerson(Person oldPerson, Person newPerson);
+        bool EditPerson(int oldPersonId, Person newPerson);
+        Person GetPersonByID(int id);
+        Person GetPersonByNameSurnamePassword(string name, string surname, string password);
+        List<Person> GetAllPersons();
+        int GetNextId();
     }
 }

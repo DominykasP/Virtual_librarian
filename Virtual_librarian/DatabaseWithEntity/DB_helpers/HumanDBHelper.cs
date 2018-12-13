@@ -15,9 +15,6 @@ namespace DatabaseWithEntity
 {
     public class HumanDBHelper : IPersonDBHelper
     {
-        private Lazy<List<Person>> users;
-        private string db;
-
         DatabaseWithEntity.biblioteka2Entities database;
 
         public HumanDBHelper()

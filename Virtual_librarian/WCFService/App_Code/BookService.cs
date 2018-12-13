@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using LibraryObjects;
-using DatabaseWithEntity;
+using Interfaces;
+//using DatabaseWithEntity;
 
 /// <summary>
 /// Summary description for BookService
@@ -15,7 +16,7 @@ using DatabaseWithEntity;
 // [System.Web.Script.Services.ScriptService]
 public class BookService : System.Web.Services.WebService
 {
-    BookDBHelper bookDBHelper = new BookDBHelper();
+    IBookDBHelper bookDBHelper = new DatabaseWithEntity.BookDBHelper();
 
     public BookService()
     {

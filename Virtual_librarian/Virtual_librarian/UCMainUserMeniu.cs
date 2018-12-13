@@ -72,7 +72,7 @@ namespace Virtual_librarian
             grdLoanPeriods.Columns["Year"].Visible = false;
             grdLoanPeriods.Columns["Pages"].Visible = false;
         }
-
+        /*
         public void LoadBookCatalog()
         {
             HumanDBHelper humanDBHelper = new HumanDBHelper();
@@ -88,8 +88,8 @@ namespace Virtual_librarian
             grdAllBooks.Columns["TimeRemaining"].Visible = false;
             grdAllBooks.Columns["ReaderId"].Visible = false;
         }
+        */
 
-        /*
         public void LoadBookCatalog()
         {
             BindingList<Book> allBooks = new BindingList<Book>(ServiceToLibrary.BookListToLibraryObject(mainForm.bookDBHelperByBookService.GetAllBooks()));
@@ -100,7 +100,7 @@ namespace Virtual_librarian
             grdAllBooks.Columns["ReturnAt"].Visible = false;
             grdAllBooks.Columns["TimeRemaining"].Visible = false;
         }
-        */
+        
 
         private void LoadMyRequests()
         {

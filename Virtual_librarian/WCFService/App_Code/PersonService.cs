@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using LibraryObjects;
-using DatabaseWithEntity;
+using Interfaces;
+//using DatabaseWithEntity;
 
 /// <summary>
 /// Summary description for PersonService
@@ -15,7 +16,7 @@ using DatabaseWithEntity;
 // [System.Web.Script.Services.ScriptService]
 public class PersonService : System.Web.Services.WebService
 {
-    HumanDBHelper humanDBHelper = new HumanDBHelper();
+    IPersonDBHelper humanDBHelper = new DatabaseWithEntity.HumanDBHelper();
 
     public PersonService()
     {
