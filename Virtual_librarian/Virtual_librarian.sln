@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2026
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Virtual_librarian", "Virtual_librarian\Virtual_librarian.csproj", "{E99B3268-E580-47FA-898C-F56B9D99AC72}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryApplicationWinFoms", "Virtual_librarian\LibraryApplicationWinFoms.csproj", "{E99B3268-E580-47FA-898C-F56B9D99AC72}"
 	ProjectSection(ProjectDependencies) = postProject
 		{2CA7BD5B-ED1A-4706-B859-B54634F70020} = {2CA7BD5B-ED1A-4706-B859-B54634F70020}
 	EndProjectSection
