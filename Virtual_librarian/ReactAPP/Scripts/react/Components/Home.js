@@ -1,19 +1,26 @@
 ﻿import React from "react";
+import {Link} from "react-router-dom"
+import { Button } from 'antd';
+import 'antd/dist/antd.css';
 import { StickyContainer, Sticky } from 'react-sticky';
-import Background from './images/sharon-mccutcheon-532782-unsplash.png';
-import "./margins.css"
+import Background from './LogedInPage/images/virtual-librarian-main-page.png';
+import "./LogedInPage/margins.css";
+
+
+
+import LogIn from "./authentication/SignIn";
+
 
 import {
     Container, Col, Form,
     FormGroup, Label, Input,
-    Button,
+ 
 } from 'reactstrap';
 var sectionStyle = {
-    flex: 1,
-    resizeMode: 'cover',
-    margin: "-20rem -20rem 10rem 10rem",
-    height: 667,
-    width: 1000,
+    
+    marginTop: "-60px" ,
+    width: "1500px",
+    height: "879px",
     backgroundImage: `url(${Background})`
 };
 export default class Home extends React.Component {
@@ -21,11 +28,16 @@ export default class Home extends React.Component {
     render() {
 
         return (
-            <div className="outside">
-            <section style={sectionStyle}>
-            
-                </section>
+            <div>
+                <div>
+                    <img className="picture" src={Background} alt="Background" />
+                    <div>   
+                    
+                        <div className="LinkColor">
+                        </div>
+                    </div>
                 </div>
+            </div>
         );
     }
 }

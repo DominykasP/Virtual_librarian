@@ -27,7 +27,7 @@ module.exports = {
     mode: 'development',
     context: __dirname ,
             entry: "./app.js",
-   
+            
         
         output: {
         path: __dirname + "/dist",
@@ -36,18 +36,13 @@ module.exports = {
             resolve: {
                 extensions: ['*', '.js', '.jsx']
             },
-            /*exclude: [/\.js$/, /\.html$/, /\.json$/, /\.ejs$/],
-            loader: require.resolve('file-loader'),
-            options: {
-                name: 'static/media/[name].[hash:8].[ext]',
-            },
-            */
-            
-           
+          
             watch: true,
-            
+            node: {
+                fs: 'empty'
+            },
             module: {
-               
+                
             
         rules: [
             {
@@ -60,11 +55,21 @@ module.exports = {
                     },
                 }
             },
+            {
+                test: /\.(graphql|gql)$/,
+                exclude: /node_modules/,
+                loader: 'graphql-tag/loader'
+            },
             
             {
                 test: /\.styl$/,
                 loader: 'stylint-loader',
                 enforce: 'pre'
+            },
+            {
+                type: 'javascript/auto',
+                test: /\.mjs$/,
+                use: []
             },
             
             {

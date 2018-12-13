@@ -30,6 +30,7 @@ public class PersonService : System.Web.Services.WebService
     }
 
     [WebMethod]
+
     public bool AddNewPerson(int id, string name, string surname, string password, DateTime birthDate, string phoneNumber, string email)
     {
         Person person = new Person(id, name, surname, password, birthDate, phoneNumber, email);
