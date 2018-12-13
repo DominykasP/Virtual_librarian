@@ -59,6 +59,7 @@ namespace Virtual_librarian
         public void LoadLoanPeriods()
         {
             BindingList<Book> myBooks = new BindingList<Book>(ServiceToLibrary.BookListToLibraryObject(mainForm.bookDBHelperByBookService.GetReadersBooks(loggedInPerson.Id)));
+
             BindingSource myBookSource = new BindingSource(myBooks, null);
             foreach (Book book in myBooks)
             {
@@ -76,9 +77,10 @@ namespace Virtual_librarian
         {
             HumanDBHelper humanDBHelper = new HumanDBHelper();
             BookDBHelper bookDBHelper = new BookDBHelper();
-
+            
             BindingList<BookWithPerson> allBooks = new BindingList<BookWithPerson>(bookDBHelper.JoinBP(humanDBHelper.GetAllPersons(), bookDBHelper.GetAllBooks()));
             BindingSource allBookSource = new BindingSource(allBooks, null);
+            var e = bookDBHelper.GroupBP(bookDBHelper.JoinBP(humanDBHelper.GetAllPersons(), bookDBHelper.GetAllBooks()));
             grdAllBooks.DataSource = allBookSource;
             grdAllBooks.Columns["id"].Visible = false; //Paslepiu, kad vartotojas nematytu knygos id
             grdAllBooks.Columns["TakenAt"].Visible = false;

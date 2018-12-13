@@ -182,6 +182,17 @@ namespace Database
             return newList;
         }
 
+        public List<BookWithPerson> GroupBP(List<BookWithPerson> bwp)
+        {
+            var byReader = bwp.Where(b => b.IsTaken).GroupBy(b => b.readerId);
+            foreach(var group in byReader)
+            {
+                Console.WriteLine("Naudotojas su id " + group.Key + " turi va tiek knygu: " + group.Count());
+            }
+            List<BookWithPerson> newl = new List<BookWithPerson>();
+            return newl;
+        }
+
         public List<Book> SQLBooksRead()
         {
 
